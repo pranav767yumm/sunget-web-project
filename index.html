@@ -1251,12 +1251,20 @@ footer {
   }
 }
 
+/* Base styling for the main navigation logo */
+.normal_logo {
+  width: 180px;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* Mobile responsiveness: Shrinks the logo on smaller screens */
 @media (max-width: 768px) {
   .normal_logo {
     width: 140px;
   }
-}
-
+}   
 /* =========================================
    14. MOBILE 2-CARD PER ROW ENFORCEMENT
    ========================================= */
@@ -1629,6 +1637,69 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+
+
+
+
+/* Watermark Styling */
+.watermark-stamp {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-25deg);
+  font-size: 32px;
+  font-family: Manrope, sans-serif;
+  font-weight: 800;
+  color: rgba(17, 107, 75, 0.08);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 1;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Background Theme Variations */
+.calc-result-box.theme-residential {
+  background: linear-gradient(160deg, rgba(245, 247, 241, 0.92), rgba(216, 242, 90, 0.20)),
+              url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80') center/cover no-repeat !important;
+}
+
+.calc-result-box.theme-commercial {
+  background: linear-gradient(160deg, rgba(16, 32, 25, 0.88), rgba(11, 77, 56, 0.92)),
+              url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80') center/cover no-repeat !important;
+  color: #ffffff !important;
+}
+
+.calc-result-box.theme-industrial {
+  background: linear-gradient(160deg, rgba(15, 23, 42, 0.90), rgba(30, 41, 59, 0.92)),
+              url('https://bespokepv.com/images/property-types/industrial-building.webp') center/cover no-repeat !important;
+  color: #ffffff !important;
+}
+
+.calc-result-box.theme-housing {
+  background: linear-gradient(160deg, rgba(245, 247, 241, 0.92), rgba(216, 242, 90, 0.20)),
+              url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80') center/cover no-repeat !important;
+}
+
+/* Adjust text readability when dark theme is active */
+.calc-result-box.theme-commercial .calc-muted,
+.calc-result-box.theme-industrial .calc-muted,
+.calc-result-box.theme-commercial .calc-note,
+.calc-result-box.theme-industrial .calc-note {
+  color: #cde4d7 !important;
+}
+
+.calc-result-box.theme-commercial .calc-big-val,
+.calc-result-box.theme-industrial .calc-big-val {
+  color: var(--lime) !important;
+}
+
+.calc-result-box.theme-commercial .watermark-stamp,
+.calc-result-box.theme-industrial .watermark-stamp {
+  color: rgba(255, 255, 255, 0.08);
+}
+
+
 </style>
 
 <body>
@@ -2308,92 +2379,100 @@ footer {
 </footer>
 
 <!-- =========================================
-       SOLAR CALCULATOR MODAL (Popup Overlay)
-       ========================================= -->
-  <div class="calc-modal" id="calcModal">
-    <div class="calc-modal-overlay" id="calcModalOverlay"></div>
-    <div class="calc-modal-content">
+     SOLAR CALCULATOR MODAL (Popup Overlay)
+     ========================================= -->
+<div class="calc-modal" id="calcModal">
+  <div class="calc-modal-overlay" id="calcModalOverlay"></div>
+  <div class="calc-modal-content">
+    
+    <button class="calc-close" id="calcCloseBtn" aria-label="Close Calculator">&times;</button>
+    
+    <div class="calc-layout">
       
-      <button class="calc-close" id="calcCloseBtn" aria-label="Close Calculator">&times;</button>
-      
-      <div class="calc-layout">
+      <!-- Left Side: Calculator Form -->
+      <div class="calc-card">
+        <h2 style="font-size: 24px; margin-bottom: 8px; color: var(--ink);">Solar Savings Calculator</h2>
+        <p style="color: var(--muted); font-size: 14px; margin: 0 0 24px 0; line-height: 1.6;">
+          Enter your monthly electricity usage to see an indicative system size, project cost and potential savings.
+        </p>
         
-        <!-- Left Side: Calculator Form -->
-        <div class="calc-card">
-          <h2 style="font-size: 24px; margin-bottom: 8px; color: var(--ink);">Solar Savings Calculator</h2>
-          <p style="color: var(--muted); font-size: 14px; margin: 0 0 24px 0; line-height: 1.6;">
-            Enter your monthly electricity usage to see an indicative system size, project cost and potential savings.
-          </p>
-          
-          <form id="calcForm" class="calc-form">
-        <label>Monthly electricity consumption (units)</label>
-        <input type="number" id="calcMonthlyUnits" min="1" max="100000" placeholder="100" required>
-        <small>Find this number on your electricity bill (kWh / units).</small>
-  
-        <label>Property type</label>
-        <select id="calcCustomerType">
-            <option>Residential</option>
-            <option>Commercial</option>
-            <option>Industrial</option>
-            <option>Housing Society</option>
-        </select>
-  
-        <label>PIN Code</label>
-        <div style="display: flex; gap: 8px;">
-        <input type="text" id="calcPincode" placeholder="Enter PIN Code" pattern="[0-9]{6}" maxlength="6" style="flex: 1;" required>
-    <button type="button" class="btn light" id="fetchLocBtn" style="padding: 10px 14px; font-size: 13px; white-space: nowrap; flex-shrink: 0;">
-      📍 Fetch Location
-    </button>
-  </div>
-  <small id="locStatusMsg" style="color: var(--muted); font-size: 11px; margin-top: 4px;"></small>
-  
-  <button type="submit" class="btn full" style="margin-top: 24px;">
-    Calculate Solar Estimate &rarr;
-  </button>
-</form>
-        </div>
+        <form id="calcForm" class="calc-form">
+          <label>Monthly electricity consumption (units)</label>
+          <input type="number" id="calcMonthlyUnits" min="1" max="100000" placeholder="300" required>
+          <small>Find this number on your electricity bill (kWh / units).</small>
 
-        <!-- Right Side: Estimate Results -->
-        <div class="calc-card" style="padding: 0; border: none; background: transparent;">
-          <div class="calc-result-box">
-            
-            <div class="calc-res-head">
-              <strong style="color: var(--ink);">Your preliminary estimate</strong>
-              <span class="calc-pill">INDICATIVE</span>
-            </div>
-            
-            <div class="calc-big-val" id="resSystemSize">0.0kW</div>
-            <div class="calc-muted">Suggested solar system size</div>
-            
-            <div class="calc-metrics">
-              <div class="calc-metric">
-                <small>Estimated project cost</small>
-                <strong id="resCost">₹0</strong>
-              </div>
-              <div class="calc-metric">
-                <small>Annual savings</small>
-                <strong id="resSavings">₹0</strong>
-              </div>
-              <div class="calc-metric">
-                <small>Daily generation</small>
-                <strong id="resGeneration">0 units</strong>
-              </div>
-              <div class="calc-metric">
-                <small>Payback period</small>
-                <strong id="resPayback">0 years</strong>
-              </div>
-            </div>
-            
-            <p class="calc-note">
-              This is a preliminary estimate, not a quotation. Actual generation, pricing and savings depend on roof conditions, location, tariff, shadow analysis, subsidy eligibility and final system design.
-            </p>
+          <label>Property type</label>
+          <select id="calcCustomerType">
+            <option value="Residential">Residential</option>
+            <option value="Commercial">Commercial</option>
+            <option value="Industrial">Industrial</option>
+            <!----<option value="Housing Society">Housing Society</option>--->  
+          </select>
 
+          <label>PIN Code</label>
+          <div style="display: flex; gap: 8px;">
+            <input type="text" id="calcPincode" placeholder="Enter PIN Code" pattern="[0-9]{6}" maxlength="6" style="flex: 1;" required>
+            <button type="button" class="btn light" id="fetchLocBtn" style="padding: 10px 14px; font-size: 13px; white-space: nowrap; flex-shrink: 0;">
+              📍 Fetch Location
+            </button>
           </div>
-        </div>
-        
+          <small id="locStatusMsg" style="color: var(--muted); font-size: 11px; margin-top: 4px;"></small>
+
+          <button type="submit" class="btn full" style="margin-top: 24px;">
+            Calculate Solar Estimate &rarr;
+          </button>
+        </form>
       </div>
+
+      <!-- Right Side: Dynamic Estimate Results Card -->
+      <div class="calc-card" style="padding: 0; border: none; background: transparent;">
+        <div class="calc-result-box" id="calcResultContainer" style="transition: background 0.4s ease, color 0.4s ease; position: relative; overflow: hidden;">
+          
+          <!-- Watermark Overlay (Visible on export / semi-transparent on UI) -->
+          <div class="watermark-stamp">SunGET Solar Infra</div>
+          
+          <div class="calc-res-head" style="position: relative; z-index: 2;">
+            <strong style="color: inherit;" id="resHeadTitle">Your preliminary estimate</strong>
+            <span class="calc-pill" id="resTypePill">RESIDENTIAL</span>
+          </div>
+          
+          <div class="calc-big-val" id="resSystemSize" style="position: relative; z-index: 2;">0.0 kW</div>
+          <div class="calc-muted" id="resMutedText" style="position: relative; z-index: 2;">Suggested solar system size</div>
+          
+          <div class="calc-metrics" style="position: relative; z-index: 2;">
+            <div class="calc-metric">
+              <small>Estimated project cost</small>
+              <strong id="resCost">₹0</strong>
+            </div>
+            <div class="calc-metric">
+              <small>Annual savings</small>
+              <strong id="resSavings">₹0</strong>
+            </div>
+            <div class="calc-metric">
+              <small>Daily generation</small>
+              <strong id="resGeneration">0 units</strong>
+            </div>
+            <div class="calc-metric">
+              <small>Payback period</small>
+              <strong id="resPayback">0 years</strong>
+            </div>
+          </div>
+          
+          <p class="calc-note" style="position: relative; z-index: 2;">
+            This is a preliminary estimate generated for <span id="reportPropertyLabel">Residential</span> usage in PIN: <span id="reportPincodeLabel">-----</span>. Actual pricing and savings depend on roof conditions, shading, and local utility tariffs.
+          </p>
+
+          <!-- Download 
+          <button type="button" class="btn full light" id="downloadReportBtn" style="margin-top: 18px; position: relative; z-index: 2; gap: 8px;">
+            📥 Download Solar Report (PDF)
+          </button>Action Button -->
+
+        </div>
+      </div>
+      
     </div>
   </div>
+</div>
   <!-- =========================================
        SUCCESS NOTIFICATION
        ========================================= -->
@@ -2403,8 +2482,77 @@ footer {
   </div>
 
   <!-- Link to external JS file -->
+   <!-- html2pdf Library for Client-side PDF Generation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <script src="script.js"></script>
 <script>
+// =========================================
+// DYNAMIC THEME & REPORT DOWNLOAD LOGIC
+// =========================================
+const calcCustomerTypeSelect = document.getElementById('calcCustomerType');
+const calcResultContainer = document.getElementById('calcResultContainer');
+const resTypePill = document.getElementById('resTypePill');
+const reportPropertyLabel = document.getElementById('reportPropertyLabel');
+const reportPincodeLabel = document.getElementById('reportPincodeLabel');
+const downloadReportBtn = document.getElementById('downloadReportBtn');
+const calcPincode = document.getElementById('calcPincode');
+
+// Theme switching map
+const themeMap = {
+  'Residential': 'theme-residential',
+  'Commercial': 'theme-commercial',
+  'Industrial': 'theme-industrial',
+  'Housing Society': 'theme-housing'
+};
+
+function updateCalculatorTheme() {
+  const selectedType = calcCustomerTypeSelect.value;
+  
+  // Reset previous theme classes
+  Object.values(themeMap).forEach(theme => calcResultContainer.classList.remove(theme));
+  
+  // Apply selected theme class
+  const activeTheme = themeMap[selectedType] || 'theme-residential';
+  calcResultContainer.classList.add(activeTheme);
+  
+  // Update labels
+  resTypePill.textContent = selectedType.toUpperCase();
+  reportPropertyLabel.textContent = selectedType;
+}
+
+// Listen for property type changes
+if (calcCustomerTypeSelect) {
+  calcCustomerTypeSelect.addEventListener('change', updateCalculatorTheme);
+  updateCalculatorTheme(); // Initial call
+}
+
+// Update PIN Code in report notes on change
+if (calcPincode) {
+  calcPincode.addEventListener('input', (e) => {
+    reportPincodeLabel.textContent = e.target.value || '-----';
+  });
+}
+
+//const downloadReportBtn = document.getElementById('downloadReportBtn');
+
+if (downloadReportBtn) {
+  downloadReportBtn.addEventListener('click', () => {
+    // 1. Sync live calculated modal values into print report template
+    document.getElementById('printPropertyType').textContent = document.getElementById('calcCustomerType').value;
+    document.getElementById('printPincode').textContent = document.getElementById('calcPincode').value || '411041';
+    document.getElementById('printUnits').textContent = (document.getElementById('calcMonthlyUnits').value || '0') + ' units';
+    
+    document.getElementById('printSystemSize').textContent = document.getElementById('resSystemSize').textContent;
+    document.getElementById('printCost').textContent = document.getElementById('resCost').textContent;
+    document.getElementById('printSavings').textContent = document.getElementById('resSavings').textContent;
+    document.getElementById('printGen').textContent = document.getElementById('resGeneration').textContent;
+
+    // 2. Open native print prompt (User can select "Save as PDF")
+    window.print();
+  });
+}
+
+
 // =========================================
 // MOBILE HAMBURGER MENU TOGGLE
 // =========================================
@@ -2600,5 +2748,153 @@ if (fetchLocBtn) {
   });
 }
 </script>
+<!-- PRINT ONLY REPORT TEMPLATE -->
+<div id="printReportArea" class="print-only-report">
+  <div class="print-header">
+    <img src="images/logo.png" alt="SunGET Solar Infra" class="print-logo">
+    <div>
+      <h2>SunGET Solar Infra Pvt. Ltd.</h2>
+      <p>Rooftop Solar &amp; EPC Estimation Report</p>
+    </div>
+  </div>
+
+  <div class="print-watermark">SUNGET SOLAR INFRA</div>
+
+  <div class="print-body">
+    <div class="print-row">
+      <span>Property Category:</span> <strong id="printPropertyType">Commercial</strong>
+    </div>
+    <div class="print-row">
+      <span>PIN Code / Location:</span> <strong id="printPincode">411041</strong>
+    </div>
+    <div class="print-row">
+      <span>Monthly Electricity Consumption:</span> <strong id="printUnits">700 units</strong>
+    </div>
+
+    <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">
+
+    <div class="print-grid">
+      <div class="print-box">
+        <small>Recommended System Size</small>
+        <h3 id="printSystemSize">5.8 kW</h3>
+      </div>
+      <div class="print-box">
+        <small>Estimated Project Cost</small>
+        <h3 id="printCost">₹3,48,000</h3>
+      </div>
+      <div class="print-box">
+        <small>Estimated Annual Savings</small>
+        <h3 id="printSavings">₹44,800</h3>
+      </div>
+      <div class="print-box">
+        <small>Daily Generation</small>
+        <h3 id="printGen">23.2 units</h3>
+      </div>
+    </div>
+
+    <p class="print-disclaimer">
+      * This is an indicative preliminary estimate generated online by SunGET Solar Infra Pvt. Ltd. Actual system design, pricing, and yield depend on detailed rooftop shadow analysis and local grid tariffs.
+    </p>
+  </div>
+
+  <div class="print-footer">
+    <p>📞 +91 98818 55770 | ✉️ sales@sungetsolarinfra.com | 🌐 www.sungetsolarinfra.com</p>
+  </div>
+</div>
+<style>
+  /* Hide print report on screen */
+.print-only-report {
+  display: none;
+}
+
+/* PRINT-SPECIFIC STYLING */
+@media print {
+  body * {
+    visibility: hidden !important;
+  }
+  
+  #printReportArea, #printReportArea * {
+    visibility: visible !important;
+  }
+
+  #printReportArea {
+    display: block !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    padding: 30px !important;
+    font-family: Arial, sans-serif !important;
+    color: #102019 !important;
+    background: #ffffff !important;
+  }
+
+  .print-header {
+    display: flex !important;
+    align-items: center !important;
+    gap: 20px !important;
+    border-bottom: 2px solid #116b4b !important;
+    padding-bottom: 15px !important;
+    margin-bottom: 25px !important;
+  }
+
+  .print-logo {
+    width: 160px !important;
+  }
+
+  .print-watermark {
+    position: absolute !important;
+    top: 40% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) rotate(-30deg) !important;
+    font-size: 50px !important;
+    font-weight: 900 !important;
+    color: rgba(17, 107, 75, 0.08) !important;
+    white-space: nowrap !important;
+  }
+
+  .print-row {
+    font-size: 16px !important;
+    margin-bottom: 10px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+  }
+
+  .print-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 15px !important;
+    margin: 25px 0 !important;
+  }
+
+  .print-box {
+    border: 1px solid #116b4b !important;
+    padding: 15px !important;
+    border-radius: 10px !important;
+    background: #f7f9f6 !important;
+  }
+
+  .print-box h3 {
+    margin: 5px 0 0 0 !important;
+    color: #116b4b !important;
+    font-size: 24px !important;
+  }
+
+  .print-disclaimer {
+    font-size: 11px !important;
+    color: #666 !important;
+    margin-top: 30px !important;
+    line-height: 1.5 !important;
+  }
+
+  .print-footer {
+    border-top: 1px solid #ddd !important;
+    padding-top: 15px !important;
+    margin-top: 40px !important;
+    text-align: center !important;
+    font-size: 12px !important;
+  }
+}
+</style>
 </body>
 </html>
