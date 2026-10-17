@@ -203,7 +203,159 @@ a {
   padding: 8px 0;
   border-bottom: 1px solid #f0f4f1;
 }
+/* ===== Desktop Dropdown ===== */
+.dropdown {
+  position: relative;
+}
 
+.dropdown-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 26px 0; /* keeps hover area connected to the menu */
+}
+
+.caret {
+  width: 6px;
+  height: 6px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg) translateY(-2px);
+  transition: transform 0.25s ease;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: -16px;
+  min-width: 220px;
+  background: #fff;
+  border: 1px solid #edf1ed;
+  border-radius: 14px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.1);
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+  z-index: 200;
+}
+
+.dropdown:hover .dropdown-menu,
+.dropdown:focus-within .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown:hover .caret,
+.dropdown:focus-within .caret {
+  transform: rotate(-135deg) translateY(-2px);
+}
+
+.dropdown:hover > .dropdown-toggle {
+  color: var(--green);
+}
+
+.dropdown-menu a {
+  padding: 11px 14px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.dropdown-menu a:hover {
+  background: #f0f7f2;
+  color: var(--green);
+}
+
+/* ===== Mobile submenu ===== */
+.mobile-group-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #f0f4f1;
+}
+
+.mobile-group-head .mobile-link {
+  flex: 1;
+  border-bottom: none;
+}
+
+.mobile-sub-toggle {
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  position: relative;
+}
+
+.mobile-sub-toggle::after {
+  content: "";
+  position: absolute;
+  top: 14px;
+  left: 15px;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  transform: rotate(45deg);
+  transition: transform 0.25s ease;
+}
+
+.mobile-group.open .mobile-sub-toggle::after {
+  transform: rotate(-135deg);
+  top: 17px;
+}
+
+.mobile-sub {
+  max-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: max-height 0.3s ease;
+}
+
+.mobile-sub a {
+  padding: 10px 0 10px 16px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #4a5a50;
+  border-left: 2px solid #d9e5dd;
+  margin-left: 4px;
+}
+
+.mobile-sub a:hover {
+  color: var(--green);
+  border-left-color: var(--green);
+}
+
+/* ===== Hamburger -> X animation ===== */
+.hamburger-btn.active .bar:nth-child(1) {
+  transform: translateY(7.5px) rotate(45deg);
+}
+.hamburger-btn.active .bar:nth-child(2) {
+  opacity: 0;
+}
+.hamburger-btn.active .bar:nth-child(3) {
+  transform: translateY(-7.5px) rotate(-45deg);
+}
+
+/* ===== Show hamburger on mobile, hide desktop links ===== */
+/* (skip this block if you already have it elsewhere) */
+@media (max-width: 900px) {
+  .links {
+    display: none;
+  }
+  .hamburger-btn {
+    display: flex;
+  }
+}
 /* =========================================
    3. HERO SECTION
    ========================================= */

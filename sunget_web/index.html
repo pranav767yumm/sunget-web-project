@@ -31,52 +31,125 @@
        MAIN NAVIGATION
        ========================================= -->
     <nav class="nav">
-      <div class="container navin">
-        <!-- Company Logo -->
-        <a href="index.html" class="brand-link">
-          <img
-            class="normal_logo"
-            src="images/logo.png"
-            alt="SunGET Solar Infra Pvt. Ltd."
-            title="SunGET Solar Infra Pvt. Ltd."
-          />
+  <div class="container navin">
+    <!-- Company Logo -->
+    <a href="index.html" class="brand-link">
+      <img
+        class="normal_logo"
+        src="images/logo.png"
+        alt="SunGET Solar Infra Pvt. Ltd."
+        title="SunGET Solar Infra Pvt. Ltd."
+      />
+    </a>
+
+    <!-- Desktop Navigation Links -->
+    <div class="links">
+      <!-- Solutions -->
+      <div class="dropdown">
+        <a class="dropdown-toggle">
+          Solutions <span class="caret"></span>
         </a>
-
-        <!-- Desktop Navigation Links -->
-        <div class="links">
-          <a href="#solutions">Solutions</a>
-          <a href="pgs/about_us.html">About</a>
-          <a href="#process">Process</a>
-          <a href="#contact">Contact</a>
-          <a class="btn light open-calc-btn" href="#">Solar Calculator 🧮</a>
-          <a class="btn" href="#contact">Get a Quote</a>
+        <div class="dropdown-menu">
+          <a href="#residential">Residential Solar</a>
+          <a href="#commercial">Commercial Solar</a>
+          <a href="#industrial">Industrial Solar</a>
+          <a href="pgs/privacy-policy.html">Solar Pumps</a>
         </div>
-
-        <!-- Hamburger Toggle Button -->
-        <button
-          class="hamburger-btn"
-          id="menuToggle"
-          aria-label="Toggle navigation menu"
-          aria-expanded="false"
-        >
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </button>
       </div>
 
-      <!-- Mobile Menu Dropdown -->
-      <div class="mobile-menu" id="mobileMenu">
-        <div class="container mobile-menu-inner">
+      <!-- About -->
+      <div class="dropdown">
+        <a class="dropdown-toggle">
+          About <span class="caret"></span>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#">Our Story</a>
+          <a href="#">Our Team</a>
+          <a href="#">Certifications</a>
+        </div>
+      </div>
+
+      <!-- Process -->
+      <div class="dropdown">
+        <a class="dropdown-toggle">
+          Process <span class="caret"></span>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#process">Site Survey</a>
+          <a href="#process">Design &amp; Approval</a>
+          <a href="#process">Installation</a>
+          <a href="#process">Maintenance</a>
+        </div>
+      </div>
+
+      <a href="#contact">Contact</a>
+      <a class="btn light open-calc-btn" href="#">Solar Calculator 🧮</a>
+      <a class="btn" href="#contact">Get a Quote</a>
+    </div>
+
+    <!-- Hamburger Toggle Button -->
+    <button
+      class="hamburger-btn"
+      id="menuToggle"
+      aria-label="Toggle navigation menu"
+      aria-expanded="false"
+    >
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu Dropdown -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="container mobile-menu-inner">
+      <!-- Solutions -->
+      <div class="mobile-group">
+        <div class="mobile-group-head">
           <a class="mobile-link" href="#solutions">Solutions</a>
-          <a class="mobile-link" href="pgs/about_us.html">About</a>
-          <a class="mobile-link" href="#process">Process</a>
-          <a class="mobile-link" href="#contact">Contact</a>
-          <a class="btn light open-calc-btn" href="#">Solar Calculator 🧮</a>
-          <a class="btn full" href="#contact" id="mobileCta">Get a Quote</a>
+          <button class="mobile-sub-toggle" aria-label="Show Solutions options" aria-expanded="false"></button>
+        </div>
+        <div class="mobile-sub">
+          <a href="#residential">Residential Solar</a>
+          <a href="#commercial">Commercial Solar</a>
+          <a href="#industrial">Industrial Solar</a>
+          <a href="#agriculture">Solar Pumps</a>
         </div>
       </div>
-    </nav>
+
+      <!-- About -->
+      <div class="mobile-group">
+        <div class="mobile-group-head">
+          <a class="mobile-link" href="pgs/about_us.html">About</a>
+          <button class="mobile-sub-toggle" aria-label="Show About options" aria-expanded="false"></button>
+        </div>
+        <div class="mobile-sub">
+          <a href="pgs/about_us.html">Our Story</a>
+          <a href="pgs/about_us.html#team">Our Team</a>
+          <a href="pgs/about_us.html#certifications">Certifications</a>
+        </div>
+      </div>
+
+      <!-- Process -->
+      <div class="mobile-group">
+        <div class="mobile-group-head">
+          <a class="mobile-link" href="#process">Process</a>
+          <button class="mobile-sub-toggle" aria-label="Show Process options" aria-expanded="false"></button>
+        </div>
+        <div class="mobile-sub">
+          <a href="#process">Site Survey</a>
+          <a href="#process">Design &amp; Approval</a>
+          <a href="#process">Installation</a>
+          <a href="#process">Maintenance</a>
+        </div>
+      </div>
+
+      <a class="mobile-link" href="#contact">Contact</a>
+      <a class="btn light open-calc-btn" href="#">Solar Calculator 🧮</a>
+      <a class="btn full" href="#contact" id="mobileCta">Get a Quote</a>
+    </div>
+  </div>
+</nav>
 
     <!-- =========================================
        HERO SECTION
@@ -208,7 +281,7 @@
       <!-- 1. Solar Rooftop Systems -->
       <article class="sol-card">
         <div class="sol-card-media">
-          <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=800&q=80" alt="Solar Rooftop Installation" class="sol-img" loading="lazy">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQD7MH1rmMjSs_OvR4G8jXK_3FWron9QLtZ-kjedrnboFHkw9lSg3GqD_w&s=10" alt="Solar Rooftop Installation" class="sol-img" loading="lazy">
           <span class="sol-tag">Popular</span>
         </div>
         <div class="sol-card-body">
@@ -230,7 +303,7 @@
       <!-- 2. Commercial Solar Water Heating -->
       <article class="sol-card">
         <div class="sol-card-media">
-          <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" alt="Solar Water Heating System" class="sol-img" loading="lazy">
+          <img src="https://blog.solarclue.com/wp-content/uploads/2020/01/Best-Solar-Water-Heater-in-India-2020.jpg" alt="Solar Water Heating System" class="sol-img" loading="lazy">
         </div>
         <div class="sol-card-body">
           <div class="sol-icon">
@@ -249,7 +322,7 @@
       <!-- 3. All-Weather Heat Pump Systems -->
       <article class="sol-card">
         <div class="sol-card-media">
-          <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80" alt="Heat Pump Systems" class="sol-img" loading="lazy">
+          <img src="https://www.veeaarengineering.com/assets/img/product/veeaar-engineering-heat-pumps-d7f.webp" alt="Heat Pump Systems" class="sol-img" loading="lazy">
         </div>
         <div class="sol-card-body">
           <div class="sol-icon">
@@ -268,7 +341,7 @@
       <!-- 4. Specialized Utility & Micro-Grid Products -->
       <article class="sol-card">
         <div class="sol-card-media">
-          <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80" alt="Solar Utility Products" class="sol-img" loading="lazy">
+          <img src="https://5.imimg.com/data5/SELLER/Default/2025/2/492271067/HH/GK/XY/900252/products-for-dropshipping-500x500.jpg" alt="Solar Utility Products" class="sol-img" loading="lazy">
         </div>
         <div class="sol-card-body">
           <div class="sol-icon">
@@ -288,7 +361,7 @@
       <!-- 5. Turnkey Solar EPC Services -->
       <article class="sol-card">
         <div class="sol-card-media">
-          <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=800&q=80" alt="Turnkey Solar EPC" class="sol-img" loading="lazy">
+          <img src="https://framerusercontent.com/images/SVUB5JyqvyKe4IeqmKTgzVldVnQ.webp?width=1725&height=696" alt="Turnkey Solar EPC" class="sol-img" loading="lazy">
           <span class="sol-tag">Turnkey</span>
         </div>
         <div class="sol-card-body">
@@ -308,7 +381,7 @@
       <!-- 6. O&M Asset Management & Repair -->
       <article class="sol-card">
         <div class="sol-card-media">
-          <img src="https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&w=800&q=80" alt="Solar O&M Maintenance" class="sol-img" loading="lazy">
+          <img src="https://www.powerinfotoday.com/wp-content/uploads/2016/12/susten_mahindra_keytrends.jpg" alt="Solar O&M Maintenance" class="sol-img" loading="lazy">
         </div>
         <div class="sol-card-body">
           <div class="sol-icon">
@@ -327,7 +400,7 @@
       <!-- 7. Investment Grade Energy Audits -->
       <article class="sol-card">
         <div class="sol-card-media">
-          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" alt="Energy Audits" class="sol-img" loading="lazy">
+          <img src="https://img-cdn.publive.online/fit-in/1200x675/saur-energy/media/media_files/2026/08/07/ai-in-solar-2026-08-07-11-52-03.png" alt="Energy Audits" class="sol-img" loading="lazy">
         </div>
         <div class="sol-card-body">
           <div class="sol-icon">
@@ -348,7 +421,7 @@
       <!-- 8. CSR Initiatives & Clean Energy Drive -->
       <article class="sol-card">
         <div class="sol-card-media">
-          <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=800&q=80" alt="CSR Clean Energy" class="sol-img" loading="lazy">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW677sdIXlyItu0_CcSZTpvH5z8_8WKi5105A3Ty_d9PS-vCHpcL0piY41&s=10" alt="CSR Clean Energy" class="sol-img" loading="lazy">
         </div>
         <div class="sol-card-body">
           <div class="sol-icon">
@@ -676,22 +749,24 @@
     <div class="logo-track">
 
       <!-- First Set of 7 Client Logos -->
-      <div class="logo-slide"><img src="images/clients/client1.png" alt="Client Partner 1" loading="lazy"></div>
-      <div class="logo-slide"><img src="images/clients/client2.png" alt="Client Partner 2" loading="lazy"></div>
-      <div class="logo-slide"><img src="images/clients/client3.png" alt="Client Partner 3" loading="lazy"></div>
-      <div class="logo-slide"><img src="images/clients/client4.png" alt="Client Partner 4" loading="lazy"></div>
-      <div class="logo-slide"><img src="images/clients/client5.png" alt="Client Partner 5" loading="lazy"></div>
-      <div class="logo-slide"><img src="images/clients/client6.png" alt="Client Partner 6" loading="lazy"></div>
-      <div class="logo-slide"><img src="images/clients/client7.png" alt="Client Partner 7" loading="lazy"></div>
+      <div class="logo-slide"><img src="images/clients/client(1).png" alt="Client Partner 1" loading="lazy"></div>
+      <div class="logo-slide"><img src="images/clients/client(2).jpeg"Client Partner 2" loading="lazy"></div>
+      <div class="logo-slide"><img src="images/clients/client(3).jpeg" alt="Client Partner 3" loading="lazy"></div>
+      <div class="logo-slide"><img src="images/clients/client(4).jpeg" alt="Client Partner 4" loading="lazy"></div>
+      <div class="logo-slide"><img src="images/clients/client(5).jpeg" alt="Client Partner 5" loading="lazy"></div>
+      <div class="logo-slide"><img src="images/clients/client(6).jpeg" alt="Client Partner 6" loading="lazy"></div>
+      <div class="logo-slide"><img src="images/clients/client(7).jpeg" alt="Client Partner 7" loading="lazy"></div>
+      <div class="logo-slide"><img src="images/clients/client(8).jpeg" alt="Client Partner 8" loading="lazy"></div>
 
       <!-- Duplicated Set for Seamless Infinite Loop -->
-      <div class="logo-slide" aria-hidden="true"><img src="images/clients/client1.png" alt="Client Partner 1" loading="lazy"></div>
-      <div class="logo-slide" aria-hidden="true"><img src="images/clients/client2.png" alt="Client Partner 2" loading="lazy"></div>
-      <div class="logo-slide" aria-hidden="true"><img src="images/clients/client3.png" alt="Client Partner 3" loading="lazy"></div>
-      <div class="logo-slide" aria-hidden="true"><img src="images/clients/client4.png" alt="Client Partner 4" loading="lazy"></div>
-      <div class="logo-slide" aria-hidden="true"><img src="images/clients/client5.png" alt="Client Partner 5" loading="lazy"></div>
-      <div class="logo-slide" aria-hidden="true"><img src="images/clients/client6.png" alt="Client Partner 6" loading="lazy"></div>
-      <div class="logo-slide" aria-hidden="true"><img src="images/clients/client7.png" alt="Client Partner 7" loading="lazy"></div>
+      <div class="logo-slide" aria-hidden="true"><img src="images/clients/client(1).png" alt="Client Partner 1" loading="lazy"></div>
+      <div class="logo-slide" aria-hidden="true"><img src="images/clients/client(2).jpeg" alt="Client Partner 2" loading="lazy"></div>
+      <div class="logo-slide" aria-hidden="true"><img src="images/clients/client(3).jpeg" alt="Client Partner 3" loading="lazy"></div>
+      <div class="logo-slide" aria-hidden="true"><img src="images/clients/client(4).jpeg" alt="Client Partner 4" loading="lazy"></div>
+      <div class="logo-slide" aria-hidden="true"><img src="images/clients/client(5).jpeg" alt="Client Partner 5" loading="lazy"></div>
+      <div class="logo-slide" aria-hidden="true"><img src="images/clients/client(6).jpeg" alt="Client Partner 6" loading="lazy"></div>
+      <div class="logo-slide" aria-hidden="true"><img src="images/clients/client(7).jpeg" alt="Client Partner 7" loading="lazy"></div>
+      <div class="logo-slide" aria-hidden="true"><img src="images/clients/client(8).jpeg" alt="Client Partner 8" loading="lazy"></div>
 
     </div>
   </div>

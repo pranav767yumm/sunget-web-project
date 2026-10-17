@@ -271,27 +271,52 @@
 // =========================================
 // NAVIGATION & FORM LISTENERS
 // =========================================
-
 // Mobile Hamburger Navigation
 const menuToggle = document.getElementById("menuToggle");
 const mobileMenu = document.getElementById("mobileMenu");
-const mobileLinks = document.querySelectorAll(".mobile-link, #mobileCta");
+
+function closeMobileMenu() {
+  menuToggle.classList.remove("active");
+  mobileMenu.classList.remove("active");
+  menuToggle.setAttribute("aria-expanded", "false");
+  // collapse all submenus
+  document.querySelectorAll(".mobile-group").forEach((g) => {
+    g.classList.remove("open");
+    g.querySelector(".mobile-sub").style.maxHeight = null;
+    g.querySelector(".mobile-sub-toggle").setAttribute("aria-expanded", "false");
+  });
+}
 
 if (menuToggle && mobileMenu) {
   menuToggle.addEventListener("click", () => {
     const isActive = menuToggle.classList.toggle("active");
-    mobileMenu.classList.toggle("active");
+    mobileMenu.classList.toggle("active", isActive);
     menuToggle.setAttribute("aria-expanded", isActive);
+    if (!isActive) closeMobileMenu();
   });
 
-  mobileLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      menuToggle.classList.remove("active");
-      mobileMenu.classList.remove("active");
-      menuToggle.setAttribute("aria-expanded", "false");
+  // Close menu when any real link is clicked
+  mobileMenu
+    .querySelectorAll(".mobile-link, .mobile-sub a, #mobileCta")
+    .forEach((link) => link.addEventListener("click", closeMobileMenu));
+
+  // Expand / collapse mobile submenus via the arrow button
+  document.querySelectorAll(".mobile-group").forEach((group) => {
+    const btn = group.querySelector(".mobile-sub-toggle");
+    const sub = group.querySelector(".mobile-sub");
+
+    btn.addEventListener("click", () => {
+      const isOpen = group.classList.toggle("open");
+      sub.style.maxHeight = isOpen ? sub.scrollHeight + "px" : null;
+      btn.setAttribute("aria-expanded", isOpen);
     });
   });
 }
+
+// Close mobile menu with Escape key
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeMobileMenu();
+});
 
 // Contact Form Notification Handler
 function showToastNotification() {
