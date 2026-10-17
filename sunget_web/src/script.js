@@ -93,37 +93,39 @@
   // Inject calculator HTML dynamically into DOM body
   function injectCalculatorModal() {
     if (isCalculatorInjected) return;
-    document.body.insertAdjacentHTML('beforeend', modalHTML);
+    document.body.insertAdjacentHTML("beforeend", modalHTML);
     isCalculatorInjected = true;
     initCalculatorLogic();
   }
 
   // Attach event handlers to modal elements
   function initCalculatorLogic() {
-    const calcModal = document.getElementById('calcModal');
-    const calcModalOverlay = document.getElementById('calcModalOverlay');
-    const calcCloseBtn = document.getElementById('calcCloseBtn');
-    const calcForm = document.getElementById('calcForm');
-    const calcCustomerTypeSelect = document.getElementById('calcCustomerType');
-    const calcResultContainer = document.getElementById('calcResultContainer');
-    const resTypePill = document.getElementById('resTypePill');
-    const reportPropertyLabel = document.getElementById('reportPropertyLabel');
-    const reportPincodeLabel = document.getElementById('reportPincodeLabel');
-    const calcPincodeInput = document.getElementById('calcPincode');
-    const fetchLocBtn = document.getElementById('fetchLocBtn');
-    const locStatusMsg = document.getElementById('locStatusMsg');
+    const calcModal = document.getElementById("calcModal");
+    const calcModalOverlay = document.getElementById("calcModalOverlay");
+    const calcCloseBtn = document.getElementById("calcCloseBtn");
+    const calcForm = document.getElementById("calcForm");
+    const calcCustomerTypeSelect = document.getElementById("calcCustomerType");
+    const calcResultContainer = document.getElementById("calcResultContainer");
+    const resTypePill = document.getElementById("resTypePill");
+    const reportPropertyLabel = document.getElementById("reportPropertyLabel");
+    const reportPincodeLabel = document.getElementById("reportPincodeLabel");
+    const calcPincodeInput = document.getElementById("calcPincode");
+    const fetchLocBtn = document.getElementById("fetchLocBtn");
+    const locStatusMsg = document.getElementById("locStatusMsg");
 
     // Dynamic Theme Map
     const themeMap = {
-      'Residential': 'theme-residential',
-      'Commercial': 'theme-commercial',
-      'Industrial': 'theme-industrial'
+      Residential: "theme-residential",
+      Commercial: "theme-commercial",
+      Industrial: "theme-industrial",
     };
 
     function updateTheme() {
       const selectedType = calcCustomerTypeSelect.value;
-      Object.values(themeMap).forEach(theme => calcResultContainer.classList.remove(theme));
-      const activeTheme = themeMap[selectedType] || 'theme-residential';
+      Object.values(themeMap).forEach((theme) =>
+        calcResultContainer.classList.remove(theme),
+      );
+      const activeTheme = themeMap[selectedType] || "theme-residential";
       calcResultContainer.classList.add(activeTheme);
 
       resTypePill.textContent = selectedType.toUpperCase();
@@ -131,54 +133,63 @@
     }
 
     if (calcCustomerTypeSelect) {
-      calcCustomerTypeSelect.addEventListener('change', updateTheme);
+      calcCustomerTypeSelect.addEventListener("change", updateTheme);
     }
 
     if (calcPincodeInput) {
-      calcPincodeInput.addEventListener('input', (e) => {
-        reportPincodeLabel.textContent = e.target.value || '-----';
+      calcPincodeInput.addEventListener("input", (e) => {
+        reportPincodeLabel.textContent = e.target.value || "-----";
       });
     }
 
     // Modal Close Action
     function closeCalculator() {
-      calcModal.classList.remove('active');
-      document.body.style.overflow = '';
+      calcModal.classList.remove("active");
+      document.body.style.overflow = "";
     }
 
-    if (calcCloseBtn) calcCloseBtn.addEventListener('click', closeCalculator);
-    if (calcModalOverlay) calcModalOverlay.addEventListener('click', closeCalculator);
+    if (calcCloseBtn) calcCloseBtn.addEventListener("click", closeCalculator);
+    if (calcModalOverlay)
+      calcModalOverlay.addEventListener("click", closeCalculator);
 
     // Mathematical Solar Estimates
-    const formatRupees = n => '₹' + Math.round(n).toLocaleString('en-IN');
+    const formatRupees = (n) => "₹" + Math.round(n).toLocaleString("en-IN");
 
     if (calcForm) {
-      calcForm.addEventListener('submit', (e) => {
+      calcForm.addEventListener("submit", (e) => {
         e.preventDefault();
-        const units = Number(document.getElementById('calcMonthlyUnits').value);
+        const units = Number(document.getElementById("calcMonthlyUnits").value);
 
         if (units > 0) {
           const systemSizeKw = Math.round((units / 120) * 10) / 10;
           const dailyGenerationUnits = Math.round(systemSizeKw * 4 * 10) / 10;
           const estimatedCostRupees = Math.round(systemSizeKw * 60000);
           const estimatedAnnualSavingsRupees = Math.round(units * 12 * 8 * 0.8);
-          const paybackVal = estimatedCostRupees / Math.max(estimatedAnnualSavingsRupees, 1);
+          const paybackVal =
+            estimatedCostRupees / Math.max(estimatedAnnualSavingsRupees, 1);
           const paybackYears = Math.round(paybackVal * 10) / 10;
 
-          document.getElementById('resSystemSize').textContent = systemSizeKw + ' kW';
-          document.getElementById('resCost').textContent = formatRupees(estimatedCostRupees);
-          document.getElementById('resSavings').textContent = formatRupees(estimatedAnnualSavingsRupees);
-          document.getElementById('resGeneration').textContent = dailyGenerationUnits + ' units';
-          document.getElementById('resPayback').textContent = paybackYears + ' years';
+          document.getElementById("resSystemSize").textContent =
+            systemSizeKw + " kW";
+          document.getElementById("resCost").textContent =
+            formatRupees(estimatedCostRupees);
+          document.getElementById("resSavings").textContent = formatRupees(
+            estimatedAnnualSavingsRupees,
+          );
+          document.getElementById("resGeneration").textContent =
+            dailyGenerationUnits + " units";
+          document.getElementById("resPayback").textContent =
+            paybackYears + " years";
         }
       });
     }
 
     // Geolocation and PIN code fetcher
     if (fetchLocBtn) {
-      fetchLocBtn.addEventListener('click', () => {
+      fetchLocBtn.addEventListener("click", () => {
         if (!navigator.geolocation) {
-          locStatusMsg.textContent = "Geolocation is not supported by your browser.";
+          locStatusMsg.textContent =
+            "Geolocation is not supported by your browser.";
           locStatusMsg.style.color = "#d32f2f";
           return;
         }
@@ -192,24 +203,28 @@
             const { latitude, longitude } = position.coords;
             try {
               const response = await fetch(
-                `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`
+                `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`,
               );
               const data = await response.json();
 
               if (data && data.address && data.address.postcode) {
                 const pincodeMatch = data.address.postcode.match(/\d{6}/);
-                const pincode = pincodeMatch ? pincodeMatch[0] : data.address.postcode;
+                const pincode = pincodeMatch
+                  ? pincodeMatch[0]
+                  : data.address.postcode;
 
                 calcPincodeInput.value = pincode;
                 reportPincodeLabel.textContent = pincode;
-                locStatusMsg.textContent = `Detected: ${data.address.city || data.address.town || data.address.suburb || 'Pune'} (${pincode})`;
+                locStatusMsg.textContent = `Detected: ${data.address.city || data.address.town || data.address.suburb || "Pune"} (${pincode})`;
                 locStatusMsg.style.color = "var(--green)";
               } else {
-                locStatusMsg.textContent = "Could not detect PIN code automatically. Please enter manually.";
+                locStatusMsg.textContent =
+                  "Could not detect PIN code automatically. Please enter manually.";
                 locStatusMsg.style.color = "#d32f2f";
               }
             } catch (error) {
-              locStatusMsg.textContent = "Error fetching location. Please enter PIN manually.";
+              locStatusMsg.textContent =
+                "Error fetching location. Please enter PIN manually.";
               locStatusMsg.style.color = "#d32f2f";
             } finally {
               fetchLocBtn.disabled = false;
@@ -217,36 +232,37 @@
           },
           () => {
             fetchLocBtn.disabled = false;
-            locStatusMsg.textContent = "Location access denied or unavailable. Please enter PIN manually.";
+            locStatusMsg.textContent =
+              "Location access denied or unavailable. Please enter PIN manually.";
             locStatusMsg.style.color = "#d32f2f";
           },
-          { timeout: 10000, enableHighAccuracy: true }
+          { timeout: 10000, enableHighAccuracy: true },
         );
       });
     }
   }
 
   // Open modal click handler on elements with `.open-calc-btn`
-  document.addEventListener('click', function (e) {
-    const triggerBtn = e.target.closest('.open-calc-btn');
+  document.addEventListener("click", function (e) {
+    const triggerBtn = e.target.closest(".open-calc-btn");
     if (triggerBtn) {
       e.preventDefault();
 
       // Ensure modal HTML exists in DOM
       injectCalculatorModal();
 
-      const calcModal = document.getElementById('calcModal');
+      const calcModal = document.getElementById("calcModal");
       if (calcModal) {
-        calcModal.classList.add('active');
-        document.body.style.overflow = 'hidden';
+        calcModal.classList.add("active");
+        document.body.style.overflow = "hidden";
       }
 
       // Close mobile navigation dropdown if open
-      const mobileMenu = document.getElementById('mobileMenu');
-      const menuToggle = document.getElementById('menuToggle');
-      if (mobileMenu && mobileMenu.classList.contains('active')) {
-        mobileMenu.classList.remove('active');
-        if (menuToggle) menuToggle.classList.remove('active');
+      const mobileMenu = document.getElementById("mobileMenu");
+      const menuToggle = document.getElementById("menuToggle");
+      if (mobileMenu && mobileMenu.classList.contains("active")) {
+        mobileMenu.classList.remove("active");
+        if (menuToggle) menuToggle.classList.remove("active");
       }
     }
   });
@@ -257,49 +273,153 @@
 // =========================================
 
 // Mobile Hamburger Navigation
-const menuToggle = document.getElementById('menuToggle');
-const mobileMenu = document.getElementById('mobileMenu');
-const mobileLinks = document.querySelectorAll('.mobile-link, #mobileCta');
+const menuToggle = document.getElementById("menuToggle");
+const mobileMenu = document.getElementById("mobileMenu");
+const mobileLinks = document.querySelectorAll(".mobile-link, #mobileCta");
 
 if (menuToggle && mobileMenu) {
-  menuToggle.addEventListener('click', () => {
-    const isActive = menuToggle.classList.toggle('active');
-    mobileMenu.classList.toggle('active');
-    menuToggle.setAttribute('aria-expanded', isActive);
+  menuToggle.addEventListener("click", () => {
+    const isActive = menuToggle.classList.toggle("active");
+    mobileMenu.classList.toggle("active");
+    menuToggle.setAttribute("aria-expanded", isActive);
   });
 
-  mobileLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      menuToggle.classList.remove('active');
-      mobileMenu.classList.remove('active');
-      menuToggle.setAttribute('aria-expanded', 'false');
+  mobileLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      menuToggle.classList.remove("active");
+      mobileMenu.classList.remove("active");
+      menuToggle.setAttribute("aria-expanded", "false");
     });
   });
 }
 
 // Contact Form Notification Handler
 function showToastNotification() {
-  const toast = document.getElementById('toast');
+  const toast = document.getElementById("toast");
   if (toast) {
-    toast.style.display = 'block';
+    toast.style.display = "block";
     setTimeout(() => {
-      toast.style.display = 'none';
+      toast.style.display = "none";
     }, 3500);
   }
 }
 
-const leadForm = document.getElementById('leadForm');
+const leadForm = document.getElementById("leadForm");
 if (leadForm) {
-  leadForm.addEventListener('submit', (e) => {
+  leadForm.addEventListener("submit", (e) => {
     e.preventDefault();
     showToastNotification();
   });
 }
 
-const heroLeadForm = document.getElementById('heroLeadForm');
+const heroLeadForm = document.getElementById("heroLeadForm");
 if (heroLeadForm) {
-  heroLeadForm.addEventListener('submit', (e) => {
+  heroLeadForm.addEventListener("submit", (e) => {
     e.preventDefault();
     showToastNotification();
   });
 }
+/* =========== slide chenging  and dots arros for slide change ============ */
+(function () {
+  var slides = document.querySelectorAll(".hero-slide");
+  var dotsBox = document.getElementById("heroDots");
+  var hero = document.querySelector(".hero");
+  var DELAY = 3000; // 3 seconds
+  var current = 0;
+  var timer;
+
+  // build dots
+  slides.forEach(function (_, i) {
+    var d = document.createElement("button");
+    d.type = "button";
+    d.className = "hero-dot" + (i === 0 ? " active" : "");
+    d.setAttribute("aria-label", "Go to slide " + (i + 1));
+    d.addEventListener("click", function () {
+      goTo(i);
+      restart();
+    });
+    dotsBox.appendChild(d);
+  });
+  var dots = dotsBox.querySelectorAll(".hero-dot");
+
+  function goTo(n) {
+    slides[current].classList.remove("active");
+    dots[current].classList.remove("active");
+    current = (n + slides.length) % slides.length;
+    slides[current].classList.add("active");
+    dots[current].classList.add("active");
+  }
+
+  function start() {
+    clearInterval(timer);
+    timer = setInterval(function () {
+      goTo(current + 1);
+    }, DELAY);
+  }
+  function stop() {
+    clearInterval(timer);
+  }
+  function restart() {
+    stop();
+    start();
+  }
+
+  document.getElementById("heroNext").addEventListener("click", function () {
+    goTo(current + 1);
+    restart();
+  });
+  document.getElementById("heroPrev").addEventListener("click", function () {
+    goTo(current - 1);
+    restart();
+  });
+
+  // pause on hover (mouse devices only, so touch screens never get stuck paused)
+  if (window.matchMedia("(hover: hover)").matches) {
+    hero.addEventListener("mouseenter", stop);
+    hero.addEventListener("mouseleave", start);
+  }
+
+  // ----- Mobile: open / close the enquiry form popup -----
+  var formCard = document.getElementById("heroFormCard");
+  var backdrop = document.getElementById("heroFormBackdrop");
+
+  function openForm() {
+    formCard.classList.add("open");
+    backdrop.classList.add("show");
+    hero.classList.add("form-open");
+    document.body.style.overflow = "hidden";
+    stop();
+  }
+  function closeForm() {
+    formCard.classList.remove("open");
+    backdrop.classList.remove("show");
+    hero.classList.remove("form-open");
+    document.body.style.overflow = "";
+    start();
+  }
+  document.getElementById("openHeroForm").addEventListener("click", openForm);
+  document.getElementById("closeHeroForm").addEventListener("click", closeForm);
+  backdrop.addEventListener("click", closeForm);
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") closeForm();
+  });
+
+  // if the screen is resized back to desktop, reset the popup state
+  window.addEventListener("resize", function () {
+    if (window.innerWidth > 768 && formCard.classList.contains("open"))
+      closeForm();
+  });
+
+  // pause when the tab is hidden
+  document.addEventListener("visibilitychange", function () {
+    document.hidden ? stop() : restart();
+  });
+
+  // preload images so slides don't flash blank
+  slides.forEach(function (s) {
+    var url = s.style.backgroundImage.replace(/^url\(["']?|["']?\)$/g, "");
+    new Image().src = url;
+  });
+
+  start();
+})();
