@@ -1,0 +1,106 @@
+/* =========================================================
+   CSR & AWARENESS PAGE extras (pgs/csr-and-awareness.html)
+   Layout comes from rooftop.css; this only adds what is new.
+   ========================================================= */
+
+/* ---------- Three pillars (3 columns divided by rules) ---------- */
+.csr-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 2px solid var(--ink, #0b1536);
+}
+
+.csr-pillars article {
+  padding: 26px 28px 30px;
+  border-right: 1px solid var(--line, #e3ebe5);
+}
+
+.csr-pillars article:last-child {
+  border-right: 0;
+}
+
+.csr-pillars h3 {
+  font-family: "Manrope", sans-serif;
+  font-size: 20px;
+  margin: 0 0 10px;
+  color: var(--green);
+}
+
+.csr-pillars p {
+  margin: 0;
+  color: #53625a;
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+/* ---------- Ways to partner ---------- */
+.csr-ways {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  align-items: stretch;
+}
+
+.csr-ways article {
+  background: #fff;
+  border: 1px solid var(--line, #e3ebe5);
+  border-radius: 18px;
+  padding: 30px 28px;
+}
+
+.csr-ways .csr-way-main {
+  border: 2px solid var(--green);
+  background: #f4f8f5;
+}
+
+.csr-ways h3 {
+  font-family: "Manrope", sans-serif;
+  font-size: 22px;
+  margin: 0 0 4px;
+}
+
+.csr-way-for {
+  margin: 0 0 18px;
+  color: var(--green);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.csr-ways ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.csr-ways li {
+  position: relative;
+  padding: 10px 0 10px 26px;
+  border-top: 1px solid #eef3ef;
+  font-size: 15px;
+}
+
+.csr-ways li::before {
+  content: "\2713";
+  position: absolute;
+  left: 0;
+  color: var(--green);
+  font-weight: 800;
+}
+
+@media (max-width: 1000px) {
+  .csr-pillars {
+    grid-template-columns: 1fr;
+  }
+  .csr-pillars article {
+    border-right: 0;
+    border-bottom: 1px solid var(--line, #e3ebe5);
+  }
+  .csr-pillars article:last-child {
+    border-bottom: 0;
+  }
+  .csr-ways {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+}

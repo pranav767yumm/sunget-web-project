@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Solar water heating systems in Pune by SunGET Solar Infra — ETC and FPC heaters for homes, hostels, hotels, hospitals and industries. Free hot water from the sun."
+    />
+    <title>Solar Water Heating in Pune | SunGET Solar Infra</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Main site stylesheet -->
+    <link rel="stylesheet" href="../style/style.css" />
+    <!-- Shared service-page styles (also used by solar-rooftop.html) -->
+    <link rel="stylesheet" href="../style/rooftop.css" />
+    <!-- Water heating extras -->
+    <link rel="stylesheet" href="../style/waterheater.css" />
+  </head>
+
+  <body>
+    <!-- =========================================
+       MAIN NAVIGATION
+       ========================================= -->
+<nav class="nav">
+  <div class="container navin">
+    <!-- Company Logo -->
+    <a href="../index.html" class="brand-link">
+      <img
+        class="normal_logo"
+        src="../images/logo.png"
+        alt="SunGET Solar Infra Pvt. Ltd."
+        title="SunGET Solar Infra Pvt. Ltd."
+      />
+    </a>
+
+    <!-- Desktop Navigation Links -->
+    <div class="links">
+      <!-- Solutions -->
+      <div class="dropdown">
+        <a class="dropdown-toggle">
+          Solutions <span class="caret"></span>
+        </a>
+        <div class="dropdown-menu">
+          <a href="solar-rooftop.html">Solar Rooftops</a>
+          <a href="solar-water-heater.html">Solar Water Heater</a>
+          <a href="heat-pump.html">Heat Pump</a>
+          <a href="solar-utility-products.html">Solar Utility Product</a>
+          <a href="solar-epc.html">Solar EPC</a>
+          <a href="o-and-m-repair.html">O&amp;M Repair</a>
+          <a href="energy-audit.html">Energy Audit</a>
+          <a href="csr-and-awareness.html">CSR and Awareness</a>
+        </div>
+      </div>
+
+      <!-- About -->
+      <div class="dropdown">
+        <a class="dropdown-toggle">
+          About <span class="caret"></span>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#">Our Story</a>
+          <a href="#">Our Team</a>
+          <a href="certifications.html">Certifications</a>
+        </div>
+      </div>
+
+      <!-- Process -->
+      <div class="dropdown">
+        <a class="dropdown-toggle">
+          Process <span class="caret"></span>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#process">Site Survey</a>
+          <a href="#process">Design &amp; Approval</a>
+          <a href="#process">Installation</a>
+          <a href="#process">Maintenance</a>
+        </div>
+      </div>
+
+      <a href="#contact">Contact</a>
+      <a class="btn light open-calc-btn" href="#">Solar Calculator 🧮</a>
+     
+    </div>
+
+    <!-- Hamburger Toggle Button -->
+    <button
+      class="hamburger-btn"
+      id="menuToggle"
+      aria-label="Toggle navigation menu"
+      aria-expanded="false"
+    >
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu Dropdown -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="container mobile-menu-inner">
+      <!-- Solutions -->
+      <div class="mobile-group">
+        <div class="mobile-group-head">
+          <a class="mobile-link">Solutions</a>
+          <button class="mobile-sub-toggle" aria-label="Show Solutions options" aria-expanded="false"></button>
+        </div>
+        <div class="mobile-sub">
+          <a href="pgs/solar-rooftop.html">Solar Rooftops</a>
+          <a href="pgs/solar-water-heater.html">Solar Water Heater</a>
+          <a href="pgs/heat-pump.html">Heat Pump</a>
+          <a href="pgs/solar-utility-products.html">Solar Utility Product</a>
+          <a href="pgs/solar-epc.html">Solar EPC</a>
+          <a href="pgs/o-and-m-repair.html">O&amp;M Repair</a>
+          <a href="pgs/energy-audit.html">Energy Audit</a>
+          <a href="pgs/csr-and-awareness.html">CSR and Awareness</a>
+        </div>
+      </div>
+
+      <!-- About -->
+      <div class="mobile-group">
+        <div class="mobile-group-head">
+          <a class="mobile-link" href="pgs/about_us.html">About</a>
+          <button class="mobile-sub-toggle" aria-label="Show About options" aria-expanded="false"></button>
+        </div>
+        <div class="mobile-sub">
+          <a href="pgs/about_us.html">Our Story</a>
+          <a href="pgs/about_us.html">Our Team</a>
+          <a href="pgs/certifications.html">Certifications</a>
+        </div>
+      </div>
+
+      <!-- Process -->
+      <div class="mobile-group">
+        <div class="mobile-group-head">
+          <a class="mobile-link">Process</a>
+          <button class="mobile-sub-toggle" aria-label="Show Process options" aria-expanded="false"></button>
+        </div>
+        <div class="mobile-sub">
+          <a href="#process">Site Survey</a>
+          <a href="#process">Design &amp; Approval</a>
+          <a href="#process">Installation</a>
+          <a href="#process">Maintenance</a>
+        </div>
+      </div>
+
+      <a class="mobile-link" href="#contact">Contact</a>
+      <a class="btn light open-calc-btn" href="#">Solar Calculator 🧮</a>
+      <a class="btn full" href="#contact" id="mobileCta">Get a Quote</a>
+    </div>
+  </div>
+</nav>
+
+    <!-- =========================================
+       PAGE HERO
+       ========================================= -->
+    <header class="rt-hero">
+      <div class="rt-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1920&q=80')"></div>
+      <div class="rt-hero-overlay"></div>
+
+      <div class="container rt-hero-inner">
+        <div class="rt-hero-text">
+          <p class="rt-crumbs">
+            <a href="../index.html">Home</a> / <a href="../index.html#solutions">Solutions</a> / Solar Water Heating
+          </p>
+          <h1>Hot water every morning, powered by the sun.</h1>
+          <p class="rt-lead">
+            ETC and FPC solar water heaters for homes, hostels, hotels, hospitals and industries in Pune.
+            Stop paying to heat water with electricity or gas.
+          </p>
+          <div class="rt-hero-actions">
+            <a class="btn" href="#contact">Get a free quote</a>
+            <a class="btn light" href="#rt-size">Find my tank size</a>
+          </div>
+        </div>
+
+        <aside class="rt-hero-facts" aria-label="Key facts">
+          <div><b>Up to 70%</b><span>lower water-heating cost</span></div>
+          <div><b>60–70°C</b><span>typical hot water temperature</span></div>
+          <div><b>100–10,000 L</b><span>per day capacity range</span></div>
+          <div><b>1–3 years</b><span>typical payback for heavy users</span></div>
+        </aside>
+      </div>
+    </header>
+
+    <main>
+      <!-- =========================================
+         WHO IT'S FOR
+         ========================================= -->
+      <section class="rt-section" id="rt-segments">
+        <div class="container">
+          <div class="rt-head">
+            <h2>Who uses solar water heating</h2>
+            <p>Anywhere hot water is used every day, a solar heater pays for itself quickly.</p>
+          </div>
+
+          <div class="rt-segments">
+            <article class="rt-seg">
+              <h3>Homes &amp; bungalows</h3>
+              <p class="rt-seg-size">100 – 300 LPD</p>
+              <p>Hot water for bathing and kitchen use without running a geyser for hours.</p>
+              <ul>
+                <li>Replaces the electric geyser for most of the year</li>
+                <li>Fits on a small terrace or roof corner</li>
+              </ul>
+            </article>
+
+            <article class="rt-seg">
+              <h3>Housing societies</h3>
+              <p class="rt-seg-size">500 – 5,000 LPD</p>
+              <p>One central plant supplies hot water to many flats at a lower cost per litre.</p>
+              <ul>
+                <li>Pipeline and storage designed for the building</li>
+                <li>Cuts shared electricity and gas bills</li>
+              </ul>
+            </article>
+
+            <article class="rt-seg">
+              <h3>Hostels, hotels &amp; hospitals</h3>
+              <p class="rt-seg-size">1,000 – 10,000 LPD</p>
+              <p>High daily demand and long operating hours mean the fastest payback.</p>
+              <ul>
+                <li>Electric or heat-pump backup for cloudy days</li>
+                <li>Annual maintenance contracts available</li>
+              </ul>
+            </article>
+
+            <article class="rt-seg">
+              <h3>Industries &amp; canteens</h3>
+              <p class="rt-seg-size">2,000 LPD and above</p>
+              <p>Pre-heat water for process, cleaning, washing and kitchens and cut boiler fuel use.</p>
+              <ul>
+                <li>Pre-heating reduces diesel, gas or electricity use</li>
+                <li>Custom engineered to your process</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================
+         ETC vs FPC
+         ========================================= -->
+      <section class="rt-section rt-tint" id="rt-types">
+        <div class="container">
+          <div class="rt-head">
+            <h2>ETC or FPC: which one suits you</h2>
+            <p>Both heat water with sunlight. They differ in how they are built and where they work best.</p>
+          </div>
+
+          <div class="rt-tabs" role="tablist" aria-label="Collector types">
+            <button class="rt-tab active" role="tab" aria-selected="true" aria-controls="tab-etc" id="t-etc">ETC</button>
+            <button class="rt-tab" role="tab" aria-selected="false" aria-controls="tab-fpc" id="t-fpc" tabindex="-1">FPC</button>
+            <button class="rt-tab" role="tab" aria-selected="false" aria-controls="tab-heatpump" id="t-heatpump" tabindex="-1">Solar + backup</button>
+          </div>
+
+          <div class="rt-panel active" role="tabpanel" id="tab-etc" aria-labelledby="t-etc">
+            <div class="rt-panel-main">
+              <h3>Evacuated Tube Collector (ETC)</h3>
+              <p>
+                A bank of glass vacuum tubes holds heat well, even on cool or cloudy days. It is the most common choice for homes and is lower in cost.
+              </p>
+              <p><strong>Best for:</strong> homes, small societies, hostels and places with hard-water-free supply.</p>
+            </div>
+            <dl class="rt-spec">
+              <div><dt>Heat retention</dt><dd>Very good</dd></div>
+              <div><dt>Water quality</dt><dd>Works best with soft water</dd></div>
+              <div><dt>Cost</dt><dd>Lower</dd></div>
+              <div><dt>Upkeep</dt><dd>Tubes can be replaced one by one</dd></div>
+            </dl>
+          </div>
+
+          <div class="rt-panel" role="tabpanel" id="tab-fpc" aria-labelledby="t-fpc" hidden>
+            <div class="rt-panel-main">
+              <h3>Flat Plate Collector (FPC)</h3>
+              <p>
+                A flat, glass-covered panel with copper tubes inside. It is sturdier, handles hard water and pressure better and lasts longer.
+              </p>
+              <p><strong>Best for:</strong> hotels, hospitals, industries and areas with hard water.</p>
+            </div>
+            <dl class="rt-spec">
+              <div><dt>Heat retention</dt><dd>Good</dd></div>
+              <div><dt>Water quality</dt><dd>Handles hard water well</dd></div>
+              <div><dt>Cost</dt><dd>Higher</dd></div>
+              <div><dt>Upkeep</dt><dd>Very low, long life</dd></div>
+            </dl>
+          </div>
+
+          <div class="rt-panel" role="tabpanel" id="tab-heatpump" aria-labelledby="t-heatpump" hidden>
+            <div class="rt-panel-main">
+              <h3>Solar with electric or heat-pump backup</h3>
+              <p>
+                Solar does the heavy lifting. On long rainy spells an electric element or a heat pump tops up the temperature so you never run out of hot water.
+              </p>
+              <p><strong>Best for:</strong> commercial buildings and homes in the monsoon-heavy months.</p>
+            </div>
+            <dl class="rt-spec">
+              <div><dt>Hot water in monsoon</dt><dd>Always available</dd></div>
+              <div><dt>Controls</dt><dd>Automatic switch-over</dd></div>
+              <div><dt>Cost</dt><dd>Medium</dd></div>
+              <div><dt>Running cost</dt><dd>Still far below gas or geyser</dd></div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================
+         TANK SIZE ESTIMATOR + COMPARISON
+         ========================================= -->
+      <section class="rt-section" id="rt-size">
+        <div class="container rt-two">
+          <div>
+            <div class="rt-head rt-head-left">
+              <h2>What tank size do I need?</h2>
+              <p>Enter how many people use hot water. We will confirm the final size on a site visit.</p>
+            </div>
+
+            <form class="rt-est" id="swhEstimator" onsubmit="return false">
+              <label for="swhPeople">Number of people</label>
+              <input id="swhPeople" type="number" min="1" step="1" value="4" inputmode="numeric" />
+              <input id="swhPeopleRange" type="range" min="1" max="200" step="1" value="4" aria-label="Number of people slider" />
+
+              <label for="swhUse">Hot water use</label>
+              <select id="swhUse" class="swh-select">
+                <option value="30">Light (about 30 litres per person)</option>
+                <option value="40" selected>Normal (about 40 litres per person)</option>
+                <option value="60">Heavy (about 60 litres per person)</option>
+              </select>
+
+              <div class="rt-est-out" aria-live="polite">
+                <div><span>Suggested size</span><b id="swhLpd">–</b></div>
+                <div><span>Roof area needed</span><b id="swhArea">–</b></div>
+                <div><span>Units saved per year</span><b id="swhUnits">–</b></div>
+                <div><span>Bill saved per year</span><b id="swhSave">–</b></div>
+              </div>
+              <p class="rt-note">Estimate assumes water heated from 25°C to 55°C and about ₹9 per unit. Real figures depend on your water use, location and backup type.</p>
+            </form>
+          </div>
+
+          <div class="rt-subsidy">
+            <h3>Solar vs other ways to heat water</h3>
+            <p>Approximate cost to heat 100 litres of water each day for a year.</p>
+            <table>
+              <thead>
+                <tr><th>Method</th><th>Yearly cost</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Electric geyser</td><td>₹11,500</td></tr>
+                <tr><td>LPG / gas geyser</td><td>₹8,000</td></tr>
+                <tr><td>Solar water heater</td><td>₹1,500</td></tr>
+              </tbody>
+            </table>
+            <p class="rt-note">Indicative figures at current electricity and LPG prices. Your actual cost depends on tariff and usage.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================
+         PROCESS + INCLUDED
+         ========================================= -->
+      <section class="rt-section rt-tint" id="rt-process">
+        <div class="container">
+          <div class="rt-head">
+            <h2>From enquiry to hot water</h2>
+            <p>A home heater is usually installed in a day. Larger plants take longer to plan and fit.</p>
+          </div>
+
+          <ol class="rt-steps">
+            <li>
+              <h3>Free site visit</h3>
+              <p>We check roof space, shade, water quality and existing plumbing.</p>
+            </li>
+            <li>
+              <h3>Sizing and quote</h3>
+              <p>You get the tank size, collector type, layout and a fixed price.</p>
+            </li>
+            <li>
+              <h3>Supply and delivery</h3>
+              <p>Collectors, insulated tank and fittings arrive ready to fit.</p>
+            </li>
+            <li>
+              <h3>Installation</h3>
+              <p>Stand, collectors, piping and insulation are fitted by our own crew.</p>
+            </li>
+            <li>
+              <h3>Testing</h3>
+              <p>We check for leaks, flow and temperature, and show you how to use it.</p>
+            </li>
+            <li>
+              <h3>Service</h3>
+              <p>Cleaning, descaling and repairs under an annual maintenance plan.</p>
+            </li>
+          </ol>
+
+          <div class="rt-included">
+            <h3>Every system includes</h3>
+            <ul>
+              <li>Collectors (ETC or FPC) of your choice</li>
+              <li>Insulated stainless steel storage tank</li>
+              <li>Galvanised mounting stand</li>
+              <li>Insulated piping and fittings</li>
+              <li>Electric or heat-pump backup (optional)</li>
+              <li>Installation, warranty and service support</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================
+         FAQ
+         ========================================= -->
+      <section class="rt-section" id="rt-faq">
+        <div class="container rt-faq-wrap">
+          <div class="rt-head rt-head-left">
+            <h2>Questions about solar water heaters</h2>
+            <p>Not here? Call <a href="tel:+919881855770">+91 98818 55770</a> and we will answer.</p>
+          </div>
+
+          <div class="rt-faq">
+            <details>
+              <summary>Will I get hot water on cloudy or rainy days?</summary>
+              <p>You will still get warm water, especially with ETC. For long rainy spells we recommend an electric or heat-pump backup so the temperature stays steady.</p>
+            </details>
+            <details>
+              <summary>How much roof space does it need?</summary>
+              <p>A 100 litre per day system needs roughly 25–30 sq ft of shadow-free space. Larger systems scale from there.</p>
+            </details>
+            <details>
+              <summary>Can it connect to my existing bathrooms?</summary>
+              <p>Yes. We connect the solar tank to your existing hot water lines. For tall buildings we design the piping and a circulation loop so hot water reaches every floor.</p>
+            </details>
+            <details>
+              <summary>Does hard water damage it?</summary>
+              <p>Hard water can cause scale in ETC systems. If your water is hard, we suggest FPC or a water softener, and we offer descaling service.</p>
+            </details>
+            <details>
+              <summary>How long does a solar water heater last?</summary>
+              <p>A well-maintained system commonly runs for 15–20 years. Tubes, valves and the backup element may need replacing along the way.</p>
+            </details>
+            <details>
+              <summary>Is there any subsidy or tax benefit?</summary>
+              <p>Benefits for solar thermal systems depend on state and central schemes and on whether you are a home or business. We check what is currently available when we quote.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================
+         ENQUIRY
+         ========================================= -->
+      <section class="rt-section rt-contact" id="contact">
+        <div class="container rt-two">
+          <div class="rt-contact-text">
+            <h2>Get a free solar water heating quote</h2>
+            <p>Tell us how many people or rooms need hot water. We will call you to arrange a site visit.</p>
+            <ul>
+              <li><small>Call</small> <a href="tel:+919881855770">+91 98818 55770</a></li>
+              <li><small>Email</small> <a href="mailto:sales@sungetsolarinfra.com">sales@sungetsolarinfra.com</a></li>
+              <li><small>Office</small> Renuka Industries Estate, Narhe, Pune 411041</li>
+            </ul>
+          </div>
+
+          <form class="form rt-form" id="leadForm">
+            <input name="name" required placeholder="Your name" />
+            <input name="phone" required type="tel" placeholder="Phone number" />
+            <input name="email" type="email" placeholder="Email address" />
+            <select name="interest">
+              <option value="Solar Water Heater – Home">Home</option>
+              <option value="Solar Water Heater – Housing Society">Housing society</option>
+              <option value="Solar Water Heater – Hotel / Hostel / Hospital">Hotel, hostel or hospital</option>
+              <option value="Solar Water Heater – Industry">Industry or canteen</option>
+            </select>
+            <textarea name="message" placeholder="Number of people or rooms, roof area, current heating method"></textarea>
+            <button class="btn full" type="submit">Request my quote</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER (same as index.html, paths fixed for /pgs) -->
+    <footer>
+      <div class="container">
+        <div class="foot">
+          <div class="foot-col foot-brand-col">
+            <a class="brand" href="../index.html" aria-label="SunGET Solar Infra Home">
+              <img class="normal_logo footer_logo" src="../images/logo.png" alt="SunGET Solar Infra Pvt. Ltd." />
+            </a>
+            <p>
+              SunGET Solar Infra Pvt. Ltd. is a premier Pune-based solar energy
+              company providing end-to-end EPC solar solutions, rooftop
+              installations, and long-term O&M services across Maharashtra.
+            </p>
+            <div class="foot-badges">
+              <span class="foot-badge">⚡ ISO Certified</span>
+              <span class="foot-badge">🌱 Govt. Approved</span>
+            </div>
+          </div>
+
+          <div class="foot-col">
+            <h4 class="foot-heading">Quick Links</h4>
+            <div class="footlinks">
+              <a href="../index.html#solutions">Solar Solutions</a>
+              <a href="../index.html#about">Why Choose Us</a>
+              <a href="../index.html#process">How It Works</a>
+              <a class="open-calc-btn" href="#">Solar Calculator 🧮</a>
+              <a href="#contact">Get a Quote</a>
+            </div>
+          </div>
+
+          <div class="foot-col">
+            <h4 class="foot-heading">Company &amp; Legal</h4>
+            <div class="footlinks">
+              <a href="privacy-policy.html">Privacy Policy</a>
+              <a href="#">Terms of Use</a>
+              <a href="about_us.html">About SunGET</a>
+              <a href="#contact">Contact Support</a>
+            </div>
+          </div>
+
+          <div class="foot-col">
+            <h4 class="foot-heading">Get in Touch</h4>
+            <div class="foot-contact">
+              <p>
+                <strong>Office:</strong><br />Renuka Industries Estate, Opp.
+                Abhiruchi Parisar, Narhe, Pune - 411041
+              </p>
+              <p>
+                <strong>Registered:</strong><br />1447/48, Keshavsut Rd,
+                Sadashiv Peth, Pune - 411030
+              </p>
+              <p>📞 <a href="tel:+919881855770">(+91) 98818 55770</a></p>
+              <p>
+                ✉️
+                <a href="mailto:sales@sungetsolarinfra.com">sales@sungetsolarinfra.com</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="copy">
+          <span>© 2026 SunGET Solar Infra Pvt. Ltd. All rights reserved.</span>
+          <div class="copy-links">
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <span>•</span>
+            <a href="#">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div
+      class="toast"
+      id="toast"
+      role="status"
+      aria-live="polite"
+      style="display:none;position:fixed;bottom:20px;right:20px;background:var(--ink);color:#fff;padding:12px 20px;border-radius:12px;z-index:99999;"
+    >
+      Thanks! Your enquiry has been received.
+    </div>
+
+    <!-- rooftop.js handles the tabs (generic); waterheater.js handles the estimator -->
+    <script src="../src/rooftop.js"></script>
+    <script src="../src/waterheater.js"></script>
+    <script src="../src/script.js"></script>
+  </body>
+</html>

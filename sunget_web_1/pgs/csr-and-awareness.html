@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="CSR and awareness programmes by SunGET Solar Infra — corporate sustainability projects, rural solar electrification drives and educational awareness programmes across Pune and Maharashtra."
+    />
+    <title>CSR &amp; Awareness Programmes | SunGET Solar Infra</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Main site stylesheet -->
+    <link rel="stylesheet" href="../style/style.css" />
+    <!-- Shared service-page styles (also used by solar-rooftop.html) -->
+    <link rel="stylesheet" href="../style/rooftop.css" />
+    <!-- CSR extras -->
+    <link rel="stylesheet" href="../style/csr.css" />
+  </head>
+
+  <body>
+    <!-- =========================================
+       MAIN NAVIGATION
+       ========================================= -->
+<nav class="nav">
+  <div class="container navin">
+    <!-- Company Logo -->
+    <a href="../index.html" class="brand-link">
+      <img
+        class="normal_logo"
+        src="../images/logo.png"
+        alt="SunGET Solar Infra Pvt. Ltd."
+        title="SunGET Solar Infra Pvt. Ltd."
+      />
+    </a>
+
+    <!-- Desktop Navigation Links -->
+    <div class="links">
+      <!-- Solutions -->
+      <div class="dropdown">
+        <a class="dropdown-toggle">
+          Solutions <span class="caret"></span>
+        </a>
+        <div class="dropdown-menu">
+          <a href="solar-rooftop.html">Solar Rooftops</a>
+          <a href="solar-water-heater.html">Solar Water Heater</a>
+          <a href="heat-pump.html">Heat Pump</a>
+          <a href="solar-utility-products.html">Solar Utility Product</a>
+          <a href="solar-epc.html">Solar EPC</a>
+          <a href="o-and-m-repair.html">O&amp;M Repair</a>
+          <a href="energy-audit.html">Energy Audit</a>
+          <a href="csr-and-awareness.html">CSR and Awareness</a>
+        </div>
+      </div>
+
+      <!-- About -->
+      <div class="dropdown">
+        <a class="dropdown-toggle">
+          About <span class="caret"></span>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#">Our Story</a>
+          <a href="#">Our Team</a>
+          <a href="certifications.html">Certifications</a>
+        </div>
+      </div>
+
+      <!-- Process -->
+      <div class="dropdown">
+        <a class="dropdown-toggle">
+          Process <span class="caret"></span>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#process">Site Survey</a>
+          <a href="#process">Design &amp; Approval</a>
+          <a href="#process">Installation</a>
+          <a href="#process">Maintenance</a>
+        </div>
+      </div>
+
+      <a href="#contact">Contact</a>
+      <a class="btn light open-calc-btn" href="#">Solar Calculator 🧮</a>
+     
+    </div>
+
+    <!-- Hamburger Toggle Button -->
+    <button
+      class="hamburger-btn"
+      id="menuToggle"
+      aria-label="Toggle navigation menu"
+      aria-expanded="false"
+    >
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu Dropdown -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="container mobile-menu-inner">
+      <!-- Solutions -->
+      <div class="mobile-group">
+        <div class="mobile-group-head">
+          <a class="mobile-link">Solutions</a>
+          <button class="mobile-sub-toggle" aria-label="Show Solutions options" aria-expanded="false"></button>
+        </div>
+        <div class="mobile-sub">
+          <a href="pgs/solar-rooftop.html">Solar Rooftops</a>
+          <a href="pgs/solar-water-heater.html">Solar Water Heater</a>
+          <a href="pgs/heat-pump.html">Heat Pump</a>
+          <a href="pgs/solar-utility-products.html">Solar Utility Product</a>
+          <a href="pgs/solar-epc.html">Solar EPC</a>
+          <a href="pgs/o-and-m-repair.html">O&amp;M Repair</a>
+          <a href="pgs/energy-audit.html">Energy Audit</a>
+          <a href="pgs/csr-and-awareness.html">CSR and Awareness</a>
+        </div>
+      </div>
+
+      <!-- About -->
+      <div class="mobile-group">
+        <div class="mobile-group-head">
+          <a class="mobile-link" href="pgs/about_us.html">About</a>
+          <button class="mobile-sub-toggle" aria-label="Show About options" aria-expanded="false"></button>
+        </div>
+        <div class="mobile-sub">
+          <a href="pgs/about_us.html">Our Story</a>
+          <a href="pgs/about_us.html">Our Team</a>
+          <a href="pgs/certifications.html">Certifications</a>
+        </div>
+      </div>
+
+      <!-- Process -->
+      <div class="mobile-group">
+        <div class="mobile-group-head">
+          <a class="mobile-link">Process</a>
+          <button class="mobile-sub-toggle" aria-label="Show Process options" aria-expanded="false"></button>
+        </div>
+        <div class="mobile-sub">
+          <a href="#process">Site Survey</a>
+          <a href="#process">Design &amp; Approval</a>
+          <a href="#process">Installation</a>
+          <a href="#process">Maintenance</a>
+        </div>
+      </div>
+
+      <a class="mobile-link" href="#contact">Contact</a>
+      <a class="btn light open-calc-btn" href="#">Solar Calculator 🧮</a>
+      <a class="btn full" href="#contact" id="mobileCta">Get a Quote</a>
+    </div>
+  </div>
+</nav>
+
+    <!-- =========================================
+       PAGE HERO
+       ========================================= -->
+    <header class="rt-hero">
+      <div class="rt-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1920&q=80')"></div>
+      <div class="rt-hero-overlay"></div>
+
+      <div class="container rt-hero-inner">
+        <div class="rt-hero-text">
+          <p class="rt-crumbs">
+            <a href="../index.html">Home</a> / <a href="../index.html#solutions">Solutions</a> / CSR &amp; Awareness
+          </p>
+          <h1>Clean energy that reaches the people who need it.</h1>
+          <p class="rt-lead">
+            We plan and deliver corporate sustainability projects, rural solar electrification drives and awareness programmes that teach communities and students why clean energy matters.
+          </p>
+          <div class="rt-hero-actions">
+            <a class="btn" href="#contact">Plan a CSR project</a>
+            <a class="btn light" href="#rt-size">Estimate the impact</a>
+          </div>
+        </div>
+
+        <aside class="rt-hero-facts" aria-label="Key facts">
+          <div><b>End to end</b><span>survey, install, train and report</span></div>
+          <div><b>Rural + urban</b><span>villages, schools and campuses</span></div>
+          <div><b>Impact report</b><span>units generated and CO₂ avoided</span></div>
+          <div><b>Maharashtra</b><span>local team, local partners</span></div>
+        </aside>
+      </div>
+    </header>
+
+    <main>
+      <!-- =========================================
+         WHAT WE DO
+         ========================================= -->
+      <section class="rt-section" id="rt-how">
+        <div class="container">
+          <div class="rt-head">
+            <h2>Three ways we work on sustainability</h2>
+            <p>Each programme can stand alone, or be combined into one project with lasting benefits.</p>
+          </div>
+
+          <div class="csr-pillars">
+            <article>
+              <h3>Corporate sustainability projects</h3>
+              <p>Solar plants, solar water heating and efficiency upgrades at schools, hospitals, shelters and community buildings, funded by your CSR budget.</p>
+            </article>
+            <article>
+              <h3>Rural solar electrification</h3>
+              <p>Lighting, pumping and power for villages, hamlets and farms that have weak or no grid supply.</p>
+            </article>
+            <article>
+              <h3>Educational awareness</h3>
+              <p>Workshops, camps and demonstrations for students, communities and employees on solar power and saving energy.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================
+         WHO IT'S FOR
+         ========================================= -->
+      <section class="rt-section rt-tint" id="rt-segments">
+        <div class="container">
+          <div class="rt-head">
+            <h2>Who we work with</h2>
+            <p>Funders, implementers and the communities who benefit.</p>
+          </div>
+
+          <div class="rt-segments">
+            <article class="rt-seg">
+              <h3>Companies &amp; CSR teams</h3>
+              <p class="rt-seg-size">Funders</p>
+              <p>You set the goal and the budget. We run the project and report back with clear results.</p>
+              <ul>
+                <li>One partner from design to impact report</li>
+                <li>Photo documentation for your records</li>
+              </ul>
+            </article>
+
+            <article class="rt-seg">
+              <h3>NGOs &amp; trusts</h3>
+              <p class="rt-seg-size">Implementation partners</p>
+              <p>You know the community. We bring the technical design, installation and training.</p>
+              <ul>
+                <li>Co-designed projects</li>
+                <li>Training for local caretakers</li>
+              </ul>
+            </article>
+
+            <article class="rt-seg">
+              <h3>Schools &amp; colleges</h3>
+              <p class="rt-seg-size">Learning spaces</p>
+              <p>Solar on the roof, and a live example for students to learn from.</p>
+              <ul>
+                <li>Rooftop plants with display boards</li>
+                <li>Student workshops and demonstrations</li>
+              </ul>
+            </article>
+
+            <article class="rt-seg">
+              <h3>Villages &amp; gram panchayats</h3>
+              <p class="rt-seg-size">Communities</p>
+              <p>Reliable light and power for homes, streets, schools and health centres.</p>
+              <ul>
+                <li>Solar street lights and pumping</li>
+                <li>Local people trained for upkeep</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================
+         PROGRAMME TABS
+         ========================================= -->
+      <section class="rt-section" id="rt-types">
+        <div class="container">
+          <div class="rt-head">
+            <h2>What each programme includes</h2>
+            <p>Clear scope and clear outcomes, so funders and communities both know what to expect.</p>
+          </div>
+
+          <div class="rt-tabs" role="tablist" aria-label="CSR programmes">
+            <button class="rt-tab active" role="tab" aria-selected="true" aria-controls="tab-corp" id="t-corp">Corporate projects</button>
+            <button class="rt-tab" role="tab" aria-selected="false" aria-controls="tab-rural" id="t-rural" tabindex="-1">Rural electrification</button>
+            <button class="rt-tab" role="tab" aria-selected="false" aria-controls="tab-edu" id="t-edu" tabindex="-1">Awareness programmes</button>
+          </div>
+
+          <div class="rt-panel active" role="tabpanel" id="tab-corp" aria-labelledby="t-corp">
+            <div class="rt-panel-main">
+              <h3>Corporate sustainability projects</h3>
+              <p>
+                We help you choose a project that fits your goals, such as a rooftop solar plant on a school or a hospital, then build it and hand it over to the beneficiary with training and documentation.
+              </p>
+              <p><strong>Best for:</strong> companies with CSR or ESG commitments who want visible, measurable results.</p>
+            </div>
+            <dl class="rt-spec">
+              <div><dt>Examples</dt><dd>School, hospital or shelter solar</dd></div>
+              <div><dt>We handle</dt><dd>Design, supply, install, approvals</dd></div>
+              <div><dt>Handover</dt><dd>Training and signage</dd></div>
+              <div><dt>You receive</dt><dd>Impact report with photos</dd></div>
+            </dl>
+          </div>
+
+          <div class="rt-panel" role="tabpanel" id="tab-rural" aria-labelledby="t-rural" hidden>
+            <div class="rt-panel-main">
+              <h3>Rural solar electrification drives</h3>
+              <p>
+                We survey the village, agree needs with local leaders and install systems that fit: home lighting, street lights, community buildings or solar pumps for farms. People from the community are trained to look after them.
+              </p>
+              <p><strong>Best for:</strong> villages and hamlets with unreliable or no grid supply.</p>
+            </div>
+            <dl class="rt-spec">
+              <div><dt>Examples</dt><dd>Street lights, home systems, pumps</dd></div>
+              <div><dt>First step</dt><dd>Village survey and consultation</dd></div>
+              <div><dt>Upkeep</dt><dd>Local caretakers trained</dd></div>
+              <div><dt>You receive</dt><dd>Beneficiary list and impact report</dd></div>
+            </dl>
+          </div>
+
+          <div class="rt-panel" role="tabpanel" id="tab-edu" aria-labelledby="t-edu" hidden>
+            <div class="rt-panel-main">
+              <h3>Educational awareness programmes</h3>
+              <p>
+                Practical sessions that explain how solar works, how to save electricity and why it matters. We use working models and simple demonstrations, and tailor each session to the age and background of the audience.
+              </p>
+              <p><strong>Best for:</strong> schools, colleges, housing societies and employee engagement days.</p>
+            </div>
+            <dl class="rt-spec">
+              <div><dt>Formats</dt><dd>Workshop, camp, talk, site visit</dd></div>
+              <div><dt>Audience</dt><dd>Students, residents, employees</dd></div>
+              <div><dt>Includes</dt><dd>Demo models and take-home material</dd></div>
+              <div><dt>You receive</dt><dd>Attendance and activity report</dd></div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================
+         IMPACT ESTIMATOR + FORMATS TABLE
+         ========================================= -->
+      <section class="rt-section rt-tint" id="rt-size">
+        <div class="container rt-two">
+          <div>
+            <div class="rt-head rt-head-left">
+              <h2>What impact could a project have?</h2>
+              <p>Enter the solar capacity you are thinking of funding. This is a rough yearly estimate, and your final report uses measured data.</p>
+            </div>
+
+            <form class="rt-est" id="csrEstimator" onsubmit="return false">
+              <label for="csrKw">Solar capacity (kW)</label>
+              <input id="csrKw" type="number" min="1" step="1" value="25" inputmode="numeric" />
+              <input id="csrKwRange" type="range" min="1" max="500" step="1" value="25" aria-label="Solar capacity slider" />
+
+              <div class="rt-est-out" aria-live="polite">
+                <div><span>Clean energy per year</span><b id="csrUnits">–</b></div>
+                <div><span>CO₂ avoided per year</span><b id="csrCo2">–</b></div>
+                <div><span>Homes' yearly use</span><b id="csrHomes">–</b></div>
+                <div><span>Trees equivalent</span><b id="csrTrees">–</b></div>
+              </div>
+              <p class="rt-note">Assumes about 1,440 units per kW per year, about 0.8 kg of CO₂ per unit of grid power, about 1,200 units per year for an average home, and about 21 kg of CO₂ absorbed by a tree each year. These are rough conversions for communication, not audited figures.</p>
+            </form>
+          </div>
+
+          <div class="rt-subsidy">
+            <h3>Programme formats</h3>
+            <p>Typical formats we offer. We shape each one around your goals and your budget.</p>
+            <table>
+              <thead>
+                <tr><th>Programme</th><th>Format</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>School solar</td><td>Rooftop plant</td></tr>
+                <tr><td>Village lighting</td><td>Street lights</td></tr>
+                <tr><td>Farm support</td><td>Solar pumps</td></tr>
+                <tr><td>Student workshop</td><td>Half day</td></tr>
+                <tr><td>Employee day</td><td>Volunteering</td></tr>
+              </tbody>
+            </table>
+            <p class="rt-note">Formats and durations are examples. Tell us what you have in mind and we will propose a plan.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================
+         WAYS TO PARTNER
+         ========================================= -->
+      <section class="rt-section" id="rt-models">
+        <div class="container">
+          <div class="rt-head">
+            <h2>Ways to partner with us</h2>
+            <p>Pick the level of involvement that suits your team.</p>
+          </div>
+
+          <div class="csr-ways">
+            <article>
+              <h3>Fund a project</h3>
+              <p class="csr-way-for">For companies and CSR teams</p>
+              <ul>
+                <li>We propose and select the project</li>
+                <li>We deliver it end to end</li>
+                <li>You receive an impact report</li>
+                <li>Option to host a handover event</li>
+              </ul>
+            </article>
+            <article class="csr-way-main">
+              <h3>Co-create with your partner</h3>
+              <p class="csr-way-for">For NGOs, trusts and foundations</p>
+              <ul>
+                <li>You bring the community and the goal</li>
+                <li>We bring design and installation</li>
+                <li>Joint training of local caretakers</li>
+                <li>Shared reporting to funders</li>
+              </ul>
+            </article>
+            <article>
+              <h3>Awareness only</h3>
+              <p class="csr-way-for">For schools, societies and employers</p>
+              <ul>
+                <li>Workshops and demonstrations</li>
+                <li>Content for different ages</li>
+                <li>Take-home material</li>
+                <li>Activity report</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================
+         PROCESS + INCLUDED
+         ========================================= -->
+      <section class="rt-section rt-tint" id="rt-process">
+        <div class="container">
+          <div class="rt-head">
+            <h2>How a CSR project runs</h2>
+            <p>A clear sequence that keeps funders informed and communities involved.</p>
+          </div>
+
+          <ol class="rt-steps">
+            <li>
+              <h3>Understand goals</h3>
+              <p>We learn your objectives, budget, timeline and the kind of impact you want to show.</p>
+            </li>
+            <li>
+              <h3>Choose beneficiary and site</h3>
+              <p>We shortlist places and visit them, speaking with the people who will use the system.</p>
+            </li>
+            <li>
+              <h3>Plan and approvals</h3>
+              <p>Design, budget, permissions and an agreed schedule, shared with you for sign-off.</p>
+            </li>
+            <li>
+              <h3>Execute</h3>
+              <p>Supply and installation by our crew, with regular updates and photos for your team.</p>
+            </li>
+            <li>
+              <h3>Train and hand over</h3>
+              <p>Local caretakers are trained, and the system is formally handed to the beneficiary.</p>
+            </li>
+            <li>
+              <h3>Report impact</h3>
+              <p>A report with generation, CO₂ avoided, beneficiaries and photos, ready for your CSR records.</p>
+            </li>
+          </ol>
+
+          <div class="rt-included">
+            <h3>Every CSR project includes</h3>
+            <ul>
+              <li>Site survey and community consultation</li>
+              <li>Design, supply and installation</li>
+              <li>Training for local caretakers</li>
+              <li>A maintenance period after handover</li>
+              <li>Photo documentation at each stage</li>
+              <li>Impact report with energy and CO₂ figures</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================
+         FAQ
+         ========================================= -->
+      <section class="rt-section" id="rt-faq">
+        <div class="container rt-faq-wrap">
+          <div class="rt-head rt-head-left">
+            <h2>Questions about CSR projects</h2>
+            <p>Not here? Call <a href="tel:+919881855770">+91 98818 55770</a> and we will answer.</p>
+          </div>
+
+          <div class="rt-faq">
+            <details>
+              <summary>Does solar qualify as CSR spending?</summary>
+              <p>Many companies in India are required to spend on CSR under the Companies Act, and environmental sustainability and rural development are among the areas it lists. Please confirm eligibility for your project with your CSR committee and advisers.</p>
+            </details>
+            <details>
+              <summary>How do you choose the beneficiary?</summary>
+              <p>Either you tell us the school, village or institution you want to support, or we shortlist options that match your goals and visit them before you decide.</p>
+            </details>
+            <details>
+              <summary>What happens after the system is installed?</summary>
+              <p>Local caretakers are trained, and we provide a maintenance period after handover. We can also offer a longer maintenance plan so the system keeps working for years.</p>
+            </details>
+            <details>
+              <summary>How do you report the results?</summary>
+              <p>You receive a report covering what was installed, who benefits, how much energy it produces and the CO₂ avoided, with photos from each stage.</p>
+            </details>
+            <details>
+              <summary>Can you run a programme for a small budget?</summary>
+              <p>Yes. Awareness workshops and small installations such as solar street lights or a single school plant can be scoped to your budget. Share the figure and we will propose what fits.</p>
+            </details>
+            <details>
+              <summary>Can we involve our employees?</summary>
+              <p>Yes. We can plan a volunteering day around the installation or a workshop, so your team sees the result of the project first-hand.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================
+         ENQUIRY
+         ========================================= -->
+      <section class="rt-section rt-contact" id="contact">
+        <div class="container rt-two">
+          <div class="rt-contact-text">
+            <h2>Start a CSR or awareness project</h2>
+            <p>Tell us about your organisation, your goals and your approximate budget. We will call you to discuss options and send a proposal.</p>
+            <ul>
+              <li><small>Call</small> <a href="tel:+919881855770">+91 98818 55770</a></li>
+              <li><small>Email</small> <a href="mailto:sales@sungetsolarinfra.com">sales@sungetsolarinfra.com</a></li>
+              <li><small>Office</small> Renuka Industries Estate, Narhe, Pune 411041</li>
+            </ul>
+          </div>
+
+          <form class="form rt-form" id="leadForm">
+            <input name="name" required placeholder="Your name" />
+            <input name="organisation" placeholder="Organisation name" />
+            <input name="phone" required type="tel" placeholder="Phone number" />
+            <input name="email" type="email" placeholder="Email address" />
+            <select name="interest">
+              <option value="CSR – Corporate Sustainability Project">Corporate sustainability project</option>
+              <option value="CSR – Rural Electrification">Rural solar electrification</option>
+              <option value="CSR – Awareness Programme">Awareness programme</option>
+              <option value="CSR – Other">Not sure yet</option>
+            </select>
+            <textarea name="message" placeholder="Your goals, location, approximate budget and timeline"></textarea>
+            <button class="btn full" type="submit">Request a proposal</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER (same as index.html, paths fixed for /pgs) -->
+    <footer>
+      <div class="container">
+        <div class="foot">
+          <div class="foot-col foot-brand-col">
+            <a class="brand" href="../index.html" aria-label="SunGET Solar Infra Home">
+              <img class="normal_logo footer_logo" src="../images/logo.png" alt="SunGET Solar Infra Pvt. Ltd." />
+            </a>
+            <p>
+              SunGET Solar Infra Pvt. Ltd. is a premier Pune-based solar energy
+              company providing end-to-end EPC solar solutions, rooftop
+              installations, and long-term O&M services across Maharashtra.
+            </p>
+            <div class="foot-badges">
+              <span class="foot-badge">⚡ ISO Certified</span>
+              <span class="foot-badge">🌱 Govt. Approved</span>
+            </div>
+          </div>
+
+          <div class="foot-col">
+            <h4 class="foot-heading">Quick Links</h4>
+            <div class="footlinks">
+              <a href="../index.html#solutions">Solar Solutions</a>
+              <a href="../index.html#about">Why Choose Us</a>
+              <a href="../index.html#process">How It Works</a>
+              <a class="open-calc-btn" href="#">Solar Calculator 🧮</a>
+            </div>
+          </div>
+
+          <div class="foot-col">
+            <h4 class="foot-heading">Company &amp; Legal</h4>
+            <div class="footlinks">
+              <a href="privacy-policy.html">Privacy Policy</a>
+              <a href="#">Terms of Use</a>
+              <a href="about_us.html">About SunGET</a>
+              <a href="#contact">Contact Support</a>
+            </div>
+          </div>
+
+          <div class="foot-col">
+            <h4 class="foot-heading">Get in Touch</h4>
+            <div class="foot-contact">
+              <p>
+                <strong>Office:</strong><br />Renuka Industries Estate, Opp.
+                Abhiruchi Parisar, Narhe, Pune - 411041
+              </p>
+              <p>
+                <strong>Registered:</strong><br />1447/48, Keshavsut Rd,
+                Sadashiv Peth, Pune - 411030
+              </p>
+              <p>📞 <a href="tel:+919881855770">(+91) 98818 55770</a></p>
+              <p>
+                ✉️
+                <a href="mailto:sales@sungetsolarinfra.com">sales@sungetsolarinfra.com</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="copy">
+          <span>© 2026 SunGET Solar Infra Pvt. Ltd. All rights reserved.</span>
+          <div class="copy-links">
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <span>•</span>
+            <a href="#">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div
+      class="toast"
+      id="toast"
+      role="status"
+      aria-live="polite"
+      style="display:none;position:fixed;bottom:20px;right:20px;background:var(--ink);color:#fff;padding:12px 20px;border-radius:12px;z-index:99999;"
+    >
+      Thanks! Your enquiry has been received.
+    </div>
+
+    <!-- rooftop.js handles the tabs (generic); csr.js handles the impact estimator -->
+    <script src="../src/rooftop.js"></script>
+    <script src="../src/csr.js"></script>
+    <script src="../src/script.js"></script>
+  </body>
+</html>

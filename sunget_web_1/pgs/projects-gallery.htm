@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Project Gallery & Footprint | SunGET Solar Infra</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Shared Global Stylesheet (stepping out of pgs/ folder) -->
+  <link rel="stylesheet" href="../style/style.css" />
+
+  <style>
+    /* =========================================
+       PROJECT GALLERY PAGE STYLES
+       ========================================= */
+    .gallery-hero {
+      background: linear-gradient(135deg, #0b2d20 0%, #102019 100%);
+      color: #fff;
+      padding: 60px 0 50px;
+      text-align: center;
+      position: relative;
+    }
+
+    .gallery-hero h1 {
+      font-size: clamp(32px, 4.5vw, 52px);
+      margin-bottom: 15px;
+      color: #ffffff;
+    }
+
+    .gallery-hero p {
+      color: #cde4d7;
+      font-size: 17px;
+      max-width: 680px;
+      margin: 0 auto 30px;
+    }
+
+    /* Filter Bar Layout */
+    .filter-wrapper {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(12px);
+      padding: 16px 24px;
+      border-radius: 50px;
+      display: inline-flex;
+      align-items: center;
+      gap: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .filter-label {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--lime);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .location-select {
+      background: #ffffff;
+      color: var(--ink);
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 10px 20px;
+      border-radius: 30px;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: all 0.2s ease;
+    }
+
+    .location-select:focus {
+      box-shadow: 0 0 0 3px var(--lime);
+    }
+
+    /* Map & Overview Section */
+    .map-section {
+      padding: 50px 0;
+      background: #f7f9f6;
+    }
+
+    .map-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .map-card {
+      background: #fff;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      box-shadow: 0 12px 32px rgba(16, 32, 25, 0.06);
+      height: 380px;
+      position: relative;
+    }
+
+    .map-card iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .stats-info-card {
+      background: #fff;
+      border-radius: 24px;
+      padding: 30px;
+      border: 1px solid var(--line);
+      box-shadow: 0 12px 32px rgba(16, 32, 25, 0.06);
+    }
+
+    .stats-info-card h3 {
+      font-size: 24px;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .location-tag-badge {
+      display: inline-block;
+      background: #eaf4ed;
+      color: var(--green);
+      font-weight: 800;
+      font-size: 12px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .location-summary {
+      color: var(--muted);
+      font-size: 14.5px;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .mini-stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .mini-stat {
+      background: #f7f9f6;
+      border-radius: 16px;
+      padding: 14px;
+      border: 1px solid #e1e9e3;
+    }
+
+    .mini-stat small {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .mini-stat b {
+      font-size: 20px;
+      color: var(--green);
+      font-family: Manrope, sans-serif;
+    }
+
+    /* Gallery Projects Grid */
+    .gallery-grid-section {
+      padding: 60px 0 90px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .project-card {
+      background: #fff;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(17, 107, 75, 0.12);
+    }
+
+    .project-img-box {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      background: #eaf4ed;
+    }
+
+    .project-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .project-card:hover .project-img-box img {
+      transform: scale(1.06);
+    }
+
+    .project-loc-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(16, 32, 25, 0.85);
+      color: var(--lime);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 12px;
+      backdrop-filter: blur(4px);
+    }
+
+    .project-capacity-badge {
+      position: absolute;
+      bottom: 14px;
+      right: 14px;
+      background: var(--green);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 8px;
+    }
+
+    .project-content {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .project-content h4 {
+      font-size: 18px;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .project-content p {
+      color: var(--muted);
+      font-size: 13.5px;
+      line-height: 1.6;
+      margin-bottom: 15px;
+      flex-grow: 1;
+    }
+
+    .project-meta {
+      border-top: 1px dashed #e1e9e3;
+      padding-top: 12px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    /* Responsive Queries */
+    @media (max-width: 900px) {
+      .map-grid { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: repeat(2, 1fr); }
+      .filter-wrapper { flex-direction: column; border-radius: 20px; }
+    }
+
+    @media (max-width: 580px) {
+      .projects-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+    <!-- =========================================
+       MAIN NAVIGATION
+       ========================================= -->
+<nav class="nav">
+  <div class="container navin">
+    <!-- Company Logo -->
+    <a href="../index.html" class="brand-link">
+      <img
+        class="normal_logo"
+        src="../images/logo.png"
+        alt="SunGET Solar Infra Pvt. Ltd."
+        title="SunGET Solar Infra Pvt. Ltd."
+      />
+    </a>
+
+    <!-- Desktop Navigation Links -->
+    <div class="links">
+      <!-- Solutions -->
+      <div class="dropdown">
+        <a class="dropdown-toggle">
+          Solutions <span class="caret"></span>
+        </a>
+        <div class="dropdown-menu">
+          <a href="solar-rooftop.html">Solar Rooftops</a>
+          <a href="solar-water-heater.html">Solar Water Heater</a>
+          <a href="heat-pump.html">Heat Pump</a>
+          <a href="solar-utility-products.html">Solar Utility Product</a>
+          <a href="solar-epc.html">Solar EPC</a>
+          <a href="o-and-m-repair.html">O&amp;M Repair</a>
+          <a href="energy-audit.html">Energy Audit</a>
+          <a href="csr-and-awareness.html">CSR and Awareness</a>
+        </div>
+      </div>
+
+      <!-- About -->
+      <div class="dropdown">
+        <a class="dropdown-toggle">
+          About <span class="caret"></span>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#">Our Story</a>
+          <a href="#">Our Team</a>
+          <a href="certifications.html">Certifications</a>
+        </div>
+      </div>
+
+      <!-- Process -->
+      <div class="dropdown">
+        <a class="dropdown-toggle">
+          Process <span class="caret"></span>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#process">Site Survey</a>
+          <a href="#process">Design &amp; Approval</a>
+          <a href="#process">Installation</a>
+          <a href="#process">Maintenance</a>
+        </div>
+      </div>
+
+      <a href="#contact">Contact</a>
+      <a class="btn light open-calc-btn" href="#">Solar Calculator 🧮</a>
+     
+    </div>
+
+    <!-- Hamburger Toggle Button -->
+    <button
+      class="hamburger-btn"
+      id="menuToggle"
+      aria-label="Toggle navigation menu"
+      aria-expanded="false"
+    >
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu Dropdown -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="container mobile-menu-inner">
+      <!-- Solutions -->
+      <div class="mobile-group">
+        <div class="mobile-group-head">
+          <a class="mobile-link">Solutions</a>
+          <button class="mobile-sub-toggle" aria-label="Show Solutions options" aria-expanded="false"></button>
+        </div>
+        <div class="mobile-sub">
+          <a href="pgs/solar-rooftop.html">Solar Rooftops</a>
+          <a href="pgs/solar-water-heater.html">Solar Water Heater</a>
+          <a href="pgs/heat-pump.html">Heat Pump</a>
+          <a href="pgs/solar-utility-products.html">Solar Utility Product</a>
+          <a href="pgs/solar-epc.html">Solar EPC</a>
+          <a href="pgs/o-and-m-repair.html">O&amp;M Repair</a>
+          <a href="pgs/energy-audit.html">Energy Audit</a>
+          <a href="pgs/csr-and-awareness.html">CSR and Awareness</a>
+        </div>
+      </div>
+
+      <!-- About -->
+      <div class="mobile-group">
+        <div class="mobile-group-head">
+          <a class="mobile-link" href="pgs/about_us.html">About</a>
+          <button class="mobile-sub-toggle" aria-label="Show About options" aria-expanded="false"></button>
+        </div>
+        <div class="mobile-sub">
+          <a href="pgs/about_us.html">Our Story</a>
+          <a href="pgs/about_us.html">Our Team</a>
+          <a href="pgs/certifications.html">Certifications</a>
+        </div>
+      </div>
+
+      <!-- Process -->
+      <div class="mobile-group">
+        <div class="mobile-group-head">
+          <a class="mobile-link">Process</a>
+          <button class="mobile-sub-toggle" aria-label="Show Process options" aria-expanded="false"></button>
+        </div>
+        <div class="mobile-sub">
+          <a href="#process">Site Survey</a>
+          <a href="#process">Design &amp; Approval</a>
+          <a href="#process">Installation</a>
+          <a href="#process">Maintenance</a>
+        </div>
+      </div>
+
+      <a class="mobile-link" href="#contact">Contact</a>
+      <a class="btn light open-calc-btn" href="#">Solar Calculator 🧮</a>
+      <a class="btn full" href="#contact" id="mobileCta">Get a Quote</a>
+    </div>
+  </div>
+</nav>
+
+  <!-- HERO SECTION WITH DROPDOWN FILTER -->
+  <header class="gallery-hero">
+    <div class="container">
+      <span class="eyebrow" style="color: var(--lime); justify-content: center; margin-bottom: 10px;">
+        <i class="dot" style="background: var(--lime);"></i> Our Regional Footprint
+      </span>
+      <h1>Solar Projects Gallery</h1>
+      <p>Explore our completed solar rooftop installations, EPC engineering projects, and commercial hot water systems across key locations in Maharashtra.</p>
+
+      <!-- DROPDOWN LOCATION SELECTOR -->
+      <div class="filter-wrapper">
+        <span class="filter-label">📍 Select Installation Region:</span>
+        <select id="locationSelect" class="location-select">
+          <option value="all"> All Locations (Maharashtra)</option>
+          <option value="pune">Pune Region</option>
+          <option value="nashik">Nashik Region</option>
+          <option value="panvel">Panvel Region</option>
+          <option value="bhor">Bhor Region</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAP & REGIONAL SUMMARY SECTION -->
+  <section class="map-section">
+    <div class="container">
+      <div class="map-grid">
+        
+        <!-- DYNAMIC GOOGLE MAP -->
+        <div class="map-card">
+          <iframe 
+            id="mapIframe"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d121059.0436068007!2d73.79292634458316!3d18.52456485901458!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bf2e67461101%3A0x828d43bf9dce3e32!2sPune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+
+        <!-- STATS / DETAILS SUMMARY CARD -->
+        <div class="stats-info-card">
+          <span class="location-tag-badge" id="summaryBadge">ALL REGIONS ACTIVE</span>
+          <h3 id="summaryTitle">Maharashtra Solar Footprint</h3>
+          <p class="location-summary" id="summaryDesc">
+            SunGET Solar Infra has successfully commissioned over 200MW+ cumulative rooftop and commercial solar installations across Pune, Nashik, Panvel, and Bhor regions.
+          </p>
+
+          <div class="mini-stats-grid">
+            <div class="mini-stat">
+              <small>Completed Sites</small>
+              <b id="summarySites">120+ Sites</b>
+            </div>
+            <div class="mini-stat">
+              <small>Installed Capacity</small>
+              <b id="summaryCapacity">18.5 MW</b>
+            </div>
+            <div class="mini-stat">
+              <small>CO2 Offset / Yr</small>
+              <b id="summaryCO2">14,200 Tons</b>
+            </div>
+            <div class="mini-stat">
+              <small>Avg. Client Savings</small>
+              <b>Up to 88%</b>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY PROJECTS CARDS -->
+  <section class="gallery-grid-section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow"><i class="dot"></i> Project Showcase</span>
+        <h2 id="galleryHeading">Showing All Completed Installations</h2>
+      </div>
+
+      <div class="projects-grid" id="projectsContainer">
+
+        <!-- Project 1: Pune -->
+        <article class="project-card" data-location="pune">
+          <div class="project-img-box">
+            <img src="../images/sec/1.jpg" alt="Pune Residential Solar" loading="lazy">
+            <span class="project-loc-badge">📍 Pune (Narhe)</span>
+            <span class="project-capacity-badge">10 kW On-Grid</span>
+          </div>
+          <div class="project-content">
+            <h4>Abhiruchi Parisar Housing Society</h4>
+            <p>Rooftop solar PV installation providing 100% common area lighting power and reducing monthly energy bills significantly.</p>
+            <div class="project-meta">
+              <span>Type: Residential Society</span>
+              <span>Year: 2025</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2: Nashik -->
+        <article class="project-card" data-location="nashik">
+          <div class="project-img-box">
+            <img src="../images/sec/2.jpg" alt="Nashik Industrial Solar" loading="lazy">
+            <span class="project-loc-badge">📍 Nashik (MIDC Ambad)</span>
+            <span class="project-capacity-badge">120 kW Industrial</span>
+          </div>
+          <div class="project-content">
+            <h4>Kirloskar Allied Tooling Plant</h4>
+            <p>High-capacity solar EPC plant commissioned for industrial manufacturing daytime peak load shedding.</p>
+            <div class="project-meta">
+              <span>Type: Industrial EPC</span>
+              <span>Year: 2025</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3: Panvel -->
+        <article class="project-card" data-location="panvel">
+          <div class="project-img-box">
+            <img src="../images/sec/3.webp" alt="Panvel Commercial Solar" loading="lazy">
+            <span class="project-loc-badge">📍 Panvel (Navi Mumbai)</span>
+            <span class="project-capacity-badge">45 kW Commercial</span>
+          </div>
+          <div class="project-content">
+            <h4>Miramar Commercial Tower</h4>
+            <p>Net-metered commercial rooftop setup integrated with automated energy monitoring and remote diagnostics.</p>
+            <div class="project-meta">
+              <span>Type: Commercial Complex</span>
+              <span>Year: 2026</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 4: Bhor -->
+        <article class="project-card" data-location="bhor">
+          <div class="project-img-box">
+            <img src="../images/sec/4.webp" alt="Bhor Solar Water Heater" loading="lazy">
+            <span class="project-loc-badge">📍 Bhor Region</span>
+            <span class="project-capacity-badge">5000 LPD Thermal</span>
+          </div>
+          <div class="project-content">
+            <h4>Rajgad Agro Resort & Farmhouse</h4>
+            <p>Heavy-duty solar water heating (ETC) and hybrid pump integration for round-the-clock hot water demand.</p>
+            <div class="project-meta">
+              <span>Type: Hospitality / Resort</span>
+              <span>Year: 2025</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 5: Pune -->
+        <article class="project-card" data-location="pune">
+          <div class="project-img-box">
+            <img src="../images/sec/5.webp" alt="Pune Commercial Solar" loading="lazy">
+            <span class="project-loc-badge">📍 Pune (Sadashiv Peth)</span>
+            <span class="project-capacity-badge">25 kW Hybrid</span>
+          </div>
+          <div class="project-content">
+            <h4>Keshavsut Business Plaza</h4>
+            <p>Hybrid solar rooftop with battery backup storage ensuring continuous operation during grid power outages.</p>
+            <div class="project-meta">
+              <span>Type: Commercial Office</span>
+              <span>Year: 2026</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 6: Nashik -->
+        <article class="project-card" data-location="nashik">
+          <div class="project-img-box">
+            <img src="../images/sec/6.jpg" alt="Nashik Agriculture Solar" loading="lazy">
+            <span class="project-loc-badge">📍 Nashik (Satpur)</span>
+            <span class="project-capacity-badge">15 HP Pump System</span>
+          </div>
+          <div class="project-content">
+            <h4>Sahasra Vineyard Utility Pump</h4>
+            <p>Standalone solar utility water pumping solution built for continuous agricultural irrigation in grape orchards.</p>
+            <div class="project-meta">
+              <span>Type: Agri-Utility</span>
+              <span>Year: 2025</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="foot">
+        <div class="foot-col foot-brand-col">
+          <a class="brand" href="../index.html">
+            <img class="normal_logo footer_logo" src="../images/logo.png" alt="SunGET Solar Infra" />
+          </a>
+          <p>SunGET Solar Infra Pvt. Ltd. is a premier Pune-based solar energy company providing end-to-end EPC solar solutions and maintenance across Maharashtra.</p>
+        </div>
+        <div class="foot-col">
+          <h4 class="foot-heading">Quick Links</h4>
+          <div class="footlinks">
+            <a href="../index.html#solutions">Solar Solutions</a>
+            <a href="projects-gallery.html">Projects Gallery</a>
+            <a class="open-calc-btn" href="#">Solar Calculator 🧮</a>
+            <a href="../index.html#contact">Get a Quote</a>
+          </div>
+        </div>
+        <div class="foot-col">
+          <h4 class="foot-heading">Contact Support</h4>
+          <div class="foot-contact">
+            <p>📞 <a href="tel:+919881855770">(+91) 98818 55770</a></p>
+            <p>✉️ <a href="mailto:sales@sungetsolarinfra.com">sales@sungetsolarinfra.com</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="copy">
+        <span>© 2026 SunGET Solar Infra Pvt. Ltd. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SHARED SCRIPT REFERENCE -->
+  <script src="../src/script.js"></script>
+
+  <!-- GALLERY DYNAMIC FILTER SCRIPT -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const locationSelect = document.getElementById('locationSelect');
+      const mapIframe = document.getElementById('mapIframe');
+      const summaryBadge = document.getElementById('summaryBadge');
+      const summaryTitle = document.getElementById('summaryTitle');
+      const summaryDesc = document.getElementById('summaryDesc');
+      const summarySites = document.getElementById('summarySites');
+      const summaryCapacity = document.getElementById('summaryCapacity');
+      const summaryCO2 = document.getElementById('summaryCO2');
+      const galleryHeading = document.getElementById('galleryHeading');
+      const projectCards = document.querySelectorAll('.project-card');
+
+      // Regional Configuration Data (Google Maps Embeds & Stats)
+      const locationData = {
+        all: {
+          title: "Maharashtra Solar Footprint",
+          badge: "ALL REGIONS ACTIVE",
+          desc: "SunGET Solar Infra has successfully commissioned over 200MW+ cumulative rooftop and commercial solar installations across Pune, Nashik, Panvel, and Bhor regions.",
+          sites: "120+ Sites",
+          capacity: "18.5 MW",
+          co2: "14,200 Tons",
+          heading: "Showing All Completed Installations",
+          mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d121059.0436068007!2d73.79292634458316!3d18.52456485901458!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bf2e67461101%3A0x828d43bf9dce3e32!2sPune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+        },
+        pune: {
+          title: "Pune Solar Projects",
+          badge: "PUNE REGION",
+          desc: "Our primary hub with over 60,000+ homes solarized, commercial complex installations in Narhe, Sadashiv Peth, and industrial projects across PCMC MIDC belt.",
+          sites: "65+ Sites",
+          capacity: "9.2 MW",
+          co2: "7,100 Tons",
+          heading: "Showing Projects in Pune",
+          mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d121059.0436068007!2d73.79292634458316!3d18.52456485901458!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bf2e67461101%3A0x828d43bf9dce3e32!2sPune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+        },
+        nashik: {
+          title: "Nashik Industrial & Agri Solar",
+          badge: "NASHIK REGION",
+          desc: "Key commercial and agricultural solar installations in Satpur MIDC, Ambad, and agricultural solar pumping systems in surrounding grape vineyards.",
+          sites: "28+ Sites",
+          capacity: "4.8 MW",
+          co2: "3,800 Tons",
+          heading: "Showing Projects in Nashik",
+          mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d119981.38713292447!2d73.73343981880456!3d20.005128795779532!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bddeb0e199d79a1%3A0x1d373f1d530869d8!2sNashik%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+        },
+        panvel: {
+          title: "Panvel & Navi Mumbai Projects",
+          badge: "PANVEL REGION",
+          desc: "High-density residential housing society rooftops, commercial office towers, and warehousing solar power setups across Panvel and Navi Mumbai.",
+          sites: "18+ Sites",
+          capacity: "3.1 MW",
+          co2: "2,400 Tons",
+          heading: "Showing Projects in Panvel",
+          mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d60359.8055673898!2d73.08092288019488!3d18.989390299690184!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7e82e88a0b06b%3A0xe2be51f654b03733!2sPanvel%2C%20Navi%20Mumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+        },
+        bhor: {
+          title: "Bhor Rural & Resort Solar",
+          badge: "BHOR REGION",
+          desc: "Solar water heating plants, resort thermodynamic heat pumps, and off-grid solar setups serving resorts, agricultural farms, and rural communities.",
+          sites: "14+ Sites",
+          capacity: "1.4 MW",
+          co2: "900 Tons",
+          heading: "Showing Projects in Bhor",
+          mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d121398.2435439402!2d73.8018241416805!3d18.15814578140356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2f50f2824cf45%3A0xb5b7367c3ec5b4a6!2sBhor%2C%20Maharashtra%20412206!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+        }
+      };
+
+      // Handle Dropdown Change Event
+      locationSelect.addEventListener('change', (e) => {
+        const val = e.target.value;
+        const data = locationData[val] || locationData.all;
+
+        // Update Map & Summary Box
+        mapIframe.src = data.mapUrl;
+        summaryTitle.textContent = data.title;
+        summaryBadge.textContent = data.badge;
+        summaryDesc.textContent = data.desc;
+        summarySites.textContent = data.sites;
+        summaryCapacity.textContent = data.capacity;
+        summaryCO2.textContent = data.co2;
+        galleryHeading.textContent = data.heading;
+
+        // Filter Project Cards
+        projectCards.forEach(card => {
+          const cardLoc = card.getAttribute('data-location');
+          if (val === 'all' || cardLoc === val) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

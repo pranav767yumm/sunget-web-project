@@ -1,0 +1,360 @@
+/* =========================================================
+   TIMED ENQUIRY POPUP  (style/popup.css)
+   Appears after the visitor has spent ~90 seconds on the site.
+   Uses your existing variables: --ink, --muted, --green,
+   --green2, --lime, --line. All classes are prefixed "tp-".
+   ========================================================= */
+
+.tp {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647; /* highest possible: always above the sticky header and every other element */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  opacity: 0;
+  transition: opacity 0.28s ease;
+  line-height: 1.5; /* your body uses 1.9, which is too loose inside a form */
+}
+
+.tp[hidden] {
+  display: none;
+}
+
+.tp.is-open {
+  opacity: 1;
+}
+
+.tp-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 24, 17, 0.62);
+  backdrop-filter: blur(3px);
+}
+
+/* ---------- Dialog ---------- */
+.tp-dialog {
+  position: relative;
+  width: 100%;
+  max-width: 880px;
+  max-height: calc(100dvh - 32px);
+  overflow: auto;
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  background: #fff;
+  color: var(--ink, #102019);
+  border-radius: 22px;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.35);
+  transform: translateY(18px) scale(0.98);
+  transition: transform 0.3s ease;
+  outline: none;
+}
+
+.tp.is-open .tp-dialog {
+  transform: none;
+}
+
+.tp-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  z-index: 3;
+  width: 38px;
+  height: 38px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(16, 32, 25, 0.06);
+  color: var(--ink, #102019);
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.tp-close:hover {
+  background: rgba(16, 32, 25, 0.14);
+}
+
+/* ---------- Left promo panel ---------- */
+.tp-promo {
+  padding: 40px 32px;
+  color: #fff;
+  background: linear-gradient(150deg, var(--green2, #0b4d38), var(--green, #116b4b));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.tp-eyebrow {
+  display: inline-block;
+  align-self: flex-start;
+  margin-bottom: 16px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: var(--lime, #d8f25a);
+  color: var(--ink, #102019);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.tp-promo h2 {
+  font-family: Manrope, sans-serif;
+  font-size: clamp(24px, 3vw, 32px);
+  line-height: 1.15;
+  margin: 0 0 20px;
+}
+
+.tp-promo h2 em {
+  font-style: normal;
+  color: var(--lime, #d8f25a);
+}
+
+.tp-points {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tp-points li {
+  position: relative;
+  padding: 8px 0 8px 28px;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.tp-points li::before {
+  content: "\2713";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--lime, #d8f25a);
+  color: var(--ink, #102019);
+  font-size: 12px;
+  font-weight: 800;
+  display: grid;
+  place-items: center;
+}
+
+/* ---------- Form side ---------- */
+.tp-body {
+  padding: 40px 36px 32px;
+}
+
+.tp-body h3 {
+  font-family: Manrope, sans-serif;
+  font-size: 22px;
+  line-height: 1.2;
+  margin: 0 0 6px;
+}
+
+.tp-sub {
+  margin: 0 0 22px;
+  color: var(--muted, #64716b);
+  font-size: 14px;
+}
+
+.tp-form {
+  display: grid;
+  gap: 14px;
+}
+
+.tp-field label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.tp-field input,
+.tp-field select {
+  width: 100%;
+  padding: 13px 14px;
+  font: 500 15px "DM Sans", sans-serif;
+  color: var(--ink, #102019);
+  background: #fff;
+  border: 1px solid #cfdcd3;
+  border-radius: 12px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tp-field input:focus,
+.tp-field select:focus {
+  outline: none;
+  border-color: var(--green, #116b4b);
+  box-shadow: 0 0 0 3px rgba(17, 107, 75, 0.18);
+}
+
+.tp-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+/* Honeypot: hidden from people, visible to simple bots */
+.tp-hp {
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.tp-submit {
+  margin-top: 4px;
+  padding: 15px 22px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--green, #116b4b);
+  color: #fff;
+  font: 700 16px "DM Sans", sans-serif;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.tp-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(17, 107, 75, 0.28);
+}
+
+.tp-submit:disabled {
+  opacity: 0.65;
+  cursor: wait;
+  transform: none;
+  box-shadow: none;
+}
+
+.tp-fine {
+  margin: 12px 0 0;
+  font-size: 12px;
+  color: var(--muted, #64716b);
+}
+
+.tp-fine a {
+  color: var(--green, #116b4b);
+  text-decoration: underline;
+}
+
+.tp-skip {
+  display: block;
+  margin: 10px auto 0;
+  padding: 6px 10px;
+  background: none;
+  border: 0;
+  color: var(--muted, #64716b);
+  font: 600 13px "DM Sans", sans-serif;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.tp-skip:hover {
+  color: var(--ink, #102019);
+}
+
+/* ---------- Success state ---------- */
+.tp-done {
+  display: none;
+  text-align: center;
+  padding: 36px 0 18px;
+}
+
+.tp-dialog.is-done .tp-form-wrap {
+  display: none;
+}
+
+.tp-dialog.is-done .tp-done {
+  display: block;
+}
+
+.tp-tick {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  background: var(--green, #116b4b);
+  color: #fff;
+  font-size: 32px;
+  display: grid;
+  place-items: center;
+}
+
+.tp-done h3 {
+  margin-bottom: 8px;
+}
+
+.tp-done p {
+  margin: 0;
+  color: var(--muted, #64716b);
+}
+
+/* ---------- Focus visibility ---------- */
+.tp-close:focus-visible,
+.tp-submit:focus-visible,
+.tp-skip:focus-visible {
+  outline: 3px solid var(--lime, #d8f25a);
+  outline-offset: 2px;
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 760px) {
+  .tp {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .tp-dialog {
+    grid-template-columns: 1fr;
+    max-height: 94dvh;
+    border-radius: 22px 22px 0 0;
+    transform: translateY(40px);
+  }
+
+  .tp-promo {
+    padding: 24px 24px 18px;
+  }
+
+  .tp-promo h2 {
+    margin: 0;
+    font-size: 22px;
+    padding-right: 36px;
+  }
+
+  .tp-points {
+    display: none;
+  }
+
+  .tp-eyebrow {
+    margin-bottom: 10px;
+  }
+
+  .tp-body {
+    padding: 22px 24px 26px;
+  }
+
+  .tp-close {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+  }
+
+  .tp-close:hover {
+    background: rgba(255, 255, 255, 0.32);
+  }
+}
+
+@media (max-width: 380px) {
+  .tp-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tp,
+  .tp-dialog {
+    transition: none;
+  }
+}

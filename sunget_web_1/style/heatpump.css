@@ -1,0 +1,30 @@
+/* =========================================================
+   HEAT PUMP PAGE extras (pgs/heat-pump.html)
+   Layout comes from rooftop.css; this only adds what is new.
+   ========================================================= */
+
+.hp-select {
+  width: 100%;
+  padding: 14px 16px;
+  font: 600 16px "DM Sans", sans-serif;
+  border: 1px solid #cfdcd3;
+  border-radius: 12px;
+  background: #fff;
+  margin-bottom: 24px;
+  color: var(--ink, #0b1536);
+}
+
+.hp-select:focus-visible {
+  outline: 3px solid var(--lime, #b8e65a);
+  outline-offset: 2px;
+}
+
+/* "How it works" is a 3-step sequence, so use 3 columns on desktop */
+.hp-how {
+  margin-bottom: 0;
+}
+
+/* Segments: this page also has four, same grid as rooftop.css */
+.hp-segments .rt-seg-size {
+  white-space: normal;
+}

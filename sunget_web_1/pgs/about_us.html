@@ -1,0 +1,1167 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="About SunGET Solar Infra Pvt. Ltd. — Leading solar EPC, rooftop engineering, and clean energy solutions based in Pune, Maharashtra.">
+  <title>About Us | SunGET Solar Infra Pvt. Ltd.</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style/style.css">
+  <style>
+    /* =========================================
+       1. GLOBAL VARIABLES & BASE LIGHT STYLES
+       ========================================= */
+    :root {
+      --ink: #102019;
+      --muted: #64716b;
+      --green: #116b4b;
+      --green2: #0b4d38;
+      --lime: #d8f25a;
+      --cream: #f5f7f1;
+      --white: #ffffff;
+      --line: #dfe7e0;
+      --shadow: 0 16px 40px rgba(16, 32, 25, 0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "DM Sans", sans-serif;
+      color: var(--ink);
+      background: #fcf9f9;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: Manrope, sans-serif;
+      line-height: 1.1;
+      margin: 0;
+      color: var(--ink);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1200px, 92%);
+      margin: auto; 
+    }
+
+    /* =========================================
+       2. NAVIGATION BAR
+       ========================================= */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid #edf1ed;
+    }
+
+    .navin {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .normal_logo {
+      width: 180px;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    @media (max-width: 768px) {
+      .normal_logo {
+        width: 140px;
+      }
+    } 
+
+    .links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .links a:hover {
+      color: var(--green);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 0;
+      border-radius: 999px;
+      padding: 12px 22px;
+      background: var(--green);
+      color: #ffffff;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(17, 107, 75, 0.2);
+    }
+
+    .btn.light {
+      background: #ffffff;
+      color: var(--green);
+      border: 1px solid #d9e5dd;
+    }
+
+    .btn.light:hover {
+      background: var(--green);
+      color: #ffffff;
+    }
+
+    .btn.full {
+      width: 100%;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--green);
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--lime);
+    }
+
+    /* Mobile Navigation */
+    .hamburger-btn {
+      display: none;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      flex-direction: column;
+      gap: 5px;
+      z-index: 120;
+    }
+
+    .hamburger-btn .bar {
+      width: 24px;
+      height: 2.5px;
+      background-color: var(--ink);
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+      padding: 20px 0 28px;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+
+    .mobile-menu.active {
+      display: block;
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .mobile-menu-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .mobile-link {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--ink);
+      padding: 8px 0;
+      border-bottom: 1px solid #f0f4f1;
+    }
+
+    @media (max-width: 900px) {
+      .links { display: none !important; }
+      .hamburger-btn { display: flex; }
+    }
+
+    /* =========================================
+       3. HERO SECTION (DARK GREEN BANNER WITH LIGHT ACCENTS)
+       ========================================= */
+    .page-hero {
+      background: linear-gradient(135deg, #0b2d20 0%, #102019 100%);
+      color: #ffffff;
+      padding: 80px 0 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::after {
+      content: "";
+      position: absolute;
+      top: -40%;
+      right: -10%;
+      width: 480px;
+      height: 480px;
+      background: radial-gradient(circle, rgba(216,242,90,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-title {
+      font-size: clamp(36px, 4.5vw, 56px);
+      color: #ffffff;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      margin: 12px 0 16px;
+    }
+
+    .hero-title span {
+      color: var(--lime);
+    }
+
+    .hero-subtitle {
+      color: #c5dacd;
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .hero-glass-orb {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(216, 242, 90, 0.25);
+      border-radius: 24px;
+      padding: 30px;
+      backdrop-filter: blur(12px);
+    }
+
+    .hero-glass-orb h3 {
+      color: #ffffff;
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+
+    .hero-glass-orb p {
+      color: #c5dacd;
+      font-size: 14px;
+      margin: 0 0 20px;
+    }
+
+    /* =========================================
+       4. DIRECTOR'S MANIFESTO
+       ========================================= */
+    .manifesto-section {
+      padding: 80px 0;
+      background: #ffffff;
+    }
+
+    .manifesto-card {
+      background: #f7f9f6;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 45px;
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 40px;
+      align-items: center;
+      box-shadow: 0 12px 35px rgba(16, 32, 25, 0.04);
+      position: relative;
+    }
+
+    .director-badge {
+      background: linear-gradient(135deg, var(--green2), var(--green));
+      border-radius: 20px;
+      padding: 35px 25px;
+      text-align: center;
+      color: #ffffff;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .director-badge h3 {
+      font-size: 22px;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    .director-badge span {
+      color: var(--lime);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .manifesto-text {
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.85;
+    }
+
+    .manifesto-text p {
+      margin-bottom: 16px;
+    }
+
+    .manifesto-highlight {
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    /* =========================================
+       5. ENERGY RATIO & VISION (67% vs 33%)
+       ========================================= */
+    .energy-ratio-section {
+      padding: 80px 0;
+      background: #fcf9f9;
+    }
+
+    .ratio-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
+    .ratio-card {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+      position: relative;
+    }
+
+    .ratio-card h3 {
+      font-size: 24px;
+      margin: 12px 0 16px;
+    }
+
+    .ratio-card p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .stat-bar-wrapper {
+      margin-top: 25px;
+    }
+
+    .stat-bar-label {
+      display: flex;
+      justify-content: space-between;
+      color: var(--ink);
+      font-size: 13.5px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .stat-progress-bar {
+      height: 12px;
+      border-radius: 20px;
+      background: #e2ede6;
+      overflow: hidden;
+      display: flex;
+    }
+
+    .fill-nonrenewable {
+      width: 67%;
+      background: #d9534f;
+    }
+
+    .fill-renewable {
+      width: 33%;
+      background: var(--green);
+    }
+
+    /* =========================================
+       6. MULTI-DOMAIN ENERGY ECOSYSTEM GRID
+       ========================================= */
+    .ecosystem-section {
+      padding: 80px 0;
+      background: #ffffff;
+    }
+
+    .ecosystem-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .eco-card {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 28px 22px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .eco-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--green), var(--lime));
+      opacity: 0.4;
+      transition: opacity 0.3s;
+    }
+
+    .eco-card:hover {
+      transform: translateY(-6px);
+      border-color: #bcd4c4;
+      box-shadow: 0 16px 32px rgba(17, 107, 75, 0.08);
+    }
+
+    .eco-card:hover::before {
+      opacity: 1;
+    }
+
+    .eco-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: #eaf4ed;
+      color: var(--green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 18px;
+    }
+
+    .eco-card h4 {
+      font-size: 19px;
+      margin-bottom: 10px;
+    }
+
+    .eco-card p {
+      color: var(--muted);
+      font-size: 13.5px;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* =========================================
+       7. ENGINEERING OVERVIEW & METRICS
+       ========================================= */
+    .engineering-section {
+      padding: 80px 0;
+      background: #fcf9f9;
+    }
+
+    .eng-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .eng-text h2 {
+      font-size: 34px;
+      margin-bottom: 20px;
+    }
+
+    .eng-text p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .eng-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    .eng-pill {
+      background: #eaf4ed;
+      color: var(--green);
+      font-weight: 700;
+      font-size: 13px;
+      padding: 8px 16px;
+      border-radius: 50px;
+    }
+
+    .eng-metrics-box {
+      background: linear-gradient(135deg, #0b2d20, #102019);
+      border-radius: 24px;
+      padding: 40px;
+      color: #ffffff;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .metric-item h4 {
+      font-size: 32px;
+      color: var(--lime);
+      margin-bottom: 6px;
+    }
+
+    .metric-item p {
+      color: #cde4d7;
+      font-size: 13px;
+      margin: 0;
+    }
+
+    /* =========================================
+       8. CTA BANNER
+       ========================================= */
+    .cta {
+      padding: 70px 0;
+      background: #ffffff;
+    }
+
+    .cta-box {
+      border-radius: 32px;
+      background: linear-gradient(120deg, var(--green2), var(--green));
+      color: #ffffff;
+      padding: 65px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta h2 {
+      font-size: clamp(32px, 4vw, 48px);
+      max-width: 650px;
+      color: #ffffff;
+    }
+
+    .cta p {
+      color: #cde4d7;
+      max-width: 600px;
+      margin: 10px 0 0;
+    }
+
+    .cta .btn {
+      background: var(--lime);
+      color: #17351f;
+    }
+
+    /* =========================================
+       9. FOOTER
+       ========================================= */
+    footer {
+      background: linear-gradient(180deg, #0b2d20 0%, #071f16 100%);
+      color: #d7e7de;
+      padding: 70px 0 30px;
+      border-top: 1px solid rgba(216, 242, 90, 0.15);
+    }
+
+    .foot {
+      display: grid;
+      grid-template-columns: 1.4fr 0.8fr 0.9fr 1.3fr;
+      gap: 35px;
+    }
+
+    .foot p {
+      color: #a3baa8;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .foot-heading {
+      font-size: 16px;
+      color: #ffffff;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .foot-heading::after {
+      content: "";
+      display: block;
+      width: 28px;
+      height: 2px;
+      background: var(--lime);
+      margin-top: 6px;
+    }
+
+    .footlinks {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      font-size: 14px;
+    }
+
+    .footlinks a {
+      color: #b8cebf;
+      transition: color 0.2s;
+    }
+
+    .footlinks a:hover {
+      color: var(--lime);
+    }
+
+    .copy {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 50px;
+      padding-top: 22px;
+      font-size: 13px;
+      color: #7d998a;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    /* =========================================
+       10. CALCULATOR MODAL
+       ========================================= */
+    .calc-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .calc-modal.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .calc-modal-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(11, 45, 32, 0.75);
+      backdrop-filter: blur(8px);
+    }
+
+    .calc-modal-content {
+      position: relative;
+      background: #fcf9f9;
+      width: 92%;
+      max-width: 950px;
+      border-radius: 24px;
+      padding: 25px;
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .calc-close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: #ffffff;
+      border: 1px solid var(--line);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .calc-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .calc-card {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 25px;
+    }
+
+    .calc-form label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      margin: 15px 0 6px;
+      color: var(--ink);
+    }
+
+    .calc-form input, .calc-form select {
+      width: 100%;
+      border: 1px solid #d8e1da;
+      border-radius: 12px;
+      padding: 12px 14px;
+      font: inherit;
+      background: #ffffff;
+      color: var(--ink);
+      outline: none;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 1024px) {
+      .ecosystem-grid { grid-template-columns: repeat(2, 1fr); }
+      .foot { grid-template-columns: 1fr 1fr; gap: 30px; }
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid, .manifesto-card, .ratio-container, .eng-grid { grid-template-columns: 1fr; gap: 35px; }
+      .cta-box { display: block; padding: 40px; }
+      .cta .btn { margin-top: 20px; }
+      .calc-layout { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 580px) {
+      .ecosystem-grid { grid-template-columns: 1fr; }
+      .foot { grid-template-columns: 1fr; }
+      .manifesto-card { padding: 30px 20px; }
+    }
+  </style>
+</head>
+
+<body>
+
+    <!-- =========================================
+       MAIN NAVIGATION
+       ========================================= -->
+<nav class="nav">
+  <div class="container navin">
+    <!-- Company Logo -->
+    <a href="../index.html" class="brand-link">
+      <img
+        class="normal_logo"
+        src="../images/logo.png"
+        alt="SunGET Solar Infra Pvt. Ltd."
+        title="SunGET Solar Infra Pvt. Ltd."
+      />
+    </a>
+
+    <!-- Desktop Navigation Links -->
+    <div class="links">
+      <!-- Solutions -->
+      <div class="dropdown">
+        <a class="dropdown-toggle">
+          Solutions <span class="caret"></span>
+        </a>
+        <div class="dropdown-menu">
+          <a href="solar-rooftop.html">Solar Rooftops</a>
+          <a href="solar-water-heater.html">Solar Water Heater</a>
+          <a href="heat-pump.html">Heat Pump</a>
+          <a href="solar-utility-products.html">Solar Utility Product</a>
+          <a href="solar-epc.html">Solar EPC</a>
+          <a href="o-and-m-repair.html">O&amp;M Repair</a>
+          <a href="energy-audit.html">Energy Audit</a>
+          <a href="csr-and-awareness.html">CSR and Awareness</a>
+        </div>
+      </div>
+
+      <!-- About -->
+      <div class="dropdown">
+        <a class="dropdown-toggle">
+          About <span class="caret"></span>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#">Our Story</a>
+          <a href="#">Our Team</a>
+          <a href="certifications.html">Certifications</a>
+        </div>
+      </div>
+
+      <!-- Process -->
+      <div class="dropdown">
+        <a class="dropdown-toggle">
+          Process <span class="caret"></span>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#process">Site Survey</a>
+          <a href="#process">Design &amp; Approval</a>
+          <a href="#process">Installation</a>
+          <a href="#process">Maintenance</a>
+        </div>
+      </div>
+
+      <a href="#contact">Contact</a>
+      <a class="btn light open-calc-btn" href="#">Solar Calculator 🧮</a>
+     
+    </div>
+
+    <!-- Hamburger Toggle Button -->
+    <button
+      class="hamburger-btn"
+      id="menuToggle"
+      aria-label="Toggle navigation menu"
+      aria-expanded="false"
+    >
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu Dropdown -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="container mobile-menu-inner">
+      <!-- Solutions -->
+      <div class="mobile-group">
+        <div class="mobile-group-head">
+          <a class="mobile-link">Solutions</a>
+          <button class="mobile-sub-toggle" aria-label="Show Solutions options" aria-expanded="false"></button>
+        </div>
+        <div class="mobile-sub">
+          <a href="pgs/solar-rooftop.html">Solar Rooftops</a>
+          <a href="pgs/solar-water-heater.html">Solar Water Heater</a>
+          <a href="pgs/heat-pump.html">Heat Pump</a>
+          <a href="pgs/solar-utility-products.html">Solar Utility Product</a>
+          <a href="pgs/solar-epc.html">Solar EPC</a>
+          <a href="pgs/o-and-m-repair.html">O&amp;M Repair</a>
+          <a href="pgs/energy-audit.html">Energy Audit</a>
+          <a href="pgs/csr-and-awareness.html">CSR and Awareness</a>
+        </div>
+      </div>
+
+      <!-- About -->
+      <div class="mobile-group">
+        <div class="mobile-group-head">
+          <a class="mobile-link" href="pgs/about_us.html">About</a>
+          <button class="mobile-sub-toggle" aria-label="Show About options" aria-expanded="false"></button>
+        </div>
+        <div class="mobile-sub">
+          <a href="pgs/about_us.html">Our Story</a>
+          <a href="pgs/about_us.html">Our Team</a>
+          <a href="pgs/certifications.html">Certifications</a>
+        </div>
+      </div>
+
+      <!-- Process -->
+      <div class="mobile-group">
+        <div class="mobile-group-head">
+          <a class="mobile-link">Process</a>
+          <button class="mobile-sub-toggle" aria-label="Show Process options" aria-expanded="false"></button>
+        </div>
+        <div class="mobile-sub">
+          <a href="#process">Site Survey</a>
+          <a href="#process">Design &amp; Approval</a>
+          <a href="#process">Installation</a>
+          <a href="#process">Maintenance</a>
+        </div>
+      </div>
+
+      <a class="mobile-link" href="#contact">Contact</a>
+      <a class="btn light open-calc-btn" href="#">Solar Calculator 🧮</a>
+      <a class="btn full" href="#contact" id="mobileCta">Get a Quote</a>
+    </div>
+  </div>
+</nav>
+
+  <!-- =========================================
+       HERO BANNER
+       ========================================= -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="hero-grid">
+        
+        <div>
+          <span class="eyebrow" style="color: var(--lime);"><i class="dot" style="background: var(--lime);"></i> Who We Are</span>
+          <h1 class="hero-title">Architects of <span>Infinite Energy</span></h1>
+          <p class="hero-subtitle">
+            SunGET Solar Infra Pvt. Ltd. is dedicated to transforming India's energy landscape through reliable rooftop engineering, turnkey EPC, and sustainable clean energy technology.
+          </p>
+        </div>
+
+        <div class="hero-glass-orb">
+          <h3>⚡ Pune-Engineered Energy Solutions</h3>
+          <p>
+            From residential rooftops to large-scale commercial installations, our mission is to empower every household to generate clean, self-sustaining solar power.
+          </p>
+          <a class="btn full open-calc-btn" href="#" style="background: var(--lime); color: #102019;">Estimate Your Solar ROI &rarr;</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================
+       DIRECTOR'S MANIFESTO
+       ========================================= -->
+  <section class="manifesto-section">
+    <div class="container">
+      <div class="manifesto-card">
+        
+        <div class="director-badge">
+          <h3>Dipak Kotkar</h3>
+          <span>Director, SunGET Solar Infra Pvt. Ltd.</span>
+        </div>
+
+        <div class="manifesto-text">
+          <p>
+            We believe we can make a difference to this world, to this very earth on which we live. We have been destroying the forests for whatever reasons for many years. Forests that work much like our lungs, purifying the air and healing us.
+          </p>
+          <p>
+            Everyone agrees, that the tree is the best friend for man on this earth. Yet we go on felling them without any qualms. Only when the last tree has been cut and the last river poisoned, we will come to know that we cannot eat money.
+          </p>
+          <p class="manifesto-highlight">
+            This beautiful earth needs to be treated with more respect. Let us do it right now…
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================
+       ENERGY RATIO & VISION SECTION (67% vs 33%)
+       ========================================= -->
+  <section class="energy-ratio-section">
+    <div class="container">
+      <div class="ratio-container">
+        
+        <div class="ratio-card">
+          <span class="eyebrow"><i class="dot"></i> Our Core Vision</span>
+          <h3>Harnessing Humanity's Never-Ending Power Source</h3>
+          <p>
+            At SunGET Solar Infra, we believe that 'SUN' is the ultimate source of 'Long Lasting Renewable Energy' available to all humanity. Solar energy is the never-ending source of renewable energy which now more than ever should become our primary energy source.
+          </p>
+          <p>
+            While electricity powers our lives, we often overlook the environmental costs—climate change, global warming, and air pollution—which harm all living beings.
+          </p>
+        </div>
+
+        <div class="ratio-card">
+          <span class="eyebrow"><i class="dot"></i> India's Energy Transition</span>
+          <h3>Shifting the National Energy Equation</h3>
+          <p>
+            In India, Renewable energy sources constitute <strong>33%</strong> of total installed capacity, while Non-Renewable sources still make up <strong>67%</strong>. SunGET Solar Infra is committed to flipping these statistics by introducing modern solar technology at the grass-root level.
+          </p>
+
+          <!-- Visual Bar -->
+          <div class="stat-bar-wrapper">
+            <div class="stat-bar-label">
+              <span>Non-Renewable (67%)</span>
+              <span style="color: var(--green);">Renewable Goal (33%)</span>
+            </div>
+            <div class="stat-progress-bar">
+              <div class="fill-nonrenewable"></div>
+              <div class="fill-renewable"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================
+       MULTI-DOMAIN ENERGY ECOSYSTEM MATRIX
+       ========================================= -->
+  <section class="ecosystem-section">
+    <div class="container">
+      
+      <div style="text-align: center; max-width: 700px; margin: auto;">
+        <span class="eyebrow" style="justify-content: center;"><i class="dot"></i> Multidisciplinary Energy Capabilities</span>
+        <h2 style="font-size: 36px; margin-top: 10px;">Our Expanding Energy Footprint</h2>
+        <p style="color: var(--muted); font-size: 16px;">
+          SunGET operates across key clean energy domains to accelerate India's transition to a decentralized power grid.
+        </p>
+      </div>
+
+      <div class="ecosystem-grid">
+        
+        <div class="eco-card">
+          <div class="eco-icon">☀️</div>
+          <h4>Rooftop Solar EPC</h4>
+          <p>Grid-connected turnkey rooftop power systems for residential homes, housing societies, and commercial complexes.</p>
+        </div>
+
+        <div class="eco-card">
+          <div class="eco-icon">💧</div>
+          <h4>Thermal & Heat Systems</h4>
+          <p>High-efficiency solar water heaters and all-weather heat pumps engineered for continuous energy reduction.</p>
+        </div>
+
+        <div class="eco-card">
+          <div class="eco-icon">📊</div>
+          <h4>Energy Audits & Consulting</h4>
+          <p>Comprehensive power load analysis and energy assessments for industrial factories and institutional clients.</p>
+        </div>
+
+        <div class="eco-card">
+          <div class="eco-icon">⚡</div>
+          <h4>Smart Solar Utilities</h4>
+          <p>Standalone solar street lighting, agricultural water pumping, and community utility infrastructure.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================
+       ENGINEERING OVERVIEW & METRICS
+       ========================================= -->
+  <section class="engineering-section">
+    <div class="container">
+      <div class="eng-grid">
+        
+        <div class="eng-text">
+          <span class="eyebrow"><i class="dot"></i> Engineering Excellence</span>
+          <h2>Fast-Growing Solar EPC Company in India</h2>
+          <p>
+            SunGET Solar Infra Pvt. Ltd. is a Pune-based enterprise focusing on providing EPC solar energy solutions right from concept development to commissioning, as well as customized Operation & Maintenance (O&M) services.
+          </p>
+          <p>
+            We operate with a team of dedicated, talented engineers and technicians who convert paper blueprints into technically robust, long-lasting solar infrastructure compliant with all national regulations.
+          </p>
+
+          <div class="eng-pills">
+            <span class="eng-pill">⚡ Robust Engineering</span>
+            <span class="eng-pill">🌱 100% Regulatory Compliance</span>
+            <span class="eng-pill">📍 Pune EPC Hub</span>
+            <span class="eng-pill">🛠️ Dedicated O&M Team</span>
+          </div>
+        </div>
+
+        <div class="eng-metrics-box">
+          <div class="metric-item">
+            <h4>10+</h4>
+            <p>Years Industry Experience</p>
+          </div>
+          <div class="metric-item">
+            <h4>60,000+</h4>
+            <p>Properties Solarised</p>
+          </div>
+          <div class="metric-item">
+            <h4>200MW+</h4>
+            <p>Installation Capacity</p>
+          </div>
+          <div class="metric-item">
+            <h4>100%</h4>
+            <p>Compliance Record</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================
+       CALL TO ACTION BANNER
+       ========================================= -->
+  <section class="cta">
+    <div class="container">
+      <div class="cta-box">
+        <div>
+          <span class="eyebrow" style="color:var(--lime)">Instant Savings Estimator</span>
+          <h2>Calculate Your Solar Savings in 30 Seconds!</h2>
+          <p>Estimate your required system size, project costs, and annual electricity bill savings instantly.</p>
+        </div>
+        <a class="btn open-calc-btn" href="#">Calculate Savings Now 🧮</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================
+       FOOTER
+       ========================================= -->
+  <footer>
+    <div class="container">
+      <div class="foot">
+
+        <div>
+          <a href="index.html">
+            <img class="normal_logo" src="images/logo.png" alt="SunGET Solar Infra Pvt. Ltd." style="margin-bottom: 18px;">
+          </a>
+          <p>
+            SunGET Solar Infra Pvt. Ltd. is a premier Pune-based solar company providing end-to-end EPC solar solutions, rooftop installations, and long-term O&M services across Maharashtra.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="foot-heading">Quick Links</h4>
+          <div class="footlinks">
+            <a href="index.html#solutions">Solar Solutions</a>
+            <a href="about_us.html">Why Choose Us</a>
+            <a href="index.html#process">How It Works</a>
+            <a class="open-calc-btn" href="#">Solar Calculator 🧮</a>
+            <a href="index.html#contact">Get a Quote</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="foot-heading">Company & Legal</h4>
+          <div class="footlinks">
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="#">Terms of Use</a>
+            <a href="about_us.html">About SunGET</a>
+            <a href="index.html#contact">Contact Support</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="foot-heading">Get in Touch</h4>
+          <div style="font-size: 14px; color: #b8cebf;">
+            <p><strong>Office:</strong><br>Renuka Industries Estate, Opp. Abhiruchi Parisar, Narhe, Pune - 411041</p>
+            <p>📞 <a href="tel:+919881855770" style="color:#fff;">(+91) 98818 55770</a></p>
+            <p>✉️ <a href="mailto:sales@sungetsolarinfra.com" style="color:#fff;">sales@sungetsolarinfra.com</a></p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="copy">
+        <span>© 2026 SunGET Solar Infra Pvt. Ltd. All rights reserved.</span>
+        <div>
+          <a href="privacy-policy.html">Privacy Policy</a> • <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+<!-- Link to your modular script file -->
+  <script src="../src/script.js"></script>
+
+
+
+</body>
+</html>

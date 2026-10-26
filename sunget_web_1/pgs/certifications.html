@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Certifications & Accreditations | SunGET Solar Infra</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Shared Global Stylesheet -->
+  <link rel="stylesheet" href="../style/style.css" />
+
+  <style>
+    /* =========================================
+       HERO BACKGROUND VIDEO STYLES
+       ========================================= */
+    .cert-hero {
+      position: relative;
+      background: #0a1f16;
+      color: #ffffff;
+      padding: 90px 0 80px;
+      text-align: center;
+      overflow: hidden;
+      min-height: 340px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Background Video Container */
+    .cert-hero-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: 1;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      pointer-events: none;
+    }
+
+    /* Dark Overlay Gradient for Text Contrast */
+    .cert-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(10, 31, 22, 0.85) 0%,
+        rgba(10, 31, 22, 0.75) 60%,
+        rgba(10, 31, 22, 0.92) 100%
+      );
+      z-index: 2;
+    }
+
+    /* Hero Text Content Container */
+    .cert-hero .container {
+      position: relative;
+      z-index: 3;
+    }
+
+    .cert-hero h1 {
+      font-size: clamp(30px, 4.5vw, 52px);
+      margin-bottom: 16px;
+      color: #ffffff;
+      font-family: Manrope, sans-serif;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    .cert-hero p {
+      color: #dbebe2;
+      font-size: clamp(14px, 2vw, 17px);
+      max-width: 720px;
+      margin: 0 auto;
+      line-height: 1.65;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    /* =========================================
+       CERTIFICATION CARDS & LAYOUT
+       ========================================= */
+    .cert-section {
+      padding: 80px 0;
+      background: #fbfdfc;
+    }
+
+    .cert-story-card {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 36px;
+      margin-bottom: 50px;
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 40px;
+      align-items: center;
+      box-shadow: 0 12px 32px rgba(16, 32, 25, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .cert-story-card:nth-child(even) {
+      grid-template-columns: 1.15fr 0.85fr;
+    }
+
+    .cert-story-card:nth-child(even) .cert-preview-box {
+      order: 2;
+    }
+
+    .cert-story-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(17, 107, 75, 0.1);
+    }
+
+    .cert-preview-box {
+      position: relative;
+      background: #f4f8f5;
+      border-radius: 18px;
+      padding: 16px;
+      border: 1px solid #d9e6dd;
+      overflow: hidden;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .cert-preview-box img {
+      width: 100%;
+      height: auto;
+      max-height: 380px;
+      object-fit: contain;
+      border-radius: 10px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+      transition: transform 0.4s ease;
+    }
+
+    .cert-preview-box:hover img {
+      transform: scale(1.04);
+    }
+
+    .cert-zoom-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(16, 32, 25, 0.5);
+      backdrop-filter: blur(3px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 14px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      border-radius: 18px;
+    }
+
+    .cert-preview-box:hover .cert-zoom-overlay {
+      opacity: 1;
+    }
+
+    .cert-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #eaf4ed;
+      color: var(--green);
+      font-weight: 800;
+      font-size: 12px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .cert-info h3 {
+      font-size: 26px;
+      color: var(--ink);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .cert-journey-quote {
+      border-left: 3px solid var(--lime);
+      background: #f7fbf8;
+      padding: 12px 18px;
+      border-radius: 0 12px 12px 0;
+      font-size: 14px;
+      font-style: italic;
+      color: var(--green2);
+      margin-bottom: 18px;
+      line-height: 1.6;
+    }
+
+    .cert-info p {
+      color: var(--muted);
+      font-size: 14.5px;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .cert-meta-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding: 0;
+      list-style: none;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .cert-meta-list li {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: #f1f6f2;
+      padding: 6px 12px;
+      border-radius: 8px;
+    }
+
+    /* Lightbox Modal */
+    .lightbox-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 20, 15, 0.9);
+      backdrop-filter: blur(8px);
+      z-index: 99999;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .lightbox-modal.active {
+      display: flex;
+    }
+
+    .lightbox-content {
+      position: relative;
+      max-width: 90%;
+      max-height: 90vh;
+    }
+
+    .lightbox-content img {
+      max-width: 100%;
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-size: 32px;
+      cursor: pointer;
+    }
+
+    /* Mobile Breakpoints */
+    @media (max-width: 900px) {
+      .cert-hero {
+        padding: 70px 20px 60px;
+        min-height: 280px;
+      }
+      .cert-story-card,
+      .cert-story-card:nth-child(even) {
+        grid-template-columns: 1fr;
+        padding: 24px;
+        gap: 20px;
+      }
+      .cert-story-card:nth-child(even) .cert-preview-box {
+        order: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+    <!-- =========================================
+       MAIN NAVIGATION
+       ========================================= -->
+<nav class="nav">
+  <div class="container navin">
+    <!-- Company Logo -->
+    <a href="../index.html" class="brand-link">
+      <img
+        class="normal_logo"
+        src="../images/logo.png"
+        alt="SunGET Solar Infra Pvt. Ltd."
+        title="SunGET Solar Infra Pvt. Ltd."
+      />
+    </a>
+
+    <!-- Desktop Navigation Links -->
+    <div class="links">
+      <!-- Solutions -->
+      <div class="dropdown">
+        <a class="dropdown-toggle">
+          Solutions <span class="caret"></span>
+        </a>
+        <div class="dropdown-menu">
+          <a href="solar-rooftop.html">Solar Rooftops</a>
+          <a href="solar-water-heater.html">Solar Water Heater</a>
+          <a href="heat-pump.html">Heat Pump</a>
+          <a href="solar-utility-products.html">Solar Utility Product</a>
+          <a href="solar-epc.html">Solar EPC</a>
+          <a href="o-and-m-repair.html">O&amp;M Repair</a>
+          <a href="energy-audit.html">Energy Audit</a>
+          <a href="csr-and-awareness.html">CSR and Awareness</a>
+        </div>
+      </div>
+
+      <!-- About -->
+      <div class="dropdown">
+        <a class="dropdown-toggle">
+          About <span class="caret"></span>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#">Our Story</a>
+          <a href="#">Our Team</a>
+          <a href="certifications.html">Certifications</a>
+        </div>
+      </div>
+
+      <!-- Process -->
+      <div class="dropdown">
+        <a class="dropdown-toggle">
+          Process <span class="caret"></span>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#process">Site Survey</a>
+          <a href="#process">Design &amp; Approval</a>
+          <a href="#process">Installation</a>
+          <a href="#process">Maintenance</a>
+        </div>
+      </div>
+
+      <a href="#contact">Contact</a>
+      <a class="btn light open-calc-btn" href="#">Solar Calculator 🧮</a>
+     
+    </div>
+
+    <!-- Hamburger Toggle Button -->
+    <button
+      class="hamburger-btn"
+      id="menuToggle"
+      aria-label="Toggle navigation menu"
+      aria-expanded="false"
+    >
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu Dropdown -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="container mobile-menu-inner">
+      <!-- Solutions -->
+      <div class="mobile-group">
+        <div class="mobile-group-head">
+          <a class="mobile-link">Solutions</a>
+          <button class="mobile-sub-toggle" aria-label="Show Solutions options" aria-expanded="false"></button>
+        </div>
+        <div class="mobile-sub">
+          <a href="pgs/solar-rooftop.html">Solar Rooftops</a>
+          <a href="pgs/solar-water-heater.html">Solar Water Heater</a>
+          <a href="pgs/heat-pump.html">Heat Pump</a>
+          <a href="pgs/solar-utility-products.html">Solar Utility Product</a>
+          <a href="pgs/solar-epc.html">Solar EPC</a>
+          <a href="pgs/o-and-m-repair.html">O&amp;M Repair</a>
+          <a href="pgs/energy-audit.html">Energy Audit</a>
+          <a href="pgs/csr-and-awareness.html">CSR and Awareness</a>
+        </div>
+      </div>
+
+      <!-- About -->
+      <div class="mobile-group">
+        <div class="mobile-group-head">
+          <a class="mobile-link" href="pgs/about_us.html">About</a>
+          <button class="mobile-sub-toggle" aria-label="Show About options" aria-expanded="false"></button>
+        </div>
+        <div class="mobile-sub">
+          <a href="pgs/about_us.html">Our Story</a>
+          <a href="pgs/about_us.html">Our Team</a>
+          <a href="pgs/certifications.html">Certifications</a>
+        </div>
+      </div>
+
+      <!-- Process -->
+      <div class="mobile-group">
+        <div class="mobile-group-head">
+          <a class="mobile-link">Process</a>
+          <button class="mobile-sub-toggle" aria-label="Show Process options" aria-expanded="false"></button>
+        </div>
+        <div class="mobile-sub">
+          <a href="#process">Site Survey</a>
+          <a href="#process">Design &amp; Approval</a>
+          <a href="#process">Installation</a>
+          <a href="#process">Maintenance</a>
+        </div>
+      </div>
+
+      <a class="mobile-link" href="#contact">Contact</a>
+      <a class="btn light open-calc-btn" href="#">Solar Calculator 🧮</a>
+      <a class="btn full" href="#contact" id="mobileCta">Get a Quote</a>
+    </div>
+  </div>
+</nav>
+  <!-- HERO SECTION WITH BACKGROUND VIDEO -->
+  <header class="cert-hero">
+    <!-- Background Loop Video -->
+    <video class="cert-hero-video" autoplay loop muted playsinline poster="../images/sun-poster.jpg">
+      <source src="../images/vid/growth_vid.mp4" type="video/mp4" />
+      Your browser does not support HTML5 video.
+    </video>
+    
+    <!-- Dark Gradient Overlay -->
+    <div class="cert-hero-overlay"></div>
+
+    <!-- Text Content -->
+    <div class="container">
+      <span class="eyebrow" style="color: var(--lime); justify-content: center; margin-bottom: 12px;">
+        <i class="dot" style="background: var(--lime);"></i> Standards of Excellence
+      </span>
+      <h1>Our Accreditations & Journey</h1>
+      <p>Building clean energy infrastructure requires strict compliance, technical mastery, and unyielding dedication. Discover the official credentials driving SunGET Solar Infra.</p>
+    </div>
+  </header>
+
+  <!-- CERTIFICATION STORIES SECTION -->
+  <section class="cert-section">
+    <div class="container">
+
+      <!-- ================================================================= -->
+<!-- CERTIFICATE 1: Skill India / GERMI Rooftop Solar Entrepreneur     -->
+<!-- ================================================================= -->
+<article class="cert-story-card">
+  <div class="cert-preview-box" onclick="openLightbox('../images/cert/img1.png')">
+    <img src="../images/cert/img1.png" alt="Skill India Rooftop Solar Photovoltaic Entrepreneur Certificate" loading="lazy" />
+    <div class="cert-zoom-overlay">🔍 Click to Expand Certificate</div>
+  </div>
+  <div class="cert-info">
+    <span class="cert-badge">🇮🇳 Skill India & GERMI Certified</span>
+    <h3>Rooftop Solar Photovoltaic Entrepreneur (NSQF Level-6)</h3>
+    <div class="cert-journey-quote">
+      "Technical mastery and certified domain knowledge are the bedrock of reliable engineering. Passing the GERMI & Skill Council assessment defined our professional standards early in our solar journey."
+    </div>
+    <p>
+      Certified by the <strong>Government of India (Ministry of Skill Development & Entrepreneurship)</strong>, <strong>Skill Council for Green Jobs (SCGJ)</strong>, and <strong>GERMI (Gujarat Energy Research & Management Institute)</strong>. Conforms to National Skill Qualifications Framework (NSQF Level-6) for high-precision rooftop solar installation, system sizing, and project execution.
+    </p>
+    <ul class="cert-meta-list">
+      <li>✅ Skill India & NSDC Recognized</li>
+      <li>🏛️ Issued via GERMI Institute</li>
+      <li>⚡ Level-6 Solar PV Expertise</li>
+    </ul>
+  </div>
+</article>
+
+<!-- ================================================================= -->
+<!-- CERTIFICATE 2: ISO 9001:2015 IQCS Certification                    -->
+<!-- ================================================================= -->
+<article class="cert-story-card">
+  <div class="cert-preview-box" onclick="openLightbox('../images/cert/img2.png')">
+    <img src="../images/cert/img2.png" alt="ISO 9001:2015 Quality Management Certificate SunGET Solar Infra" loading="lazy" />
+    <div class="cert-zoom-overlay">🔍 Click to Expand Certificate</div>
+  </div>
+  <div class="cert-info">
+    <span class="cert-badge">🛡️ International Quality Management</span>
+    <h3>ISO 9001 : 2015 Certified Quality Systems</h3>
+    <div class="cert-journey-quote">
+      "Earning our accredited ISO 9001:2015 certification verified our commitment to seamless end-to-end service—from initial liaisoning to long-term plant maintenance."
+    </div>
+    <p>
+      Accredited Quality Management System certification for <strong>SunGET Solar Infra Pvt. Ltd.</strong> covering the complete lifecycle: Documentation, Government Liaisoning, Engineering, Procurement, Commissioning, Servicing, Maintenance, Insurance & Financing for Renewable Energy Generation Systems.
+    </p>
+    <ul class="cert-meta-list">
+      <li>✅ Registration No: 91/Q/8614</li>
+      <li>🏛️ Accredited by ASCB & IRQAO</li>
+      <li>⚡ Complete EPC & O&M Scope</li>
+    </ul>
+  </div>
+</article>
+
+    </div>
+  </section>
+
+    <!-- FOOTER (same as index.html, paths fixed for /pgs) -->
+    <footer>
+      <div class="container">
+        <div class="foot">
+          <div class="foot-col foot-brand-col">
+            <a class="brand" href="../index.html" aria-label="SunGET Solar Infra Home">
+              <img class="normal_logo footer_logo" src="../images/logo.png" alt="SunGET Solar Infra Pvt. Ltd." />
+            </a>
+            <p>
+              SunGET Solar Infra Pvt. Ltd. is a premier Pune-based solar energy
+              company providing end-to-end EPC solar solutions, rooftop
+              installations, and long-term O&M services across Maharashtra.
+            </p>
+            <div class="foot-badges">
+              <span class="foot-badge">⚡ ISO Certified</span>
+              <span class="foot-badge">🌱 Govt. Approved</span>
+            </div>
+          </div>
+
+          <div class="foot-col">
+            <h4 class="foot-heading">Quick Links</h4>
+            <div class="footlinks">
+              <a href="../index.html#solutions">Solar Solutions</a>
+              <a href="../index.html#about">Why Choose Us</a>
+              <a href="../index.html#process">How It Works</a>
+              <a class="open-calc-btn" href="#">Solar Calculator 🧮</a>
+              <a href="#contact">Get a Quote</a>
+            </div>
+          </div>
+
+          <div class="foot-col">
+            <h4 class="foot-heading">Company &amp; Legal</h4>
+            <div class="footlinks">
+              <a href="privacy-policy.html">Privacy Policy</a>
+              <a href="#">Terms of Use</a>
+              <a href="about_us.html">About SunGET</a>
+              <a href="#contact">Contact Support</a>
+            </div>
+          </div>
+
+          <div class="foot-col">
+            <h4 class="foot-heading">Get in Touch</h4>
+            <div class="foot-contact">
+              <p>
+                <strong>Office:</strong><br />Renuka Industries Estate, Opp.
+                Abhiruchi Parisar, Narhe, Pune - 411041
+              </p>
+              <p>
+                <strong>Registered:</strong><br />1447/48, Keshavsut Rd,
+                Sadashiv Peth, Pune - 411030
+              </p>
+              <p>📞 <a href="tel:+919881855770">(+91) 98818 55770</a></p>
+              <p>
+                ✉️
+                <a href="mailto:sales@sungetsolarinfra.com">sales@sungetsolarinfra.com</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="copy">
+          <span>© 2026 SunGET Solar Infra Pvt. Ltd. All rights reserved.</span>
+          <div class="copy-links">
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <span>•</span>
+            <a href="#">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  <!-- LIGHTBOX MODAL CONTAINER -->
+  <div class="lightbox-modal" id="lightboxModal" onclick="closeLightbox()">
+    <div class="lightbox-content" onclick="event.stopPropagation()">
+      <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+      <img id="lightboxImg" src="" alt="Enlarged Certificate View" />
+    </div>
+  </div>
+
+  <!-- SHARED JS FILE REFERENCE -->
+  <script src="../src/script.js"></script>
+
+  <!-- LIGHTBOX SCRIPT -->
+  <script>
+    function openLightbox(imagePath) {
+      const modal = document.getElementById('lightboxModal');
+      const img = document.getElementById('lightboxImg');
+      img.src = imagePath;
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      const modal = document.getElementById('lightboxModal');
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+
+</body>
+</html>

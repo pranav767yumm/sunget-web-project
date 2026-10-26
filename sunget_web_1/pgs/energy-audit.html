@@ -1,0 +1,670 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Energy audit and analytics in Pune by SunGET Solar Infra — power quality assessments, load audits, tariff optimisation and precise solar sizing for factories, commercial buildings and institutions."
+    />
+    <title>Energy Audit &amp; Analytics in Pune | SunGET Solar Infra</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Main site stylesheet -->
+    <link rel="stylesheet" href="../style/style.css" />
+    <!-- Shared service-page styles (also used by solar-rooftop.html) -->
+    <link rel="stylesheet" href="../style/rooftop.css" />
+    <!-- Energy audit extras -->
+    <link rel="stylesheet" href="../style/audit.css" />
+  </head>
+
+  <body>
+    <!-- =========================================
+       MAIN NAVIGATION
+       ========================================= -->
+<nav class="nav">
+  <div class="container navin">
+    <!-- Company Logo -->
+    <a href="../index.html" class="brand-link">
+      <img
+        class="normal_logo"
+        src="../images/logo.png"
+        alt="SunGET Solar Infra Pvt. Ltd."
+        title="SunGET Solar Infra Pvt. Ltd."
+      />
+    </a>
+
+    <!-- Desktop Navigation Links -->
+    <div class="links">
+      <!-- Solutions -->
+      <div class="dropdown">
+        <a class="dropdown-toggle">
+          Solutions <span class="caret"></span>
+        </a>
+        <div class="dropdown-menu">
+          <a href="solar-rooftop.html">Solar Rooftops</a>
+          <a href="solar-water-heater.html">Solar Water Heater</a>
+          <a href="heat-pump.html">Heat Pump</a>
+          <a href="solar-utility-products.html">Solar Utility Product</a>
+          <a href="solar-epc.html">Solar EPC</a>
+          <a href="o-and-m-repair.html">O&amp;M Repair</a>
+          <a href="energy-audit.html">Energy Audit</a>
+          <a href="csr-and-awareness.html">CSR and Awareness</a>
+        </div>
+      </div>
+
+      <!-- About -->
+      <div class="dropdown">
+        <a class="dropdown-toggle">
+          About <span class="caret"></span>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#">Our Story</a>
+          <a href="#">Our Team</a>
+          <a href="certifications.html">Certifications</a>
+        </div>
+      </div>
+
+      <!-- Process -->
+      <div class="dropdown">
+        <a class="dropdown-toggle">
+          Process <span class="caret"></span>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#process">Site Survey</a>
+          <a href="#process">Design &amp; Approval</a>
+          <a href="#process">Installation</a>
+          <a href="#process">Maintenance</a>
+        </div>
+      </div>
+
+      <a href="#contact">Contact</a>
+      <a class="btn light open-calc-btn" href="#">Solar Calculator 🧮</a>
+     
+    </div>
+
+    <!-- Hamburger Toggle Button -->
+    <button
+      class="hamburger-btn"
+      id="menuToggle"
+      aria-label="Toggle navigation menu"
+      aria-expanded="false"
+    >
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu Dropdown -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="container mobile-menu-inner">
+      <!-- Solutions -->
+      <div class="mobile-group">
+        <div class="mobile-group-head">
+          <a class="mobile-link">Solutions</a>
+          <button class="mobile-sub-toggle" aria-label="Show Solutions options" aria-expanded="false"></button>
+        </div>
+        <div class="mobile-sub">
+          <a href="pgs/solar-rooftop.html">Solar Rooftops</a>
+          <a href="pgs/solar-water-heater.html">Solar Water Heater</a>
+          <a href="pgs/heat-pump.html">Heat Pump</a>
+          <a href="pgs/solar-utility-products.html">Solar Utility Product</a>
+          <a href="pgs/solar-epc.html">Solar EPC</a>
+          <a href="pgs/o-and-m-repair.html">O&amp;M Repair</a>
+          <a href="pgs/energy-audit.html">Energy Audit</a>
+          <a href="pgs/csr-and-awareness.html">CSR and Awareness</a>
+        </div>
+      </div>
+
+      <!-- About -->
+      <div class="mobile-group">
+        <div class="mobile-group-head">
+          <a class="mobile-link" href="pgs/about_us.html">About</a>
+          <button class="mobile-sub-toggle" aria-label="Show About options" aria-expanded="false"></button>
+        </div>
+        <div class="mobile-sub">
+          <a href="pgs/about_us.html">Our Story</a>
+          <a href="pgs/about_us.html">Our Team</a>
+          <a href="pgs/certifications.html">Certifications</a>
+        </div>
+      </div>
+
+      <!-- Process -->
+      <div class="mobile-group">
+        <div class="mobile-group-head">
+          <a class="mobile-link">Process</a>
+          <button class="mobile-sub-toggle" aria-label="Show Process options" aria-expanded="false"></button>
+        </div>
+        <div class="mobile-sub">
+          <a href="#process">Site Survey</a>
+          <a href="#process">Design &amp; Approval</a>
+          <a href="#process">Installation</a>
+          <a href="#process">Maintenance</a>
+        </div>
+      </div>
+
+      <a class="mobile-link" href="#contact">Contact</a>
+      <a class="btn light open-calc-btn" href="#">Solar Calculator 🧮</a>
+      <a class="btn full" href="#contact" id="mobileCta">Get a Quote</a>
+    </div>
+  </div>
+</nav>
+
+    <!-- =========================================
+       PAGE HERO
+       ========================================= -->
+    <header class="rt-hero">
+      <div class="rt-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1920&q=80')"></div>
+      <div class="rt-hero-overlay"></div>
+
+      <div class="container rt-hero-inner">
+        <div class="rt-hero-text">
+          <p class="rt-crumbs">
+            <a href="../index.html">Home</a> / <a href="../index.html#solutions">Solutions</a> / Energy Audit &amp; Analytics
+          </p>
+          <h1>Measure first. Then cut the waste.</h1>
+          <p class="rt-lead">
+            Power quality assessments and load audits that find where your electricity is lost, lower your tariff costs and show exactly how much solar your site needs.
+          </p>
+          <div class="rt-hero-actions">
+            <a class="btn" href="#contact">Book an energy audit</a>
+            <a class="btn light" href="#rt-size">Estimate my savings</a>
+          </div>
+        </div>
+
+        <aside class="rt-hero-facts" aria-label="Key facts">
+          <div><b>Measured</b><span>with logging instruments, not guesses</span></div>
+          <div><b>Tariff</b><span>review of your bill and contract demand</span></div>
+          <div><b>Solar</b><span>sized from your real load profile</span></div>
+          <div><b>Report</b><span>with savings and payback for each fix</span></div>
+        </aside>
+      </div>
+    </header>
+
+    <main>
+      <!-- =========================================
+         WHERE ENERGY IS LOST
+         ========================================= -->
+      <section class="rt-section" id="rt-how">
+        <div class="container">
+          <div class="rt-head">
+            <h2>Where businesses lose money on power</h2>
+            <p>Most of it is invisible on the bill. An audit makes it visible, and fixable.</p>
+          </div>
+
+          <div class="aud-causes">
+            <article>
+              <h3>Poor power factor</h3>
+              <p>A low power factor can attract penalties and wastes network capacity.</p>
+            </article>
+            <article>
+              <h3>High peak demand</h3>
+              <p>A short spike sets your demand charge for the whole month. Many spikes can be avoided.</p>
+            </article>
+            <article>
+              <h3>Harmonics and imbalance</h3>
+              <p>Electronic loads and uneven phases heat cables and motors and shorten equipment life.</p>
+            </article>
+            <article>
+              <h3>Wrong tariff or contract demand</h3>
+              <p>Paying for more contract demand than you use, or missing time-of-day benefits.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================
+         WHO IT'S FOR
+         ========================================= -->
+      <section class="rt-section rt-tint" id="rt-segments">
+        <div class="container">
+          <div class="rt-head">
+            <h2>Who we audit</h2>
+            <p>Any site with a large or rising electricity bill.</p>
+          </div>
+
+          <div class="rt-segments">
+            <article class="rt-seg">
+              <h3>Factories &amp; plants</h3>
+              <p class="rt-seg-size">HT and LT industry</p>
+              <p>Motors, compressors, furnaces and drives are the biggest savings areas.</p>
+              <ul>
+                <li>Power quality and demand analysis</li>
+                <li>Motor, pump and compressor review</li>
+              </ul>
+            </article>
+
+            <article class="rt-seg">
+              <h3>Commercial buildings</h3>
+              <p class="rt-seg-size">Offices, malls, hotels</p>
+              <p>Air conditioning, lighting and lifts decide the bill, and often run longer than needed.</p>
+              <ul>
+                <li>HVAC and lighting load study</li>
+                <li>Tariff and schedule review</li>
+              </ul>
+            </article>
+
+            <article class="rt-seg">
+              <h3>Hospitals &amp; institutions</h3>
+              <p class="rt-seg-size">Round-the-clock loads</p>
+              <p>Reliable supply matters, so we look at quality as well as cost.</p>
+              <ul>
+                <li>Power quality and backup review</li>
+                <li>Solar and storage feasibility</li>
+              </ul>
+            </article>
+
+            <article class="rt-seg">
+              <h3>Societies &amp; campuses</h3>
+              <p class="rt-seg-size">Common-area load</p>
+              <p>Lifts, pumps, lights and clubhouses add up to a large shared bill.</p>
+              <ul>
+                <li>Common-area load audit</li>
+                <li>Solar sizing for the shared meter</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================
+         SERVICES TABS
+         ========================================= -->
+      <section class="rt-section" id="rt-types">
+        <div class="container">
+          <div class="rt-head">
+            <h2>What the audit covers</h2>
+            <p>Four parts that build on each other, from measurement to a solar plan.</p>
+          </div>
+
+          <div class="rt-tabs" role="tablist" aria-label="Audit services">
+            <button class="rt-tab active" role="tab" aria-selected="true" aria-controls="tab-pq" id="t-pq">Power quality</button>
+            <button class="rt-tab" role="tab" aria-selected="false" aria-controls="tab-load" id="t-load" tabindex="-1">Load audit</button>
+            <button class="rt-tab" role="tab" aria-selected="false" aria-controls="tab-tariff" id="t-tariff" tabindex="-1">Tariff optimisation</button>
+            <button class="rt-tab" role="tab" aria-selected="false" aria-controls="tab-sizing" id="t-sizing" tabindex="-1">Solar sizing</button>
+          </div>
+
+          <div class="rt-panel active" role="tabpanel" id="tab-pq" aria-labelledby="t-pq">
+            <div class="rt-panel-main">
+              <h3>Power quality assessment</h3>
+              <p>
+                A logging analyser is connected to your main incomer and key feeders for several days. It records voltage, current, power factor, harmonics and disturbances, so we see what really happens at your site, not just a single reading.
+              </p>
+              <p><strong>Best for:</strong> sites with equipment trips, overheating, penalties or unexplained losses.</p>
+            </div>
+            <dl class="rt-spec">
+              <div><dt>Records</dt><dd>Voltage, current, kW, kVA, PF</dd></div>
+              <div><dt>Detects</dt><dd>Harmonics, sags, imbalance</dd></div>
+              <div><dt>Duration</dt><dd>Several days of logging</dd></div>
+              <div><dt>You receive</dt><dd>Graphs and findings report</dd></div>
+            </dl>
+          </div>
+
+          <div class="rt-panel" role="tabpanel" id="tab-load" aria-labelledby="t-load" hidden>
+            <div class="rt-panel-main">
+              <h3>Load audit</h3>
+              <p>
+                We list your major loads, measure how much each draws and when, and build a load profile through the day. This shows what can be switched off, shifted, resized or replaced with a more efficient option.
+              </p>
+              <p><strong>Best for:</strong> finding where the units are actually going.</p>
+            </div>
+            <dl class="rt-spec">
+              <div><dt>Method</dt><dd>Inventory plus spot and logged readings</dd></div>
+              <div><dt>Covers</dt><dd>Motors, HVAC, lighting, process</dd></div>
+              <div><dt>Shows</dt><dd>Daily and seasonal profile</dd></div>
+              <div><dt>You receive</dt><dd>Load breakdown and savings list</dd></div>
+            </dl>
+          </div>
+
+          <div class="rt-panel" role="tabpanel" id="tab-tariff" aria-labelledby="t-tariff" hidden>
+            <div class="rt-panel-main">
+              <h3>Tariff and contract optimisation</h3>
+              <p>
+                We study 12 months of bills against your actual demand and usage. We check contract demand, power factor charges, time-of-day rates and the category you are billed under, and tell you what to change.
+              </p>
+              <p><strong>Best for:</strong> HT and LT commercial and industrial consumers.</p>
+            </div>
+            <dl class="rt-spec">
+              <div><dt>Input</dt><dd>12 months of electricity bills</dd></div>
+              <div><dt>Checks</dt><dd>Contract demand and PF charges</dd></div>
+              <div><dt>Options</dt><dd>Peak shifting and demand control</dd></div>
+              <div><dt>You receive</dt><dd>Tariff comparison and actions</dd></div>
+            </dl>
+          </div>
+
+          <div class="rt-panel" role="tabpanel" id="tab-sizing" aria-labelledby="t-sizing" hidden>
+            <div class="rt-panel-main">
+              <h3>Solar sizing from real data</h3>
+              <p>
+                Because we know when you use power, we size solar to match it. That avoids both an undersized plant that leaves savings behind and an oversized one that exports at a low rate.
+              </p>
+              <p><strong>Best for:</strong> anyone planning rooftop solar, solar plus storage or open-access power.</p>
+            </div>
+            <dl class="rt-spec">
+              <div><dt>Input</dt><dd>Load profile and roof area</dd></div>
+              <div><dt>Output</dt><dd>Recommended kW and generation</dd></div>
+              <div><dt>Compares</dt><dd>Capex and Opex options</dd></div>
+              <div><dt>You receive</dt><dd>Sizing and payback report</dd></div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================
+         SAVINGS ESTIMATOR + WHAT WE MEASURE
+         ========================================= -->
+      <section class="rt-section rt-tint" id="rt-size">
+        <div class="container rt-two">
+          <div>
+            <div class="rt-head rt-head-left">
+              <h2>What could an audit save me?</h2>
+              <p>Enter your average monthly bill and site type. This is a rough range, and the audit gives the real figure.</p>
+            </div>
+
+            <form class="rt-est" id="audEstimator" onsubmit="return false">
+              <label for="audBill">Average monthly electricity bill (₹)</label>
+              <input id="audBill" type="number" min="5000" step="5000" value="200000" inputmode="numeric" />
+              <input id="audBillRange" type="range" min="5000" max="5000000" step="5000" value="200000" aria-label="Monthly bill slider" />
+
+              <label for="audType">Site type</label>
+              <select id="audType" class="aud-select">
+                <option value="industry" selected>Factory or plant</option>
+                <option value="commercial">Commercial building</option>
+                <option value="institution">Hospital, college or society</option>
+              </select>
+
+              <div class="rt-est-out" aria-live="polite">
+                <div><span>Your yearly bill</span><b id="audYear">–</b></div>
+                <div><span>Possible saving (per year)</span><b id="audSave">–</b></div>
+                <div><span>Solar size to offset about 70%</span><b id="audKw">–</b></div>
+                <div><span>Solar saving (per year)</span><b id="audSolar">–</b></div>
+              </div>
+              <p class="rt-note">Savings ranges (factory 6–12%, commercial 8–15%, institution 5–10%) are illustrations of what audits commonly find, not a promise. Solar figures assume about ₹8 per unit and about 120 units per kW each month. The audit report gives your actual numbers.</p>
+            </form>
+          </div>
+
+          <div class="rt-subsidy">
+            <h3>What we measure and why</h3>
+            <p>Each reading maps to a cost on your bill or a risk to your equipment.</p>
+            <table>
+              <thead>
+                <tr><th>Measured</th><th>Affects</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Power factor</td><td>Bill penalty</td></tr>
+                <tr><td>Maximum demand</td><td>Demand charge</td></tr>
+                <tr><td>Harmonics (THD)</td><td>Heating, trips</td></tr>
+                <tr><td>Voltage imbalance</td><td>Motor losses</td></tr>
+                <tr><td>Load profile</td><td>Shift and size</td></tr>
+              </tbody>
+            </table>
+            <p class="rt-note">The instruments and readings used depend on your site and supply voltage.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================
+         AUDIT LEVELS
+         ========================================= -->
+      <section class="rt-section" id="rt-models">
+        <div class="container">
+          <div class="rt-head">
+            <h2>Choose the depth of audit</h2>
+            <p>Start light, or go straight to a full study. We confirm scope and price after a short call.</p>
+          </div>
+
+          <div class="aud-levels">
+            <article>
+              <h3>Walk-through</h3>
+              <p class="aud-level-for">Quick check for smaller sites</p>
+              <ul>
+                <li>Site walk and bill review</li>
+                <li>Spot readings of main loads</li>
+                <li>List of no-cost and low-cost fixes</li>
+                <li>Short summary report</li>
+              </ul>
+            </article>
+            <article class="aud-level-main">
+              <h3>Detailed audit</h3>
+              <p class="aud-level-for">For most commercial and industrial sites</p>
+              <ul>
+                <li>Everything in Walk-through</li>
+                <li>Logged power quality measurement</li>
+                <li>Load profile and tariff study</li>
+                <li>Savings and payback for each action</li>
+                <li>Solar sizing recommendation</li>
+              </ul>
+            </article>
+            <article>
+              <h3>Investment-grade</h3>
+              <p class="aud-level-for">For large capex decisions</p>
+              <ul>
+                <li>Everything in Detailed</li>
+                <li>Feeder and equipment-level logging</li>
+                <li>Engineering design of the fixes</li>
+                <li>Detailed financial model</li>
+                <li>Support with implementation</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================
+         PROCESS + INCLUDED
+         ========================================= -->
+      <section class="rt-section rt-tint" id="rt-process">
+        <div class="container">
+          <div class="rt-head">
+            <h2>How an audit works</h2>
+            <p>From first call to a plan you can act on, with minimal disturbance to your operations.</p>
+          </div>
+
+          <ol class="rt-steps">
+            <li>
+              <h3>Scoping call</h3>
+              <p>We understand your site, supply, bills and what you want from the audit.</p>
+            </li>
+            <li>
+              <h3>Data collection</h3>
+              <p>Single line diagram, 12 months of bills, equipment lists and operating schedules.</p>
+            </li>
+            <li>
+              <h3>Site measurement</h3>
+              <p>Walk-through, spot readings and installation of logging analysers.</p>
+            </li>
+            <li>
+              <h3>Analysis</h3>
+              <p>Our engineers study the data, find losses and calculate savings for each fix.</p>
+            </li>
+            <li>
+              <h3>Report and review</h3>
+              <p>A clear report with priorities, cost, savings and payback, walked through with your team.</p>
+            </li>
+            <li>
+              <h3>Implementation support</h3>
+              <p>Optional help with the fixes, including solar, capacitors, filters and controls.</p>
+            </li>
+          </ol>
+
+          <div class="rt-included">
+            <h3>Your audit report includes</h3>
+            <ul>
+              <li>Measured data with graphs and findings</li>
+              <li>Load profile and breakdown by area</li>
+              <li>Tariff and contract demand review</li>
+              <li>Ranked list of actions with cost and payback</li>
+              <li>Solar sizing and generation estimate</li>
+              <li>Summary for management and engineers</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================
+         FAQ
+         ========================================= -->
+      <section class="rt-section" id="rt-faq">
+        <div class="container rt-faq-wrap">
+          <div class="rt-head rt-head-left">
+            <h2>Questions about energy audits</h2>
+            <p>Not here? Call <a href="tel:+919881855770">+91 98818 55770</a> and we will answer.</p>
+          </div>
+
+          <div class="rt-faq">
+            <details>
+              <summary>Will the audit disturb my operations?</summary>
+              <p>Very little. Most measurements are taken with clamp-on instruments while you run normally. Any connection that needs a short shutdown is planned with your team in advance.</p>
+            </details>
+            <details>
+              <summary>How long does an audit take?</summary>
+              <p>A walk-through can be done in a day. A detailed audit usually needs a few days of logging plus time for analysis and the report. We confirm the schedule when we scope it.</p>
+            </details>
+            <details>
+              <summary>What do you need from me?</summary>
+              <p>Your last 12 months of electricity bills, a single line diagram if you have one, a list of major equipment and access to the electrical panels.</p>
+            </details>
+            <details>
+              <summary>Do I have to buy solar or anything else from you?</summary>
+              <p>No. The report is yours, and you can act on it with any vendor. We are happy to help with implementation if you want us to.</p>
+            </details>
+            <details>
+              <summary>Is this a statutory or mandatory energy audit?</summary>
+              <p>Some large industrial consumers must have audits done by an accredited energy auditor. Tell us your requirement and we will confirm whether our audit meets it before you commit.</p>
+            </details>
+            <details>
+              <summary>How do I know the savings are real?</summary>
+              <p>Each recommendation shows the measurement it is based on, the calculation and the assumptions. After implementation, you can compare bills before and after to confirm the result.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================
+         ENQUIRY
+         ========================================= -->
+      <section class="rt-section rt-contact" id="contact">
+        <div class="container rt-two">
+          <div class="rt-contact-text">
+            <h2>Book an energy audit</h2>
+            <p>Tell us about your site and your average monthly bill. We will call you to scope the audit and give a quote.</p>
+            <ul>
+              <li><small>Call</small> <a href="tel:+919881855770">+91 98818 55770</a></li>
+              <li><small>Email</small> <a href="mailto:sales@sungetsolarinfra.com">sales@sungetsolarinfra.com</a></li>
+              <li><small>Office</small> Renuka Industries Estate, Narhe, Pune 411041</li>
+            </ul>
+          </div>
+
+          <form class="form rt-form" id="leadForm">
+            <input name="name" required placeholder="Your name" />
+            <input name="phone" required type="tel" placeholder="Phone number" />
+            <input name="email" type="email" placeholder="Email address" />
+            <select name="interest">
+              <option value="Energy Audit – Walk-through">Walk-through audit</option>
+              <option value="Energy Audit – Detailed">Detailed audit</option>
+              <option value="Energy Audit – Investment-grade">Investment-grade audit</option>
+              <option value="Energy Audit – Power Quality">Power quality assessment only</option>
+              <option value="Energy Audit – Solar Sizing">Solar sizing study</option>
+            </select>
+            <textarea name="message" placeholder="Site type, location, supply voltage, average monthly bill, any problems you face"></textarea>
+            <button class="btn full" type="submit">Request an audit</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER (same as index.html, paths fixed for /pgs) -->
+    <footer>
+      <div class="container">
+        <div class="foot">
+          <div class="foot-col foot-brand-col">
+            <a class="brand" href="../index.html" aria-label="SunGET Solar Infra Home">
+              <img class="normal_logo footer_logo" src="../images/logo.png" alt="SunGET Solar Infra Pvt. Ltd." />
+            </a>
+            <p>
+              SunGET Solar Infra Pvt. Ltd. is a premier Pune-based solar energy
+              company providing end-to-end EPC solar solutions, rooftop
+              installations, and long-term O&M services across Maharashtra.
+            </p>
+            <div class="foot-badges">
+              <span class="foot-badge">⚡ ISO Certified</span>
+              <span class="foot-badge">🌱 Govt. Approved</span>
+            </div>
+          </div>
+
+          <div class="foot-col">
+            <h4 class="foot-heading">Quick Links</h4>
+            <div class="footlinks">
+              <a href="../index.html#solutions">Solar Solutions</a>
+              <a href="../index.html#about">Why Choose Us</a>
+              <a href="../index.html#process">How It Works</a>
+              <a class="open-calc-btn" href="#">Solar Calculator 🧮</a>
+              <a href="#contact">Get a Quote</a>
+            </div>
+          </div>
+
+          <div class="foot-col">
+            <h4 class="foot-heading">Company &amp; Legal</h4>
+            <div class="footlinks">
+              <a href="privacy-policy.html">Privacy Policy</a>
+              <a href="#">Terms of Use</a>
+              <a href="about_us.html">About SunGET</a>
+              <a href="#contact">Contact Support</a>
+            </div>
+          </div>
+
+          <div class="foot-col">
+            <h4 class="foot-heading">Get in Touch</h4>
+            <div class="foot-contact">
+              <p>
+                <strong>Office:</strong><br />Renuka Industries Estate, Opp.
+                Abhiruchi Parisar, Narhe, Pune - 411041
+              </p>
+              <p>
+                <strong>Registered:</strong><br />1447/48, Keshavsut Rd,
+                Sadashiv Peth, Pune - 411030
+              </p>
+              <p>📞 <a href="tel:+919881855770">(+91) 98818 55770</a></p>
+              <p>
+                ✉️
+                <a href="mailto:sales@sungetsolarinfra.com">sales@sungetsolarinfra.com</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="copy">
+          <span>© 2026 SunGET Solar Infra Pvt. Ltd. All rights reserved.</span>
+          <div class="copy-links">
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <span>•</span>
+            <a href="#">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div
+      class="toast"
+      id="toast"
+      role="status"
+      aria-live="polite"
+      style="display:none;position:fixed;bottom:20px;right:20px;background:var(--ink);color:#fff;padding:12px 20px;border-radius:12px;z-index:99999;"
+    >
+      Thanks! Your enquiry has been received.
+    </div>
+
+    <!-- rooftop.js handles the tabs (generic); audit.js handles the savings estimator -->
+    <script src="../src/rooftop.js"></script>
+    <script src="../src/audit.js"></script>
+    <script src="../src/script.js"></script>
+  </body>
+</html>

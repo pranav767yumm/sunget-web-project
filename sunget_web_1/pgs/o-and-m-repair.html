@@ -1,0 +1,670 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Solar O&M and repair in Pune by SunGET Solar Infra — maintenance contracts, preventive health checks, string testing and thermal imaging to keep your solar plant at peak output."
+    />
+    <title>Solar O&amp;M and Repair in Pune | SunGET Solar Infra</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Main site stylesheet -->
+    <link rel="stylesheet" href="../style/style.css" />
+    <!-- Shared service-page styles (also used by solar-rooftop.html) -->
+    <link rel="stylesheet" href="../style/rooftop.css" />
+    <!-- O&M extras -->
+    <link rel="stylesheet" href="../style/om.css" />
+  </head>
+
+  <body>
+    <!-- =========================================
+       MAIN NAVIGATION
+       ========================================= -->
+<nav class="nav">
+  <div class="container navin">
+    <!-- Company Logo -->
+    <a href="../index.html" class="brand-link">
+      <img
+        class="normal_logo"
+        src="../images/logo.png"
+        alt="SunGET Solar Infra Pvt. Ltd."
+        title="SunGET Solar Infra Pvt. Ltd."
+      />
+    </a>
+
+    <!-- Desktop Navigation Links -->
+    <div class="links">
+      <!-- Solutions -->
+      <div class="dropdown">
+        <a class="dropdown-toggle">
+          Solutions <span class="caret"></span>
+        </a>
+        <div class="dropdown-menu">
+          <a href="solar-rooftop.html">Solar Rooftops</a>
+          <a href="solar-water-heater.html">Solar Water Heater</a>
+          <a href="heat-pump.html">Heat Pump</a>
+          <a href="solar-utility-products.html">Solar Utility Product</a>
+          <a href="solar-epc.html">Solar EPC</a>
+          <a href="o-and-m-repair.html">O&amp;M Repair</a>
+          <a href="energy-audit.html">Energy Audit</a>
+          <a href="csr-and-awareness.html">CSR and Awareness</a>
+        </div>
+      </div>
+
+      <!-- About -->
+      <div class="dropdown">
+        <a class="dropdown-toggle">
+          About <span class="caret"></span>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#">Our Story</a>
+          <a href="#">Our Team</a>
+          <a href="certifications.html">Certifications</a>
+        </div>
+      </div>
+
+      <!-- Process -->
+      <div class="dropdown">
+        <a class="dropdown-toggle">
+          Process <span class="caret"></span>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#process">Site Survey</a>
+          <a href="#process">Design &amp; Approval</a>
+          <a href="#process">Installation</a>
+          <a href="#process">Maintenance</a>
+        </div>
+      </div>
+
+      <a href="#contact">Contact</a>
+      <a class="btn light open-calc-btn" href="#">Solar Calculator 🧮</a>
+     
+    </div>
+
+    <!-- Hamburger Toggle Button -->
+    <button
+      class="hamburger-btn"
+      id="menuToggle"
+      aria-label="Toggle navigation menu"
+      aria-expanded="false"
+    >
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu Dropdown -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="container mobile-menu-inner">
+      <!-- Solutions -->
+      <div class="mobile-group">
+        <div class="mobile-group-head">
+          <a class="mobile-link">Solutions</a>
+          <button class="mobile-sub-toggle" aria-label="Show Solutions options" aria-expanded="false"></button>
+        </div>
+        <div class="mobile-sub">
+          <a href="pgs/solar-rooftop.html">Solar Rooftops</a>
+          <a href="pgs/solar-water-heater.html">Solar Water Heater</a>
+          <a href="pgs/heat-pump.html">Heat Pump</a>
+          <a href="pgs/solar-utility-products.html">Solar Utility Product</a>
+          <a href="pgs/solar-epc.html">Solar EPC</a>
+          <a href="pgs/o-and-m-repair.html">O&amp;M Repair</a>
+          <a href="pgs/energy-audit.html">Energy Audit</a>
+          <a href="pgs/csr-and-awareness.html">CSR and Awareness</a>
+        </div>
+      </div>
+
+      <!-- About -->
+      <div class="mobile-group">
+        <div class="mobile-group-head">
+          <a class="mobile-link" href="pgs/about_us.html">About</a>
+          <button class="mobile-sub-toggle" aria-label="Show About options" aria-expanded="false"></button>
+        </div>
+        <div class="mobile-sub">
+          <a href="pgs/about_us.html">Our Story</a>
+          <a href="pgs/about_us.html">Our Team</a>
+          <a href="pgs/certifications.html">Certifications</a>
+        </div>
+      </div>
+
+      <!-- Process -->
+      <div class="mobile-group">
+        <div class="mobile-group-head">
+          <a class="mobile-link">Process</a>
+          <button class="mobile-sub-toggle" aria-label="Show Process options" aria-expanded="false"></button>
+        </div>
+        <div class="mobile-sub">
+          <a href="#process">Site Survey</a>
+          <a href="#process">Design &amp; Approval</a>
+          <a href="#process">Installation</a>
+          <a href="#process">Maintenance</a>
+        </div>
+      </div>
+
+      <a class="mobile-link" href="#contact">Contact</a>
+      <a class="btn light open-calc-btn" href="#">Solar Calculator 🧮</a>
+      <a class="btn full" href="#contact" id="mobileCta">Get a Quote</a>
+    </div>
+  </div>
+</nav>
+
+    <!-- =========================================
+       PAGE HERO
+       ========================================= -->
+    <header class="rt-hero">
+      <div class="rt-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&w=1920&q=80')"></div>
+      <div class="rt-hero-overlay"></div>
+
+      <div class="container rt-hero-inner">
+        <div class="rt-hero-text">
+          <p class="rt-crumbs">
+            <a href="../index.html">Home</a> / <a href="../index.html#solutions">Solutions</a> / O&amp;M Repair
+          </p>
+          <h1>Keep your solar plant generating at peak capacity.</h1>
+          <p class="rt-lead">
+            Maintenance contracts, preventive health checks, string testing and thermal imaging for rooftop and ground-mount plants. We service systems we did not install, too.
+          </p>
+          <div class="rt-hero-actions">
+            <a class="btn" href="#contact">Book a plant health check</a>
+            <a class="btn light" href="#rt-size">See what I may be losing</a>
+          </div>
+        </div>
+
+        <aside class="rt-hero-facts" aria-label="Key facts">
+          <div><b>Any make</b><span>we service plants installed by others</span></div>
+          <div><b>Thermal</b><span>imaging finds hidden hotspots</span></div>
+          <div><b>Report</b><span>after every scheduled visit</span></div>
+          <div><b>Pune</b><span>and across Maharashtra</span></div>
+        </aside>
+      </div>
+    </header>
+
+    <main>
+      <!-- =========================================
+         WHY O&M MATTERS
+         ========================================= -->
+      <section class="rt-section" id="rt-how">
+        <div class="container">
+          <div class="rt-head">
+            <h2>Why solar plants need looking after</h2>
+            <p>Solar has no moving parts, but output still drops quietly over time. Most losses are small, hidden and fixable.</p>
+          </div>
+
+          <div class="om-causes">
+            <article>
+              <h3>Dust and bird droppings</h3>
+              <p>A film of dirt blocks sunlight. In dry months it can cut output noticeably between cleanings.</p>
+            </article>
+            <article>
+              <h3>Hotspots and cracked cells</h3>
+              <p>Damaged cells overheat and drag down the whole string. You cannot see them by eye.</p>
+            </article>
+            <article>
+              <h3>Loose or corroded connections</h3>
+              <p>MC4 connectors and cable joints loosen with heat and weather, causing losses and fire risk.</p>
+            </article>
+            <article>
+              <h3>Inverter faults and shading</h3>
+              <p>Tripped inverters and new shade from trees or buildings can go unnoticed for weeks.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================
+         WHO IT'S FOR
+         ========================================= -->
+      <section class="rt-section rt-tint" id="rt-segments">
+        <div class="container">
+          <div class="rt-head">
+            <h2>Who we maintain plants for</h2>
+            <p>The same discipline, scaled to the size of your plant.</p>
+          </div>
+
+          <div class="rt-segments">
+            <article class="rt-seg">
+              <h3>Homes &amp; bungalows</h3>
+              <p class="rt-seg-size">1 kW – 10 kW</p>
+              <p>Regular cleaning and a yearly health check so your savings stay on track.</p>
+              <ul>
+                <li>Simple yearly or half-yearly plans</li>
+                <li>Inverter and meter check</li>
+              </ul>
+            </article>
+
+            <article class="rt-seg">
+              <h3>Housing societies</h3>
+              <p class="rt-seg-size">5 kW – 100 kW</p>
+              <p>Protect a shared asset and the common-area savings it delivers.</p>
+              <ul>
+                <li>Committee-ready service reports</li>
+                <li>Scheduled cleaning and inspections</li>
+              </ul>
+            </article>
+
+            <article class="rt-seg">
+              <h3>Commercial buildings</h3>
+              <p class="rt-seg-size">25 kW – 500 kW</p>
+              <p>Keep generation predictable for offices, malls and institutions.</p>
+              <ul>
+                <li>Monitoring and fault alerts</li>
+                <li>Performance reports for management</li>
+              </ul>
+            </article>
+
+            <article class="rt-seg">
+              <h3>Industries &amp; ground-mount</h3>
+              <p class="rt-seg-size">100 kW – 2 MW+</p>
+              <p>Every lost unit costs real money at this scale, so testing is more detailed.</p>
+              <ul>
+                <li>String-level testing and thermal scans</li>
+                <li>Site team and spares plan</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================
+         SERVICES TABS
+         ========================================= -->
+      <section class="rt-section" id="rt-types">
+        <div class="container">
+          <div class="rt-head">
+            <h2>What we check and how</h2>
+            <p>Each service has a clear method and a written result, so you can see what was found and what was done.</p>
+          </div>
+
+          <div class="rt-tabs" role="tablist" aria-label="O&amp;M services">
+            <button class="rt-tab active" role="tab" aria-selected="true" aria-controls="tab-prev" id="t-prev">Preventive checks</button>
+            <button class="rt-tab" role="tab" aria-selected="false" aria-controls="tab-string" id="t-string" tabindex="-1">String testing</button>
+            <button class="rt-tab" role="tab" aria-selected="false" aria-controls="tab-thermal" id="t-thermal" tabindex="-1">Thermal imaging</button>
+            <button class="rt-tab" role="tab" aria-selected="false" aria-controls="tab-repair" id="t-repair" tabindex="-1">Repairs</button>
+          </div>
+
+          <div class="rt-panel active" role="tabpanel" id="tab-prev" aria-labelledby="t-prev">
+            <div class="rt-panel-main">
+              <h3>Preventive health checks</h3>
+              <p>
+                A scheduled walk-through of the whole plant: panels, structure, wiring, inverter, earthing and protection. We catch small problems before they become expensive ones.
+              </p>
+              <p><strong>Best for:</strong> every plant, as the base of any maintenance plan.</p>
+            </div>
+            <dl class="rt-spec">
+              <div><dt>Panels</dt><dd>Visual check for cracks and soiling</dd></div>
+              <div><dt>Wiring</dt><dd>Connector and cable tightness</dd></div>
+              <div><dt>Inverter</dt><dd>Fault log and cooling check</dd></div>
+              <div><dt>You receive</dt><dd>Checklist report with photos</dd></div>
+            </dl>
+          </div>
+
+          <div class="rt-panel" role="tabpanel" id="tab-string" aria-labelledby="t-string" hidden>
+            <div class="rt-panel-main">
+              <h3>String testing</h3>
+              <p>
+                We measure voltage and current of each string and compare it with what it should produce. A weak string points to a faulty panel, connector or cable before you notice a drop in your bill savings.
+              </p>
+              <p><strong>Best for:</strong> larger plants and any plant with falling output.</p>
+            </div>
+            <dl class="rt-spec">
+              <div><dt>Measures</dt><dd>Open-circuit voltage and current</dd></div>
+              <div><dt>Also checks</dt><dd>Insulation resistance and earthing</dd></div>
+              <div><dt>Finds</dt><dd>Weak strings and faulty connections</dd></div>
+              <div><dt>You receive</dt><dd>String-wise test sheet</dd></div>
+            </dl>
+          </div>
+
+          <div class="rt-panel" role="tabpanel" id="tab-thermal" aria-labelledby="t-thermal" hidden>
+            <div class="rt-panel-main">
+              <h3>Thermal imaging</h3>
+              <p>
+                An infrared camera shows panels, joints and inverters that are running hotter than normal. Hotspots, failing bypass diodes and loose connections stand out clearly, even when everything looks fine to the eye.
+              </p>
+              <p><strong>Best for:</strong> finding hidden faults and fire risks early.</p>
+            </div>
+            <dl class="rt-spec">
+              <div><dt>Method</dt><dd>Infrared scan in strong sunlight</dd></div>
+              <div><dt>Finds</dt><dd>Hotspots and failing diodes</dd></div>
+              <div><dt>Also scans</dt><dd>Joints, fuses and inverters</dd></div>
+              <div><dt>You receive</dt><dd>Annotated thermal images</dd></div>
+            </dl>
+          </div>
+
+          <div class="rt-panel" role="tabpanel" id="tab-repair" aria-labelledby="t-repair" hidden>
+            <div class="rt-panel-main">
+              <h3>Repairs and replacements</h3>
+              <p>
+                When something has failed, we diagnose it, give you a clear quote and fix it. That includes panels, connectors, cables, inverters, structure repairs and monitoring faults.
+              </p>
+              <p><strong>Best for:</strong> plants that are down, underperforming or showing alarms.</p>
+            </div>
+            <dl class="rt-spec">
+              <div><dt>Diagnosis</dt><dd>Fault tracing on site</dd></div>
+              <div><dt>Quote</dt><dd>Before any work begins</dd></div>
+              <div><dt>Parts</dt><dd>Compatible with your plant</dd></div>
+              <div><dt>You receive</dt><dd>Repair report and retest result</dd></div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================
+         LOSS ESTIMATOR + SCHEDULE
+         ========================================= -->
+      <section class="rt-section rt-tint" id="rt-size">
+        <div class="container rt-two">
+          <div>
+            <div class="rt-head rt-head-left">
+              <h2>What could poor upkeep cost me?</h2>
+              <p>Enter your plant size and how it is looked after today. This shows a rough yearly loss, not a measurement.</p>
+            </div>
+
+            <form class="rt-est" id="omEstimator" onsubmit="return false">
+              <label for="omKw">Plant size (kW)</label>
+              <input id="omKw" type="number" min="1" step="1" value="50" inputmode="numeric" />
+              <input id="omKwRange" type="range" min="1" max="1000" step="1" value="50" aria-label="Plant size slider" />
+
+              <label for="omCare">How is the plant maintained now?</label>
+              <select id="omCare" class="om-select">
+                <option value="0.15">Rarely cleaned or checked</option>
+                <option value="0.08" selected>Cleaned now and then</option>
+                <option value="0.03">Regular cleaning, no testing</option>
+              </select>
+
+              <div class="rt-est-out" aria-live="polite">
+                <div><span>Expected output (per year)</span><b id="omGen">–</b></div>
+                <div><span>Units lost (per year)</span><b id="omLost">–</b></div>
+                <div><span>Value lost (per year)</span><b id="omValue">–</b></div>
+                <div><span>Recoverable with O&amp;M</span><b id="omBack">–</b></div>
+              </div>
+              <p class="rt-note">Assumes about 1,440 units per kW per year and about ₹8 per unit. Loss levels of 15%, 8% and 3% are rough illustrations for dusty, average and well-kept plants. A site health check gives the real number. A properly maintained plant still loses about 2% to normal wear.</p>
+            </form>
+          </div>
+
+          <div class="rt-subsidy">
+            <h3>Typical service schedule</h3>
+            <p>A usual plan for a commercial plant. We adjust the frequency to your site and dust levels.</p>
+            <table>
+              <thead>
+                <tr><th>Task</th><th>How often</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Panel cleaning</td><td>Every 2–4 weeks</td></tr>
+                <tr><td>Visual inspection</td><td>Quarterly</td></tr>
+                <tr><td>Inverter service</td><td>Half-yearly</td></tr>
+                <tr><td>String testing</td><td>Half-yearly</td></tr>
+                <tr><td>Thermal imaging</td><td>Yearly</td></tr>
+                <tr><td>Earthing and protection test</td><td>Yearly</td></tr>
+              </tbody>
+            </table>
+            <p class="rt-note">Indicative. Dusty sites, construction nearby or bird activity need more frequent cleaning.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================
+         CONTRACT PLANS
+         ========================================= -->
+      <section class="rt-section" id="rt-models">
+        <div class="container">
+          <div class="rt-head">
+            <h2>Maintenance contract plans</h2>
+            <p>Pick the level of cover that suits your plant. We confirm scope and price after a site visit.</p>
+          </div>
+
+          <div class="om-plans">
+            <article>
+              <h3>Basic</h3>
+              <p class="om-plan-for">For small home and society plants</p>
+              <ul>
+                <li>Scheduled panel cleaning</li>
+                <li>Half-yearly inspection visit</li>
+                <li>Inverter and meter check</li>
+                <li>Visit report</li>
+              </ul>
+            </article>
+            <article class="om-plan-main">
+              <h3>Standard</h3>
+              <p class="om-plan-for">For commercial and institutional plants</p>
+              <ul>
+                <li>Everything in Basic</li>
+                <li>Quarterly inspections</li>
+                <li>String testing and earthing test</li>
+                <li>Monitoring review and alerts</li>
+                <li>Priority fault response</li>
+              </ul>
+            </article>
+            <article>
+              <h3>Comprehensive</h3>
+              <p class="om-plan-for">For industrial and ground-mount plants</p>
+              <ul>
+                <li>Everything in Standard</li>
+                <li>Yearly thermal imaging</li>
+                <li>Performance ratio report</li>
+                <li>Minor repairs included</li>
+                <li>On-site team or fast call-out</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================
+         PROCESS
+         ========================================= -->
+      <section class="rt-section rt-tint" id="rt-process">
+        <div class="container">
+          <div class="rt-head">
+            <h2>How we take over your plant</h2>
+            <p>Whether we built it or not, we start by finding out where it stands today.</p>
+          </div>
+
+          <ol class="rt-steps">
+            <li>
+              <h3>Baseline health check</h3>
+              <p>A full inspection, string test and thermal scan to see how the plant is really performing.</p>
+            </li>
+            <li>
+              <h3>Findings report</h3>
+              <p>Photos, readings and a ranked list of problems with the cost of fixing each one.</p>
+            </li>
+            <li>
+              <h3>Plan and contract</h3>
+              <p>A maintenance schedule and plan matched to your plant and budget.</p>
+            </li>
+            <li>
+              <h3>Fixes</h3>
+              <p>Faulty parts repaired or replaced, then the plant is retested.</p>
+            </li>
+            <li>
+              <h3>Scheduled visits</h3>
+              <p>Cleaning, inspection and testing on the agreed dates, with a report each time.</p>
+            </li>
+            <li>
+              <h3>Review</h3>
+              <p>We compare generation with expected output and adjust the plan if needed.</p>
+            </li>
+          </ol>
+
+          <div class="rt-included">
+            <h3>Every contract includes</h3>
+            <ul>
+              <li>Scheduled visits on fixed dates</li>
+              <li>Written report with photos after each visit</li>
+              <li>Fault diagnosis and clear repair quotes</li>
+              <li>Safe roof access and trained technicians</li>
+              <li>Help with warranty claims on panels and inverters</li>
+              <li>A single contact for all service requests</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================
+         FAQ
+         ========================================= -->
+      <section class="rt-section" id="rt-faq">
+        <div class="container rt-faq-wrap">
+          <div class="rt-head rt-head-left">
+            <h2>Questions about solar maintenance</h2>
+            <p>Not here? Call <a href="tel:+919881855770">+91 98818 55770</a> and we will answer.</p>
+          </div>
+
+          <div class="rt-faq">
+            <details>
+              <summary>Do you maintain plants that someone else installed?</summary>
+              <p>Yes. We start with a baseline health check so we know the plant's condition and what needs fixing before we agree a contract.</p>
+            </details>
+            <details>
+              <summary>How often should panels be cleaned?</summary>
+              <p>It depends on dust, rain, nearby construction and bird activity. Most plants need cleaning every few weeks. We adjust the schedule once we see how quickly yours gets dirty.</p>
+            </details>
+            <details>
+              <summary>Can cleaning damage my panels?</summary>
+              <p>Not if it is done properly. We use soft brushes or wipes and clean water, and we avoid cleaning in the hottest part of the day, since cold water on hot glass can stress it.</p>
+            </details>
+            <details>
+              <summary>How do you know my plant is underperforming?</summary>
+              <p>We compare actual generation with the expected output for your plant and weather, then trace gaps with string tests and thermal images.</p>
+            </details>
+            <details>
+              <summary>What if a panel or inverter is under warranty?</summary>
+              <p>We diagnose the fault, collect the evidence the manufacturer asks for and help you raise the claim. Repairs outside warranty are quoted before work begins.</p>
+            </details>
+            <details>
+              <summary>Is a maintenance contract compulsory?</summary>
+              <p>No. You can book a one-time health check or a repair visit. A contract simply gives you scheduled visits and faster response.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================
+         ENQUIRY
+         ========================================= -->
+      <section class="rt-section rt-contact" id="contact">
+        <div class="container rt-two">
+          <div class="rt-contact-text">
+            <h2>Book a plant health check</h2>
+            <p>Tell us about your plant and any problems you have noticed. We will call you to arrange a visit.</p>
+            <ul>
+              <li><small>Call</small> <a href="tel:+919881855770">+91 98818 55770</a></li>
+              <li><small>Email</small> <a href="mailto:sales@sungetsolarinfra.com">sales@sungetsolarinfra.com</a></li>
+              <li><small>Office</small> Renuka Industries Estate, Narhe, Pune 411041</li>
+            </ul>
+          </div>
+
+          <form class="form rt-form" id="leadForm">
+            <input name="name" required placeholder="Your name" />
+            <input name="phone" required type="tel" placeholder="Phone number" />
+            <input name="email" type="email" placeholder="Email address" />
+            <select name="interest">
+              <option value="O&M – Annual Maintenance Contract">Annual maintenance contract</option>
+              <option value="O&M – One-time Health Check">One-time health check</option>
+              <option value="O&M – Repair">Repair or fault</option>
+              <option value="O&M – Thermal Imaging / String Testing">Thermal imaging or string testing</option>
+            </select>
+            <textarea name="message" placeholder="Plant size, location, inverter make, and what problem you see (if any)"></textarea>
+            <button class="btn full" type="submit">Request a visit</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER (same as index.html, paths fixed for /pgs) -->
+    <footer>
+      <div class="container">
+        <div class="foot">
+          <div class="foot-col foot-brand-col">
+            <a class="brand" href="../index.html" aria-label="SunGET Solar Infra Home">
+              <img class="normal_logo footer_logo" src="../images/logo.png" alt="SunGET Solar Infra Pvt. Ltd." />
+            </a>
+            <p>
+              SunGET Solar Infra Pvt. Ltd. is a premier Pune-based solar energy
+              company providing end-to-end EPC solar solutions, rooftop
+              installations, and long-term O&M services across Maharashtra.
+            </p>
+            <div class="foot-badges">
+              <span class="foot-badge">⚡ ISO Certified</span>
+              <span class="foot-badge">🌱 Govt. Approved</span>
+            </div>
+          </div>
+
+          <div class="foot-col">
+            <h4 class="foot-heading">Quick Links</h4>
+            <div class="footlinks">
+              <a href="../index.html#solutions">Solar Solutions</a>
+              <a href="../index.html#about">Why Choose Us</a>
+              <a href="../index.html#process">How It Works</a>
+              <a class="open-calc-btn" href="#">Solar Calculator 🧮</a>
+              
+            </div>
+          </div>
+
+          <div class="foot-col">
+            <h4 class="foot-heading">Company &amp; Legal</h4>
+            <div class="footlinks">
+              <a href="privacy-policy.html">Privacy Policy</a>
+              <a href="#">Terms of Use</a>
+              <a href="about_us.html">About SunGET</a>
+              <a href="#contact">Contact Support</a>
+            </div>
+          </div>
+
+          <div class="foot-col">
+            <h4 class="foot-heading">Get in Touch</h4>
+            <div class="foot-contact">
+              <p>
+                <strong>Office:</strong><br />Renuka Industries Estate, Opp.
+                Abhiruchi Parisar, Narhe, Pune - 411041
+              </p>
+              <p>
+                <strong>Registered:</strong><br />1447/48, Keshavsut Rd,
+                Sadashiv Peth, Pune - 411030
+              </p>
+              <p>📞 <a href="tel:+919881855770">(+91) 98818 55770</a></p>
+              <p>
+                ✉️
+                <a href="mailto:sales@sungetsolarinfra.com">sales@sungetsolarinfra.com</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="copy">
+          <span>© 2026 SunGET Solar Infra Pvt. Ltd. All rights reserved.</span>
+          <div class="copy-links">
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <span>•</span>
+            <a href="#">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div
+      class="toast"
+      id="toast"
+      role="status"
+      aria-live="polite"
+      style="display:none;position:fixed;bottom:20px;right:20px;background:var(--ink);color:#fff;padding:12px 20px;border-radius:12px;z-index:99999;"
+    >
+      Thanks! Your enquiry has been received.
+    </div>
+
+    <!-- rooftop.js handles the tabs (generic); om.js handles the loss estimator -->
+    <script src="../src/rooftop.js"></script>
+    <script src="../src/om.js"></script>
+    <script src="../src/script.js"></script>
+  </body>
+</html>
