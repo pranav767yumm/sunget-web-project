@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Solar Calculator</title>
+  <style>
+    :root {
+      box-sizing: border-box;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+      --bg: #f6fbe9;
+      --bg2: #fff6cc;
+      --card: #ffffff;
+      --text: #1d2b14;
+      --muted: #5d6b52;
+      --green: #2e8b3d;
+      --green-dark: #1f6b2c;
+      --sun: #f7b500;
+      --sun-soft: #fff1b8;
+      --border: #dfe8c8;
+      --error: #b3261e;
+      --error-bg: #fdecea;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #11190d; --bg2: #1d1a06; --card: #1a2415; --text: #eef5e2;
+        --muted: #a7b79a; --green: #5ccb6e; --green-dark: #3fae52;
+        --sun: #ffc82e; --sun-soft: #3a3108; --border: #2c3a23;
+        --error: #ff8a80; --error-bg: #3a1c1a;
+      }
+    }
+    :root[data-theme="dark"] {
+      --bg: #11190d; --bg2: #1d1a06; --card: #1a2415; --text: #eef5e2;
+      --muted: #a7b79a; --green: #5ccb6e; --green-dark: #3fae52;
+      --sun: #ffc82e; --sun-soft: #3a3108; --border: #2c3a23;
+      --error: #ff8a80; --error-bg: #3a1c1a;
+    }
+    html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: linear-gradient(160deg, var(--bg2) 0%, var(--bg) 55%);
+      background-color: var(--bg);
+      display: flex;
+      justify-content: center;
+      padding: 20px 16px 32px;
+    }
+    .wrap { width: 100%; max-width: 440px; }
+    header { text-align: center; margin-bottom: 18px; }
+    .sun {
+      width: 64px; height: 64px; margin: 0 auto 10px; border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #ffe680, var(--sun));
+      box-shadow: 0 0 0 8px rgba(247,181,0,.18), 0 0 0 16px rgba(247,181,0,.09);
+    }
+    h1 { margin: 0; font-size: 1.6rem; color: var(--green-dark); }
+    header p { margin: 6px 0 0; color: var(--muted); font-size: .95rem; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: 0 6px 20px rgba(46,139,61,.08);
+    }
+    label { display: block; font-weight: 600; margin-bottom: 8px; }
+    
+    .type-selector {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+      background: var(--bg);
+      padding: 4px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+    .type-btn {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .type-btn.active {
+      background: var(--card);
+      color: var(--green-dark);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+
+    input[type="number"] {
+      width: 100%; font-size: 1.1rem; padding: 13px 14px;
+      border: 2px solid var(--border); border-radius: 12px;
+      background: var(--card); color: var(--text); outline: none;
+    }
+    input[type="number"]:focus { border-color: var(--sun); box-shadow: 0 0 0 3px rgba(247,181,0,.25); }
+    .error {
+      display: none; margin-top: 10px; padding: 10px 12px; border-radius: 10px;
+      background: var(--error-bg); color: var(--error); font-size: .92rem;
+    }
+    .row { display: flex; gap: 10px; margin-top: 14px; }
+    button, .btn {
+      font: inherit; font-weight: 700; border: 0; border-radius: 12px;
+      padding: 13px 16px; cursor: pointer; text-align: center;
+      text-decoration: none; display: block;
+    }
+    .primary { flex: 1; background: var(--sun); color: #3a2c00; }
+    .primary:active { filter: brightness(.95); }
+    .secondary { background: transparent; color: var(--green-dark); border: 2px solid var(--green); }
+    .whatsapp { background: var(--green); color: #fff; width: 100%; margin-top: 16px; }
+    .whatsapp:active { background: var(--green-dark); }
+    .result {
+      display: none; margin-top: 18px; padding: 18px; border-radius: 14px;
+      background: var(--sun-soft); border: 1px solid var(--sun);
+    }
+    .result .item + .item { margin-top: 12px; padding-top: 12px; border-top: 1px dashed rgba(0,0,0,0.1); }
+    .result .k { font-size: .85rem; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+    .result .v { font-size: 1.5rem; font-weight: 800; color: var(--green-dark); line-height: 1.2; }
+    .result .v.large { font-size: 1.9rem; }
+    .result .v.highlight { color: var(--green-dark); }
+    .note { margin: 14px 0 0; text-align: center; color: var(--muted); font-size: .8rem; }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="sun" aria-hidden="true"></div>
+    <h1>Solar Calculator</h1>
+    <p>Find the right rooftop solar size & subsidy for your setup</p>
+  </header>
+
+  <main class="card">
+    <label>Connection Category</label>
+    <div class="type-selector" id="typeSelector">
+      <button type="button" class="type-btn active" data-type="residential">Residential</button>
+      <button type="button" class="type-btn" data-type="commercial">Commercial</button>
+    </div>
+
+    <label for="units">Monthly electricity units consumed (kWh)</label>
+    <input id="units" type="number" inputmode="numeric" min="1" step="1" placeholder="e.g. 200">
+    <div id="error" class="error" role="alert"></div>
+
+    <div class="row">
+      <button id="calcBtn" class="primary" type="button">Calculate</button>
+      <button id="resetBtn" class="secondary" type="button">Reset</button>
+    </div>
+
+    <section id="result" class="result" aria-live="polite">
+      <div class="item">
+        <div class="k">Recommended System Size</div>
+        <div class="v large" id="kwOut"></div>
+      </div>
+      <div class="item">
+        <div class="k">Estimated Base Price</div>
+        <div class="v" id="priceOut"></div>
+      </div>
+      <div class="item" id="subsidyRow">
+        <div class="k">Government Subsidy (PM Surya Ghar)</div>
+        <div class="v highlight" id="subsidyOut"></div>
+      </div>
+      <div class="item">
+        <div class="k">Effective Price (Approx.)</div>
+        <div class="v large" id="finalPriceOut"></div>
+      </div>
+      <a id="waBtn" class="btn whatsapp" href="#" target="_blank" rel="noopener noreferrer">Get Quote on WhatsApp</a>
+    </section>
+  </main>
+  <p class="note">Indicative estimate. Final quote & subsidy claims subject to DISCOM site survey.</p>
+</div>
+
+<script>
+/* ================= EDIT HERE ================= */
+const CONFIG = {
+  whatsappNumber: "918530781262",
+  gstRate: 0, // 13.8% total effective GST (5% on goods/services split ratio)
+
+  slabs: [
+    { maxUnits: 150, kw: 1 },
+    { maxUnits: 250, kw: 2 }
+  ],
+
+  aboveSlabs: {
+    baseKw: 3,
+    unitsPerExtraKw: 100
+  },
+
+  fixedPrices: {
+    1: 120000,
+    2: 160000
+  },
+  pricePerKw: 70000,
+
+  // PM Surya Ghar Subsidy Structure
+  subsidy: {
+    1: 30000,
+    2: 60000,
+    max: 78000 // For 3 kW and above
+  }
+};
+/* ============================================= */
+
+let selectedCategory = "residential";
+
+const $ = (id) => document.getElementById(id);
+const unitsEl = $("units"), errorEl = $("error"), resultEl = $("result");
+
+// Handle Category Selection
+document.querySelectorAll(".type-btn").forEach(btn => {
+  btn.addEventListener("click", (e) => {
+    document.querySelectorAll(".type-btn").forEach(b => b.classList.remove("active"));
+    e.target.classList.add("active");
+    selectedCategory = e.target.dataset.type;
+  });
+});
+
+function getSystemKw(units) {
+  for (const s of CONFIG.slabs) {
+    if (units <= s.maxUnits) return s.kw;
+  }
+  const lastMax = CONFIG.slabs[CONFIG.slabs.length - 1].maxUnits;
+  const extra = Math.floor((units - lastMax - 1) / CONFIG.aboveSlabs.unitsPerExtraKw);
+  return CONFIG.aboveSlabs.baseKw + extra;
+}
+
+function getPrice(kw) {
+  if (CONFIG.fixedPrices[kw] !== undefined) return CONFIG.fixedPrices[kw];
+  return kw * CONFIG.pricePerKw;
+}
+
+function getSubsidyAmount(kw, category) {
+  if (category === "commercial") return 0; // Commercial gets no direct government subsidy
+  if (kw === 1) return CONFIG.subsidy[1];
+  if (kw === 2) return CONFIG.subsidy[2];
+  return CONFIG.subsidy.max;
+}
+
+function formatINR(n) {
+  return "₹" + n.toLocaleString("en-IN");
+}
+
+function showError(msg) {
+  errorEl.textContent = msg;
+  errorEl.style.display = "block";
+  resultEl.style.display = "none";
+}
+
+function calculate() {
+  errorEl.style.display = "none";
+  const raw = unitsEl.value.trim();
+  const units = Math.round(Number(raw));
+  
+  if (raw === "" || !isFinite(units) || units <= 0) {
+    showError("Please enter a valid number of units greater than 0.");
+    return;
+  }
+
+  const kw = getSystemKw(units);
+  const basePrice = getPrice(kw);
+  const subsidy = getSubsidyAmount(kw, selectedCategory);
+  
+  const gstAmount = Math.round(basePrice * CONFIG.gstRate);
+  const totalPriceWithGst = basePrice + gstAmount;
+  const netEffectivePrice = Math.max(0, totalPriceWithGst - subsidy);
+
+  $("kwOut").textContent = kw + " kW (" + (selectedCategory === "residential" ? "Residential" : "Commercial") + ")";
+  $("priceOut").textContent = formatINR(basePrice) + " + GST";
+
+  if (selectedCategory === "commercial") {
+    $("subsidyOut").textContent = "₹0 (Commercial - N/A)";
+  } else {
+    $("subsidyOut").textContent = formatINR(subsidy) + " (Govt. Subsidy)";
+  }
+
+  $("finalPriceOut").textContent = formatINR(netEffectivePrice) + "+ GST*";
+
+  const msg =
+    "Hello, I’d like a solar quote.\n" +
+    "Category: " + selectedCategory.toUpperCase() + "\n" +
+    "Monthly units: " + units + " kWh\n" +
+    "Recommended system: " + kw + " kW\n" +
+    "Base Price: " + formatINR(basePrice) + " + GST\n" +
+    "Govt. Subsidy: " + formatINR(subsidy) + "\n" +
+    "Estimated Net Cost: " + formatINR(netEffectivePrice);
+
+  $("waBtn").href = "https://wa.me/" + CONFIG.whatsappNumber + "?text=" + encodeURIComponent(msg);
+
+  resultEl.style.display = "block";
+}
+
+function reset() {
+  unitsEl.value = "";
+  errorEl.style.display = "none";
+  resultEl.style.display = "none";
+  unitsEl.focus();
+}
+
+$("calcBtn").addEventListener("click", calculate);
+$("resetBtn").addEventListener("click", reset);
+unitsEl.addEventListener("keydown", (e) => { if (e.key === "Enter") calculate(); });
+</script>
+</body>
+</html>
