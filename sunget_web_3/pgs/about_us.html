@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About SunGET Solar Infra | Our Story, Journey &amp; Team</title>
+    <meta
+      name="description"
+      content="Meet the people behind SunGET Solar Infra, a Pune-based solar company. Read our story, our journey through the years, our values and meet the team."
+    />
+    <meta property="og:title" content="About SunGET Solar Infra | Our Story, Journey &amp; Team" />
+    <meta property="og:description" content="Great people. Great ideas. One vision. Meet the team powering Maharashtra with clean solar energy." />
+    <meta property="og:type" content="website" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../style/style.css" />
+    <link rel="stylesheet" href="../style/about.css" />
+  </head>
+
+  <body class="about-page">
+    <!-- NAVIGATION (same as the other pages, paths fixed for /pgs) -->
+    <nav class="nav">
+      <div class="container navin">
+        <a href="../index.html" class="brand-link">
+          <img
+            class="normal_logo"
+            src="../images/logo.png"
+            alt="SunGET Solar Infra Pvt. Ltd."
+            title="SunGET Solar Infra Pvt. Ltd."
+          />
+        </a>
+
+        <div class="links">
+          <div class="dropdown">
+            <a href="../index.html#solutions" class="dropdown-toggle">
+              Solutions <span class="caret"></span>
+            </a>
+            <div class="dropdown-menu">
+              <a href="solar-rooftop.html">Solar Rooftop Systems</a>
+              <a href="solar-water-heater.html">Solar Water Heating</a>
+              <a href="heat-pump.html">Heat Pump Solutions</a>
+              <a href="solar-epc.html">Solar EPC</a>
+              <a href="o-and-m-repair.html">O&amp;M Repair</a>
+              <a href="energy-audit.html">Energy Audit</a>
+              <a href="csr-and-awareness.html">CSR &amp; Awareness</a>
+            </div>
+          </div>
+
+          <div class="dropdown">
+            <a href="#story" class="dropdown-toggle">
+              About <span class="caret"></span>
+            </a>
+            <div class="dropdown-menu">
+              <a href="#story">Our Story</a>
+              <a href="/pgs/about_us.html">Our Team</a>
+              <a href="#certifications">Certifications</a>
+            </div>
+          </div>
+
+          <div class="dropdown">
+            <a href="../index.html#process" class="dropdown-toggle">
+              Process <span class="caret"></span>
+            </a>
+            <div class="dropdown-menu">
+              <a href="#rt-process">Site Survey</a>
+              <a href="#rt-process">Design &amp; Approval</a>
+              <a href="#rt-process">Installation</a>
+              <a href="#rt-process">Maintenance</a>
+            </div>
+          </div>
+
+          <a href="../index.html#contact">Contact</a>
+          <a class="btn light open-calc-btn" href="#">Solar Calculator 🧮</a>
+          <a class="btn" href="../index.html#contact">Get a Quote</a>
+        </div>
+
+        <button
+          class="hamburger-btn"
+          id="menuToggle"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+        >
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+
+      <div class="mobile-menu" id="mobileMenu">
+        <div class="container mobile-menu-inner">
+          <div class="mobile-group">
+            <div class="mobile-group-head">
+              <a class="mobile-link" href="../index.html#solutions">Solutions</a>
+              <button class="mobile-sub-toggle" aria-label="Show Solutions options" aria-expanded="false"></button>
+            </div>
+            <div class="mobile-sub">
+              <a href="solar-rooftop.html">Solar Rooftop Systems</a>
+              <a href="solar-water-heater.html">Solar Water Heating</a>
+              <a href="heat-pump.html">Heat Pump Solutions</a>
+              <a href="solar-epc.html">Solar EPC</a>
+              <a href="o-and-m-repair.html">O&amp;M Repair</a>
+              <a href="energy-audit.html">Energy Audit</a>
+              <a href="csr-and-awareness.html">CSR &amp; Awareness</a>
+            </div>
+          </div>
+
+          <div class="mobile-group">
+            <div class="mobile-group-head">
+              <a class="mobile-link" href="#story">About</a>
+              <button class="mobile-sub-toggle" aria-label="Show About options" aria-expanded="false"></button>
+            </div>
+            <div class="mobile-sub">
+              <a href="#story">Our Story</a>
+              <a href="#team">Our Team</a>
+              <a href="#certifications">Certifications</a>
+            </div>
+          </div>
+
+          <div class="mobile-group">
+            <div class="mobile-group-head">
+              <a class="mobile-link" href="../index.html#process">Process</a>
+              <button class="mobile-sub-toggle" aria-label="Show Process options" aria-expanded="false"></button>
+            </div>
+            <div class="mobile-sub">
+              <a href="#rt-process">Site Survey</a>
+              <a href="#rt-process">Design &amp; Approval</a>
+              <a href="#rt-process">Installation</a>
+              <a href="#rt-process">Maintenance</a>
+            </div>
+          </div>
+
+          <a class="mobile-link" href="../index.html#contact">Contact</a>
+          <a class="btn light open-calc-btn" href="#">Solar Calculator 🧮</a>
+          <a class="btn full" href="../index.html#contact" id="mobileCta">Get a Quote</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Demo-content notice (turn off with demo: false in src/team-data.js) -->
+    <div class="demo-bar" id="demoBar" hidden>
+      <div class="container demo-bar-in">
+        <p><strong>Demo content.</strong> Team members, photos, years and certificates are placeholders. Edit <code>src/team-data.js</code>, then set <code>demo: false</code> to hide this bar.</p>
+        <button type="button" id="demoClose" aria-label="Hide this notice">&times;</button>
+      </div>
+    </div>
+
+    <main id="top">
+      <!-- =========================================
+         1. HERO
+         ========================================= -->
+      <header class="ab-hero">
+        <div class="ab-hero-deco" aria-hidden="true">
+          <svg viewBox="0 0 600 600" fill="none" stroke="currentColor" stroke-width="1.2">
+            <circle cx="300" cy="300" r="90"/><circle cx="300" cy="300" r="150"/><circle cx="300" cy="300" r="210"/><circle cx="300" cy="300" r="270"/>
+            <path d="M300 10v90M300 500v90M10 300h90M500 300h90M95 95l64 64M441 441l64 64M505 95l-64 64M159 441l-64 64"/>
+          </svg>
+        </div>
+
+        <div class="container ab-hero-grid">
+          <div class="ab-hero-text reveal">
+            <span class="ab-eyebrow"><i></i> Meet our company</span>
+            <h1>Great <em>People.</em> Great <em>Ideas.</em> One <em>Vision.</em></h1>
+            <p class="ab-lead">
+              We believe we can make a difference to this world, to this very earth on which we live. We have been destroying the forests for whatever reasons for many years. Forests that work much like our lungs, purifying the air and healing us.
+            </p>
+            <p class="ab-sub">
+              Everyone agrees, that the tree is the best friend for man on this earth. Yet we go on felling them without any qualms. Only when the last tree has been cut and the last river poisoned, we will come to know that we cannot eat money.
+This beautiful earth needs to be treated with more respect.
+Let us do it right now
+            </p>
+            <div class="ab-actions">
+              <a class="btn" href="#team">Meet the team</a>
+              <a class="btn light" href="#journey">Our journey</a>
+            </div>
+          </div>
+
+          <div class="ab-hero-visual reveal" style="--d:.12s">
+            <div class="carousel" id="abCarousel" role="region" aria-roledescription="carousel" aria-label="Team and project photos">
+              <div class="carousel-track" id="abTrack"></div>
+              <div class="carousel-ui">
+                <p class="carousel-cap" id="abCap" aria-live="polite"></p>
+                <div class="carousel-btns">
+                  <button type="button" class="carousel-btn" id="abPrev" aria-label="Previous photo">&#10094;</button>
+                  <button type="button" class="carousel-btn" id="abNext" aria-label="Next photo">&#10095;</button>
+                </div>
+              </div>
+              <div class="carousel-dots" id="abDots"></div>
+            </div>
+            <div class="ab-float" aria-hidden="true">
+              <b>10+</b><span>years of<br>experience</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- =========================================
+         2. OUR STORY
+         ========================================= -->
+      <section class="ab-section" id="story">
+        <div class="container">
+          <div class="ab-story">
+            <div class="reveal">
+              <span class="ab-kicker">Our story</span>
+              <h2 class="ab-h2">By the people, <em>for the people.</em></h2>
+            </div>
+
+            <div class="ab-story-text">
+              <p class="reveal">
+                SunGET Solar Infra is a Pune-based solar company. We began with a simple belief: switching to solar should feel straightforward, honest and worth it. Today we deliver rooftop systems, solar water heating, heat pumps, turnkey EPC, maintenance and energy audits across Maharashtra.
+              </p>
+              <p class="reveal">
+                Our working philosophy is to measure first, design properly, install safely, and stay after the handover. Our team brings engineers, project managers, consultants and service technicians together, so customers deal with one partner from the first survey to the long-term service.
+              </p>
+              <p class="reveal">
+                <span class="ab-note">Edit this text in <code>about_us.html</code> to add your real founding story, the reason SunGET was started and the milestones you are proudest of.</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="ab-collage">
+            <figure class="ab-shot s1 reveal"><img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1000&q=70" alt="Rooftop solar installation" loading="lazy"></figure>
+            <figure class="ab-shot s2 reveal" style="--d:.1s"><img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=700&q=70" alt="Technician working on a solar system" loading="lazy"></figure>
+            <figure class="ab-shot s3 reveal" style="--d:.2s"><img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=700&q=70" alt="Solar panels under a clear sky" loading="lazy"></figure>
+            <div class="ab-stats reveal" style="--d:.15s">
+              <div><b>10+</b><span>Years of experience</span></div>
+              <div><b>60,000+</b><span>Homes solarised</span></div>
+              <div><b>200MW+</b><span>Installation experience</span></div>
+              <div><b>360°</b><span>End-to-end support</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================
+         3. CULTURE
+         ========================================= -->
+      <section class="ab-section ab-tint" id="culture">
+        <div class="container">
+          <div class="ab-head reveal">
+            <span class="ab-kicker">Our culture</span>
+            <h2 class="ab-h2">More than a team, <em>we're a community.</em></h2>
+            <p>We learn together, solve problems together and celebrate together, on site and in the office.</p>
+          </div>
+          <div class="culture-grid" id="cultureGrid"></div>
+        </div>
+      </section>
+
+      <!-- =========================================
+         4. MISSION & VISION
+         ========================================= -->
+      <section class="ab-section" id="mission">
+        <div class="container mv-grid">
+          <article class="mv-card mv-dark reveal" style="--d:.12s">
+            <span class="mv-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg>
+            </span>
+            <h2>Our Mission</h2>
+            <p>To create a greener and cleaner India by promoting solar energy and making renewable power accessible to every household and business. We envision a sustainable future powered by clean, reliable, and affordable solar energy.
+            </p>
+          </article>
+          <article class="mv-card mv-dark reveal" style="--d:.12s">
+            <span class="mv-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </span>
+            <h2>Our Vision</h2>
+            <p>To deliver high-quality, reliable, and affordable solar energy solutions through expert engineering, innovative technology, and professional EPC services. We aim to spread awareness about renewable energy and empower every household to generate its own clean electricity.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- =========================================
+         5. JOURNEY / TIMELINE
+         ========================================= -->
+      <section class="ab-section ab-tint" id="journey">
+        <div class="container">
+          <div class="ab-head reveal">
+            <span class="ab-kicker">Our journey</span>
+            <h2 class="ab-h2">Our journey <em>through the years</em></h2>
+            <p>A few of the moments that shaped who we are today.</p>
+          </div>
+          <ol class="timeline" id="timeline"></ol>
+        </div>
+      </section>
+
+      <!-- =========================================
+         6. TEAM
+         ========================================= -->
+      <section class="ab-section" id="team">
+        <div class="container">
+          <div class="ab-head reveal">
+            <span class="ab-kicker">Our team</span>
+            <h2 class="ab-h2">Meet the people <em>behind our success</em></h2>
+            <p class="ab-tagline">Different talents. One team. One vision.</p>
+          </div>
+
+          <div class="team-filters reveal" id="teamFilters" role="group" aria-label="Filter team members"></div>
+          <p class="team-count" id="teamCount" aria-live="polite"></p>
+          <div class="team-grid" id="teamGrid"></div>
+        </div>
+      </section>
+
+      <!-- =========================================
+         7. GROUP PHOTO
+         ========================================= -->
+      <section class="group" id="together" aria-label="Our team together">
+        <div class="group-media">
+          <img class="parallax" data-speed="0.07" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=2000&q=70" alt="The SunGET team together (demo photo, replace with your team photo)" loading="lazy">
+        </div>
+        <div class="group-shade"></div>
+        <div class="container final-in reveal">
+          <span class="ab-kicker light">Ready when you are</span>
+          <h2>Let's build something <em>amazing together.</em></h2>
+          <div class="ab-actions center">
+            <a class="btn lime" href="../index.html#contact">Get a free quote</a>
+            <a class="btn ghost open-calc-btn" href="#">Solar calculator 🧮</a>
+          </div>
+        </div>
+      </section>
+
+
+
+
+
+
+    
+      <!-- =========================================
+         10. JOIN US
+         ========================================= -->
+      <section class="ab-section" id="careers">
+        <div class="container">
+          <div class="join reveal">
+            <div>
+              <h2>Want to be part of <em>our journey?</em></h2>
+              <p>We are always excited to connect with passionate people who want to learn, grow and create something meaningful.</p>
+            </div>
+            <div class="join-actions">
+              <a class="btn" href="mailto:sales@sungetsolarinfra.com?subject=Careers%20at%20SunGET">Explore careers</a>
+              <a class="btn light" href="../index.html#contact">Contact us</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- FOOTER (same as index.html, paths fixed for /pgs) -->
+    <footer class="sg-footer">
+      <div class="container">
+        <!-- Main grid -->
+        <div class="sg-grid">
+          <div class="sg-brand">
+            <p>
+              SunGET Solar Infra Pvt. Ltd. is a premier Pune-based solar energy
+              company providing end-to-end EPC solar solutions, rooftop
+              installations and long-term O&amp;M services across Maharashtra.
+            </p>
+            <div class="sg-badges">
+              <span class="sg-badge">⚡ ISO Certified</span>
+              <span class="sg-badge">🌱 Govt. Approved</span>
+            </div>
+            <div class="sg-follow">
+              <span class="sg-follow-label">Follow Us</span>
+              <div class="sg-social">
+                <a href="https://www.facebook.com/sungetsolarinfra" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 8.5V6.8c0-.8.2-1.3 1.4-1.3H17V2.2C16.700 2.150 15.800 2 14.700 2 12.300 2 10.700 3.400 10.700 6.100v2.400H8v3.600h2.700V22H14v-9.900h2.700l.4-3.600H14z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/sunget_solar_infra/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/company/sunget-solar-infra-private-limited" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="2.5" y="9" width="4" height="12"/><circle cx="4.5" cy="4.8" r="2.2"/><path d="M10 9h3.800v1.700c.6-1.100 1.900-2 3.700-2 3.400 0 4.500 2.100 4.500 5.200V21h-4v-6c0-1.500-.4-2.600-1.900-2.600S14 13.500 14 15v6h-4z"/></svg>
+                </a>
+                <a href="https://www.youtube.com/@sungetsolarinfrapvt.ltd.9794" target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M21.600 7.200a2.500 2.500 0 0 0-1.800-1.800C18.200 5 12 5 12 5s-6.200 0-7.800.4A2.500 2.500 0 0 0 2.400 7.200C2 8.800 2 12 2 12s0 3.200.4 4.800a2.500 2.500 0 0 0 1.800 1.800C5.800 19 12 19 12 19s6.200 0 7.800-.4a2.500 2.500 0 0 0 1.800-1.800C22 15.200 22 12 22 12s0-3.200-.4-4.800zM10 15V9l5.200 3z"/></svg>
+                </a>
+                <a href="https://wa.me/919881855770" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" title="WhatsApp">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.700 13.600L3 21l4.500-1.200A9 9 0 1 0 12 3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 8.500c.2 2.800 3 5.800 6.200 6.500l1.300-1.500-2.200-1.100-.9.800c-.9-.4-1.900-1.400-2.300-2.300l.8-.9-1.100-2.200z" fill="currentColor"/></svg>
+                </a>
+                <a href="https://x.com/" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" title="X (Twitter)">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h4.500L20 20h-4.500z"/><path d="M4 20l6.800-7.600M20 4l-6.800 7.600" stroke-linecap="round"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <nav class="sg-col" aria-label="Quick links">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="#solutions">Solar Solutions</a></li>
+              <li><a href="#about">Why Choose Us</a></li>
+              <li><a href="#process">How It Works</a></li>
+              <li><a class="open-calc-btn" href="#">Solar Calculator 🧮</a></li>
+              <li><a href="#contact">Get a Quote</a></li>
+            </ul>
+          </nav>
+
+          <nav class="sg-col" aria-label="Company and legal">
+            <h4>Company &amp; Legal</h4>
+            <ul>
+              <li><a href="pgs/about_us.html">About SunGET</a></li>
+              <li><a href="pgs/privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="#">Terms of Use</a></li>
+              <li><a href="#contact">Contact Support</a></li>
+            </ul>
+          </nav>
+
+          <div class="sg-col sg-contact">
+            <h4>Get in Touch</h4>
+            <div class="sg-contact-card">
+              <div class="sg-contact-item">
+                <span class="sg-ico">📍</span>
+                <div>
+                  <strong>Office</strong>
+                  <span>Renuka Industries Estate, Opp. Abhiruchi Parisar, Narhe, Pune - 411041</span>
+                </div>
+              </div>
+              <div class="sg-contact-item">
+                <span class="sg-ico">🏢</span>
+                <div>
+                  <strong>Registered</strong>
+                  <span> Keshavsut Rd, Sadashiv Peth, Pune - 411030</span>
+                </div>
+              </div>
+              <div class="sg-contact-item">
+                <span class="sg-ico">📞</span>
+                <div><a href="tel:+919881855770">(+91) 98818 55770</a></div>
+              </div>
+              <div class="sg-contact-item">
+                <span class="sg-ico">✉️</span>
+                <div><a href="mailto:sales@sungetsolarinfra.com">sales@sungetsolarinfra.com</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom bar -->
+        <div class="sg-bottom">
+          <span>© 2026 SunGET Solar Infra Pvt. Ltd. All rights reserved.</span>
+          <div class="sg-bottom-links">
+            <a href="pgs/privacy-policy.html">Privacy Policy</a>
+            <span>•</span>
+            <a href="#">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <button class="to-top" id="toTop" type="button" aria-label="Back to top">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+    </button>
+
+    <!-- Toast Notification -->
+    <div
+      class="toast"
+      id="toast"
+      role="status"
+      aria-live="polite"
+      style="display:none;position:fixed;bottom:20px;right:20px;background:var(--ink);color:#fff;padding:12px 20px;border-radius:12px;z-index:99999;"
+    >
+      Thanks! Your enquiry has been received.
+    </div>
+
+    <script src="../src/team-data.js"></script>
+    <script src="../src/about.js"></script>
+    <script src="../src/script.js"></script>
+  </body>
+</html>

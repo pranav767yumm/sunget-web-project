@@ -1,0 +1,134 @@
+/* =========================================================
+   ENERGY AUDIT PAGE extras (pgs/energy-audit.html)
+   Layout comes from rooftop.css; this only adds what is new.
+   ========================================================= */
+
+.aud-select {
+  width: 100%;
+  padding: 14px 16px;
+  font: 600 16px "DM Sans", sans-serif;
+  border: 1px solid #cfdcd3;
+  border-radius: 12px;
+  background: #fff;
+  margin-bottom: 24px;
+  color: var(--ink, #0b1536);
+}
+
+.aud-select:focus-visible {
+  outline: 3px solid var(--lime, #b8e65a);
+  outline-offset: 2px;
+}
+
+/* ---------- Where energy is lost (4 columns divided by rules) ---------- */
+.aud-causes {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 2px solid var(--ink, #0b1536);
+}
+
+.aud-causes article {
+  padding: 26px 24px 28px;
+  border-right: 1px solid var(--line, #e3ebe5);
+}
+
+.aud-causes article:last-child {
+  border-right: 0;
+}
+
+.aud-causes h3 {
+  font-family: "Manrope", sans-serif;
+  font-size: 19px;
+  margin: 0 0 10px;
+  color: var(--green);
+}
+
+.aud-causes p {
+  margin: 0;
+  color: #53625a;
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+/* ---------- Audit levels ---------- */
+.aud-levels {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  align-items: stretch;
+}
+
+.aud-levels article {
+  background: #fff;
+  border: 1px solid var(--line, #e3ebe5);
+  border-radius: 18px;
+  padding: 30px 28px;
+}
+
+.aud-levels .aud-level-main {
+  border: 2px solid var(--green);
+  background: #f4f8f5;
+}
+
+.aud-levels h3 {
+  font-family: "Manrope", sans-serif;
+  font-size: 22px;
+  margin: 0 0 4px;
+}
+
+.aud-level-for {
+  margin: 0 0 18px;
+  color: var(--green);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.aud-levels ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.aud-levels li {
+  position: relative;
+  padding: 10px 0 10px 26px;
+  border-top: 1px solid #eef3ef;
+  font-size: 15px;
+}
+
+.aud-levels li::before {
+  content: "\2713";
+  position: absolute;
+  left: 0;
+  color: var(--green);
+  font-weight: 800;
+}
+
+@media (max-width: 1000px) {
+  .aud-causes {
+    grid-template-columns: 1fr 1fr;
+  }
+  .aud-causes article:nth-child(2) {
+    border-right: 0;
+  }
+  .aud-causes article:nth-child(-n + 2) {
+    border-bottom: 1px solid var(--line, #e3ebe5);
+  }
+  .aud-levels {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .aud-causes {
+    grid-template-columns: 1fr;
+  }
+  .aud-causes article {
+    border-right: 0;
+    border-bottom: 1px solid var(--line, #e3ebe5);
+  }
+  .aud-causes article:last-child {
+    border-bottom: 0;
+  }
+}
