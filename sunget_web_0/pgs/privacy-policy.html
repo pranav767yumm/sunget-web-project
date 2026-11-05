@@ -1,0 +1,663 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Privacy Policy - SunGET Solar Infra Pvt. Ltd. Learn how we collect, protect, and handle your personal information.">
+  <title>Privacy Policy | SunGET Solar Infra</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================================
+       1. GLOBAL VARIABLES & BASE STYLES
+       ========================================= */
+    :root {
+      --ink: #102019;
+      --muted: #64716b;
+      --green: #116b4b;
+      --green2: #0b4d38;
+      --lime: #d8f25a;
+      --cream: #f5f7f1;
+      --white: #fff;
+      --line: #dfe7e0;
+      --shadow: 0 24px 80px rgba(16,32,25,.10);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "DM Sans", sans-serif;
+      color: var(--ink);
+      background: #fcf9f9;
+      line-height: 1.8;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: Manrope, sans-serif;
+      line-height: 1.2;
+      margin: 0;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1180px, 92%);
+      margin: auto;
+    }
+
+    /* =========================================
+       2. NAVIGATION
+       ========================================= */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,.95);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid #edf1ed;
+    }
+
+    .navin {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .normal_logo {
+      width: 180px;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .links a:hover {
+      color: var(--green);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 0;
+      border-radius: 999px;
+      padding: 12px 22px;
+      background: var(--green);
+      color: #fff;
+      font-weight: 700;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(17,107,75,.2);
+    }
+
+    /* Hamburger Menu Button */
+    .hamburger-btn {
+      display: none;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      flex-direction: column;
+      gap: 5px;
+      z-index: 20;
+    }
+
+    .hamburger-btn .bar {
+      width: 24px;
+      height: 2.5px;
+      background-color: var(--ink);
+      border-radius: 4px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+      padding: 20px 0 28px;
+    }
+
+    .mobile-menu.active {
+      display: block;
+    }
+
+    .mobile-menu-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .mobile-link {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--ink);
+      padding: 8px 0;
+      border-bottom: 1px solid #f0f4f1;
+    }
+
+    /* =========================================
+       3. PAGE HEADER BANNER
+       ========================================= */
+    .page-header {
+      background: linear-gradient(135deg, #0b2d20 0%, #102019 100%);
+      color: #fff;
+      padding: 70px 0 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-header::after {
+      content: "";
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(216,242,90,0.12) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--lime);
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--lime);
+    }
+
+    .page-header h1 {
+      font-size: clamp(32px, 4vw, 48px);
+      letter-spacing: -1px;
+      margin-bottom: 10px;
+    }
+
+    .page-header p {
+      color: #cde4d7;
+      font-size: 16px;
+      max-width: 600px;
+      margin: 0;
+    }
+
+    /* =========================================
+       4. PRIVACY POLICY CONTENT
+       ========================================= */
+    .policy-section {
+      padding: 70px 0 90px;
+    }
+
+    .policy-card {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 45px;
+      box-shadow: 0 10px 40px rgba(16,32,25,.04);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .policy-card h2 {
+      font-size: 22px;
+      color: var(--green2);
+      margin: 32px 0 12px 0;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #eef3f0;
+    }
+
+    .policy-card h2:first-of-type {
+      margin-top: 0;
+    }
+
+    .policy-card p {
+      color: #4a5752;
+      font-size: 15.5px;
+      margin: 0 0 16px 0;
+    }
+
+    .policy-card ul {
+      margin: 0 0 20px 0;
+      padding-left: 22px;
+      color: #4a5752;
+    }
+
+    .policy-card li {
+      margin-bottom: 10px;
+      font-size: 15px;
+    }
+
+    .policy-card li strong {
+      color: var(--ink);
+    }
+
+    .contact-badge {
+      background: #eaf5ee;
+      border: 1px solid #cce9d6;
+      border-radius: 14px;
+      padding: 20px;
+      margin-top: 25px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .contact-badge-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--green);
+      color: var(--lime);
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .contact-badge a {
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    /* =========================================
+       5. FOOTER STYLES (MATCHED EXACTLY)
+       ========================================= */
+    footer {
+      background: linear-gradient(180deg, #0b2d20 0%, #071f16 100%);
+      color: #d7e7de;
+      padding: 70px 0 30px;
+      border-top: 1px solid rgba(216, 242, 90, 0.15);
+    }
+
+    .foot {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1.2fr;
+      gap: 50px;
+      align-items: start;
+    }
+
+    .footer_logo {
+      max-width: 200px;
+      height: auto;
+      filter: brightness(0) invert(1);
+      margin-bottom: 18px;
+      transition: transform 0.3s ease;
+    }
+
+    .footer_logo:hover {
+      transform: translateY(-2px);
+    }
+
+    .foot p {
+      max-width: 380px;
+      color: #a3baa8;
+      font-size: 14px;
+      line-height: 1.7;
+      margin: 0 0 20px 0;
+    }
+
+    .foot-badges {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .foot-badge {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--lime);
+      background: rgba(216, 242, 90, 0.08);
+      border: 1px solid rgba(216, 242, 90, 0.2);
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    .foot-heading {
+      font-family: Manrope, sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .foot-heading::after {
+      content: "";
+      display: block;
+      width: 28px;
+      height: 2px;
+      background: var(--lime);
+      margin-top: 6px;
+      border-radius: 2px;
+    }
+
+    .footlinks {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      font-size: 14px;
+    }
+
+    .footlinks a {
+      color: #b8cebf;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .footlinks a:hover {
+      color: var(--lime);
+      transform: translateX(4px);
+    }
+
+    .foot-contact p {
+      margin-bottom: 10px;
+      font-size: 14px;
+      color: #b8cebf;
+    }
+
+    .foot-contact a {
+      color: inherit;
+      transition: color 0.2s ease;
+    }
+
+    .foot-contact a:hover {
+      color: var(--lime);
+    }
+
+    .copy {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 50px;
+      padding-top: 22px;
+      font-size: 13px;
+      color: #7d998a;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .copy-links {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .copy-links a {
+      color: #7d998a;
+      transition: color 0.2s;
+    }
+
+    .copy-links a:hover {
+      color: var(--lime);
+    }
+
+    /* =========================================
+       6. RESPONSIVE BREAKPOINTS
+       ========================================= */
+    @media (max-width: 900px) {
+      .links { display: none; }
+      .hamburger-btn { display: flex; }
+      .foot {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+      .copy {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 580px) {
+      .policy-card {
+        padding: 25px 20px;
+        border-radius: 18px;
+      }
+      .page-header {
+        padding: 50px 0 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =========================================
+       NAVIGATION BAR
+       ========================================= -->
+  <nav class="nav">
+    <div class="container navin">
+      <a href="index.html" class="brand-link">
+        <img class="normal_logo" src="images/logo.png" alt="SunGET Solar Infra Pvt. Ltd." title="SunGET Solar Infra Pvt. Ltd.">
+      </a>
+
+      <div class="links">
+        <a href="index.html#solutions">Solutions</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#process">Process</a>
+        <a href="index.html#contact">Contact</a>
+        <a class="btn" href="index.html#contact">Get a Quote</a>
+      </div>
+
+      <button class="hamburger-btn" id="menuToggle" aria-label="Toggle navigation menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <div class="container mobile-menu-inner">
+        <a class="mobile-link" href="index.html#solutions">Solutions</a>
+        <a class="mobile-link" href="index.html#about">About</a>
+        <a class="mobile-link" href="index.html#process">Process</a>
+        <a class="mobile-link" href="index.html#contact">Contact</a>
+        <a class="btn" href="index.html#contact" style="text-align: center;">Get a Quote</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- =========================================
+       PAGE HEADER
+       ========================================= -->
+  <section class="page-header">
+    <div class="container">
+      <span class="eyebrow"><i class="dot"></i> Legal Overview</span>
+      <h1>Privacy Policy</h1>
+      <p>How SunGET Solar Infra Pvt. Ltd. collects, uses, and safeguards your personal data when using our website.</p>
+    </div>
+  </section>
+
+  <!-- =========================================
+       PRIVACY POLICY CONTENT
+       ========================================= -->
+  <section class="policy-section">
+    <div class="container">
+      <article class="policy-card">
+
+        <h2>Introduction</h2>
+        <p>
+          Welcome to SunGET Solar Infra Pvt. Ltd.'s website, <a href="https://www.sungetsolarinfra.com" style="color: var(--green); font-weight: 600;">www.sungetsolarinfra.com</a> (the Website). At SunGET Solar Infra Pvt. Ltd., we are committed to protecting and respecting your privacy.
+        </p>
+        <p>
+          This Privacy Policy outlines how we collect, use, disclose, and safeguard your personal information when you use our Website. By accessing or using our Website, you consent to the practices described in this Privacy Policy.
+        </p>
+
+        <h2>Information We Collect</h2>
+        <p>We may collect and process the following personal information when you use our Website:</p>
+        <ul>
+          <li><strong>Contact Information:</strong> This may include your name, email address, postal address, and phone number.</li>
+          <li><strong>Usage Data:</strong> We may collect information about how you use our Website, including your IP address, browser type, and device information.</li>
+        </ul>
+
+        <h2>Cookies and Tracking Technologies</h2>
+        <p>
+          We use cookies and similar tracking technologies to enhance your experience on our Website and collect certain information automatically. You can find more details about this in our Cookie Policy.
+        </p>
+
+        <h2>How We Use Your Information</h2>
+        <p>We may use your personal information for the following purposes:</p>
+        <ul>
+          <li>To provide, maintain, and improve our Website.</li>
+          <li>To respond to your inquiries and requests.</li>
+          <li>To send you marketing and promotional materials, where you have provided your consent.</li>
+          <li>To comply with legal obligations.</li>
+        </ul>
+
+        <h2>Disclosure of Your Information</h2>
+        <p>We may disclose your personal information to:</p>
+        <ul>
+          <li>Service providers who assist us in providing the Website and related services.</li>
+          <li>Legal authorities when required by law or in response to a legal request.</li>
+        </ul>
+
+        <h2>Your Rights and Choices</h2>
+        <p>
+          You have certain rights regarding your personal information, including the right to access, correct, delete, or restrict its processing. You can exercise these rights by contacting us at <a href="mailto:info@sungetsolarinfra.com" style="color: var(--green); font-weight: 600;">info@sungetsolarinfra.com</a>.
+        </p>
+
+        <h2>Security</h2>
+        <p>
+          We take reasonable precautions to protect your personal information. However, no method of transmission over the internet or electronic storage is completely secure, so we cannot guarantee absolute security.
+        </p>
+
+        <h2>Changes to This Privacy Policy</h2>
+        <p>
+          We may update our Privacy Policy from time to time. Any changes will be posted on this page, and the "Last updated" date at the top will be revised accordingly.
+        </p>
+
+        <h2>Contact Us</h2>
+        <p>
+          If you have any questions about this Privacy Policy or your personal information, please get in touch with our team directly.
+        </p>
+
+        <div class="contact-badge">
+          <div class="contact-badge-icon">✉️</div>
+          <div>
+            <div style="font-size: 13px; color: var(--muted); font-weight: 700;">Data Protection & Privacy Contact</div>
+            <a href="mailto:info@sungetsolarinfra.com">info@sungetsolarinfra.com</a>
+          </div>
+        </div>
+
+      </article>
+    </div>
+  </section>
+
+  <!-- =========================================
+       MATCHED FOOTER SECTION
+       ========================================= -->
+  <footer>
+    <div class="container">
+
+      <div class="foot">
+
+        <!-- Column 1: Brand Logo & Mission -->
+        <div class="foot-col foot-brand-col">
+          <a class="brand" href="index.html" aria-label="SunGET Solar Infra Home">
+            <img class="normal_logo footer_logo" src="images/logo.png" alt="SunGET Solar Infra Pvt. Ltd.">
+          </a>
+          <p>
+            SunGET Solar Infra Pvt. Ltd. is one of the growing solar energy companies in India. We are a Pune based company and primarily focus on providing EPC solar energy solutions right from concept development to commissioning of solar power projects as well as operation & maintenance on the case to case basis based on client’s input.
+          </p>
+          <div class="foot-badges">
+            <span class="foot-badge">⚡ ISO Certified</span>
+            <span class="foot-badge">🌱 Govt. Approved</span>
+          </div>
+        </div>
+
+        <!-- Column 2: Useful Links -->
+        <div class="foot-col">
+          <h4 class="foot-heading">Useful Links</h4>
+          <div class="footlinks">
+            <a href="index.html#about">About Us</a>
+            <a href="index.html#solutions">Services</a>
+            <a href="index.html#process">Process</a>
+            <a href="index.html#contact">Contact Us</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+          </div>
+        </div>
+
+        <!-- Column 3: Contact & Support -->
+        <div class="foot-col">
+          <h4 class="foot-heading">Contact Us</h4>
+          <div class="foot-contact">
+            <p><strong>Registered Address:</strong><br>1447/48, Keshavsut Rd, Perugate, Sadashiv Peth, Pune - 411030</p>
+            <p><strong>Office Address:</strong><br>Renuka Industries Estate, Near Darshana Properties, Opp. Abhiruchi Parisar, Narhe, Pune - 411041</p>
+            <p>📞 <a href="tel:+919881855770">(+91) 98818 55770</a></p>
+            <p>✉️ <a href="mailto:sales@sungetsolarinfra.com">sales@sungetsolarinfra.com</a></p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Copyright & Bottom Bar -->
+      <div class="copy">
+        <span>© 2026 SunGET Solar Infra Pvt. Ltd. All rights reserved.</span>
+        <div class="copy-links">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <span>•</span>
+          <a href="#">Terms of Use</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- =========================================
+       JAVASCRIPT
+       ========================================= -->
+  <script>
+    // Hamburger menu toggle logic
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    if (menuToggle && mobileMenu) {
+      menuToggle.addEventListener('click', () => {
+        menuToggle.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+      });
+    }
+  </script>
+
+</body>
+</html>
