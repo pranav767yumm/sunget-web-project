@@ -1,0 +1,134 @@
+/* =========================================================
+   O&M REPAIR PAGE extras (pgs/o-and-m-repair.html)
+   Layout comes from rooftop.css; this only adds what is new.
+   ========================================================= */
+
+.om-select {
+  width: 100%;
+  padding: 14px 16px;
+  font: 600 16px "DM Sans", sans-serif;
+  border: 1px solid #cfdcd3;
+  border-radius: 12px;
+  background: #fff;
+  margin-bottom: 24px;
+  color: var(--ink, #0b1536);
+}
+
+.om-select:focus-visible {
+  outline: 3px solid var(--lime, #b8e65a);
+  outline-offset: 2px;
+}
+
+/* ---------- Causes of loss (4 columns divided by rules) ---------- */
+.om-causes {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 2px solid var(--ink, #0b1536);
+}
+
+.om-causes article {
+  padding: 26px 24px 28px;
+  border-right: 1px solid var(--line, #e3ebe5);
+}
+
+.om-causes article:last-child {
+  border-right: 0;
+}
+
+.om-causes h3 {
+  font-family: "Manrope", sans-serif;
+  font-size: 19px;
+  margin: 0 0 10px;
+  color: var(--green);
+}
+
+.om-causes p {
+  margin: 0;
+  color: #53625a;
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+/* ---------- Contract plans ---------- */
+.om-plans {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  align-items: stretch;
+}
+
+.om-plans article {
+  background: #fff;
+  border: 1px solid var(--line, #e3ebe5);
+  border-radius: 18px;
+  padding: 30px 28px;
+}
+
+.om-plans .om-plan-main {
+  border: 2px solid var(--green);
+  background: #f4f8f5;
+}
+
+.om-plans h3 {
+  font-family: "Manrope", sans-serif;
+  font-size: 22px;
+  margin: 0 0 4px;
+}
+
+.om-plan-for {
+  margin: 0 0 18px;
+  color: var(--green);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.om-plans ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.om-plans li {
+  position: relative;
+  padding: 10px 0 10px 26px;
+  border-top: 1px solid #eef3ef;
+  font-size: 15px;
+}
+
+.om-plans li::before {
+  content: "\2713";
+  position: absolute;
+  left: 0;
+  color: var(--green);
+  font-weight: 800;
+}
+
+@media (max-width: 1000px) {
+  .om-causes {
+    grid-template-columns: 1fr 1fr;
+  }
+  .om-causes article:nth-child(2) {
+    border-right: 0;
+  }
+  .om-causes article:nth-child(-n + 2) {
+    border-bottom: 1px solid var(--line, #e3ebe5);
+  }
+  .om-plans {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .om-causes {
+    grid-template-columns: 1fr;
+  }
+  .om-causes article {
+    border-right: 0;
+    border-bottom: 1px solid var(--line, #e3ebe5);
+  }
+  .om-causes article:last-child {
+    border-bottom: 0;
+  }
+}
