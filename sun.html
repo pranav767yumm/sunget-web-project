@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Admin | SunGET Solar Infra</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet" />
+<style>
+  :root { --green:#116b4b; --green2:#0b4d38; --lime:#d8f25a; --ink:#10231b; --bg:#f3f7f5; --line:#d5e2db; --side:230px; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:"DM Sans",sans-serif; background:var(--bg); color:var(--ink); }
+  h1,h2,h3 { font-family:Manrope,sans-serif; margin:0; }
+  [hidden] { display:none !important; }
+  .card { background:#fff; border:1px solid var(--line); border-radius:16px; padding:22px; margin-bottom:22px; }
+  label { display:block; font-size:13px; font-weight:700; margin:12px 0 5px; }
+  input,select,textarea { width:100%; padding:11px 12px; border:1px solid var(--line); border-radius:10px; font:inherit; background:#fff; }
+  textarea { resize:vertical; }
+  .row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  button { font:inherit; font-weight:700; padding:10px 18px; border:0; border-radius:999px; cursor:pointer; background:var(--green); color:#fff; }
+  button.sec { background:#e4eee9; color:var(--ink); } button.del { background:#fde8e8; color:#a11; padding:7px 14px; font-size:13px; }
+  button.sm { padding:7px 14px; font-size:13px; }
+  button:disabled { opacity:.5; cursor:wait; }
+  .msg { margin-top:12px; font-size:14px; font-weight:600; } .msg.err { color:#b00020; } .msg.ok { color:var(--green); }
+  #setup, #login { max-width:420px; margin:70px auto; }
+
+  /* ----- layout: left sidebar + content ----- */
+  #app { display:grid; grid-template-columns:var(--side) 1fr; min-height:100vh; }
+  aside { background:linear-gradient(170deg,var(--green2),#06281c); color:#fff; padding:20px 14px; display:flex; flex-direction:column; gap:6px; position:sticky; top:0; height:100vh; }
+  aside .brand { font:800 19px Manrope,sans-serif; padding:6px 10px 18px; } aside .brand em { font-style:normal; color:var(--lime); }
+  aside .nav { display:flex; align-items:center; gap:10px; width:100%; text-align:left; background:transparent; color:#cfe6d8; padding:12px 14px; border-radius:12px; }
+  aside .nav:hover { background:rgba(255,255,255,.08); }
+  aside .nav.on { background:var(--lime); color:var(--ink); }
+  aside .badge { margin-left:auto; background:#e5484d; color:#fff; border-radius:999px; font-size:12px; padding:1px 8px; }
+  aside .nav.on .badge { background:var(--ink); }
+  aside .sp { flex:1; }
+  aside .out { background:rgba(255,255,255,.12); }
+  .content { padding:26px 28px 60px; min-width:0; max-width:1100px; width:100%; }
+  .content > h1 { font-size:26px; margin-bottom:18px; }
+
+  /* gallery */
+  #drop { border:2px dashed var(--green); border-radius:14px; padding:26px; text-align:center; color:var(--green); cursor:pointer; margin-top:12px; }
+  #previews { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+  #previews img { width:80px; height:80px; object-fit:cover; border-radius:8px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:14px; margin-top:14px; }
+  .item { border:1px solid var(--line); border-radius:12px; overflow:hidden; background:#fff; }
+  .item img { width:100%; height:130px; object-fit:cover; display:block; }
+  .item div { padding:10px; font-size:13px; } .item b { display:block; } .item small { color:#5d7268; display:block; margin-bottom:8px; }
+
+  /* enquiries */
+  .toolbar { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-bottom:16px; } .toolbar select { width:auto; }
+  .enq { border:1px solid var(--line); border-left:5px solid var(--green); border-radius:12px; padding:16px; margin-bottom:12px; background:#fff; }
+  .enq.new { border-left-color:#e5484d; }
+  .enq h3 { font-size:16px; display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+  .tag { font:700 11px "DM Sans"; padding:3px 9px; border-radius:999px; background:#e5484d; color:#fff; } .tag.done { background:#dcebe2; color:var(--green); }
+  .enq p { margin:8px 0; white-space:pre-wrap; } .enq .meta { font-size:13px; color:#5d7268; } .enq .meta a { color:var(--green); font-weight:700; }
+  .enq .acts { display:flex; gap:8px; margin-top:10px; }
+
+  /* pages editor */
+  .pr { border:1px solid var(--line); border-radius:12px; padding:14px; margin-bottom:12px; background:#fff; }
+  .pr .k { font-size:12px; font-weight:700; color:#5d7268; text-transform:uppercase; letter-spacing:.05em; margin-bottom:8px; display:flex; gap:8px; align-items:center; }
+  .pr .k .edited { background:var(--lime); color:var(--ink); border-radius:999px; padding:1px 8px; }
+  .pr img.pv { max-width:260px; max-height:160px; border-radius:10px; display:block; margin-bottom:8px; object-fit:cover; background:#e3eee7; }
+  .pr .acts { display:flex; gap:8px; margin-top:10px; }
+
+  @media (max-width:800px){
+    #app { grid-template-columns:1fr; }
+    aside { position:static; height:auto; flex-direction:row; flex-wrap:wrap; padding:10px; align-items:center; }
+    aside .brand { width:100%; padding:4px 8px; } aside .sp { display:none; }
+    aside .nav { width:auto; padding:9px 14px; }
+    .content { padding:18px 14px 50px; } .row { grid-template-columns:1fr; }
+  }
+
+  /* ===== Enquiry + Gallery management ===== */
+  .stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; margin-bottom:18px; }
+  .stat { background:#fff; border:1px solid var(--line); border-left:5px solid var(--green); border-radius:14px; padding:16px; }
+  .stat b { display:block; font:800 28px Manrope,sans-serif; } .stat span { font-size:13px; color:#5d7268; font-weight:600; }
+  .stat.new { border-left-color:#e5484d; } .stat.pend { border-left-color:#f59e0b; } .stat.cont { border-left-color:#0284c7; } .stat.old { border-left-color:#94a3b8; }
+  .tabs { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:14px; }
+  .tab { background:#fff; color:var(--ink); border:1px solid var(--line); padding:9px 16px; }
+  .tab.on { background:var(--green); color:#fff; border-color:var(--green); }
+  .tab small { margin-left:6px; background:#eaf4ed; color:var(--green); border-radius:999px; padding:1px 8px; } .tab.on small { background:var(--lime); color:var(--ink); }
+  .fgrid { display:grid; grid-template-columns:repeat(auto-fit,minmax(165px,1fr)); gap:10px; } .fgrid label { margin:0 0 4px; }
+  .twrap { overflow-x:auto; background:#fff; border:1px solid var(--line); border-radius:14px; }
+  table { width:100%; border-collapse:collapse; font-size:14px; min-width:1020px; }
+  th { background:#f0f6f2; text-align:left; padding:11px 12px; font-size:12px; text-transform:uppercase; letter-spacing:.04em; color:#41584d; white-space:nowrap; }
+  td { padding:11px 12px; border-top:1px solid var(--line); vertical-align:top; }
+  tr.isnew td:first-child { box-shadow:inset 4px 0 0 #e5484d; }
+  .pill { display:inline-block; font:700 11px "DM Sans",sans-serif; padding:3px 10px; border-radius:999px; color:#fff; }
+  .pill.new { background:#e5484d; } .pill.pending { background:#f59e0b; } .pill.contacted { background:#0284c7; } .pill.completed,.pill.published { background:var(--green); } .pill.draft { background:#94a3b8; } .pill.old { background:#94a3b8; }
+  .ib { background:#eef4f0; color:var(--ink); padding:6px 10px; border-radius:8px; font-size:13px; display:inline-block; text-decoration:none; margin:0 2px 4px 0; border:0; font-weight:600; cursor:pointer; }
+  .ib.red { background:#fde8e8; color:#a11; }
+  td.nw { white-space:nowrap; } table { min-width:880px; } td:nth-child(2) { min-width:120px; } td:nth-child(5) { font-size:12px; max-width:150px; } td, th { padding:10px 10px; } #toast div { cursor:pointer; }
+  td select { padding:6px 8px; font-size:13px; width:auto; }
+  .pager { display:flex; gap:8px; align-items:center; justify-content:space-between; flex-wrap:wrap; margin-top:14px; font-size:14px; } .pager select { width:auto; padding:6px 8px; }
+  .modalbg { position:fixed; inset:0; background:rgba(5,25,16,.55); z-index:9999; display:flex; align-items:flex-start; justify-content:center; padding:30px 14px; overflow:auto; }
+  .modal { background:#fff; border-radius:18px; max-width:680px; width:100%; padding:24px; box-shadow:0 30px 80px rgba(0,0,0,.35); }
+  .modal h2 { margin-bottom:14px; } .mclose { float:right; background:#eef4f0; color:var(--ink); padding:6px 14px; }
+  .dl { display:grid; grid-template-columns:160px 1fr; gap:8px 12px; font-size:14px; } .dl dt { font-weight:700; color:#41584d; } .dl dd { margin:0; white-space:pre-wrap; word-break:break-word; }
+  .macts { display:flex; gap:8px; flex-wrap:wrap; margin-top:18px; }
+  #toast { position:fixed; right:18px; bottom:18px; z-index:10000; display:grid; gap:8px; }
+  #toast div { background:var(--ink); color:#fff; padding:12px 18px; border-radius:12px; font-size:14px; box-shadow:0 10px 30px rgba(0,0,0,.25); max-width:320px; }
+  #toast .ok { background:var(--green); } #toast .err { background:#b00020; }
+  .menu { position:relative; display:inline-block; } .menu .dd { position:absolute; left:0; top:100%; margin-top:6px; background:#fff; border:1px solid var(--line); border-radius:12px; box-shadow:0 14px 40px rgba(0,0,0,.18); min-width:250px; z-index:50; padding:6px; }
+  .menu .dd button { display:block; width:100%; text-align:left; background:transparent; color:var(--ink); border-radius:8px; padding:9px 12px; font-weight:600; } .menu .dd button:hover { background:#eaf4ed; }
+  .bigbtn { background:var(--lime); color:var(--ink); }
+  .types { display:flex; flex-wrap:wrap; gap:8px; } .tchip { background:#eef4f0; color:var(--ink); padding:8px 14px; font-weight:600; font-size:13px; } .tchip b { margin-left:6px; color:var(--green); }
+  .gcards { display:grid; grid-template-columns:repeat(auto-fill,minmax(215px,1fr)); gap:14px; }
+  .gc { background:#fff; border:1px solid var(--line); border-radius:14px; overflow:hidden; cursor:grab; } .gc.drag { opacity:.4; } .gc.over { outline:3px dashed var(--green); }
+  .gc img { width:100%; height:150px; object-fit:cover; display:block; background:#e3eee7; }
+  .gc .b { padding:10px; font-size:13px; } .gc .b b { display:block; margin-bottom:4px; } .gc .b small { color:#5d7268; display:block; margin-bottom:6px; }
+  .spin { display:inline-block; width:14px; height:14px; border:2px solid rgba(255,255,255,.4); border-top-color:#fff; border-radius:50%; animation:sp .7s linear infinite; vertical-align:-2px; } @keyframes sp { to { transform:rotate(360deg); } }
+  .crow { display:grid; grid-template-columns:1fr 90px auto auto; gap:8px; align-items:center; margin-bottom:8px; }
+  @media (max-width:800px){ .dl { grid-template-columns:1fr; } .crow { grid-template-columns:1fr 70px; } }
+
+  /* ===== Admin look: coral top bar + white sidebar + coloured dashboard cards ===== */
+  :root { --coral:#f4675a; --top:64px; }
+  body { font-family:Roboto,"DM Sans",Arial,sans-serif; background:#e9e9e9; }
+  #app { display:grid; grid-template-columns:270px 1fr; grid-template-rows:var(--top) 1fr; min-height:100vh; }
+  .top { grid-column:1 / -1; background:var(--coral); color:#fff; display:flex; align-items:center; justify-content:space-between; padding:0 22px; height:var(--top); position:sticky; top:0; z-index:300; box-shadow:0 2px 6px rgba(0,0,0,.18); }
+  .top .tt { font:700 18px Roboto,Arial,sans-serif; }
+  .top #logout { background:#f44336; color:#fff; border-radius:3px; padding:8px 16px; font-size:13px; box-shadow:0 2px 5px rgba(0,0,0,.3); }
+  #burger { display:none; background:transparent; font-size:24px; padding:4px 10px; margin-right:8px; color:#fff; }
+  aside.side { background:#fff; color:#555; padding:0; gap:0; border-right:1px solid #ddd; display:block; position:sticky; top:var(--top); height:calc(100vh - var(--top)); overflow-y:auto; }
+  aside.side .logo { padding:26px 20px 18px; text-align:center; border-bottom:1px solid #eee; margin-bottom:8px; }
+  aside.side .logo img { max-width:210px; max-height:90px; }
+  aside.side .mi { display:flex; align-items:center; gap:14px; width:100%; text-align:left; background:transparent; color:#555; border-radius:0; padding:15px 20px; font:700 13px Roboto,Arial,sans-serif; }
+  aside.side .mi i { font-style:normal; font-size:17px; color:#666; width:20px; }
+  aside.side .mi em { font-style:normal; margin-left:auto; font-size:18px; font-weight:400; color:#777; }
+  aside.side .mi:hover { background:#f3f3f3; } aside.side .mi.on { background:#ececec; color:#000; }
+  aside.side .badge { background:#e5484d; color:#fff; border-radius:999px; font-size:11px; padding:1px 8px; }
+  aside.side .sub { background:#fafafa; }
+  aside.side .sub .mi { padding:11px 20px 11px 54px; font-weight:500; }
+  .content { padding:22px 26px 60px; max-width:none; }
+  .content section > h1 { font:400 15px Roboto,Arial,sans-serif; text-transform:uppercase; color:#555; margin:0 0 16px; letter-spacing:.02em; }
+  .hcards { display:flex; flex-wrap:wrap; gap:26px 38px; padding:4px 14px; }
+  .hc { display:flex; width:212px; height:72px; color:#fff; box-shadow:0 2px 6px rgba(0,0,0,.3); cursor:pointer; text-decoration:none; }
+  .hc .hi { width:72px; display:grid; place-items:center; font-size:32px; background:rgba(0,0,0,.18); }
+  .hc .ht { display:flex; flex-direction:column; justify-content:center; padding:0 16px; } .hc .ht small { font-size:13px; } .hc .ht b { font:500 26px Roboto,Arial,sans-serif; line-height:1.15; }
+  @media (max-width:800px){
+    #app { grid-template-columns:1fr; }
+    #burger { display:inline-block; }
+    aside.side { position:fixed; left:-290px; top:var(--top); width:270px; z-index:250; transition:left .25s; box-shadow:4px 0 18px rgba(0,0,0,.2); }
+    aside.side.open { left:0; }
+    .top .tt { font-size:15px; flex:1; } .hcards { gap:14px; padding:0; } .hc { width:100%; max-width:340px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="setup" class="card" hidden>
+  <h2>Setup needed</h2>
+  <p>Open this file and fill in <code>SUPABASE_URL</code> at the top of the script. Steps are in <b>SETUP-2.md</b>.</p>
+</div>
+
+<div id="login" class="card" hidden>
+  <h2>Admin Login</h2>
+  <label for="em">Email</label><input id="em" type="email" autocomplete="username" />
+  <label for="pw">Password</label><input id="pw" type="password" autocomplete="current-password" />
+  <p style="margin-top:16px"><button id="loginBtn">Login</button></p>
+  <div id="loginMsg" class="msg"></div>
+</div>
+
+<div id="app" hidden>
+  <header class="top"><button id="burger" type="button" aria-label="Menu">☰</button><span class="tt">SunGET Solar Infra Pvt. Ltd</span><button id="logout" type="button">Logout</button></header>
+  <aside class="side" id="side">
+    <div class="logo"><img src="../images/logo.png" alt="SunGET Solar Infra" /></div>
+    <button class="mi" data-v="home"><i>▦</i> Home</button>
+
+    <div class="grp"><button class="mi gh" type="button"><i>☰</i> All Enquiries <span class="badge" id="badge" hidden>0</span><em>+</em></button>
+      <div class="sub" hidden>
+        <button class="mi" data-v="enq" data-tab="all">All Enquiries</button>
+        <button class="mi" data-v="enq" data-tab="new">New Enquiries</button>
+        <button class="mi" data-v="enq" data-tab="old">Old Enquiries</button>
+        <button class="mi" data-v="enq" data-tab="pending">Pending</button>
+        <button class="mi" data-v="enq" data-tab="contacted">Contacted</button>
+        <button class="mi" data-v="enq" data-tab="completed">Completed</button>
+      </div></div>
+
+    <div class="grp"><button class="mi gh" type="button"><i>☰</i> Gallery <em>+</em></button>
+      <div class="sub" hidden>
+        <button class="mi" data-v="gal">All Images</button>
+        <button class="mi" data-v="gal" data-act="add">Add Image</button>
+        <button class="mi" data-v="gal" data-act="cats">Categories</button>
+      </div></div>
+
+    <div class="grp"><button class="mi gh" type="button"><i>☀</i> Utility Products <em>+</em></button>
+      <div class="sub" hidden>
+        <button class="mi" data-v="products">Manage Products</button>
+        <button class="mi" data-v="product-enquiries">Product Enquiries</button>
+      </div></div>
+    <button class="mi" data-v="careers"><i>&#9786;</i> Careers &amp; Placement</button>
+    <button class="mi" data-v="roles"><i>&#128188;</i> Open Roles (Careers)</button>
+    <button class="mi" data-v="pages"><i>☰</i> Pages: content &amp; images</button>
+  </aside>
+
+  <div class="content">
+    <section id="v-home"><h1>Dashboard</h1><div class="hcards" id="homeCards"></div></section>
+
+    <!-- ================= ENQUIRY MANAGEMENT ================= -->
+    <section id="v-enq" hidden>
+      <h1>Enquiry Management</h1>
+      <div class="stats" id="enqStats"></div>
+      <div class="card"><h2 style="font-size:17px;margin-bottom:12px">Section-wise enquiries <small style="font-weight:500;color:#5d7268">(click to filter)</small></h2><div class="types" id="enqTypes"></div></div>
+      <div class="tabs" id="enqTabs"></div>
+      <div class="card">
+        <div class="fgrid">
+          <div><label for="fq">Search name / mobile</label><input id="fq" placeholder="Search..." /></div>
+          <div><label for="ftype">Enquiry type</label><select id="ftype"></select></div>
+          <div><label for="fstat">Status</label><select id="fstat"><option value="">All status</option><option value="new">New</option><option value="pending">Pending</option><option value="contacted">Contacted</option><option value="completed">Completed</option></select></div>
+          <div><label for="fd1">From date</label><input id="fd1" type="date" /></div>
+          <div><label for="fd2">To date</label><input id="fd2" type="date" /></div>
+          <div><label for="fsort">Sort</label><select id="fsort"><option value="new">Newest to oldest</option><option value="old">Oldest to newest</option></select></div>
+        </div>
+        <div class="toolbar" style="margin:14px 0 0">
+          <div class="menu"><button class="bigbtn" id="expBtn" type="button">⬇ EXPORT TO EXCEL ▾</button>
+            <div class="dd" id="expMenu" hidden>
+              <button type="button" data-x="all">All enquiries</button>
+              <button type="button" data-x="filtered">Filtered enquiries (as shown)</button>
+              <button type="button" data-x="selected">Selected enquiries only</button>
+              <button type="button" data-x="new">New enquiries only</button>
+              <button type="button" data-x="old">Old enquiries only</button>
+            </div></div>
+          <button class="sec sm" id="fClear" type="button">Clear filters</button>
+          <button class="sec sm" id="enqRefresh" type="button">Refresh</button>
+          <span id="enqCount" class="msg" style="margin:0"></span>
+        </div>
+      </div>
+      <div class="twrap"><table>
+        <thead><tr><th><input type="checkbox" id="selAll" aria-label="Select all"></th><th>Customer / City</th><th>Contact</th><th>Enquiry type</th><th>Requirement</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead>
+        <tbody id="enqBody"></tbody></table></div>
+      <div class="pager" id="enqPager"></div>
+    </section>
+
+    <!-- ================= GALLERY MANAGEMENT ================= -->
+    <section id="v-gal" hidden>
+      <h1>Gallery Management</h1>
+      <div class="stats" id="gStats"></div>
+      <div class="card">
+        <div class="toolbar" style="margin:0">
+          <button class="bigbtn" id="gAdd" type="button">＋ ADD IMAGE</button>
+          <button class="sec" id="gCats" type="button">Manage categories</button>
+          <button class="sec sm" id="gImport" type="button" hidden>Import the existing website photos</button>
+          <select id="gfCat" style="width:auto"></select>
+          <select id="gfStat" style="width:auto"><option value="">All images</option><option value="published">Published</option><option value="draft">Draft</option></select>
+        </div>
+        <div class="msg" style="font-weight:500">Drag a picture to rearrange (or use the ◀ ▶ buttons on phones). Changes appear on the website straight away.</div>
+      </div>
+      <div class="gcards" id="gGrid2"></div>
+    </section>
+
+    <!-- ================= UTILITY PRODUCTS MANAGEMENT ================= -->
+    <section id="v-products" hidden>
+      <h1>Utility Products Management</h1>
+      <div class="stats" id="upStats"></div>
+      <div class="card">
+        <div class="toolbar">
+          <button class="bigbtn" id="upAdd" type="button">＋ ADD PRODUCT</button>
+          <button class="sec" id="upCats" type="button">Manage Categories</button>
+          <button class="sec" id="upRefresh" type="button">Refresh</button>
+          <button class="sec" id="upExport" type="button">Export CSV</button>
+          <label style="margin:0">Import CSV <input id="upImport" type="file" accept=".csv,text/csv" style="width:auto;display:inline-block"></label>
+        </div>
+        <div class="fgrid">
+          <div><label for="upSearch">Search products</label><input id="upSearch" placeholder="Search name or description"></div>
+          <div><label for="upFilterCat">Category</label><select id="upFilterCat"><option value="">All categories</option></select></div>
+          <div><label for="upFilterStatus">Status</label><select id="upFilterStatus"><option value="">All statuses</option><option value="true">Published</option><option value="false">Draft</option></select></div>
+        </div>
+        <div id="upMsg" class="msg"></div>
+      </div>
+      <div class="twrap"><table style="min-width:900px"><thead><tr><th>Image</th><th>Product</th><th>Category</th><th>Sort</th><th>Status</th><th>Actions</th></tr></thead><tbody id="upBody"></tbody></table></div>
+    </section>
+    <section id="v-product-enquiries" hidden>
+      <h1>Utility Product Enquiries</h1>
+      <div class="stats" id="upeStats"></div>
+      <div class="card"><div class="toolbar"><input id="upeSearch" placeholder="Search name, phone or product" style="max-width:300px"><select id="upeStatus"><option value="">All statuses</option><option value="new">New</option><option value="pending">Pending</option><option value="contacted">Contacted</option><option value="completed">Completed</option></select><button class="sec" id="upeRefresh">Refresh</button><button class="sec" id="upeExport">Export CSV</button></div><div id="upeMsg" class="msg"></div></div>
+      <div class="twrap"><table style="min-width:950px"><thead><tr><th>Date</th><th>Customer</th><th>Contact</th><th>Product</th><th>Message</th><th>Status</th><th>Action</th></tr></thead><tbody id="upeBody"></tbody></table></div>
+    </section>
+
+    <!-- ================= CAREERS & PLACEMENT ================= -->
+    <section id="v-careers" hidden>
+      <h1>Careers &amp; Placement</h1>
+      <div class="stats" id="crStats"></div>
+      <div class="card"><div class="toolbar" style="margin:0"><input id="crSearch" placeholder="Search name, role, institution, city" style="max-width:320px"><button class="sec" id="crRefresh" type="button">Refresh</button></div><div id="crMsg" class="msg"></div></div>
+      <h2 style="font-size:18px;margin:6px 0 10px">Candidate applications</h2>
+      <div class="twrap"><table style="min-width:980px"><thead><tr><th>Date</th><th>Candidate</th><th>Role</th><th>Qualification</th><th>Message</th><th>Status</th><th>Actions</th></tr></thead><tbody id="crBody"></tbody></table></div>
+      <h2 style="font-size:18px;margin:26px 0 10px">Institution / placement requests</h2>
+      <div class="twrap"><table style="min-width:980px"><thead><tr><th>Date</th><th>Institution</th><th>Contact</th><th>Courses / students</th><th>Looking for</th><th>Status</th><th>Actions</th></tr></thead><tbody id="plBody"></tbody></table></div>
+    </section>
+
+    <!-- ================= OPEN ROLES (Careers page) ================= -->
+    <section id="v-roles" hidden>
+      <h1>Open Roles (shown on Careers page)</h1>
+      <div class="card">
+        <div class="toolbar" style="margin:0">
+          <button class="bigbtn" id="rlAdd" type="button">＋ ADD ROLE</button>
+          <button class="sec" id="rlRefresh" type="button">Refresh</button>
+        </div>
+        <div id="rlMsg" class="msg"></div>
+      </div>
+      <div class="twrap"><table style="min-width:800px">
+        <thead><tr><th>Order</th><th>Role</th><th>Department</th><th>Status</th><th>Actions</th></tr></thead>
+        <tbody id="rlBody"></tbody></table></div>
+    </section>
+
+    <!-- ================= PAGES ================= -->
+    <section id="v-pages" hidden>
+      <h1>Pages: content &amp; images</h1>
+      <div class="card">
+        <label for="pageSel" style="margin-top:0">Choose a page</label>
+        <select id="pageSel"></select>
+        <div class="msg" style="font-weight:500">Change any heading, text or picture below and press <b>Save</b>. It shows on the website straight away. <b>Reset</b> brings back the original.</div>
+        <div id="pgMsg" class="msg"></div>
+      </div>
+      <div id="pgList"></div>
+    </section>
+  </div>
+</div>
+
+<div id="modalBg" class="modalbg" hidden><div id="modalBox" class="modal"></div></div>
+<div id="toast"></div>
+
+<script>
+window.SG_CONFIG = {
+  SUPABASE_URL: "https://lsfwdoyqxlblvxlxwmbi.supabase.co",
+  SUPABASE_ANON_KEY: "sb_publishable_CjdM1_XUqYWaPeTxs6AmJA_5qBtSW9u"
+};
+</script>
+<script>
+(function () {
+  "use strict";
+  var C = window.SG_CONFIG || {}, $ = function (i) { return document.getElementById(i); };
+  if (!C.SUPABASE_URL || !C.SUPABASE_ANON_KEY) { $("setup").hidden = false; return; }
+
+  /* Login is kept in memory only: reload, change page or close the tab = logged out. */
+  var session = null, picked = [];
+  try { localStorage.removeItem("sg_admin"); sessionStorage.removeItem("sg_admin"); } catch (e) {}
+
+  function esc(t) { return String(t == null ? "" : t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function hdr(extra) {
+    var h = { apikey: C.SUPABASE_ANON_KEY };
+    if (session) h.Authorization = "Bearer " + session.access_token;
+    for (var k in extra) h[k] = extra[k];
+    return h;
+  }
+  function api(path, opt) {
+    opt = opt || {}; opt.headers = hdr(opt.headers || {});
+    return fetch(C.SUPABASE_URL + path, opt).then(function (r) {
+      if (r.status === 401) { $("logout").click(); throw new Error("Session expired. Please login again."); }
+      return r;
+    });
+  }
+  function say(id, text, cls) { var e = $(id); e.textContent = text; e.className = "msg " + (cls || ""); }
+
+  /* ---------- login / logout ---------- */
+  function show() { $("login").hidden = !!session; $("app").hidden = !session; if (session) { view("home"); startPoll(); } else { stopPoll(); } }
+  $("loginBtn").onclick = function () {
+    say("loginMsg", "Signing in...");
+    fetch(C.SUPABASE_URL + "/auth/v1/token?grant_type=password", {
+      method: "POST", headers: { apikey: C.SUPABASE_ANON_KEY, "Content-Type": "application/json" },
+      body: JSON.stringify({ email: $("em").value.trim(), password: $("pw").value })
+    }).then(function (r) { return r.json(); }).then(function (d) {
+      if (!d.access_token) return say("loginMsg", "Login failed: " + (d.error_description || d.msg || d.message || JSON.stringify(d)), "err");
+      session = d; show();
+    }).catch(function (e) { say("loginMsg", "Error: " + (e && e.message ? e.message : e) + " | URL used: " + C.SUPABASE_URL, "err"); });
+  };
+  function serverLogout() {
+    if (!session) return;
+    try { fetch(C.SUPABASE_URL + "/auth/v1/logout?scope=local", { method: "POST", keepalive: true, headers: { apikey: C.SUPABASE_ANON_KEY, Authorization: "Bearer " + session.access_token } }); } catch (e) {}
+  }
+  $("logout").onclick = function () { serverLogout(); session = null; $("pw").value = ""; show(); };
+  window.addEventListener("pagehide", serverLogout);
+  window.addEventListener("pageshow", function (e) { if (e.persisted) location.reload(); });
+
+  /* ---------- sidebar + routing ---------- */
+  function view(v) {
+    ["home", "enq", "gal", "pages", "products", "product-enquiries", "careers", "roles"].forEach(function (x) { $("v-" + x).hidden = x !== v; });
+    Array.prototype.forEach.call(document.querySelectorAll("aside .mi[data-v]"), function (b) { b.classList.toggle("on", b.dataset.v === v && !b.dataset.act && (!b.dataset.tab || b.dataset.tab === eTab)); });
+    $("side").classList.remove("open");
+    if (v === "home") return Promise.all([loadEnq(true), loadGal()]).then(renderHome);
+    if (v === "enq") return loadEnq();
+    if (v === "gal") return loadGal();
+    if (v === "pages" && !$("pageSel").options.length) initPages();
+    if (v === "careers") return loadCareers();
+    if (v === "roles") return loadRoles();
+    if (v === "products") return loadUtilityProducts();
+    if (v === "product-enquiries") return loadUtilityEnquiries();
+  }
+  Array.prototype.forEach.call(document.querySelectorAll("aside .mi[data-v]"), function (b) {
+    b.onclick = function () {
+      if (b.dataset.tab) { eTab = b.dataset.tab; ePage = 1; }
+      Promise.resolve(view(b.dataset.v)).then(function () { if (b.dataset.act === "add") $("gAdd").click(); else if (b.dataset.act === "cats") $("gCats").click(); });
+    };
+  });
+  Array.prototype.forEach.call(document.querySelectorAll("aside .gh"), function (b) {
+    b.onclick = function () { var s = b.nextElementSibling; s.hidden = !s.hidden; b.querySelector("em").textContent = s.hidden ? "+" : "−"; };
+  });
+  $("burger").onclick = function () { $("side").classList.toggle("open"); };
+
+  /* ---------- dashboard home ---------- */
+  function renderHome() {
+    var c = { total: ENQ.length, new: 0, pending: 0, contacted: 0, completed: 0, old: 0 };
+    ENQ.forEach(function (x) { if (c[x.status] != null) c[x.status]++; if (isOld(x)) c.old++; });
+    var pub = GP.filter(function (p) { return p.published !== false; }).length;
+    var cards = [["Total Enquiries", c.total, "💬", "#2b5a0b", "enq", "all"], ["New Enquiries", c.new, "💬", "#f44336", "enq", "new"], ["Pending Enquiries", c.pending, "💬", "#ff9800", "enq", "pending"],
+      ["Contacted Enquiries", c.contacted, "💬", "#2196f3", "enq", "contacted"], ["Completed Enquiries", c.completed, "💬", "#8bc34a", "enq", "completed"], ["Old Enquiries", c.old, "💬", "#795548", "enq", "old"],
+      ["Total Gallery Images", GP.length, "🖼", "#9c27b0", "gal", ""], ["Published Images", pub, "🖼", "#2196f3", "gal", ""], ["Draft Images", GP.length - pub, "🖼", "#ff9800", "gal", ""], ["Gallery Categories", GC.length, "🖼", "#795548", "gal", ""]];
+    $("homeCards").innerHTML = cards.map(function (k) { return '<a class="hc" style="background:' + k[3] + '" data-v="' + k[4] + '" data-tab="' + k[5] + '"><span class="hi">' + k[2] + '</span><span class="ht"><small>' + k[0] + "</small><b>" + k[1] + "</b></span></a>"; }).join("");
+  }
+  $("homeCards").onclick = function (e) { var b = e.target.closest(".hc"); if (!b) return; if (b.dataset.tab) { eTab = b.dataset.tab; ePage = 1; } view(b.dataset.v); };
+
+  /* ---------- shared: image resize + storage ---------- */
+  function resize(file, maxW, q) {
+    return new Promise(function (res, rej) {
+      var img = new Image(), u = URL.createObjectURL(file);
+      img.onload = function () {
+        var s = Math.min(1, maxW / img.width), w = Math.round(img.width * s), h = Math.round(img.height * s);
+        var cv = document.createElement("canvas"); cv.width = w; cv.height = h;
+        cv.getContext("2d").drawImage(img, 0, 0, w, h);
+        cv.toBlob(function (b) { URL.revokeObjectURL(u); res({ blob: b, w: w, h: h }); }, "image/webp", q);
+      };
+      img.onerror = function () { rej(new Error("Cannot read " + file.name)); };
+      img.src = u;
+    });
+  }
+  function storageUpload(path, blob) {
+    return api("/storage/v1/object/gallery/" + path, { method: "POST", headers: { "Content-Type": "image/webp" }, body: blob })
+      .then(function (r) { if (!r.ok) throw new Error("Upload failed (" + r.status + ")"); return C.SUPABASE_URL + "/storage/v1/object/public/gallery/" + path; });
+  }
+
+  /* ---------- shared helpers: toast + modal ---------- */
+  function toast(m, t) { var d = document.createElement("div"); d.className = t || ""; d.textContent = m; d.onclick = function () { d.remove(); }; $("toast").appendChild(d); while ($("toast").children.length > 3) $("toast").firstChild.remove(); setTimeout(function () { d.remove(); }, 4200); }
+  function openModal(html) { $("modalBox").innerHTML = html; $("modalBg").hidden = false; }
+  function closeModal() { $("modalBg").hidden = true; $("modalBox").innerHTML = ""; }
+  $("modalBg").onmousedown = function (e) { if (e.target === this) closeModal(); };
+  document.addEventListener("click", function (e) { if (e.target.closest(".mclose")) closeModal(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !$("modalBg").hidden) closeModal(); });
+  function busy(btn, on, label) { btn.disabled = on; if (on) { btn.dataset.l = btn.innerHTML; btn.innerHTML = '<span class="spin"></span> ' + (label || "Please wait..."); } else if (btn.dataset.l) btn.innerHTML = btn.dataset.l; }
+  function when(t) { try { return new Date(t).toLocaleString("en-IN", { dateStyle: "medium", timeStyle: "short" }); } catch (e) { return t; } }
+  function whenShort(t) { try { return new Date(t).toLocaleString("en-IN", { day: "numeric", month: "short", year: "2-digit", hour: "numeric", minute: "2-digit" }); } catch (e) { return t; } }
+  function ymd(d) { var m = d.getMonth() + 1, dd = d.getDate(); return d.getFullYear() + "-" + (m < 10 ? "0" : "") + m + "-" + (dd < 10 ? "0" : "") + dd; }
+  function fetchAll(path) {
+    var out = [];
+    function next(off) {
+      return api(path + "&limit=1000&offset=" + off).then(function (r) { return r.json(); }).then(function (rows) {
+        if (!Array.isArray(rows)) throw new Error((rows && rows.message) || "Database error");
+        out = out.concat(rows); return rows.length === 1000 ? next(off + 1000) : out;
+      });
+    }
+    return next(0);
+  }
+
+  /* =====================  ENQUIRY MANAGEMENT  ===================== */
+  var ENQ = [], eTab = "all", ePage = 1, ePer = 15, sel = {}, lastCount = null, pollT = null, OLD_DAYS = 7;
+  var STATUSES = ["new", "pending", "contacted", "completed"];
+  var PRESET = ["Residential Solar Enquiry", "Commercial Solar Enquiry", "Industrial Solar Enquiry", "Rooftop Solar Enquiry", "Solar Installation Enquiry", "General Enquiry"];
+  function isOld(x) { return Date.now() - new Date(x.created_at).getTime() > OLD_DAYS * 864e5; }
+  function cap(s) { return s ? s.charAt(0).toUpperCase() + s.slice(1) : ""; }
+
+  function loadEnq(silent) {
+    return fetchAll("/rest/v1/enquiries?select=*&order=created_at.desc").then(function (rows) {
+      if (lastCount !== null && rows.length > lastCount) toast((rows.length - lastCount) + " new enquiry received", "ok");
+      lastCount = rows.length; ENQ = rows;
+      var n = rows.filter(function (x) { return x.status === "new"; }).length; $("badge").hidden = !n; $("badge").textContent = n;
+      if (!$("v-enq").hidden) renderEnq(); if (!$("v-home").hidden) renderHome();
+    }).catch(function (e) { if (!silent) $("enqBody").innerHTML = '<tr><td colspan="8" class="msg err">' + esc(e.message) + ' - run the SQL from SETUP-3.md if the table is missing.</td></tr>'; });
+  }
+  function startPoll() { stopPoll(); loadEnq(true); pollT = setInterval(function () { if (session && !document.hidden) loadEnq(true); }, 20000); }
+  function stopPoll() { if (pollT) clearInterval(pollT); pollT = null; lastCount = null; }
+
+  function allTypes() { var t = PRESET.slice(); ENQ.forEach(function (x) { if (x.enquiry_type && t.indexOf(x.enquiry_type) < 0) t.push(x.enquiry_type); }); return t; }
+  function renderEnq() {
+    var c = { total: ENQ.length, new: 0, pending: 0, contacted: 0, completed: 0, old: 0 };
+    ENQ.forEach(function (x) { if (c[x.status] != null) c[x.status]++; if (isOld(x)) c.old++; });
+    $("enqStats").innerHTML = [["Total Enquiries", c.total, ""], ["New Enquiries", c.new, "new"], ["Pending", c.pending, "pend"], ["Contacted", c.contacted, "cont"], ["Completed", c.completed, ""], ["Old Enquiries (" + OLD_DAYS + "+ days)", c.old, "old"]]
+      .map(function (s) { return '<div class="stat ' + s[2] + '"><b>' + s[1] + "</b><span>" + s[0] + "</span></div>"; }).join("");
+    var types = allTypes(), cnt = {}; ENQ.forEach(function (x) { var k = x.enquiry_type || "General Enquiry"; cnt[k] = (cnt[k] || 0) + 1; });
+    $("enqTypes").innerHTML = types.map(function (t) { return '<button type="button" class="tchip" data-t="' + esc(t) + '">' + esc(t) + "<b>" + (cnt[t] || 0) + "</b></button>"; }).join("");
+    var cur = $("ftype").value;
+    $("ftype").innerHTML = '<option value="">All enquiry types</option>' + types.map(function (t) { return '<option value="' + esc(t) + '">' + esc(t) + "</option>"; }).join(""); $("ftype").value = cur;
+    var tabs = [["all", "All Enquiries", c.total], ["new", "New", c.new], ["old", "Old", c.old], ["pending", "Pending", c.pending], ["contacted", "Contacted", c.contacted], ["completed", "Completed", c.completed]];
+    $("enqTabs").innerHTML = tabs.map(function (t) { return '<button type="button" class="tab ' + (eTab === t[0] ? "on" : "") + '" data-tab="' + t[0] + '">' + t[1] + "<small>" + t[2] + "</small></button>"; }).join("");
+    renderTable();
+  }
+  function getFiltered() {
+    var q = $("fq").value.trim().toLowerCase(), qd = q.replace(/[\s-]/g, ""), ft = $("ftype").value, fs = $("fstat").value, d1 = $("fd1").value, d2 = $("fd2").value, so = $("fsort").value;
+    var list = ENQ.filter(function (x) {
+      if (eTab === "new" && x.status !== "new") return false;
+      if (eTab === "old" && !isOld(x)) return false;
+      if (["pending", "contacted", "completed"].indexOf(eTab) > -1 && x.status !== eTab) return false;
+      if (q && (x.name || "").toLowerCase().indexOf(q) < 0 && (!qd || (x.phone || "").replace(/[\s-]/g, "").indexOf(qd) < 0)) return false;
+      if (ft && (x.enquiry_type || "General Enquiry") !== ft) return false;
+      if (fs && x.status !== fs) return false;
+      var dt = ymd(new Date(x.created_at)); if (d1 && dt < d1) return false; if (d2 && dt > d2) return false;
+      return true;
+    });
+    list.sort(function (a, b) { return so === "old" ? new Date(a.created_at) - new Date(b.created_at) : new Date(b.created_at) - new Date(a.created_at); });
+    return list;
+  }
+  function renderTable() {
+    var list = getFiltered(), pages = Math.max(1, Math.ceil(list.length / ePer)); if (ePage > pages) ePage = pages;
+    var rows = list.slice((ePage - 1) * ePer, ePage * ePer);
+    $("enqCount").textContent = list.length + " enquiries shown";
+    $("selAll").checked = rows.length > 0 && rows.every(function (x) { return sel[x.id]; });
+    $("enqBody").innerHTML = rows.map(function (x) {
+      return '<tr class="' + (x.status === "new" ? "isnew" : "") + '"><td><input type="checkbox" class="sc" data-id="' + x.id + '" ' + (sel[x.id] ? "checked" : "") + "></td>" +
+        "<td><b>" + esc(x.name || "-") + "</b>" + (isOld(x) ? ' <span class="pill old">Old</span>' : "") + '<br><small style="color:#5d7268">' + esc(x.city || "-") + "</small></td><td>" + esc(x.phone || "-") + '<br><small style="color:#5d7268">' + esc(x.email || "") + "</small></td>" +
+        "<td>" + esc(x.enquiry_type || "General Enquiry") + "</td><td>" + esc(x.requirement || "-") + "</td><td>" + esc(whenShort(x.created_at)) + "</td>" +
+        '<td><span class="pill ' + esc(x.status) + '">' + esc(cap(x.status)) + '</span><br><select class="stsel" data-id="' + x.id + '">' + STATUSES.map(function (s) { return '<option value="' + s + '"' + (s === x.status ? " selected" : "") + ">" + cap(s) + "</option>"; }).join("") + "</select></td>" +
+        '<td class="nw"><button class="ib" data-a="view" data-id="' + x.id + '" title="View details">View</button><button class="ib" data-a="edit" data-id="' + x.id + '" title="Edit">Edit</button>' +
+        (x.phone ? '<a class="ib" href="tel:' + esc(x.phone) + '" title="Call customer">📞</a>' : "") + (x.email ? '<a class="ib" href="mailto:' + esc(x.email) + '" title="Send email">✉️</a>' : "") + '<button class="ib red" data-a="del" data-id="' + x.id + '" title="Delete">🗑</button></td></tr>';
+    }).join("") || '<tr><td colspan="8" style="text-align:center;padding:30px">No enquiries found.</td></tr>';
+    $("enqPager").innerHTML = '<span>Page ' + ePage + " of " + pages + '</span><span><button class="sec sm" data-p="-1"' + (ePage <= 1 ? " disabled" : "") + '>‹ Previous</button> <button class="sec sm" data-p="1"' + (ePage >= pages ? " disabled" : "") + '>Next ›</button></span>' +
+      '<span>Rows per page <select id="perSel">' + [10, 15, 25, 50, 100].map(function (n) { return '<option' + (n === ePer ? " selected" : "") + ">" + n + "</option>"; }).join("") + "</select></span>";
+  }
+  function enqById(id) { return ENQ.filter(function (x) { return String(x.id) === String(id); })[0]; }
+  function setStatus(id, s) {
+    return api("/rest/v1/enquiries?id=eq." + id, { method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ status: s }) })
+      .then(function (r) { if (!r.ok) throw new Error("Could not change status"); var x = enqById(id); if (x) x.status = s; toast("Status changed to " + cap(s), "ok"); renderEnq(); loadEnq(true); }).catch(function (e) { toast(e.message, "err"); });
+  }
+  function viewEnq(id) {
+    var x = enqById(id); if (!x) return;
+    openModal('<button class="mclose">Close</button><h2>Enquiry details</h2><dl class="dl">' +
+      [["Customer name", x.name], ["Mobile number", x.phone], ["Email address", x.email], ["City / Location", x.city], ["Enquiry type", x.enquiry_type || "General Enquiry"], ["Solar system requirement", x.requirement], ["Message", x.message], ["Other details", x.extra], ["Submitted from", x.source], ["Submission date", when(x.created_at)], ["Status", cap(x.status)]]
+        .map(function (r) { return "<dt>" + r[0] + "</dt><dd>" + esc(r[1] || "-") + "</dd>"; }).join("") + '</dl><div class="macts">' +
+      '<button data-m="new" data-id="' + x.id + '" class="sec sm">Mark as New</button><button data-m="pending" data-id="' + x.id + '" class="sec sm">Mark as Pending</button><button data-m="contacted" data-id="' + x.id + '" class="sec sm">Mark as Contacted</button><button data-m="completed" data-id="' + x.id + '" class="sm">Mark as Completed</button>' +
+      (x.phone ? '<a class="ib" href="tel:' + esc(x.phone) + '">📞 Call customer</a>' : "") + (x.email ? '<a class="ib" href="mailto:' + esc(x.email) + '">✉️ Send email</a>' : "") + "</div>");
+  }
+  function editEnq(id) {
+    var x = enqById(id); if (!x) return;
+    openModal('<button class="mclose">Close</button><h2>Edit enquiry</h2><form id="eForm" novalidate>' +
+      '<label>Customer name *</label><input name="name" value="' + esc(x.name) + '">' +
+      '<div class="row"><div><label>Mobile number *</label><input name="phone" value="' + esc(x.phone) + '"></div><div><label>Email address</label><input name="email" value="' + esc(x.email) + '"></div></div>' +
+      '<div class="row"><div><label>City / Location</label><input name="city" value="' + esc(x.city) + '"></div><div><label>Enquiry type</label><input name="enquiry_type" list="tl" value="' + esc(x.enquiry_type || "General Enquiry") + '"><datalist id="tl">' + allTypes().map(function (t) { return '<option value="' + esc(t) + '">'; }).join("") + "</datalist></div></div>" +
+      '<label>Solar system requirement</label><input name="requirement" value="' + esc(x.requirement) + '"><label>Message</label><textarea name="message" rows="3">' + esc(x.message) + "</textarea>" +
+      '<label>Status</label><select name="status">' + STATUSES.map(function (s) { return '<option value="' + s + '"' + (s === x.status ? " selected" : "") + ">" + cap(s) + "</option>"; }).join("") + '</select>' +
+      '<p class="msg err" id="eErr"></p><div class="macts"><button type="submit" id="eSave">Save changes</button><button type="button" class="sec mclose" style="float:none">Cancel</button></div></form>');
+    $("eForm").onsubmit = function (ev) {
+      ev.preventDefault(); var f = ev.target, v = function (n) { return f.elements[n].value.trim(); };
+      if (!v("name")) return say("eErr", "Customer name is required.", "err");
+      if (!/^[+\d][\d\s-]{6,17}$/.test(v("phone"))) return say("eErr", "Enter a valid mobile number.", "err");
+      if (v("email") && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v("email"))) return say("eErr", "Enter a valid email address.", "err");
+      var b = $("eSave"); busy(b, true, "Saving...");
+      api("/rest/v1/enquiries?id=eq." + id, { method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name: v("name"), phone: v("phone"), email: v("email"), city: v("city"), enquiry_type: v("enquiry_type") || "General Enquiry", requirement: v("requirement"), message: v("message"), status: v("status") }) })
+        .then(function (r) { if (!r.ok) throw new Error("Could not save (" + r.status + ")"); toast("Enquiry updated", "ok"); closeModal(); return loadEnq(true); })
+        .catch(function (e) { say("eErr", e.message, "err"); busy(b, false); });
+    };
+  }
+  function delEnq(id) {
+    var x = enqById(id); if (!x || !confirm("Delete the enquiry from " + (x.name || "this customer") + " permanently? This cannot be undone.")) return;
+    api("/rest/v1/enquiries?id=eq." + id, { method: "DELETE" }).then(function (r) { if (!r.ok) throw new Error("Delete failed"); delete sel[id]; toast("Enquiry deleted", "ok"); return loadEnq(true); }).catch(function (e) { toast(e.message, "err"); });
+  }
+
+  /* ---------- export to Excel ---------- */
+  function exportRows(rows, label) {
+    if (!rows.length) return toast("No enquiries to export.", "err");
+    var data = rows.map(function (x, i) {
+      return { "Sr No": i + 1, "Customer Name": x.name || "", "Mobile Number": x.phone || "", "Email Address": x.email || "", "City / Location": x.city || "", "Enquiry Type": x.enquiry_type || "General Enquiry",
+        "Solar System Requirement": x.requirement || "", "Message": x.message || "", "Other Details": x.extra || "", "Submission Date": when(x.created_at), "Enquiry Status": cap(x.status), "Submitted From": x.source || "" };
+    });
+    var name = "SunGET-Enquiries-" + label + "-" + ymd(new Date());
+    if (window.XLSX) {
+      var ws = XLSX.utils.json_to_sheet(data); ws["!cols"] = [6, 22, 16, 28, 18, 28, 30, 40, 30, 22, 14, 16].map(function (w) { return { wch: w }; });
+      var wb = XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb, ws, "Enquiries"); XLSX.writeFile(wb, name + ".xlsx");
+    } else {   // fallback if the Excel library could not load
+      var keys = Object.keys(data[0]), csv = [keys.join(",")].concat(data.map(function (r) { return keys.map(function (k) { return '"' + String(r[k]).replace(/"/g, '""') + '"'; }).join(","); })).join("\r\n");
+      var a = document.createElement("a"); a.href = URL.createObjectURL(new Blob(["\ufeff" + csv], { type: "text/csv" })); a.download = name + ".csv"; a.click();
+      toast("Excel library not loaded - downloaded as CSV (opens in Excel).", "err"); return;
+    }
+    toast(rows.length + " enquiries exported to Excel", "ok");
+  }
+  $("expBtn").onclick = function (e) { e.stopPropagation(); $("expMenu").hidden = !$("expMenu").hidden; };
+  document.addEventListener("click", function () { $("expMenu").hidden = true; });
+  $("expMenu").onclick = function (e) {
+    var b = e.target.closest("button[data-x]"); if (!b) return; var k = b.dataset.x, rows;
+    if (k === "all") rows = ENQ; else if (k === "filtered") rows = getFiltered(); else if (k === "new") rows = ENQ.filter(function (x) { return x.status === "new"; });
+    else if (k === "old") rows = ENQ.filter(isOld); else rows = ENQ.filter(function (x) { return sel[x.id]; });
+    if (k === "selected" && !rows.length) return toast("Tick the enquiries you want to export first.", "err");
+    exportRows(rows, k);
+  };
+
+  /* ---------- enquiry events ---------- */
+  ["fq", "ftype", "fstat", "fd1", "fd2", "fsort"].forEach(function (id) { $(id).addEventListener(id === "fq" ? "input" : "change", function () { ePage = 1; renderTable(); }); });
+  $("fClear").onclick = function () { ["fq", "ftype", "fstat", "fd1", "fd2"].forEach(function (i) { $(i).value = ""; }); $("fsort").value = "new"; eTab = "all"; ePage = 1; renderEnq(); };
+  $("enqRefresh").onclick = function () { loadEnq().then(function () { toast("Refreshed", "ok"); }); };
+  $("enqTabs").onclick = function (e) { var b = e.target.closest("[data-tab]"); if (b) { eTab = b.dataset.tab; ePage = 1; renderEnq(); } };
+  $("enqTypes").onclick = function (e) { var b = e.target.closest("[data-t]"); if (b) { $("ftype").value = b.dataset.t; ePage = 1; renderTable(); window.scrollTo({ top: $("enqBody").offsetTop - 200, behavior: "smooth" }); } };
+  $("selAll").onchange = function () { var on = this.checked; getFiltered().slice((ePage - 1) * ePer, ePage * ePer).forEach(function (x) { if (on) sel[x.id] = true; else delete sel[x.id]; }); renderTable(); };
+  $("enqBody").onchange = function (e) {
+    if (e.target.classList.contains("sc")) { if (e.target.checked) sel[e.target.dataset.id] = true; else delete sel[e.target.dataset.id]; }
+    else if (e.target.classList.contains("stsel")) setStatus(e.target.dataset.id, e.target.value);
+  };
+  $("enqBody").onclick = function (e) { var b = e.target.closest("button[data-a]"); if (!b) return; ({ view: viewEnq, edit: editEnq, del: delEnq })[b.dataset.a](b.dataset.id); };
+  $("enqPager").onclick = function (e) { var b = e.target.closest("[data-p]"); if (b) { ePage += +b.dataset.p; renderTable(); } };
+  $("enqPager").onchange = function (e) { if (e.target.id === "perSel") { ePer = +e.target.value; ePage = 1; renderTable(); } };
+  $("modalBox").onclick = function (e) { var b = e.target.closest("button[data-m]"); if (b) { setStatus(b.dataset.id, b.dataset.m).then(function () { viewEnq(b.dataset.id); }); } };
+
+  /* =====================  GALLERY MANAGEMENT  ===================== */
+  var GP = [], GC = [], IMPORTED = false, dragId = null;
+  function slugify(s) { return String(s).toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "category"; }
+  function catName(slug) { var c = GC.filter(function (x) { return x.slug === slug; })[0]; return c ? c.name : slug; }
+  function sortGP() { GP.sort(function (a, b) { return (a.sort_order || 0) - (b.sort_order || 0) || new Date(b.created_at) - new Date(a.created_at); }); }
+  function catOptions(sel2, withAll) { return (withAll ? '<option value="">All categories</option>' : "") + GC.map(function (c) { return '<option value="' + esc(c.slug) + '"' + (c.slug === sel2 ? " selected" : "") + ">" + esc(c.name) + "</option>"; }).join(""); }
+
+  function loadGal() {
+    return Promise.all([
+      api("/rest/v1/photos?select=*&order=sort_order.asc,created_at.desc").then(function (r) { return r.json(); }),
+      api("/rest/v1/gallery_categories?select=*&order=sort_order.asc").then(function (r) { return r.json(); }),
+      api("/rest/v1/page_content?page=eq._gallery&key=eq.imported&select=value").then(function (r) { return r.json(); })
+    ]).then(function (res) {
+      if (!Array.isArray(res[0]) || !Array.isArray(res[1])) { $("gStats").innerHTML = '<p class="msg err">Gallery database needs the new SQL. Run it from SETUP-3.md, then refresh.</p>'; $("gGrid2").innerHTML = ""; return; }
+      GP = res[0]; GC = res[1]; IMPORTED = Array.isArray(res[2]) && res[2].length > 0; sortGP(); renderGal(); if (!$("v-home").hidden) renderHome();
+    }).catch(function (e) { toast(e.message, "err"); });
+  }
+  function gView() { var c = $("gfCat").value, s = $("gfStat").value; return GP.filter(function (p) { return (!c || p.cat === c) && (!s || (s === "published") === (p.published !== false)); }); }
+  function renderGal() {
+    var pub = GP.filter(function (p) { return p.published !== false; }).length;
+    $("gStats").innerHTML = [["Total Gallery Images", GP.length], ["Published Images", pub], ["Draft Images", GP.length - pub], ["Gallery Categories", GC.length]].map(function (s) { return '<div class="stat"><b>' + s[1] + "</b><span>" + s[0] + "</span></div>"; }).join("");
+    var cur = $("gfCat").value; $("gfCat").innerHTML = catOptions(cur, true); $("gfCat").value = cur;
+    $("gImport").hidden = IMPORTED;
+    var list = gView();
+    $("gGrid2").innerHTML = list.map(function (p) {
+      var live = p.published !== false;
+      return '<div class="gc" draggable="true" data-id="' + p.id + '"><img src="' + esc(p.thumb || p.src) + '" alt="' + esc(p.alt || p.title) + '" draggable="false"><div class="b"><b>' + esc(p.title) + "</b><small>" + esc(catName(p.cat)) + " · order " + (p.sort_order || 0) + '</small><span class="pill ' + (live ? "published" : "draft") + '">' + (live ? "Published" : "Draft") + '</span>' +
+        '<div style="margin-top:8px"><button class="ib" data-g="edit" data-id="' + p.id + '">Edit</button><button class="ib" data-g="pub" data-id="' + p.id + '">' + (live ? "Unpublish" : "Publish") + '</button><button class="ib red" data-g="del" data-id="' + p.id + '">Delete</button>' +
+        '<button class="ib" data-g="left" data-id="' + p.id + '" title="Move earlier">◀</button><button class="ib" data-g="right" data-id="' + p.id + '" title="Move later">▶</button></div></div></div>';
+    }).join("") || "<p>No images here yet. Click ADD IMAGE.</p>";
+  }
+  function gById(id) { return GP.filter(function (p) { return String(p.id) === String(id); })[0]; }
+  function patchPhoto(id, obj) { return api("/rest/v1/photos?id=eq." + id, { method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify(obj) }).then(function (r) { if (!r.ok) throw new Error("Could not save (" + r.status + ")"); }); }
+  function storagePath(u) { return (u || "").split("/public/gallery/")[1]; }
+  function dropFiles(p) { [p.src, p.thumb].forEach(function (u) { var s = storagePath(u); if (s) api("/storage/v1/object/gallery/" + s, { method: "DELETE" }); }); }
+  function okImg(f) { return /^image\/(jpeg|png|webp|gif)$/.test(f.type) && f.size <= 25 * 1024 * 1024; }
+  function upload2(file, tag) { var id = Date.now() + "-" + tag; return Promise.all([resize(file, 1800, 0.8), resize(file, 800, 0.75)]).then(function (r) { return Promise.all([storageUpload(id + ".webp", r[0].blob), storageUpload(id + "-t.webp", r[1].blob)]).then(function (u) { return { src: u[0], thumb: u[1], w: r[0].w, h: r[0].h }; }); }); }
+
+  function imgForm(p) {
+    var e = !!p; p = p || {};
+    return '<form id="gForm" novalidate><label>' + (e ? "Change image (optional)" : "Images * (you can choose many)") + '</label><input type="file" id="gFiles" accept="image/jpeg,image/png,image/webp,image/gif"' + (e ? "" : " multiple") + '><div id="gPrev" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">' + (e ? '<img src="' + esc(p.thumb || p.src) + '" style="width:120px;height:90px;object-fit:cover;border-radius:8px">' : "") + "</div>" +
+      '<label>Image title' + (e ? " *" : " (blank = file name)") + '</label><input name="title" value="' + esc(p.title) + '" maxlength="120"><label>Image description</label><textarea name="description" rows="2" maxlength="300">' + esc(p.description) + "</textarea>" +
+      '<div class="row"><div><label>Image category *</label><select name="cat">' + catOptions(p.cat || $("gfCat").value) + '</select></div><div><label>Display order (small number = first)</label><input name="sort_order" type="number" value="' + (p.sort_order != null ? p.sort_order : 0) + '"></div></div>' +
+      '<div class="row"><div><label>Image alt text</label><input name="alt" value="' + esc(p.alt) + '" maxlength="160" placeholder="Describe the picture"></div><div><label>Status</label><select name="published"><option value="true"' + (p.published !== false ? " selected" : "") + '>Published</option><option value="false"' + (p.published === false ? " selected" : "") + ">Draft (hidden)</option></select></div></div>" +
+      '<p class="msg err" id="gErr"></p><div class="macts"><button type="submit" id="gSave">' + (e ? "Save changes" : "Upload images") + '</button><button type="button" class="sec mclose" style="float:none">Cancel</button></div></form>';
+  }
+  $("gAdd").onclick = function () {
+    if (!GC.length) return toast("Add a category first (Manage categories).", "err");
+    openModal('<button class="mclose">Close</button><h2>Add images</h2>' + imgForm());
+    $("gFiles").onchange = function () { $("gPrev").innerHTML = ""; Array.prototype.forEach.call(this.files, function (f) { var i = new Image(); i.src = URL.createObjectURL(f); i.style.cssText = "width:70px;height:70px;object-fit:cover;border-radius:8px"; $("gPrev").appendChild(i); }); };
+    $("gForm").onsubmit = function (ev) {
+      ev.preventDefault(); var f = ev.target, files = Array.prototype.slice.call($("gFiles").files);
+      if (!files.length) return say("gErr", "Please choose at least one image.", "err");
+      if (!files.every(okImg)) return say("gErr", "Only JPG, PNG, WebP or GIF images up to 25 MB are allowed.", "err");
+      var b = $("gSave"), n = 0, order = parseInt(f.elements.sort_order.value, 10) || 0, chain = Promise.resolve(); busy(b, true, "Uploading...");
+      files.forEach(function (file, i) {
+        chain = chain.then(function () {
+          b.innerHTML = '<span class="spin"></span> Uploading ' + (i + 1) + " of " + files.length + "...";
+          return upload2(file, i).then(function (u) {
+            var t = f.elements.title.value.trim() || file.name.replace(/\.[^.]+$/, "");
+            return api("/rest/v1/photos", { method: "POST", headers: { "Content-Type": "application/json", Prefer: "return=minimal" }, body: JSON.stringify({ src: u.src, thumb: u.thumb, w: u.w, h: u.h, cat: f.elements.cat.value, title: t, description: f.elements.description.value.trim(), alt: f.elements.alt.value.trim() || t, sort_order: order + i, published: f.elements.published.value === "true" }) })
+              .then(function (r) { if (!r.ok) throw new Error("Could not save details (" + r.status + "). Did you run the SQL from SETUP-3.md?"); n++; });
+          });
+        });
+      });
+      chain.then(function () { toast(n + " image(s) uploaded", "ok"); closeModal(); }).catch(function (e) { say("gErr", e.message, "err"); busy(b, false); }).then(loadGal);
+    };
+  };
+  function editImg(id) {
+    var p = gById(id); if (!p) return;
+    openModal('<button class="mclose">Close</button><h2>Edit image</h2>' + imgForm(p));
+    $("gForm").onsubmit = function (ev) {
+      ev.preventDefault(); var f = ev.target, file = $("gFiles").files[0];
+      if (!f.elements.title.value.trim()) return say("gErr", "Image title is required.", "err");
+      if (file && !okImg(file)) return say("gErr", "Only JPG, PNG, WebP or GIF images up to 25 MB are allowed.", "err");
+      var b = $("gSave"); busy(b, true, "Saving...");
+      var obj = { title: f.elements.title.value.trim(), description: f.elements.description.value.trim(), alt: f.elements.alt.value.trim() || f.elements.title.value.trim(), cat: f.elements.cat.value, sort_order: parseInt(f.elements.sort_order.value, 10) || 0, published: f.elements.published.value === "true" };
+      (file ? upload2(file, "r") : Promise.resolve(null)).then(function (u) { if (u) { obj.src = u.src; obj.thumb = u.thumb; obj.w = u.w; obj.h = u.h; } return patchPhoto(id, obj).then(function () { if (u) dropFiles(p); }); })
+        .then(function () { toast("Image updated", "ok"); closeModal(); return loadGal(); }).catch(function (e) { say("gErr", e.message, "err"); busy(b, false); });
+    };
+  }
+  function moveImg(id, dir) {
+    var v = gView(), i = v.map(function (p) { return String(p.id); }).indexOf(String(id)), j = i + dir; if (i < 0 || j < 0 || j >= v.length) return;
+    var item = v.splice(i, 1)[0]; v.splice(j, 0, item); saveOrder(v);
+  }
+  function saveOrder(v) {
+    var jobs = []; v.forEach(function (p, i) { var o = i * 10; if ((p.sort_order || 0) !== o) { p.sort_order = o; jobs.push(patchPhoto(p.id, { sort_order: o })); } });
+    sortGP(); renderGal();
+    Promise.all(jobs).then(function () { if (jobs.length) toast("Order saved", "ok"); }).catch(function (e) { toast(e.message, "err"); loadGal(); });
+  }
+  $("gGrid2").onclick = function (e) {
+    var b = e.target.closest("button[data-g]"); if (!b) return; var id = b.dataset.id, p = gById(id), a = b.dataset.g;
+    if (a === "edit") editImg(id);
+    else if (a === "pub") patchPhoto(id, { published: p.published === false }).then(function () { toast(p.published === false ? "Image published" : "Image hidden (draft)", "ok"); return loadGal(); }).catch(function (er) { toast(er.message, "err"); });
+    else if (a === "del") { if (!confirm('Delete "' + p.title + '" permanently from the website?')) return; api("/rest/v1/photos?id=eq." + id, { method: "DELETE" }).then(function (r) { if (!r.ok) throw new Error("Delete failed"); dropFiles(p); toast("Image deleted", "ok"); return loadGal(); }).catch(function (er) { toast(er.message, "err"); }); }
+    else if (a === "left") moveImg(id, -1); else if (a === "right") moveImg(id, 1);
+  };
+  /* drag and drop */
+  $("gGrid2").addEventListener("dragstart", function (e) { var c = e.target.closest(".gc"); if (!c) return; dragId = c.dataset.id; c.classList.add("drag"); e.dataTransfer.effectAllowed = "move"; e.dataTransfer.setData("text/plain", dragId); });
+  $("gGrid2").addEventListener("dragover", function (e) { var c = e.target.closest(".gc"); if (!c || !dragId) return; e.preventDefault(); Array.prototype.forEach.call(document.querySelectorAll(".gc.over"), function (x) { x.classList.remove("over"); }); c.classList.add("over"); });
+  $("gGrid2").addEventListener("drop", function (e) {
+    var c = e.target.closest(".gc"); e.preventDefault(); if (!c || !dragId || c.dataset.id === dragId) return;
+    var v = gView(), from = v.map(function (p) { return String(p.id); }).indexOf(dragId), to = v.map(function (p) { return String(p.id); }).indexOf(c.dataset.id);
+    if (from < 0 || to < 0) return; var item = v.splice(from, 1)[0]; v.splice(to, 0, item); saveOrder(v);
+  });
+  $("gGrid2").addEventListener("dragend", function () { dragId = null; Array.prototype.forEach.call(document.querySelectorAll(".gc"), function (x) { x.classList.remove("drag", "over"); }); });
+  $("gfCat").onchange = renderGal; $("gfStat").onchange = renderGal;
+
+  /* categories */
+  function catsModal() {
+    openModal('<button class="mclose">Close</button><h2>Gallery categories</h2><p class="msg" style="font-weight:500">Rename, reorder, add or delete. To move images between categories use Edit on the image.</p><div id="cList">' +
+      GC.map(function (c) { var n = GP.filter(function (p) { return p.cat === c.slug; }).length; return '<div class="crow" data-slug="' + esc(c.slug) + '"><input class="cn" value="' + esc(c.name) + '" maxlength="60"><input class="co" type="number" value="' + (c.sort_order || 0) + '"><button class="ib" data-c="save">Save</button><button class="ib red" data-c="del" title="' + n + ' images">Delete (' + n + ")</button></div>"; }).join("") +
+      '</div><h2 style="font-size:16px;margin-top:18px">Add category</h2><div class="crow"><input id="ncName" placeholder="Category name" maxlength="60"><input id="ncOrd" type="number" value="' + (GC.length * 10 + 10) + '"><button class="ib" id="ncAdd">Add</button><span></span></div>');
+  }
+  $("gCats").onclick = catsModal;
+  $("modalBox").addEventListener("click", function (e) {
+    var b = e.target.closest("[data-c],#ncAdd"); if (!b) return;
+    if (b.id === "ncAdd") {
+      var name = $("ncName").value.trim(); if (!name) return toast("Enter a category name.", "err");
+      var slug = slugify(name), base = slug, k = 2; while (GC.some(function (c) { return c.slug === slug; })) slug = base + "-" + k++;
+      return api("/rest/v1/gallery_categories", { method: "POST", headers: { "Content-Type": "application/json", Prefer: "return=minimal" }, body: JSON.stringify({ slug: slug, name: name, sort_order: parseInt($("ncOrd").value, 10) || 0 }) })
+        .then(function (r) { if (!r.ok) throw new Error("Could not add category"); toast("Category added", "ok"); return loadGal(); }).then(catsModal).catch(function (er) { toast(er.message, "err"); });
+    }
+    var row = b.closest(".crow"), slug2 = row.dataset.slug;
+    if (b.dataset.c === "save") {
+      var nm = row.querySelector(".cn").value.trim(); if (!nm) return toast("Name cannot be empty.", "err");
+      api("/rest/v1/gallery_categories?slug=eq." + encodeURIComponent(slug2), { method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name: nm, sort_order: parseInt(row.querySelector(".co").value, 10) || 0 }) })
+        .then(function (r) { if (!r.ok) throw new Error("Could not save"); toast("Category saved", "ok"); return loadGal(); }).catch(function (er) { toast(er.message, "err"); });
+    } else {
+      var n = GP.filter(function (p) { return p.cat === slug2; }).length;
+      if (n) return toast("This category has " + n + " image(s). Move them to another category first (Edit image).", "err");
+      if (!confirm("Delete this category?")) return;
+      api("/rest/v1/gallery_categories?slug=eq." + encodeURIComponent(slug2), { method: "DELETE" }).then(function (r) { if (!r.ok) throw new Error("Could not delete"); toast("Category deleted", "ok"); return loadGal(); }).then(catsModal).catch(function (er) { toast(er.message, "err"); });
+    }
+  });
+
+  /* import the 30 photos that are written inside gallery.html so they can be managed here too */
+  $("gImport").onclick = function () {
+    if (!confirm("Import the 30 existing website photos into the gallery manager? After this, the gallery page shows only photos managed here.")) return;
+    var rows = []; for (var i = 1; i <= 30; i++) rows.push({ src: "/images/gallery/ (" + i + ").jpg", cat: "project", title: "SunGET project", alt: "SunGET project photo " + i, sort_order: 1000 + i * 10, published: true });
+    api("/rest/v1/photos", { method: "POST", headers: { "Content-Type": "application/json", Prefer: "return=minimal" }, body: JSON.stringify(rows) })
+      .then(function (r) { if (!r.ok) throw new Error("Import failed (" + r.status + ")"); return api("/rest/v1/page_content?on_conflict=page,key", { method: "POST", headers: { "Content-Type": "application/json", Prefer: "resolution=merge-duplicates,return=minimal" }, body: JSON.stringify({ page: "_gallery", key: "imported", kind: "flag", value: "1" }) }); })
+      .then(function () { toast("30 photos imported", "ok"); return loadGal(); }).catch(function (e) { toast(e.message, "err"); });
+  };
+
+  /* =====================  PAGES: CONTENT & IMAGES  ===================== */
+  /* The page's own text and pictures are read from the page file. Same rule is used by sg-content.js on the website. */
+  var PAGES = [["index", "Home page", "../index.html"], ["about_us", "About us", "about_us.html"], ["solar-rooftop", "Solar Rooftop", "solar-rooftop.html"],
+    ["solar-water-heater", "Solar Water Heater", "solar-water-heater.html"], ["heat-pump", "Heat Pump", "heat-pump.html"],
+    ["solar-utility-products", "Solar Utility Products", "solar-utility-products.html"], ["solar-epc", "Solar EPC", "solar-epc.html"],
+    ["o-and-m-repair", "O&M Repair", "o-and-m-repair.html"], ["energy-audit", "Energy Audit", "energy-audit.html"],
+    ["csr-and-awareness", "CSR and Awareness", "csr-and-awareness.html"], ["certifications", "Certifications", "certifications.html"],
+    ["privacy-policy", "Privacy Policy", "privacy-policy.html"]];
+  var NAMES = { h1: "Main heading", h2: "Heading", h3: "Sub-heading", h4: "Small heading", p: "Paragraph", img: "Picture" };
+  var curPage = null;
+  function initPages() {
+    $("pageSel").innerHTML = PAGES.map(function (p) { return '<option value="' + p[0] + '">' + esc(p[1]) + "</option>"; }).join("");
+    $("pageSel").onchange = loadPage; loadPage();
+  }
+  function loadPage() {
+    var p = PAGES[$("pageSel").selectedIndex]; curPage = p[0];
+    $("pgList").innerHTML = ""; say("pgMsg", "Loading page...");
+    var pageUrl = new URL(p[2], location.href).href;
+    Promise.all([
+      fetch(pageUrl).then(function (r) { if (!r.ok) throw new Error("Cannot open " + p[2] + " (" + r.status + "). Keep admin.html in the same folder as the pages."); return r.text(); }),
+      api("/rest/v1/page_content?page=eq." + encodeURIComponent(curPage) + "&select=key,value").then(function (r) { return r.json(); })
+    ]).then(function (res) {
+      var doc = new DOMParser().parseFromString(res[0], "text/html"), root = doc.querySelector("main") || doc.body;
+      var els = [].filter.call(root.querySelectorAll("h1,h2,h3,h4,p,img"), function (e) { return e.tagName === "IMG" || (e.children.length === 0 && e.textContent.trim()); });
+      var saved = {}; (Array.isArray(res[1]) ? res[1] : []).forEach(function (r) { saved[r.key] = r.value; });
+      if (!Array.isArray(res[1])) say("pgMsg", "Content table not found. Run the new SQL from SETUP-2.md.", "err"); else say("pgMsg", els.length + " items on this page.", "ok");
+      $("pgList").innerHTML = els.map(function (e, i) {
+        var tag = e.tagName.toLowerCase(), key = tag + ":" + i, has = saved[key] != null, h;
+        if (tag === "img") {
+          var orig = new URL(e.getAttribute("src") || "", pageUrl).href;
+          h = '<img class="pv" src="' + esc(has ? saved[key] : orig) + '" alt=""><input type="file" accept="image/*">';
+        } else {
+          h = '<textarea rows="' + (tag === "p" ? 3 : 1) + '">' + esc(has ? saved[key] : e.textContent.trim()) + "</textarea>";
+        }
+        return '<div class="pr" data-key="' + key + '" data-kind="' + (tag === "img" ? "image" : "text") + '"><div class="k">' + NAMES[tag] + " #" + (i + 1) + (has ? ' <span class="edited">edited</span>' : "") + "</div>" + h +
+          '<div class="acts"><button class="sm" data-a="save">Save</button>' + (has ? '<button class="sec sm" data-a="reset">Reset to original</button>' : "") + "</div></div>";
+      }).join("");
+    }).catch(function (e) { say("pgMsg", e.message, "err"); });
+  }
+  $("pgList").onclick = function (e) {
+    var b = e.target.closest("button[data-a]"); if (!b) return;
+    var row = b.closest(".pr"), key = row.dataset.key, kind = row.dataset.kind;
+    if (b.dataset.a === "reset") {
+      return api("/rest/v1/page_content?page=eq." + encodeURIComponent(curPage) + "&key=eq." + encodeURIComponent(key), { method: "DELETE" }).then(loadPage);
+    }
+    b.disabled = true; say("pgMsg", "Saving...");
+    Promise.resolve().then(function () {          // errors here are shown to the user and the button is re-enabled
+      if (kind === "text") return row.querySelector("textarea").value;
+      var f = row.querySelector("input[type=file]").files[0];
+      if (!f) throw new Error("Choose a new picture first.");
+      if (!okImg(f)) throw new Error("Only JPG, PNG, WebP or GIF images up to 25 MB are allowed.");
+      return resize(f, 1600, 0.82).then(function (r) { return storageUpload("pages/" + curPage + "-" + key.replace(":", "") + "-" + Date.now() + ".webp", r.blob); });
+    }).then(function (val) {
+      return api("/rest/v1/page_content?on_conflict=page,key", { method: "POST", headers: { "Content-Type": "application/json", Prefer: "resolution=merge-duplicates,return=minimal" },
+        body: JSON.stringify({ page: curPage, key: key, kind: kind, value: val, updated_at: new Date().toISOString() }) })
+        .then(function (r) { if (!r.ok) throw new Error("Could not save (" + r.status + ")"); });
+    }).then(function () { loadPage(); setTimeout(function () { say("pgMsg", "Saved. It is live on the website.", "ok"); }, 700); })
+      .catch(function (err) { say("pgMsg", err.message, "err"); }).then(function () { b.disabled = false; });
+  };
+
+
+  /* ================= UTILITY PRODUCTS: Supabase CRUD =================
+     Uses the existing authenticated admin session and existing SG_CONFIG.
+     RLS must enforce app_metadata.role = admin on the four utility tables.
+     Storage bucket required: products (public read, authenticated admin upload/delete). */
+  var UP = [], UPC = [], UPE = [];
+  function upMsg(t, cls) { say("upMsg", t, cls); }
+  function upSlug(t) { return String(t || "").toLowerCase().trim().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"") || ("product-"+Date.now()); }
+  function upJson(v, fallback) { try { return v ? JSON.parse(v) : fallback; } catch(e) { throw new Error("Invalid JSON in features/specifications field."); } }
+  function upCSV(rows, filename) {
+    if (!rows.length) return toast("Nothing to export", "err");
+    var keys = Object.keys(rows[0]), quote = function(v){return '"'+String(v == null ? "" : (typeof v === "object" ? JSON.stringify(v) : v)).replace(/"/g,'""')+'"';};
+    var csv = [keys.map(quote).join(",")].concat(rows.map(function(r){return keys.map(function(k){return quote(r[k]);}).join(",");})).join("\r\n");
+    var a=document.createElement("a"), u=URL.createObjectURL(new Blob(["\ufeff"+csv],{type:"text/csv;charset=utf-8"}));a.href=u;a.download=filename;a.click();URL.revokeObjectURL(u);
+  }
+  function upStorageUpload(file, path) {
+    return resize(file, 1800, .82).then(function(r){
+      return api("/storage/v1/object/products/"+path,{method:"POST",headers:{"Content-Type":"image/webp","x-upsert":"true"},body:r.blob}).then(function(resp){if(!resp.ok) throw new Error("Product image upload failed ("+resp.status+"). Create the products storage bucket and check its policies.");return C.SUPABASE_URL+"/storage/v1/object/public/products/"+path;});
+    });
+  }
+  function upLoadAll() {
+    return Promise.all([
+      api("/rest/v1/utility_categories?select=*&order=sort_order.asc").then(function(r){if(!r.ok)throw new Error("Cannot load categories ("+r.status+")");return r.json();}),
+      api("/rest/v1/utility_products?select=*&order=sort_order.asc").then(function(r){if(!r.ok)throw new Error("Cannot load products ("+r.status+")");return r.json();})
+    ]).then(function(x){UPC=x[0]||[];UP=x[1]||[];});
+  }
+  function upRender() {
+    var catSel=$("upFilterCat"), old=catSel.value;
+    catSel.innerHTML='<option value="">All categories</option>'+UPC.map(function(c){return '<option value="'+esc(c.id)+'">'+esc(c.name)+'</option>';}).join("");catSel.value=old;
+    var q=$("upSearch").value.toLowerCase().trim(), cat=catSel.value, stat=$("upFilterStatus").value;
+    var rows=UP.filter(function(p){return (!cat||String(p.category_id)===cat)&&(!stat||String(!!p.is_published)===stat)&&(!q||[p.name,p.short_description,p.description].join(" ").toLowerCase().includes(q));});
+    var published=UP.filter(function(p){return p.is_published;}).length;
+    $("upStats").innerHTML='<div class="stat"><b>'+UP.length+'</b><span>Total products</span></div><div class="stat"><b>'+published+'</b><span>Published</span></div><div class="stat"><b>'+(UP.length-published)+'</b><span>Drafts</span></div><div class="stat"><b>'+UPC.length+'</b><span>Categories</span></div>';
+    $("upBody").innerHTML=rows.map(function(p){var c=UPC.find(function(x){return String(x.id)===String(p.category_id);});return '<tr><td>'+(p.image_url?'<img src="'+esc(p.image_url)+'" style="width:64px;height:48px;object-fit:cover;border-radius:7px">':'—')+'</td><td><b>'+esc(p.name)+'</b><br><small>'+esc(p.short_description||"")+'</small></td><td>'+esc(c?c.name:"—")+'</td><td>'+p.sort_order+'</td><td><span class="pill '+(p.is_published?'published':'draft')+'">'+(p.is_published?'Published':'Draft')+'</span></td><td><button class="ib" data-up="edit" data-id="'+p.id+'">Edit</button><button class="ib" data-up="pub" data-id="'+p.id+'">'+(p.is_published?'Unpublish':'Publish')+'</button><button class="ib red" data-up="del" data-id="'+p.id+'">Delete</button></td></tr>';}).join("")||'<tr><td colspan="6">No products found. Add your first product.</td></tr>';
+  }
+  function loadUtilityProducts(){upMsg("Loading products...");return upLoadAll().then(function(){upRender();upMsg(UP.length+" products loaded.","ok");}).catch(function(e){upMsg(e.message,"err");});}
+  function upProductForm(p){p=p||{};var cats=UPC.map(function(c){return '<option value="'+c.id+'" '+(String(c.id)===String(p.category_id)?'selected':'')+'>'+esc(c.name)+'</option>';}).join("");
+    openModal('<button class="mclose">Close</button><h2>'+(p.id?'Edit product':'Add product')+'</h2><form id="upForm"><div class="row"><div><label>Product name *</label><input name="name" required maxlength="160" value="'+esc(p.name)+'"></div><div><label>Category *</label><select name="category_id" required><option value="">Select a category</option>'+cats+'</select><div style="display:flex;gap:8px;margin-top:8px"><input id="upNewCatName" placeholder="New category name" maxlength="60"><button type="button" class="sec" id="upCreateCatInline">＋ Add category</button></div><small style="color:#777">You can create a category here without closing this form.</small></div></div><label>Short description</label><textarea name="short_description" rows="2" maxlength="500">'+esc(p.short_description)+'</textarea><label>Full description</label><textarea name="description" rows="4">'+esc(p.description)+'</textarea><div class="row"><div><label>Highlights (JSON array)</label><textarea name="highlights" rows="4">'+esc(JSON.stringify(p.highlights||[],null,2))+'</textarea></div><div><label>Features (JSON array)</label><textarea name="features" rows="4">'+esc(JSON.stringify(p.features||[],null,2))+'</textarea></div></div><div class="row"><div><label>Specifications (JSON object)</label><textarea name="specifications" rows="4">'+esc(JSON.stringify(p.specifications||{},null,2))+'</textarea></div><div><label>Applications (JSON array)</label><textarea name="applications" rows="4">'+esc(JSON.stringify(p.applications||[],null,2))+'</textarea></div></div><div class="row"><div><label>Product images (you can select multiple)</label><input type="file" name="image" accept="image/jpeg,image/png,image/webp" multiple></div><div><label>Display order</label><input name="sort_order" type="number" value="'+(p.sort_order||0)+'"><label><input name="is_published" type="checkbox" style="width:auto" '+(p.is_published?'checked':'')+'> Published on website</label></div></div>'+(p.image_url?'<p><img src="'+esc(p.image_url)+'" style="max-width:180px;max-height:120px;object-fit:cover;border-radius:8px"></p>':'')+'<div id="upFormErr" class="msg err"></div><div class="macts"><button type="submit" id="upSave">Save product</button><button type="button" class="sec mclose">Cancel</button></div></form>');
+    $("upCreateCatInline").onclick=function(){var input=$("upNewCatName"), name=input.value.trim();if(!name)return toast("Enter a category name.","err");if(UPC.some(function(c){return c.name.toLowerCase()===name.toLowerCase();}))return toast("This category already exists.","err");var btn=this;btn.disabled=true;api("/rest/v1/utility_categories",{method:"POST",headers:{"Content-Type":"application/json",Prefer:"return=representation"},body:JSON.stringify({name:name,slug:upSlug(name),sort_order:UPC.length*10,is_active:true})}).then(function(r){if(!r.ok)return r.text().then(function(t){throw new Error("Could not add category ("+r.status+"): "+t);});return r.json();}).then(function(rows){var created=rows&&rows[0];if(created){UPC.push(created);}else{return upLoadAll().then(function(){created=UPC.find(function(c){return c.name.toLowerCase()===name.toLowerCase();});});}}).then(function(){var sel=$("upForm").elements.category_id;sel.innerHTML='<option value="">Select a category</option>'+UPC.map(function(c){return '<option value="'+c.id+'">'+esc(c.name)+'</option>';}).join("");var added=UPC.find(function(c){return c.name.toLowerCase()===name.toLowerCase();});if(added)sel.value=added.id;input.value="";upRender();toast("Category added. It is selected for this product.","ok");}).catch(function(e){toast(e.message,"err");}).then(function(){btn.disabled=false;});};
+    $("upForm").onsubmit=function(ev){ev.preventDefault();var f=ev.target,b=$("upSave");if(!f.elements.name.value.trim())return; b.disabled=true;b.textContent="Saving...";
+      var obj={name:f.elements.name.value.trim(),slug:upSlug(f.elements.name.value),category_id:f.elements.category_id.value||null,short_description:f.elements.short_description.value.trim(),description:f.elements.description.value.trim(),highlights:upJson(f.elements.highlights.value,[]),features:upJson(f.elements.features.value,[]),specifications:upJson(f.elements.specifications.value,{}),applications:upJson(f.elements.applications.value,[]),sort_order:parseInt(f.elements.sort_order.value,10)||0,is_published:f.elements.is_published.checked,updated_at:new Date().toISOString()};
+      var files=Array.prototype.slice.call(f.elements.image.files||[]), productId=p.id;
+      var job=Promise.resolve();
+      if(files.length){job=job.then(function(){return upStorageUpload(files[0],Date.now()+"-"+upSlug(f.elements.name.value)+".webp").then(function(url){obj.image_url=url;});});}
+      job.then(function(){var url=p.id?"/rest/v1/utility_products?id=eq."+p.id:"/rest/v1/utility_products";return api(url,{method:p.id?"PATCH":"POST",headers:{"Content-Type":"application/json",Prefer:"return=representation"},body:JSON.stringify(obj)}).then(function(r){if(!r.ok) return r.text().then(function(t){throw new Error("Save failed ("+r.status+"): "+t);});return r.json().then(function(rows){if(!productId&&rows&&rows[0])productId=rows[0].id;});});}).then(function(){
+        if(!files.length||!productId)return;
+        var chain=Promise.resolve();files.forEach(function(file,i){chain=chain.then(function(){return upStorageUpload(file,Date.now()+"-"+i+"-"+upSlug(f.elements.name.value)+".webp").then(function(url){return api("/rest/v1/utility_product_images",{method:"POST",headers:{"Content-Type":"application/json",Prefer:"return=minimal"},body:JSON.stringify({product_id:productId,image_url:url,alt_text:f.elements.name.value,sort_order:i})}).then(function(r){if(!r.ok)throw new Error("Image uploaded but image record could not be saved ("+r.status+")");});});});});return chain;
+      }).then(function(){closeModal();toast("Product and images saved","ok");return loadUtilityProducts();}).catch(function(e){$("upFormErr").textContent=e.message;b.disabled=false;b.textContent="Save product";});
+    };
+  }
+  $("upAdd").onclick=function(){upProductForm(null);};
+  $("upRefresh").onclick=loadUtilityProducts;$("upSearch").oninput=upRender;$("upFilterCat").onchange=upRender;$("upFilterStatus").onchange=upRender;
+  $("upBody").onclick=function(e){var b=e.target.closest("button[data-up]");if(!b)return;var p=UP.find(function(x){return String(x.id)===b.dataset.id;});if(!p)return;
+    if(b.dataset.up==="edit")upProductForm(p);
+    if(b.dataset.up==="pub")api("/rest/v1/utility_products?id=eq."+p.id,{method:"PATCH",headers:{"Content-Type":"application/json"},body:JSON.stringify({is_published:!p.is_published,updated_at:new Date().toISOString()})}).then(function(r){if(!r.ok)throw new Error("Status update failed");return loadUtilityProducts();}).catch(function(e){toast(e.message,"err");});
+    if(b.dataset.up==="del"&&confirm('Delete product "'+p.name+'"? This also deletes its linked image records.'))api("/rest/v1/utility_products?id=eq."+p.id,{method:"DELETE"}).then(function(r){if(!r.ok)throw new Error("Delete failed");return loadUtilityProducts();}).then(function(){toast("Product deleted","ok");}).catch(function(e){toast(e.message,"err");});
+  };
+  $("upCats").onclick=function(){var list=UPC.map(function(c){return c.name+" ("+c.slug+")";}).join("\n");var name=prompt("Add a category name. Existing categories:\n"+list);if(!name||!name.trim())return;var slug=upSlug(name);api("/rest/v1/utility_categories",{method:"POST",headers:{"Content-Type":"application/json",Prefer:"return=minimal"},body:JSON.stringify({name:name.trim(),slug:slug,sort_order:UPC.length*10,is_active:true})}).then(function(r){if(!r.ok)throw new Error("Category add failed ("+r.status+")");toast("Category added","ok");return loadUtilityProducts();}).catch(function(e){toast(e.message,"err");});};
+  $("upExport").onclick=function(){upCSV(UP,"sunget-utility-products.csv");};
+  $("upImport").onchange=function(){var file=this.files[0];if(!file)return;var reader=new FileReader();reader.onload=function(){var lines=reader.result.split(/\r?\n/).filter(Boolean);if(lines.length<2)return toast("CSV is empty", "err");var head=lines.shift().split(",").map(function(x){return x.trim();});var count=0;lines.forEach(function(line){var vals=line.match(/("(?:[^"]|"")*"|[^,]*)(,|$)/g)||[];var row={};head.forEach(function(k,i){row[k]=(vals[i]||"").replace(/,$/,"").replace(/^"|"$/g,"").replace(/""/g,'"');});if(row.name&&row.category_id){count++;api("/rest/v1/utility_products",{method:"POST",headers:{"Content-Type":"application/json",Prefer:"return=minimal"},body:JSON.stringify({name:row.name,slug:row.slug||upSlug(row.name),category_id:row.category_id,short_description:row.short_description||"",description:row.description||"",highlights:upJson(row.highlights,[]),features:upJson(row.features,[]),specifications:upJson(row.specifications,{}),applications:upJson(row.applications,[]),image_url:row.image_url||null,is_published:String(row.is_published)==="true",sort_order:parseInt(row.sort_order,10)||0})});}});toast("Import submitted for "+count+" rows. Refresh to verify.","ok");loadUtilityProducts();};reader.readAsText(file);this.value="";};
+  function loadUtilityEnquiries(){say("upeMsg","Loading enquiries...");return api("/rest/v1/utility_product_enquiries?select=*&order=created_at.desc").then(function(r){if(!r.ok)throw new Error("Cannot load product enquiries ("+r.status+")");return r.json();}).then(function(rows){UPE=rows||[];var counts={new:0,pending:0,contacted:0,completed:0};UPE.forEach(function(x){if(counts[x.status]!=null)counts[x.status]++;});$("upeStats").innerHTML='<div class="stat"><b>'+UPE.length+'</b><span>Total product enquiries</span></div>'+Object.keys(counts).map(function(k){return '<div class="stat"><b>'+counts[k]+'</b><span>'+k+'</span></div>';}).join("");upeRender();say("upeMsg",UPE.length+" enquiries loaded.","ok");}).catch(function(e){say("upeMsg",e.message,"err");});}
+  function upeRender(){var q=$("upeSearch").value.toLowerCase().trim(),st=$("upeStatus").value;var rows=UPE.filter(function(x){return(!st||x.status===st)&&(!q||[x.name,x.phone,x.product_name,x.email].join(" ").toLowerCase().includes(q));});$("upeBody").innerHTML=rows.map(function(x){return '<tr><td>'+new Date(x.created_at).toLocaleString()+'</td><td>'+esc(x.name)+'</td><td>'+esc(x.phone)+(x.email?'<br>'+esc(x.email):'')+'</td><td>'+esc(x.product_name)+'</td><td>'+esc(x.message||"")+'</td><td><select data-uestatus="'+x.id+'">'+["new","pending","contacted","completed"].map(function(k){return '<option '+(x.status===k?'selected':'')+'>'+k+'</option>';}).join("")+'</select></td><td><button class="ib red" data-uedelete="'+x.id+'">Delete</button></td></tr>';}).join("")||'<tr><td colspan="7">No product enquiries found.</td></tr>';}
+  $("upeSearch").oninput=upeRender;$("upeStatus").onchange=upeRender;$("upeRefresh").onclick=loadUtilityEnquiries;$("upeExport").onclick=function(){upCSV(UPE,"sunget-product-enquiries.csv");};
+  $("upeBody").onchange=function(e){var id=e.target.dataset.uestatus;if(!id)return;api("/rest/v1/utility_product_enquiries?id=eq."+id,{method:"PATCH",headers:{"Content-Type":"application/json"},body:JSON.stringify({status:e.target.value})}).then(function(r){if(!r.ok)throw new Error("Status update failed");toast("Enquiry status updated","ok");return loadUtilityEnquiries();}).catch(function(er){toast(er.message,"err");});};
+  $("upeBody").onclick=function(e){var id=e.target.dataset.uedelete;if(!id||!confirm("Delete this enquiry?"))return;api("/rest/v1/utility_product_enquiries?id=eq."+id,{method:"DELETE"}).then(function(r){if(!r.ok)throw new Error("Delete failed");return loadUtilityEnquiries();}).catch(function(er){toast(er.message,"err");});};
+
+  /* ===================== CAREERS & PLACEMENT ===================== */
+  var CAR = [], PLC = [], CST = ["new", "pending", "contacted", "completed"];
+  function loadCareers() {
+    say("crMsg", "Loading...");
+    return Promise.all([
+      api("/rest/v1/career_applications?select=*&order=created_at.desc").then(function (r) { return r.json(); }),
+      api("/rest/v1/placement_requests?select=*&order=created_at.desc").then(function (r) { return r.json(); })
+    ]).then(function (x) {
+      if (!Array.isArray(x[0]) || !Array.isArray(x[1])) throw new Error("Tables not found. Run sg-careers.sql in the Supabase SQL editor first.");
+      CAR = x[0]; PLC = x[1]; renderCareers(); say("crMsg", CAR.length + " applications, " + PLC.length + " institutions.", "ok");
+    }).catch(function (e) { say("crMsg", e.message, "err"); });
+  }
+  function stSel(t, id, cur) { return '<select data-cst="' + t + '" data-id="' + id + '">' + CST.map(function (s) { return "<option" + (s === cur ? " selected" : "") + ">" + s + "</option>"; }).join("") + "</select>"; }
+  function renderCareers() {
+    var q = $("crSearch").value.toLowerCase().trim();
+    var hit = function (o) { return !q || JSON.stringify(o).toLowerCase().indexOf(q) > -1; };
+    var newC = CAR.filter(function (x) { return x.status === "new"; }).length, newP = PLC.filter(function (x) { return x.status === "new"; }).length;
+    $("crStats").innerHTML = [["Applications", CAR.length], ["New applications", newC], ["Institutions", PLC.length], ["New institutions", newP]].map(function (s) { return '<div class="stat"><b>' + s[1] + "</b><span>" + s[0] + "</span></div>"; }).join("");
+    $("crBody").innerHTML = CAR.filter(hit).map(function (x) {
+      return "<tr><td>" + esc(whenShort(x.created_at)) + "</td><td><b>" + esc(x.name) + "</b><br><small>" + esc(x.phone) + "<br>" + esc(x.email) + "<br>" + esc(x.city || "") + "</small></td><td>" + esc(x.role || "-") + "<br><small>" + esc(x.experience || "") + "</small></td><td>" + esc(x.qualification || "-") + "<br><small>" + esc(x.college || "") + " " + esc(x.passing_year || "") + "</small></td><td style=\"max-width:220px\">" + esc(x.message || "") + "</td><td>" + stSel("career_applications", x.id, x.status) + "</td><td class=\"nw\">" +
+        (x.resume_path ? '<button class="ib" data-cr="resume" data-id="' + x.id + '">Resume</button>' : "") + (x.phone ? '<a class="ib" href="tel:' + esc(x.phone) + '">\u260e</a>' : "") + '<button class="ib red" data-cr="del" data-t="career_applications" data-id="' + x.id + '">Delete</button></td></tr>';
+    }).join("") || '<tr><td colspan="7">No applications yet.</td></tr>';
+    $("plBody").innerHTML = PLC.filter(hit).map(function (x) {
+      return "<tr><td>" + esc(whenShort(x.created_at)) + "</td><td><b>" + esc(x.institution) + "</b><br><small>" + esc(x.inst_type || "") + " " + esc(x.city || "") + "</small></td><td>" + esc(x.contact_name) + "<br><small>" + esc(x.designation || "") + "<br>" + esc(x.phone) + "<br>" + esc(x.email) + "</small></td><td>" + esc(x.courses || "-") + "<br><small>" + esc(x.students || "") + "</small></td><td>" + esc(x.mode || "-") + "<br><small>" + esc(x.message || "") + "</small></td><td>" + stSel("placement_requests", x.id, x.status) + "</td><td class=\"nw\">" +
+        (x.phone ? '<a class="ib" href="tel:' + esc(x.phone) + '">\u260e</a>' : "") + '<button class="ib red" data-cr="del" data-t="placement_requests" data-id="' + x.id + '">Delete</button></td></tr>';
+    }).join("") || '<tr><td colspan="7">No institution requests yet.</td></tr>';
+  }
+  $("crSearch").oninput = renderCareers; $("crRefresh").onclick = loadCareers;
+  $("v-careers").onchange = function (e) {
+    var t = e.target.dataset.cst; if (!t) return;
+    api("/rest/v1/" + t + "?id=eq." + e.target.dataset.id, { method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ status: e.target.value }) })
+      .then(function (r) { if (!r.ok) throw new Error("Status update failed"); toast("Status updated", "ok"); return loadCareers(); }).catch(function (er) { toast(er.message, "err"); });
+  };
+  $("v-careers").onclick = function (e) {
+    var b = e.target.closest("button[data-cr]"); if (!b) return;
+    if (b.dataset.cr === "del") {
+      if (!confirm("Delete this record permanently?")) return;
+      var row = (b.dataset.t === "career_applications" ? CAR : PLC).filter(function (x) { return String(x.id) === b.dataset.id; })[0];
+      api("/rest/v1/" + b.dataset.t + "?id=eq." + b.dataset.id, { method: "DELETE" }).then(function (r) {
+        if (!r.ok) throw new Error("Delete failed");
+        if (row && row.resume_path) api("/storage/v1/object/resumes/" + row.resume_path, { method: "DELETE" });
+        toast("Deleted", "ok"); return loadCareers();
+      }).catch(function (er) { toast(er.message, "err"); });
+    } else if (b.dataset.cr === "resume") {
+      var c = CAR.filter(function (x) { return String(x.id) === b.dataset.id; })[0]; if (!c) return;
+      api("/storage/v1/object/authenticated/resumes/" + c.resume_path).then(function (r) { if (!r.ok) throw new Error("Could not open resume (" + r.status + ")"); return r.blob(); })
+        .then(function (bl) { var a = document.createElement("a"); a.href = URL.createObjectURL(bl); a.download = (c.name || "resume").replace(/\W+/g, "_") + "-" + c.resume_path; a.click(); })
+        .catch(function (er) { toast(er.message, "err"); });
+    }
+  };
+
+  /* ===================== OPEN ROLES (Careers page) ===================== */
+  var RL = [];
+  function loadRoles() {
+    say("rlMsg", "Loading...");
+    return api("/rest/v1/career_roles?select=*&order=sort_order.asc,created_at.desc")
+      .then(function (r) { return r.json(); })
+      .then(function (rows) {
+        if (!Array.isArray(rows)) throw new Error("Table career_roles not found. Run the SQL first.");
+        RL = rows; renderRoles(); say("rlMsg", rows.length + " roles.", "ok");
+      }).catch(function (e) { say("rlMsg", e.message, "err"); });
+  }
+  function renderRoles() {
+    $("rlBody").innerHTML = RL.map(function (r) {
+      return "<tr><td>" + (r.sort_order || 0) + "</td><td><b>" + esc(r.title) + "</b><br><small>" + esc(r.summary || "") + "</small></td><td>" + esc(r.department || "-") +
+        '</td><td><span class="pill ' + (r.is_open ? "published" : "draft") + '">' + (r.is_open ? "Open" : "Closed") + "</span></td>" +
+        '<td class="nw"><button class="ib" data-rl="edit" data-id="' + r.id + '">Edit</button><button class="ib" data-rl="tog" data-id="' + r.id + '">' + (r.is_open ? "Close" : "Reopen") +
+        '</button><button class="ib red" data-rl="del" data-id="' + r.id + '">Delete</button></td></tr>';
+    }).join("") || '<tr><td colspan="5">No roles yet. Click ADD ROLE.</td></tr>';
+  }
+  function roleForm(r) {
+    r = r || {};
+    openModal('<button class="mclose">Close</button><h2>' + (r.id ? "Edit role" : "Add role") + '</h2><form id="rlForm" novalidate>' +
+      '<label>Role title *</label><input name="title" maxlength="120" value="' + esc(r.title) + '">' +
+      '<div class="row"><div><label>Department / label</label><input name="department" maxlength="60" placeholder="Engineering" value="' + esc(r.department) + '"></div>' +
+      '<div><label>Display order (small = first)</label><input name="sort_order" type="number" value="' + (r.sort_order || 0) + '"></div></div>' +
+      '<label>Short description</label><textarea name="summary" rows="2" maxlength="300">' + esc(r.summary) + '</textarea>' +
+      '<label>Requirements (one per line)</label><textarea name="requirements" rows="4">' + esc(r.requirements) + '</textarea>' +
+      '<label>Status</label><select name="is_open"><option value="true"' + (r.is_open !== false ? " selected" : "") + '>Open (visible)</option><option value="false"' + (r.is_open === false ? " selected" : "") + '>Closed (hidden)</option></select>' +
+      '<p class="msg err" id="rlErr"></p><div class="macts"><button type="submit" id="rlSave">Save role</button><button type="button" class="sec mclose" style="float:none">Cancel</button></div></form>');
+    $("rlForm").onsubmit = function (ev) {
+      ev.preventDefault(); var f = ev.target;
+      if (!f.elements.title.value.trim()) return say("rlErr", "Role title is required.", "err");
+      var obj = { title: f.elements.title.value.trim(), department: f.elements.department.value.trim(), summary: f.elements.summary.value.trim(),
+        requirements: f.elements.requirements.value.trim(), sort_order: parseInt(f.elements.sort_order.value, 10) || 0, is_open: f.elements.is_open.value === "true" };
+      var b = $("rlSave"); busy(b, true, "Saving...");
+      api("/rest/v1/career_roles" + (r.id ? "?id=eq." + r.id : ""), { method: r.id ? "PATCH" : "POST", headers: { "Content-Type": "application/json", Prefer: "return=minimal" }, body: JSON.stringify(obj) })
+        .then(function (x) { if (!x.ok) throw new Error("Could not save (" + x.status + ")"); toast("Role saved", "ok"); closeModal(); return loadRoles(); })
+        .catch(function (e) { say("rlErr", e.message, "err"); busy(b, false); });
+    };
+  }
+  $("rlAdd").onclick = function () { roleForm(null); };
+  $("rlRefresh").onclick = loadRoles;
+  $("rlBody").onclick = function (e) {
+    var b = e.target.closest("button[data-rl]"); if (!b) return;
+    var r = RL.filter(function (x) { return String(x.id) === b.dataset.id; })[0]; if (!r) return;
+    if (b.dataset.rl === "edit") roleForm(r);
+    else if (b.dataset.rl === "tog")
+      api("/rest/v1/career_roles?id=eq." + r.id, { method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ is_open: !r.is_open }) })
+        .then(function (x) { if (!x.ok) throw new Error("Update failed"); toast(r.is_open ? "Role closed" : "Role reopened", "ok"); return loadRoles(); }).catch(function (er) { toast(er.message, "err"); });
+    else if (b.dataset.rl === "del" && confirm('Delete "' + r.title + '" permanently?'))
+      api("/rest/v1/career_roles?id=eq." + r.id, { method: "DELETE" })
+        .then(function (x) { if (!x.ok) throw new Error("Delete failed"); toast("Role deleted", "ok"); return loadRoles(); }).catch(function (er) { toast(er.message, "err"); });
+  };
+
+  show();
+})();
+</script>
+</body>
+</html>

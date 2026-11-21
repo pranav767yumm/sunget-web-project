@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Jobs, internships and campus placement partnerships at SunGET Solar Infra, Pune. Apply online or register your institution."
+    />
+    <title>Careers &amp; Campus Placement | SunGET Solar Infra</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Main site stylesheet -->
+    <link rel="stylesheet" href="../style/style.css" />
+    <!-- Shared service-page styles (also used by solar-rooftop.html) -->
+    <link rel="stylesheet" href="../style/rooftop.css" />
+    <!-- Solar EPC extras -->
+    <link rel="stylesheet" href="../style/epc.css" />
+  
+    <style>
+      .sg-cform{grid-template-columns:1fr 1fr;padding:0;border:0;margin-top:16px;gap:12px}
+      .sg-cform .full{grid-column:1/-1}
+      .sg-cform select{width:100%;padding:14px 15px;border:1px solid #d8e1da;border-radius:12px;font:inherit;background:#fff}
+      .sg-cform .full select{width:100%}
+      .sg-file{font-size:13px;font-weight:700;display:block}
+      .sg-file input{margin-top:6px;padding:10px;background:#f7f9f6}
+      .sg-consent{font-size:12.5px;line-height:1.5;color:var(--muted);display:flex;gap:8px;align-items:flex-start}
+      .sg-consent input{width:auto;margin-top:3px}
+      .sg-hp{position:absolute;left:-9999px}
+      .sg-msg{margin:0;font-weight:700;font-size:14px}
+      .sg-msg.ok{color:var(--green)}.sg-msg.err{color:#b3261e}
+      .rt-spec a{color:var(--green);font-weight:700}
+      @media(max-width:640px){.sg-cform{grid-template-columns:1fr}}
+          #rolesGrid{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+      #rolesGrid .rt-seg{border-bottom:1px solid var(--line,#e3ebe5)}
+    </style>
+      <link rel="stylesheet" href="../style/sg-design.css" />
+  </head>
+
+  <body>
+    <!-- =========================================
+       MAIN NAVIGATION
+       ========================================= -->
+<nav class="nav">
+  <div class="container navin">
+    <!-- Company Logo -->
+    <a href="../index.html" class="brand-link">
+      <img
+        class="normal_logo"
+        src="../images/logo.png"
+        alt="SunGET Solar Infra Pvt. Ltd."
+        title="SunGET Solar Infra Pvt. Ltd."
+      />
+    </a>
+
+    <!-- Desktop Navigation Links -->
+    <div class="links">
+      <!-- Solutions -->
+      <div class="dropdown">
+        <a class="dropdown-toggle">
+          Solutions <span class="caret"></span>
+        </a>
+        <div class="dropdown-menu">
+          <a href="solar-rooftop.html">Solar Rooftops</a>
+          <a href="solar-water-heater.html">Solar Water Heater</a>
+          <a href="heat-pump.html">Heat Pump</a>
+          <a href="solar-utility-products.html">Solar Utility Product</a>
+          <a href="solar-epc.html">Solar EPC</a>
+          <a href="o-and-m-repair.html">O&amp;M Repair</a>
+          <a href="energy-audit.html">Energy Audit</a>
+          <a href="csr-and-awareness.html">CSR and Awareness</a>
+        </div>
+      </div>
+
+      <!-- About -->
+      <div class="dropdown">
+        <a class="dropdown-toggle">
+          About <span class="caret"></span>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#">Our Story</a>
+          <a href="#">Our Team</a>
+          <a href="certifications.html">Certifications</a>
+        </div>
+      </div>
+
+      <!-- Process -->
+      <div class="dropdown">
+        <a class="dropdown-toggle">
+          Process <span class="caret"></span>
+        </a>
+        <div class="dropdown-menu">
+          <a href="../index.html#process">Site Survey</a>
+          <a href="../index.html#process">Design &amp; Approval</a>
+          <a href="../index.html#process">Installation</a>
+          <a href="../index.html#process">Maintenance</a>
+        </div>
+      </div>
+
+      <a href="#contact">Contact</a>
+      <a class="btn light open-calc-btn" href="#">Solar Calculator 🧮</a>
+     
+    </div>
+
+    <!-- Hamburger Toggle Button -->
+    <button
+      class="hamburger-btn"
+      id="menuToggle"
+      aria-label="Toggle navigation menu"
+      aria-expanded="false"
+    >
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu Dropdown -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="container mobile-menu-inner">
+      <!-- Solutions -->
+      <div class="mobile-group">
+        <div class="mobile-group-head">
+          <a class="mobile-link">Solutions</a>
+          <button class="mobile-sub-toggle" aria-label="Show Solutions options" aria-expanded="false"></button>
+        </div>
+        <div class="mobile-sub">
+          <a href="solar-rooftop.html">Solar Rooftops</a>
+          <a href="solar-water-heater.html">Solar Water Heater</a>
+          <a href="heat-pump.html">Heat Pump</a>
+          <a href="solar-utility-products.html">Solar Utility Product</a>
+          <a href="solar-epc.html">Solar EPC</a>
+          <a href="o-and-m-repair.html">O&amp;M Repair</a>
+          <a href="energy-audit.html">Energy Audit</a>
+          <a href="csr-and-awareness.html">CSR and Awareness</a>
+        </div>
+      </div>
+
+      <!-- About -->
+      <div class="mobile-group">
+        <div class="mobile-group-head">
+          <a class="mobile-link" href="about_us.html">About</a>
+          <button class="mobile-sub-toggle" aria-label="Show About options" aria-expanded="false"></button>
+        </div>
+        <div class="mobile-sub">
+          <a href="about_us.html">Our Story</a>
+          <a href="about_us.html">Our Team</a>
+          <a href="certifications.html">Certifications</a>
+        </div>
+      </div>
+
+      <!-- Process -->
+      <div class="mobile-group">
+        <div class="mobile-group-head">
+          <a class="mobile-link">Process</a>
+          <button class="mobile-sub-toggle" aria-label="Show Process options" aria-expanded="false"></button>
+        </div>
+        <div class="mobile-sub">
+          <a href="../index.html#process">Site Survey</a>
+          <a href="../index.html#process">Design &amp; Approval</a>
+          <a href="../index.html#process">Installation</a>
+          <a href="../index.html#process">Maintenance</a>
+        </div>
+      </div>
+
+      <a class="mobile-link" href="#contact">Contact</a>
+      <a class="btn light open-calc-btn" href="#">Solar Calculator 🧮</a>
+      <a class="btn full" href="#contact" id="mobileCta">Get a Quote</a>
+    </div>
+  </div>
+</nav>
+
+    <header class="rt-hero">
+      <div class="rt-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1920&q=80')"></div>
+      <div class="rt-hero-overlay"></div>
+
+      <div class="container rt-hero-inner">
+        <div class="rt-hero-text">
+          <p class="rt-crumbs"><a href="../index.html">Home</a> / <a href="about_us.html">About</a> / Careers &amp; Placement</p>
+          <h1>Build a career in clean energy.</h1>
+          <p class="rt-lead">
+            Join a Pune-based solar team that trains people, trusts them with real projects and stays with customers after the installation. Colleges and institutes can also partner with us for placements and internships.
+          </p>
+          <div class="rt-hero-actions">
+            <a class="btn" href="#apply" data-open-tab="t-apply">Apply now</a>
+            <a class="btn light" href="#apply" data-open-tab="t-place">Campus placement partners</a>
+          </div>
+        </div>
+
+        <aside class="rt-hero-facts" aria-label="Key facts">
+          <div><b>On-site</b><span>learning from real projects</span></div>
+          <div><b>Training</b><span>mentoring and skill programmes</span></div>
+          <div><b>Growth</b><span>design, projects, sales, O&amp;M</span></div>
+          <div><b>Pune</b><span>and across Maharashtra</span></div>
+        </aside>
+      </div>
+    </header>
+
+    <main>
+      <!-- EDIT: roles, perks and HR details below are placeholders. -->
+      <section class="rt-section" id="rt-how">
+        <div class="container">
+          <div class="rt-head">
+            <h2>Why work with SunGET</h2>
+            <p>Solar is a fast-growing field. We focus on teaching the practical side properly.</p>
+          </div>
+          <div class="epc-pillars">
+            <article><h3>Learn on real sites</h3><p>Freshers work beside senior engineers on surveys, installations and commissioning.</p></article>
+            <article><h3>Certified skills</h3><p>Support for recognised solar skill certifications and in-house training.</p></article>
+            <article><h3>Clear growth path</h3><p>Move from trainee to engineer, project lead or consultant as you grow.</p></article>
+            <article><h3>Purpose</h3><p>Your work cuts electricity bills and emissions for homes, schools and factories.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="rt-section rt-tint" id="rt-segments">
+        <div class="container">
+          <div class="rt-head">
+            <h2>Open roles</h2>
+            <p>Don't see your role? Apply under "Other" and tell us what you do best.</p>
+          </div>
+          <div class="rt-segments" id="rolesGrid">
+            <p style="grid-column:1/-1;text-align:center;padding:30px">Loading open roles…</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="rt-section" id="apply">
+        <div class="container">
+          <div class="rt-head">
+            <h2>Apply or partner with us</h2>
+            <p>Choose the form that fits you. Both go straight to our HR team.</p>
+          </div>
+
+          <div class="rt-tabs" role="tablist" aria-label="Careers forms">
+            <button class="rt-tab active" role="tab" aria-selected="true" aria-controls="tab-apply" id="t-apply">I'm a candidate</button>
+            <button class="rt-tab" role="tab" aria-selected="false" aria-controls="tab-place" id="t-place" tabindex="-1">I'm a college / institute</button>
+          </div>
+
+          <!-- CANDIDATE -->
+          <div class="rt-panel active" role="tabpanel" id="tab-apply" aria-labelledby="t-apply">
+            <div class="rt-panel-main">
+              <h3>Candidate application</h3>
+              <p>Fill in your details and attach your resume. We review every application and call shortlisted candidates.</p>
+              <form class="form sg-cform" id="careerForm" novalidate>
+                <input name="name" required maxlength="100" placeholder="Full name *" autocomplete="name" />
+                <input name="phone" required type="tel" maxlength="20" placeholder="Phone / WhatsApp *" autocomplete="tel" />
+                <input name="email" required type="email" maxlength="150" placeholder="Email *" autocomplete="email" />
+                <input name="city" maxlength="80" placeholder="City" />
+                <select name="qualification" required><option value="">Highest qualification *</option><option>ITI / Diploma</option><option>B.E. / B.Tech</option><option>M.E. / M.Tech</option><option>B.Sc / M.Sc</option><option>MBA / BBA</option><option>12th pass</option><option>Other</option></select>
+                <input name="college" maxlength="150" placeholder="College / University" />
+                <input name="passing_year" inputmode="numeric" maxlength="4" placeholder="Year of passing" />
+                <select name="experience" required><option value="">Experience *</option><option>Fresher</option><option>0 - 2 years</option><option>2 - 5 years</option><option>5+ years</option></select>
+                <div class="full"><select name="role" required><option value="">Role you are applying for *</option><option>Solar Design Engineer</option><option>Site Supervisor</option><option>Sales / Solar Consultant</option><option>O&amp;M Technician</option><option>Net-Metering &amp; Approvals Coordinator</option><option>Customer Care Executive</option><option>Trainee / Intern</option><option>Other / General application</option></select></div>
+                <label class="full sg-file">Resume (PDF or Word, up to 5 MB)
+                  <input name="resume" type="file" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
+                </label>
+                <textarea class="full" name="message" maxlength="1500" placeholder="Tell us briefly about yourself, skills, or paste your LinkedIn link"></textarea>
+                <div class="sg-hp" aria-hidden="true"><input name="website" tabindex="-1" autocomplete="off" /></div>
+                <label class="full sg-consent"><input type="checkbox" name="consent" required /> I agree that SunGET may store my details to contact me about jobs. See the <a href="privacy-policy.html" target="_blank">Privacy Policy</a>.</label>
+                <button class="btn full" type="submit">Submit application</button>
+                <p class="full sg-msg" role="status"></p>
+              </form>
+            </div>
+            <dl class="rt-spec">
+              <div><dt>HR contact</dt><dd>HR Team, SunGET</dd></div>
+              <div><dt>Email</dt><dd><a href="mailto:hr@sungetsolarinfra.com">hr@sungetsolarinfra.com</a></dd></div>
+              <div><dt>Phone</dt><dd><a href="tel:+919881855770">+91 98818 55770</a></dd></div>
+              <div><dt>Office</dt><dd>Narhe, Pune 411041</dd></div>
+              <div><dt>Hours</dt><dd>Mon - Sat, 9:30 AM - 7:00 PM</dd></div>
+            </dl>
+          </div>
+
+          <!-- PLACEMENT -->
+          <div class="rt-panel" role="tabpanel" id="tab-place" aria-labelledby="t-place" hidden>
+            <div class="rt-panel-main">
+              <h3>Campus placement and internship partners</h3>
+              <p>Register your placement cell. We will contact you to plan campus drives, internships, site visits or training sessions for your students.</p>
+              <form class="form sg-cform" id="placementForm" novalidate>
+                <div class="full"><input name="institution" required maxlength="200" placeholder="Institution name *" /></div>
+                <select name="inst_type" required><option value="">Institution type *</option><option>Engineering college</option><option>Polytechnic / Diploma</option><option>ITI</option><option>University</option><option>Management institute</option><option>Training centre</option><option>Other</option></select>
+                <input name="city" maxlength="80" placeholder="City" />
+                <input name="contact_name" required maxlength="100" placeholder="Contact person *" />
+                <input name="designation" maxlength="100" placeholder="Designation (e.g. TPO)" />
+                <input name="phone" required type="tel" maxlength="20" placeholder="Phone *" />
+                <input name="email" required type="email" maxlength="150" placeholder="Email *" />
+                <input name="courses" maxlength="200" placeholder="Courses / streams (e.g. Electrical, Mechanical)" />
+                <input name="students" maxlength="30" placeholder="Students graduating this year" />
+                <div class="full"><select name="mode"><option value="">What are you looking for?</option><option>Campus recruitment drive</option><option>Internships / trainees</option><option>Industrial visits</option><option>Training workshops</option><option>More than one</option></select></div>
+                <textarea class="full" name="message" maxlength="1500" placeholder="Anything else we should know"></textarea>
+                <div class="sg-hp" aria-hidden="true"><input name="website" tabindex="-1" autocomplete="off" /></div>
+                <label class="full sg-consent"><input type="checkbox" name="consent" required /> I agree that SunGET may contact me about this request.</label>
+                <button class="btn full" type="submit">Register our institution</button>
+                <p class="full sg-msg" role="status"></p>
+              </form>
+            </div>
+            <dl class="rt-spec">
+              <div><dt>Placement desk</dt><dd>HR Team, SunGET</dd></div>
+              <div><dt>Email</dt><dd><a href="mailto:hr@sungetsolarinfra.com">hr@sungetsolarinfra.com</a></dd></div>
+              <div><dt>Phone</dt><dd><a href="tel:+919881855770">+91 98818 55770</a></dd></div>
+              <div><dt>We offer</dt><dd>Drives, internships, visits, workshops</dd></div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <section class="rt-section rt-tint" id="rt-process">
+        <div class="container">
+          <div class="rt-head">
+            <h2>How hiring works</h2>
+            <p>A simple, quick process.</p>
+          </div>
+          <ol class="rt-steps">
+            <li><h3>Apply</h3><p>Submit the form with your resume.</p></li>
+            <li><h3>Screening</h3><p>HR reviews your profile and calls shortlisted candidates.</p></li>
+            <li><h3>Interview</h3><p>A technical or role-based discussion with the team lead.</p></li>
+            <li><h3>Offer and onboarding</h3><p>Offer, safety training and a mentor on your first project.</p></li>
+          </ol>
+        </div>
+      </section>
+    </main>
+
+    <!-- =========================================
+       FOOTER
+       ========================================= -->
+    <footer class="sg-footer">
+      <div class="container">
+        <!-- Main grid -->
+        <div class="sg-grid">
+          <div class="sg-brand">
+            <p>
+             SunGET Solar Infra Pvt Ltd is a primier Pune based Solar energy company providing Consultancy, EPC & Audit services with excellence & proven track record. Our mission is to creat awareness, educate & contribute towards India Net Zero 2070 goals.
+            </p>
+            <div class="sg-badges" aria-label="Company logos">
+  <span class="sg-badge sg-badge--iso">
+    <img src="../images/FOOTER (1).jpeg" alt="ISO Certification Logo">
+  </span>
+
+  <span class="sg-badge sg-badge--government">
+    <img src="../images/FOOTER (2).jpeg" alt="Government Approval Logo">
+  </span>
+</div>
+            <div class="sg-follow">
+              <span class="sg-follow-label">Follow Us</span>
+              <div class="sg-social">
+                <a href="https://www.facebook.com/sungetsolarinfra" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 8.5V6.8c0-.8.2-1.3 1.4-1.3H17V2.2C16.700 2.150 15.800 2 14.700 2 12.300 2 10.700 3.400 10.700 6.100v2.400H8v3.600h2.700V22H14v-9.900h2.700l.4-3.600H14z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/sunget_solar_infra/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/company/sunget-solar-infra-private-limited" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="2.5" y="9" width="4" height="12"/><circle cx="4.5" cy="4.8" r="2.2"/><path d="M10 9h3.800v1.700c.6-1.100 1.900-2 3.700-2 3.400 0 4.500 2.100 4.500 5.200V21h-4v-6c0-1.500-.4-2.600-1.900-2.600S14 13.500 14 15v6h-4z"/></svg>
+                </a>
+                <a href="https://www.youtube.com/@sungetsolarinfrapvt.ltd.9794" target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M21.600 7.200a2.500 2.500 0 0 0-1.800-1.800C18.200 5 12 5 12 5s-6.200 0-7.800.4A2.500 2.500 0 0 0 2.400 7.200C2 8.800 2 12 2 12s0 3.200.4 4.800a2.500 2.500 0 0 0 1.800 1.800C5.800 19 12 19 12 19s6.200 0 7.800-.4a2.500 2.500 0 0 0 1.800-1.800C22 15.200 22 12 22 12s0-3.200-.4-4.800zM10 15V9l5.200 3z"/></svg>
+                </a>
+                <a href="https://wa.me/919881855770" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" title="WhatsApp">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.700 13.600L3 21l4.500-1.200A9 9 0 1 0 12 3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 8.500c.2 2.800 3 5.800 6.200 6.500l1.300-1.500-2.200-1.100-.9.800c-.9-.4-1.900-1.400-2.300-2.300l.8-.9-1.100-2.200z" fill="currentColor"/></svg>
+                </a>
+                <a href="https://x.com/" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" title="X (Twitter)">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h4.500L20 20h-4.500z"/><path d="M4 20l6.800-7.600M20 4l-6.800 7.600" stroke-linecap="round"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <nav class="sg-col" aria-label="Quick links">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="#solutions">Solar Solutions</a></li>
+              <li><a href="#about">Why Choose Us</a></li>
+              <li><a href="#process">How It Works</a></li>
+              <li><a class="open-calc-btn" href="#">Solar Calculator 🧮</a></li>
+              <li><a href="#contact">Get a Quote</a></li>
+            </ul>
+          </nav>
+
+          <nav class="sg-col" aria-label="Company and legal">
+            <h4>Company &amp; Legal</h4>
+            <ul>
+              <li><a href="pgs/about_us.html">About SunGET</a></li>
+              <li><a href="pgs/privacy-policy.html">Privacy Policy</a></li>
+             
+              <li><a href="#contact">Contact Support</a></li>
+            </ul>
+          </nav>
+
+          <div class="sg-col sg-contact">
+            <h4>Get in Touch</h4>
+            <div class="sg-contact-card">
+              <div class="sg-contact-item">
+                <span class="sg-ico">📍</span>
+                <div>
+                  <strong>Office</strong>
+                  <a href="https://maps.app.goo.gl/QCPUaeTf7yaCP7Gq7" target="_blank" rel="noopener noreferrer">Renuka Industries Estate, Opp. Abhiruchi Parisar, Narhe, Pune - 411041</a>
+                </div>
+              </div>
+              <div class="sg-contact-item">
+                <span class="sg-ico">🏢</span>
+                <div>
+                  <strong>Registered</strong>
+                  <span> Keshavsut Rd, Sadashiv Peth, Pune - 411030</span>
+                </div>
+              </div>
+              <div class="sg-contact-item">
+                <span class="sg-ico">📞</span>
+                <div><a href="tel:+919881855770">(+91) 98818 55770</a></div>
+              </div>
+              <div class="sg-contact-item">
+                <span class="sg-ico">✉️</span>
+                <div><a href="mailto:sales@sungetsolarinfra.com">sales@sungetsolarinfra.com</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom bar -->
+        <div class="sg-bottom">
+          <span>© 2026 SunGET Solar Infra Pvt. Ltd. All rights reserved.</span>
+          <div class="sg-bottom-links">
+            <a href="pgs/privacy-policy.html">Privacy Policy</a>
+            <span>•</span>
+           
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div
+      class="toast"
+      id="toast"
+      role="status"
+      aria-live="polite"
+      style="display:none;position:fixed;bottom:20px;right:20px;background:var(--ink);color:#fff;padding:12px 20px;border-radius:12px;z-index:99999;"
+    >
+      Thanks! Your enquiry has been received.
+    </div>
+
+    <!-- rooftop.js handles the tabs -->
+    <script src="../src/rooftop.js"></script>
+    <script src="../src/script.js"></script>
+     <script src="../src/sg-enquiry.js"></script>
+    <script src="../src/sg-content.js"></script>
+      <script>
+    (function () {
+      var C = { URL: "https://lsfwdoyqxlblvxlxwmbi.supabase.co", KEY: "sb_publishable_CjdM1_XUqYWaPeTxs6AmJA_5qBtSW9u" };
+      var MAX = 5 * 1024 * 1024;
+
+      function open(id) { var t = document.getElementById(id); if (t) t.click(); }
+      Array.prototype.forEach.call(document.querySelectorAll("[data-open-tab]"), function (a) {
+        a.addEventListener("click", function () { open(a.getAttribute("data-open-tab")); });
+      });
+      if (location.hash === "#placement") { open("t-place"); }
+
+      function msg(form, text, cls) { var m = form.querySelector(".sg-msg"); m.textContent = text; m.className = "full sg-msg " + (cls || ""); }
+      function clean(v) { return String(v || "").trim() || null; }
+
+      function post(table, row) {
+        return fetch(C.URL + "/rest/v1/" + table, { method: "POST",
+          headers: { apikey: C.KEY, Authorization: "Bearer " + C.KEY, "Content-Type": "application/json", Prefer: "return=minimal" },
+          body: JSON.stringify(row) }).then(function (r) { if (!r.ok) throw new Error("save " + r.status); });
+      }
+      function upload(file) {
+        var ext = (file.name.split(".").pop() || "pdf").toLowerCase().replace(/[^a-z0-9]/g, "");
+        var path = Date.now() + "-" + Math.random().toString(36).slice(2, 8) + "." + ext;
+        return fetch(C.URL + "/storage/v1/object/resumes/" + path, { method: "POST",
+          headers: { apikey: C.KEY, Authorization: "Bearer " + C.KEY, "Content-Type": file.type || "application/octet-stream" }, body: file })
+          .then(function (r) { if (!r.ok) throw new Error("upload " + r.status); return path; });
+      }
+
+      function wire(id, table, build) {
+        var form = document.getElementById(id), sent = false;
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          if (form.elements.website.value) return;
+          var f = form.elements, btn = form.querySelector('button[type="submit"]');
+          if (sent) return msg(form, "Already submitted. Thank you!", "ok");
+          var phone = f.phone.value.replace(/[\s-]/g, "");
+          for (var i = 0; i < form.elements.length; i++) { var el = form.elements[i]; if (el.required && el.type !== "checkbox" && !String(el.value).trim()) { el.focus(); return msg(form, "Please fill the required fields marked *.", "err"); } }
+          if (!/^[+]?\d{8,15}$/.test(phone)) { f.phone.focus(); return msg(form, "Enter a valid phone number.", "err"); }
+          if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email.value.trim())) { f.email.focus(); return msg(form, "Enter a valid email address.", "err"); }
+          if (!f.consent.checked) return msg(form, "Please tick the consent box.", "err");
+          var file = f.resume && f.resume.files[0];
+          if (file && file.size > MAX) return msg(form, "Resume is larger than 5 MB.", "err");
+          btn.disabled = true; var lbl = btn.textContent; btn.textContent = "Sending..."; msg(form, "");
+          (file ? upload(file) : Promise.resolve(null))
+            .then(function (path) { return post(table, build(f, path)); })
+            .then(function () { sent = true; form.reset(); msg(form, "Thank you! Our HR team will contact you soon.", "ok"); btn.textContent = "Submitted"; })
+            .catch(function () { msg(form, "Sorry, we could not send this. Please email hr@sungetsolarinfra.com or call +91 98818 55770.", "err"); btn.disabled = false; btn.textContent = lbl; });
+        });
+      }
+
+      wire("careerForm", "career_applications", function (f, path) {
+        return { name: f.name.value.trim(), phone: f.phone.value.trim(), email: f.email.value.trim(), city: clean(f.city.value),
+          qualification: clean(f.qualification.value), college: clean(f.college.value), passing_year: clean(f.passing_year.value),
+          role: clean(f.role.value), experience: clean(f.experience.value), message: clean(f.message.value), resume_path: path, status: "new" };
+      });
+      wire("placementForm", "placement_requests", function (f) {
+        return { institution: f.institution.value.trim(), inst_type: clean(f.inst_type.value), contact_name: f.contact_name.value.trim(),
+          designation: clean(f.designation.value), phone: f.phone.value.trim(), email: f.email.value.trim(), city: clean(f.city.value),
+          courses: clean(f.courses.value), students: clean(f.students.value), mode: clean(f.mode.value), message: clean(f.message.value), status: "new" };
+      });
+    })();
+    </script>
+      <script>
+(function () {
+  var C = { URL: "https://lsfwdoyqxlblvxlxwmbi.supabase.co", KEY: "sb_publishable_CjdM1_XUqYWaPeTxs6AmJA_5qBtSW9u" };
+  var grid = document.getElementById("rolesGrid");
+  var select = document.querySelector('#careerForm select[name="role"]');
+  if (!grid) return;
+  function esc(t) { return String(t == null ? "" : t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+
+  fetch(C.URL + "/rest/v1/career_roles?select=*&is_open=eq.true&order=sort_order.asc,created_at.desc", { headers: { apikey: C.KEY } })
+    .then(function (r) { if (!r.ok) throw new Error(); return r.json(); })
+    .then(function (rows) {
+      if (!rows.length) {
+        grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;padding:30px">No openings right now. Apply under "General application" and we will keep your profile.</p>';
+      } else {
+        grid.innerHTML = rows.map(function (r) {
+          var reqs = String(r.requirements || "").split("\n").map(function (s) { return s.trim(); }).filter(Boolean);
+          return '<article class="rt-seg"><h3>' + esc(r.title) + '</h3>' +
+            (r.department ? '<p class="rt-seg-size">' + esc(r.department) + '</p>' : "") +
+            (r.summary ? "<p>" + esc(r.summary) + "</p>" : "") +
+            (reqs.length ? "<ul>" + reqs.map(function (q) { return "<li>" + esc(q) + "</li>"; }).join("") + "</ul>" : "") + "</article>";
+        }).join("");
+      }
+      if (select) {
+        select.innerHTML = '<option value="">Role you are applying for *</option>' +
+          rows.map(function (r) { return "<option>" + esc(r.title) + "</option>"; }).join("") +
+          "<option>Trainee / Intern</option><option>Other / General application</option>";
+      }
+    })
+    .catch(function () { /* keep page as is if loading fails */ });
+})();
+</script>
+      <script src="../src/leads.js"></script>
+    <script src="../src/sg-extras.js"></script>
+     <script src="../src/social-icons.js"></script>
+      <script src="../src/sg-ui.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Photo Gallery | SunGET Solar Infra</title>
+  <meta name="description" content="Browse photos of solar rooftop plants, water heating and heat pump installations, housing society projects and team moments from SunGET Solar Infra, Pune." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style/style.css" />
+
+  <style>
+    /* =========================================
+       PHOTO GALLERY PAGE (new design, all CSS in this file)
+       ========================================= */
+    .gal-page { line-height: 1.6; overflow-x: clip; }
+
+    /* ---------- Hero ---------- */
+    .gal-hero {
+      position: relative; overflow: hidden; text-align: center; color: #fff; padding: 110px 0 96px;
+      background:
+        radial-gradient(circle at 85% 0%, rgba(216,242,90,.35), transparent 45%),
+        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px) 0 0 / 44px 44px,
+        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px) 0 0 / 44px 44px,
+        linear-gradient(160deg, #06281c, var(--green, #116b4b));
+    }
+    .gal-hero .container { position: relative; }
+    .gal-hero h1 { font-family: Manrope, sans-serif; font-weight: 800; letter-spacing: -.03em; line-height: 1.04; font-size: clamp(38px, 6.4vw, 76px); margin: 10px 0 16px; color: #fff; }
+    .gal-hero h1 em { font-style: normal; color: var(--lime, #d8f25a); }
+    .gal-hero p { max-width: 620px; margin: 0 auto; color: #dbebe2; font-size: clamp(15px, 2vw, 19px); line-height: 1.65; }
+
+    /* ---------- Filters ---------- */
+    .gal-section { padding: 0 0 100px; background: #f4f8f5; }
+    .gal-section .container { position: relative; }
+    .g-filters {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; max-width: 100%; width: fit-content;
+      margin: -30px auto 18px; padding: 8px;
+      background: rgba(255,255,255,.92); backdrop-filter: blur(10px);
+      border: 1px solid #dbe8df; border-radius: 28px; box-shadow: 0 14px 40px rgba(8,40,28,.16);
+    }
+    .g-filters::-webkit-scrollbar { display: none; }
+    .g-filters:empty { display: none; }
+    .g-chip {
+      flex: none; display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 999px; border: 0;
+      background: transparent; color: var(--ink, #102019); white-space: nowrap;
+      font: 700 14.5px "DM Sans", sans-serif; cursor: pointer; transition: background .2s, color .2s;
+    }
+    .g-chip:hover { background: #eaf4ed; }
+    .g-chip small { font-size: 12px; font-weight: 800; padding: 2px 8px; border-radius: 999px; background: #eaf4ed; color: var(--green, #116b4b); }
+    .g-chip[aria-pressed="true"] { background: var(--green, #116b4b); color: #fff; box-shadow: 0 6px 16px rgba(17,107,75,.35); }
+    .g-chip[aria-pressed="true"] small { background: var(--lime, #d8f25a); color: var(--ink, #102019); }
+    .g-chip:focus-visible, .g-item:focus-visible, .lb button:focus-visible { outline: 3px solid var(--lime, #d8f25a); outline-offset: 3px; }
+    .g-status { text-align: center; margin: 0 0 26px; font-size: 14px; font-weight: 600; letter-spacing: .02em; color: var(--muted, #64716b); }
+
+    /* ---------- Photo grid (equal cards + a wide feature card every 9th) ---------- */
+    .g-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 20px; }
+    .g-item {
+      position: relative; display: block; width: 100%; padding: 0; border: 0; border-radius: 22px; overflow: hidden;
+      aspect-ratio: 4 / 3; cursor: zoom-in; background: #dcebe2; box-shadow: 0 6px 18px rgba(10,40,28,.10);
+      transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s ease;
+      animation: gIn .55s ease both; animation-delay: calc(var(--n, 0) * 45ms);
+    }
+    .g-item:nth-child(9n+1) { grid-column: span 2; aspect-ratio: 8 / 3; }
+    @keyframes gIn { from { opacity: 0; transform: translateY(16px) scale(.98); } to { opacity: 1; transform: none; } }
+    .g-item img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .8s cubic-bezier(.2,.7,.2,1); }
+    .g-item:hover { transform: translateY(-6px); box-shadow: 0 22px 44px rgba(10,40,28,.22); }
+    .g-item:hover img { transform: scale(1.05); }
+    .g-item::before { content: ""; position: absolute; inset: 0; z-index: 2; border-radius: inherit; pointer-events: none; box-shadow: inset 0 0 0 0 var(--lime, #d8f25a); transition: box-shadow .3s ease; }
+    .g-item:hover::before { box-shadow: inset 0 0 0 4px var(--lime, #d8f25a); }
+    .g-item.broken::after { content: "☀"; position: absolute; inset: 0; display: grid; place-items: center; font-size: 42px; color: var(--green, #116b4b); opacity: .45; }
+    .g-cap { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; display: grid; gap: 2px; text-align: left; padding: 60px 18px 16px; color: #fff; background: linear-gradient(180deg, rgba(5,24,16,0), rgba(5,24,16,.82)); }
+    .g-cap strong { font-family: Manrope, sans-serif; font-size: 16px; line-height: 1.25; }
+    .g-cap em { font-style: normal; font-size: 12.5px; color: #cfe6d8; max-height: 0; overflow: hidden; opacity: 0; transition: max-height .3s ease, opacity .3s ease; }
+    .g-item:hover .g-cap em, .g-item:focus-visible .g-cap em { max-height: 24px; opacity: 1; }
+    .g-zoom { position: absolute; z-index: 3; top: 14px; right: 14px; width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: var(--lime, #d8f25a); color: var(--ink, #102019); font-size: 16px; font-weight: 800; opacity: 0; transform: scale(.8); transition: opacity .3s ease, transform .3s ease; }
+    .g-item:hover .g-zoom, .g-item:focus-visible .g-zoom { opacity: 1; transform: none; }
+    @media (hover: none) { .g-zoom { display: none; } .g-cap em { max-height: 24px; opacity: 1; } }
+    .g-empty { text-align: center; color: var(--muted, #64716b); padding: 50px 0; }
+
+    /* ---------- Closing call-to-action ---------- */
+    .gal-cta { background: linear-gradient(160deg, #06281c, #0b4d38); color: #fff; text-align: center; padding: 80px 0; position: relative; overflow: hidden; }
+    .gal-cta::before { content: ""; position: absolute; width: 520px; height: 520px; left: -160px; bottom: -260px; border-radius: 50%; background: radial-gradient(circle, rgba(216,242,90,.22), rgba(216,242,90,0) 68%); }
+    .gal-cta .container { position: relative; }
+    .gal-cta h2 { font-family: Manrope, sans-serif; font-size: clamp(30px, 4.8vw, 54px); line-height: 1.1; letter-spacing: -.02em; margin: 0 0 12px; color: #fff; }
+    .gal-cta h2 em { font-style: normal; color: var(--lime, #d8f25a); }
+    .gal-cta p { margin: 0 auto 28px; max-width: 560px; color: #a4c4b2; }
+    .gal-cta-btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+    .gal-cta .btn.lime { background: var(--lime, #d8f25a); color: var(--ink, #102019); }
+    .gal-cta .btn.ghost { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.5); }
+    .gal-cta .btn.ghost:hover { background: rgba(255,255,255,.12); }
+
+    /* ---------- Lightbox (fast open: thumbnail first, sharp image swaps in) ---------- */
+    .lb { position: fixed; inset: 0; z-index: 99999; display: none; flex-direction: column; background: rgba(4,14,9,.94); backdrop-filter: blur(14px); }
+    .lb.open { display: flex; }
+    .lb-top { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; color: #cfe6d8; font-size: 15px; letter-spacing: .06em; font-weight: 700; }
+    .lb-x { width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255,255,255,.25); background: rgba(255,255,255,.1); color: #fff; font-size: 26px; line-height: 1; cursor: pointer; }
+    .lb-x:hover { background: rgba(255,255,255,.22); }
+    .lb-stage { position: relative; flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; padding: 0 70px; touch-action: pan-y; }
+    .lb-img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 16px; box-shadow: 0 30px 90px rgba(0,0,0,.6); opacity: 0; transition: opacity .2s ease, filter .25s ease; user-select: none; -webkit-user-drag: none; }
+    .lb-img.on { opacity: 1; }
+    .lb-img.low { filter: blur(6px); }
+    .lb-spin { position: absolute; width: 42px; height: 42px; border-radius: 50%; border: 3px solid rgba(255,255,255,.2); border-top-color: var(--lime, #d8f25a); animation: lbSpin .8s linear infinite; }
+    .lb-spin[hidden] { display: none; }
+    @keyframes lbSpin { to { transform: rotate(360deg); } }
+    .lb-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 56px; height: 56px; border-radius: 50%; border: 1px solid rgba(255,255,255,.28); background: rgba(255,255,255,.14); color: #fff; font-size: 26px; line-height: 1; cursor: pointer; display: grid; place-items: center; transition: background .2s, color .2s; }
+    .lb-nav:hover { background: var(--lime, #d8f25a); color: var(--ink, #102019); }
+    .lb-prev { left: 12px; } .lb-next { right: 12px; }
+    .lb-cap { text-align: center; padding: 16px 20px 22px; color: #fff; }
+    .lb-cap strong { display: block; font-family: Manrope, sans-serif; font-size: 20px; }
+    .lb-cap span { color: #a4c4b2; font-size: 14px; }
+
+    /* ---------- Tablet / phone ---------- */
+    @media (max-width: 900px) { .g-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; } }
+    @media (max-width: 640px) {
+      .gal-hero { padding: 76px 0 70px; }
+      .gal-section { padding-bottom: 64px; }
+      .g-filters { width: auto; justify-content: flex-start; margin: -26px 0 16px; border-radius: 18px; }
+      .g-chip { padding: 9px 14px; font-size: 13.5px; }
+      .g-grid { gap: 10px; }
+      .g-item { border-radius: 16px; }
+      .g-item:nth-child(9n+1) { aspect-ratio: 16 / 9; }
+      .g-cap { padding: 40px 12px 10px; } .g-cap strong { font-size: 13.5px; } .g-cap em { font-size: 11.5px; }
+      .lb-stage { padding: 0 8px; }
+      .lb-nav { width: 46px; height: 46px; font-size: 22px; top: auto; bottom: 8px; transform: none; }
+      .lb-prev { left: 14px; } .lb-next { right: 14px; }
+      .lb-cap { padding-bottom: 60px; }
+      .gal-cta { padding: 60px 0; }
+      .gal-cta-btns .btn { width: 100%; }
+    }
+    @media (max-width: 380px) { .g-grid { grid-template-columns: 1fr; } .g-item:nth-child(9n+1) { grid-column: auto; aspect-ratio: 4 / 3; } }
+    @media (prefers-reduced-motion: reduce) { .g-item { animation: none; } .g-item img, .g-zoom, .lb-img { transition: none; } }
+  </style>
+    <link rel="stylesheet" href="../style/sg-design.css" />
+  </head>
+
+<body class="gal-page">
+
+  <!-- MAIN NAVIGATION -->
+ <nav class="nav">
+  <div class="container navin">
+    <!-- Company Logo -->
+    <a href="../index.html" class="brand-link">
+      <img
+        class="normal_logo"
+        src="../images/logo.png"
+        alt="SunGET Solar Infra Pvt. Ltd."
+        title="SunGET Solar Infra Pvt. Ltd."
+      />
+    </a>
+
+    <!-- Desktop Navigation Links -->
+    <div class="links">
+      <!-- Solutions -->
+      <div class="dropdown">
+        <a class="dropdown-toggle">
+          Solutions <span class="caret"></span>
+        </a>
+        <div class="dropdown-menu">
+          <a href="solar-rooftop.html">Solar Rooftops</a>
+          <a href="solar-water-heater.html">Solar Water Heater</a>
+          <a href="heat-pump.html">Heat Pump</a>
+          <a href="solar-utility-products.html">Solar Utility Product</a>
+          <a href="solar-epc.html">Solar EPC</a>
+          <a href="o-and-m-repair.html">O&amp;M Repair</a>
+          <a href="energy-audit.html">Energy Audit</a>
+          <a href="csr-and-awareness.html">CSR and Awareness</a>
+        </div>
+      </div>
+
+      <!-- About -->
+      <div class="dropdown">
+        <a class="dropdown-toggle">
+          About <span class="caret"></span>
+        </a>
+        <div class="dropdown-menu">
+          <a href="project-gallery.html">Project Gallery</a>
+          <a href="our-team.html">Our Team</a>
+          <a href="certifications.html">Certifications</a>
+        </div>
+      </div>
+
+      <!-- Process -->
+      <a href="#process">Process</a>
+
+      <a href="#contact">Contact</a>
+      <a class="btn light open-calc-btn" href="#">Solar Calculator 🧮</a>
+     
+    </div>
+
+    <!-- Hamburger Toggle Button -->
+    <button
+      class="hamburger-btn"
+      id="menuToggle"
+      aria-label="Toggle navigation menu"
+      aria-expanded="false"
+    >
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu Dropdown -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="container mobile-menu-inner">
+      <!-- Solutions -->
+      <div class="mobile-group">
+        <div class="mobile-group-head">
+          <a class="mobile-link">Solutions</a>
+          <button class="mobile-sub-toggle" aria-label="Show Solutions options" aria-expanded="false"></button>
+        </div>
+        <div class="mobile-sub">
+          <a href="pgs/solar-rooftop.html">Solar Rooftops</a>
+          <a href="pgs/solar-water-heater.html">Solar Water Heater</a>
+          <a href="pgs/heat-pump.html">Heat Pump</a>
+          <a href="pgs/solar-utility-products.html">Solar Utility Product</a>
+          <a href="pgs/solar-epc.html">Solar EPC</a>
+          <a href="pgs/o-and-m-repair.html">O&amp;M Repair</a>
+          <a href="pgs/energy-audit.html">Energy Audit</a>
+          <a href="pgs/csr-and-awareness.html">CSR and Awareness</a>
+        </div>
+      </div>
+
+      <!-- About -->
+      <div class="mobile-group">
+        <div class="mobile-group-head">
+          <a class="mobile-link" href="pgs/about_us.html">About</a>
+          <button class="mobile-sub-toggle" aria-label="Show About options" aria-expanded="false"></button>
+        </div>
+        <div class="mobile-sub">
+          <a href="pgs/project-gallery.html">Project Gallery</a>
+          <a href="pgs/our-team.html">Our Team</a>
+          <a href="pgs/certifications.html">Certifications</a>
+        </div>
+      </div>
+
+      <!-- Process -->
+      <a class="mobile-link" href="#process">Process</a>
+
+      <a class="mobile-link" href="#contact">Contact</a>
+      <a class="btn light open-calc-btn" href="#">Solar Calculator 🧮</a>
+      <a class="btn full" href="#contact" id="mobileCta">Get a Quote</a>
+    </div>
+  </div>
+</nav>
+
+  <main>
+    <!-- HERO -->
+    <header class="gal-hero">
+      <div class="container">
+        <span class="eyebrow" style="color: var(--lime); justify-content: center;"><i class="dot" style="background: var(--lime);"></i> Photo gallery</span>
+        <h1>Our projects, <em>in pictures.</em></h1>
+        <p>A look at the solar plants and systems we have installed. Tap any photo to see it full size.</p>
+      </div>
+    </header>
+
+    <!-- GALLERY -->
+    <section class="gal-section" id="gallery" aria-label="Photo gallery">
+      <div class="container">
+        <div class="g-filters" id="gFilters" role="group" aria-label="Filter photos by category"></div>
+        <p class="g-status" id="gStatus" aria-live="polite"></p>
+        <div class="g-grid" id="gGrid">
+          <!--
+            Photos uploaded from the admin page are added at the top automatically.
+            Photos below are written here by hand. To add one: copy a whole <button> block.
+            data-cat = residential | society | commercial | thermal | events | project
+          -->
+          
+        </div>
+        <p class="g-empty" id="gEmpty" hidden>No photos in this category yet.</p>
+      </div>
+    </section>
+
+    <!-- CLOSING CTA -->
+    <section class="gal-cta">
+      <div class="container">
+        <h2>Want a plant like <em>these</em> on your roof?</h2>
+        <p>Tell us about your home, society or business. We will visit, size the system and send a clear proposal.</p>
+        <div class="gal-cta-btns">
+          <a class="btn lime" href="../index.html#contact">Get a free quote</a>
+          <a class="btn ghost open-calc-btn" href="#">Solar Calculator 🧮</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+ <footer class="sg-footer">
+      <div class="container">
+        <!-- Main grid -->
+        <div class="sg-grid">
+          <div class="sg-brand">
+            <p>
+             SunGET Solar Infra Pvt Ltd is a primier Pune based Solar energy company providing Consultancy, EPC & Audit services with excellence & proven track record. Our mission is to creat awareness, educate & contribute towards India Net Zero 2070 goals.
+            </p>
+            <div class="sg-badges" aria-label="Company logos">
+  <span class="sg-badge sg-badge--iso">
+    <img src="../images/FOOTER (1).jpeg" alt="ISO Certification Logo">
+  </span>
+
+  <span class="sg-badge sg-badge--government">
+    <img src="../images/FOOTER (2).jpeg" alt="Government Approval Logo">
+  </span>
+</div>
+            <div class="sg-follow">
+              <span class="sg-follow-label">Follow Us</span>
+              <div class="sg-social">
+                <a href="https://www.facebook.com/sungetsolarinfra" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 8.5V6.8c0-.8.2-1.3 1.4-1.3H17V2.2C16.700 2.150 15.800 2 14.700 2 12.300 2 10.700 3.400 10.700 6.100v2.400H8v3.600h2.700V22H14v-9.900h2.700l.4-3.600H14z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/sunget_solar_infra/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/company/sunget-solar-infra-private-limited" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="2.5" y="9" width="4" height="12"/><circle cx="4.5" cy="4.8" r="2.2"/><path d="M10 9h3.800v1.700c.6-1.100 1.900-2 3.700-2 3.400 0 4.500 2.100 4.500 5.200V21h-4v-6c0-1.500-.4-2.600-1.900-2.600S14 13.500 14 15v6h-4z"/></svg>
+                </a>
+                <a href="https://www.youtube.com/@sungetsolarinfrapvt.ltd.9794" target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M21.600 7.200a2.500 2.500 0 0 0-1.800-1.800C18.200 5 12 5 12 5s-6.200 0-7.800.4A2.500 2.500 0 0 0 2.400 7.200C2 8.800 2 12 2 12s0 3.200.4 4.800a2.500 2.500 0 0 0 1.800 1.800C5.800 19 12 19 12 19s6.200 0 7.800-.4a2.500 2.500 0 0 0 1.800-1.800C22 15.200 22 12 22 12s0-3.200-.4-4.800zM10 15V9l5.200 3z"/></svg>
+                </a>
+                <a href="https://wa.me/919881855770" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" title="WhatsApp">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.700 13.600L3 21l4.500-1.200A9 9 0 1 0 12 3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 8.500c.2 2.800 3 5.800 6.200 6.500l1.300-1.500-2.200-1.100-.9.800c-.9-.4-1.900-1.400-2.300-2.300l.8-.9-1.100-2.200z" fill="currentColor"/></svg>
+                </a>
+                <a href="https://x.com/" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" title="X (Twitter)">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h4.500L20 20h-4.500z"/><path d="M4 20l6.800-7.600M20 4l-6.800 7.600" stroke-linecap="round"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <nav class="sg-col" aria-label="Quick links">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="#solutions">Solar Solutions</a></li>
+              <li><a href="#about">Why Choose Us</a></li>
+              <li><a href="#process">How It Works</a></li>
+              <li><a class="open-calc-btn" href="#">Solar Calculator 🧮</a></li>
+              <li><a href="#contact">Get a Quote</a></li>
+            </ul>
+          </nav>
+
+          <nav class="sg-col" aria-label="Company and legal">
+            <h4>Company &amp; Legal</h4>
+            <ul>
+              <li><a href="pgs/about_us.html">About SunGET</a></li>
+              <li><a href="pgs/privacy-policy.html">Privacy Policy</a></li>
+             
+              <li><a href="#contact">Contact Support</a></li>
+            </ul>
+          </nav>
+
+          <div class="sg-col sg-contact">
+            <h4>Get in Touch</h4>
+            <div class="sg-contact-card">
+              <div class="sg-contact-item">
+                <span class="sg-ico">📍</span>
+                <div>
+                  <strong>Office</strong>
+                  <a href="https://maps.app.goo.gl/QCPUaeTf7yaCP7Gq7" target="_blank" rel="noopener noreferrer">Renuka Industries Estate, Opp. Abhiruchi Parisar, Narhe, Pune - 411041</a>
+                </div>
+              </div>
+              <div class="sg-contact-item">
+                <span class="sg-ico">🏢</span>
+                <div>
+                  <strong>Registered</strong>
+                  <span> Keshavsut Rd, Sadashiv Peth, Pune - 411030</span>
+                </div>
+              </div>
+              <div class="sg-contact-item">
+                <span class="sg-ico">📞</span>
+                <div><a href="tel:+919881855770">(+91) 98818 55770</a></div>
+              </div>
+              <div class="sg-contact-item">
+                <span class="sg-ico">✉️</span>
+                <div><a href="mailto:sales@sungetsolarinfra.com">sales@sungetsolarinfra.com</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom bar -->
+        <div class="sg-bottom">
+          <span>© 2026 SunGET Solar Infra Pvt. Ltd. All rights reserved.</span>
+          <div class="sg-bottom-links">
+            <a href="pgs/privacy-policy.html">Privacy Policy</a>
+            <span>•</span>
+           
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  <!-- LIGHTBOX -->
+  <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer">
+    <div class="lb-top"><span id="lbCount"></span><button type="button" class="lb-x" id="lbClose" aria-label="Close photo viewer">&times;</button></div>
+    <div class="lb-stage" id="lbStage">
+      <button type="button" class="lb-nav lb-prev" id="lbPrev" aria-label="Previous photo">&#8249;</button>
+      <div class="lb-spin" id="lbSpin" hidden></div>
+      <img class="lb-img" id="lbImg" alt="" draggable="false" decoding="async" />
+      <button type="button" class="lb-nav lb-next" id="lbNext" aria-label="Next photo">&#8250;</button>
+    </div>
+    <div class="lb-cap"><strong id="lbTitle"></strong><span id="lbMeta"></span></div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" style="display:none;position:fixed;bottom:20px;right:20px;background:var(--ink);color:#fff;padding:12px 20px;border-radius:12px;z-index:99999;">Thanks! Your enquiry has been received.</div>
+
+  <!-- SHARED JS FILE (menu, calculator) -->
+  <script src="../src/script.js"></script>
+
+  <script>
+    /* ============ ADMIN CONNECTION: paste your Supabase Project URL below (same as in admin.html) ============ */
+    var SG_CONFIG = {
+      SUPABASE_URL: "https://lsfwdoyqxlblvxlxwmbi.supabase.co",   // e.g. "https://abcdefghij.supabase.co"
+      SUPABASE_ANON_KEY: "sb_publishable_CjdM1_XUqYWaPeTxs6AmJA_5qBtSW9u"
+    };
+
+    (function () {
+      "use strict";
+
+      var CATEGORIES = [
+        { id: "all", label: "All photos" },
+        { id: "residential", label: "Homes & Bungalows" },
+        { id: "society", label: "Housing Societies" },
+        { id: "commercial", label: "Commercial & Industrial" },
+        { id: "thermal", label: "Water Heating & Heat Pumps" },
+        { id: "events", label: "Team, CSR & Events" },
+        { id: "project", label: "Projects" }
+      ];
+
+      function $(id) { return document.getElementById(id); }
+      function esc(t) { return String(t == null ? "" : t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+
+      /* ---------- gallery managed from the admin page (categories, order, published only) ---------- */
+      (function loadAdminGallery() {
+        if (!SG_CONFIG.SUPABASE_URL || !SG_CONFIG.SUPABASE_ANON_KEY) return;
+        function get(path) {
+          var x = new XMLHttpRequest();
+          x.open("GET", SG_CONFIG.SUPABASE_URL + path, false);   // runs before the gallery script below
+          x.setRequestHeader("apikey", SG_CONFIG.SUPABASE_ANON_KEY);
+          x.send();
+          return x.status === 200 ? JSON.parse(x.responseText) : null;
+        }
+        try {
+          var rows = get("/rest/v1/photos?select=*&published=eq.true&order=sort_order.asc,created_at.desc");
+          if (!rows) return;                                      // database not ready: keep the built-in photos
+          var flag = get("/rest/v1/page_content?page=eq._gallery&key=eq.imported&select=value");
+          if (flag && flag.length) {                              // photos were imported into the admin: it controls everything
+            Array.prototype.forEach.call(document.querySelectorAll("#gGrid .g-item"), function (b) { b.remove(); });
+          }
+          var cats = get("/rest/v1/gallery_categories?select=*&order=sort_order.asc");
+          if (cats && cats.length) {
+            CATEGORIES = [CATEGORIES[0]].concat(cats.map(function (c) { return { id: c.slug, label: c.name }; }));
+          }
+          $("gGrid").insertAdjacentHTML("afterbegin", rows.map(function (p) {
+            return '<button type="button" class="g-item" data-cat="' + esc(p.cat) + '" data-full="' + esc(p.src) + '">' +
+              '<img src="' + esc(p.thumb || p.src) + '" alt="' + esc(p.alt || p.title) + '" loading="lazy" decoding="async" />' +
+              '<span class="g-zoom" aria-hidden="true">+</span>' +
+              '<span class="g-cap"><strong>' + esc(p.title) + '</strong><em>' + esc(p.description || p.place || "") + '</em></span></button>';
+          }).join(""));
+        } catch (e) { /* if anything fails, the built-in photos still show */ }
+      })();
+
+      var items = Array.prototype.slice.call(document.querySelectorAll("#gGrid .g-item"));
+      var cat = "all", visible = items.slice();
+
+      items.forEach(function (b, i) {
+        b.style.setProperty("--n", Math.min(i, 12));
+        var img = b.querySelector("img");
+        var cap = b.querySelector(".g-cap strong");
+        b.setAttribute("aria-label", "Open photo: " + (cap ? cap.textContent : "project"));
+        img.addEventListener("load", function () { b.classList.add("loaded"); });
+        img.addEventListener("error", function () { b.classList.add("broken"); img.style.display = "none"; });
+        if (img.complete && img.naturalWidth) b.classList.add("loaded");
+      });
+
+      /* ---------- filter buttons (shown only when 2+ categories are used) ---------- */
+      function count(id) { return items.filter(function (b) { return id === "all" || b.getAttribute("data-cat") === id; }).length; }
+      var used = CATEGORIES.filter(function (c) { return c.id !== "all" && count(c.id) > 0; });
+      if (used.length > 1) {
+        $("gFilters").innerHTML = [CATEGORIES[0]].concat(used).map(function (c) {
+          return '<button type="button" class="g-chip" data-cat="' + esc(c.id) + '" aria-pressed="' + (c.id === "all") + '">' + esc(c.label) + " <small>" + count(c.id) + "</small></button>";
+        }).join("");
+      }
+
+      function applyFilter() {
+        visible = [];
+        items.forEach(function (b) {
+          var ok = cat === "all" || b.getAttribute("data-cat") === cat;
+          b.hidden = !ok;
+          b.style.display = ok ? "" : "none";
+          if (ok) visible.push(b);
+        });
+        $("gStatus").textContent = visible.length ? visible.length + " photo" + (visible.length === 1 ? "" : "s") : "";
+        $("gEmpty").hidden = visible.length > 0;
+      }
+
+      $("gFilters").addEventListener("click", function (e) {
+        var b = e.target.closest(".g-chip"); if (!b) return;
+        cat = b.getAttribute("data-cat");
+        Array.prototype.forEach.call($("gFilters").querySelectorAll(".g-chip"), function (x) {
+          x.setAttribute("aria-pressed", x === b ? "true" : "false");
+        });
+        applyFilter();
+      });
+
+      $("gGrid").addEventListener("click", function (e) {
+        var b = e.target.closest(".g-item");
+        if (b) openLB(visible.indexOf(b), b);
+      });
+
+      /* ---------- lightbox ---------- */
+      var lb = $("lb"), lbImg = $("lbImg"), lbSpin = $("lbSpin"), cur = 0, lastFocus = null, isOpen = false;
+
+      function info(b) {
+        var img = b.querySelector("img"), t = b.querySelector(".g-cap strong"), pl = b.querySelector(".g-cap em");
+        var full = b.getAttribute("data-full") || img.getAttribute("src");
+        return {
+          src: full,
+          thumb: img.currentSrc || img.getAttribute("src"),
+          title: t ? t.textContent : "",
+          place: pl ? pl.textContent : "",
+          cat: b.getAttribute("data-cat")
+        };
+      }
+
+      /* Full-size images: downloaded once, kept in memory and decoded before they are shown */
+      var fullCache = {}, token = 0;
+      function loadFull(src) {
+        if (fullCache[src]) return fullCache[src].p;
+        var im = new Image(), rec = { im: im, done: false };
+        rec.p = new Promise(function (res) {
+          im.decoding = "async";
+          im.onload = function () {
+            var fin = function () { rec.done = true; res(); };
+            if (im.decode) im.decode().then(fin, fin); else fin();
+          };
+          im.onerror = function () { res(); };
+          im.src = src;
+        });
+        fullCache[src] = rec;
+        return rec.p;
+      }
+      function preload(i) { if (i >= 0 && i < visible.length) loadFull(info(visible[i]).src); }
+
+      function show(i) {
+        if (!visible.length) return;
+        cur = (i + visible.length) % visible.length;
+        var p = info(visible[cur]), t = ++token;
+        var ready = fullCache[p.src] && fullCache[p.src].done;
+
+        if (ready) {
+          /* already downloaded: shows instantly at full quality */
+          lbImg.classList.remove("low");
+          lbImg.src = p.src;
+          lbImg.classList.add("on");
+          lbSpin.hidden = true;
+        } else if (p.thumb && p.thumb !== p.src) {
+          /* show the small picture straight away, sharpen when the full one arrives */
+          lbImg.classList.add("low");
+          lbImg.src = p.thumb;
+          lbImg.classList.add("on");
+          lbSpin.hidden = true;
+          loadFull(p.src).then(function () {
+            if (t !== token || !isOpen) return;      // visitor already moved on
+            lbImg.src = p.src;
+            lbImg.classList.remove("low");
+          });
+        } else {
+          /* no separate thumbnail: the grid already loaded this same file, so show it straight away (no spinner) */
+          lbImg.classList.remove("low");
+          lbImg.src = p.src;
+          lbImg.classList.add("on");
+          lbSpin.hidden = true;
+        }
+        lbImg.alt = p.title;
+
+        $("lbTitle").textContent = p.title;
+        $("lbMeta").textContent = p.place || (CATEGORIES.filter(function (c) { return c.id === p.cat; })[0] || {}).label || "";
+        $("lbCount").textContent = (cur + 1) + " / " + visible.length;
+        var multi = visible.length > 1;
+        $("lbPrev").style.display = multi ? "" : "none";
+        $("lbNext").style.display = multi ? "" : "none";
+        preload(cur + 1); preload(cur - 1); preload(cur + 2);
+      }
+      function openLB(i, from) {
+        if (i < 0) return;
+        lastFocus = from || document.activeElement;
+        isOpen = true; lb.classList.add("open"); document.body.style.overflow = "hidden";
+        show(i); $("lbClose").focus();
+      }
+      function closeLB() {
+        if (!isOpen) return;
+        isOpen = false; token++; lb.classList.remove("open"); document.body.style.overflow = "";
+        lbImg.classList.remove("on", "low");
+        lbImg.removeAttribute("src");
+        if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
+      }
+
+      /* Start downloading the full image as soon as the visitor shows interest (hover, touch, keyboard focus) */
+      function warm(e) {
+        var b = e.target.closest && e.target.closest(".g-item");
+        if (b) loadFull(info(b).src);
+      }
+      $("gGrid").addEventListener("mouseover", warm);
+      $("gGrid").addEventListener("touchstart", warm, { passive: true });
+      $("gGrid").addEventListener("focusin", warm);
+
+      /* Quietly fetch the first few photos when the browser is idle (skipped on Data Saver) */
+      var saver = navigator.connection && navigator.connection.saveData;
+      if (!saver) {
+        (window.requestIdleCallback || function (f) { setTimeout(f, 1500); })(function () {
+          visible.slice(0, 4).forEach(function (b) { loadFull(info(b).src); });
+        });
+      }
+
+      $("lbClose").addEventListener("click", closeLB);
+      $("lbPrev").addEventListener("click", function () { show(cur - 1); });
+      $("lbNext").addEventListener("click", function () { show(cur + 1); });
+      $("lbStage").addEventListener("click", function (e) { if (e.target === this) closeLB(); });
+
+      document.addEventListener("keydown", function (e) {
+        if (!isOpen) return;
+        if (e.key === "Escape") { e.stopPropagation(); closeLB(); }
+        else if (e.key === "ArrowRight") show(cur + 1);
+        else if (e.key === "ArrowLeft") show(cur - 1);
+        else if (e.key === "Tab") {
+          var f = [$("lbClose"), $("lbPrev"), $("lbNext")].filter(function (b) { return b.style.display !== "none"; });
+          var first = f[0], last = f[f.length - 1];
+          if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+          else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+        }
+      });
+
+      var sx = null, sy = null;
+      $("lbStage").addEventListener("touchstart", function (e) { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, { passive: true });
+      $("lbStage").addEventListener("touchend", function (e) {
+        if (sx === null) return;
+        var dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
+        if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.3) show(cur + (dx < 0 ? 1 : -1));
+        sx = null;
+      }, { passive: true });
+
+      applyFilter();
+    })();
+  </script>
+  <script src="../src/social-icons.js"></script>
+
+    <script src="../src/sg-ui.js" defer></script>
+  </body>
+</html>
