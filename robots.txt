@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /pgs/sun.html
+Disallow: /tools/
+Disallow: /supabase/
+
+Sitemap: https://www.sungetsolarinfra.com/sitemap.xml

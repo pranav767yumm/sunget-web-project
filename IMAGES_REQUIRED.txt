@@ -1,0 +1,114 @@
+Image files referenced by the site but NOT included in the project upload.
+Copy your existing images/ folder into the project root so these paths exist.
+(Generated 2026-11-20 by scanning all pages and scripts.)
+
+images/FOOTER (1).jpeg
+images/FOOTER (2).jpeg
+images/brands/img1.png
+images/brands/img2.png
+images/brands/img3.png
+images/brands/img4.png
+images/brands/img5.png
+images/brands/img6.png
+images/cert/art1.jpeg
+images/cert/art2.jpeg
+images/cert/art3.jpeg
+images/cert/art4.jpeg
+images/cert/img1.png
+images/cert/img2.png
+images/cert/img3.png
+images/cert/img4.png
+images/cert/img5.png
+images/cert/img6.png
+images/cert/img7.png
+images/cert/img8.png
+images/cert/img9.png
+images/clients/client(1).png
+images/clients/client(2).jpeg
+images/clients/client(3).jpeg
+images/clients/client(4).jpeg
+images/clients/client(5).jpeg
+images/clients/client(6).jpeg
+images/clients/client(7).jpeg
+images/clients/client(8).jpeg
+images/gallery/ (1).jpg
+images/gallery/ (10).jpg
+images/gallery/ (11).jpg
+images/gallery/ (12).jpg
+images/gallery/ (13).jpg
+images/gallery/ (14).jpg
+images/gallery/ (15).jpg
+images/gallery/ (16).jpg
+images/gallery/ (17).jpg
+images/gallery/ (18).jpg
+images/gallery/ (19).jpg
+images/gallery/ (2).jpg
+images/gallery/ (20).jpg
+images/gallery/ (21).jpg
+images/gallery/ (22).jpg
+images/gallery/ (23).jpg
+images/gallery/ (24).jpg
+images/gallery/ (25).jpg
+images/gallery/ (26).jpg
+images/gallery/ (27).jpg
+images/gallery/ (28).jpg
+images/gallery/ (29).jpg
+images/gallery/ (3).jpg
+images/gallery/ (30).jpg
+images/gallery/ (4).jpg
+images/gallery/ (5).jpg
+images/gallery/ (6).jpg
+images/gallery/ (7).jpg
+images/gallery/ (8).jpg
+images/gallery/ (9).jpg
+images/hero/1.jpeg
+images/hero/2.jpeg
+images/hero/4.jpeg
+images/hero/5.webp
+images/logo.png
+images/mascot-heatpump.webp
+images/mascot-panel.webp
+images/mascot-peek.webp
+images/mascot-right.webp
+images/mascot-water.jpeg
+images/mascot.webp
+images/our-team-images/guide.webp
+images/our-team-images/heater.webp
+images/our-team-images/image.jpg
+images/our-team-images/meet.webp
+images/our-team-images/meeting.webp
+images/our-team-images/presentation.webp
+images/our-team-images/presentation2.webp
+images/our-team-images/system.webp
+images/our-team-images/understanding.webp
+images/pages/heater/img/hero.jpg
+images/pages/heater/img/popup.webp
+images/pages/heater/img/process.png
+images/pages/heatpump/img/hero.jpeg
+images/pages/heatpump/img/popup.webp
+images/pages/heatpump/img/process.jpg
+images/pages/solarpanel/img/hero.jpg
+images/pages/solarpanel/img/popup.webp
+images/pages/solarpanel/img/process.jpg
+images/sec/1.jpg
+images/sec/2.jpg
+images/sec/3.webp
+images/sec/4.webp
+images/sec/5.webp
+images/sec/6.jpg
+images/sec/7.png
+images/sec/8.jpg
+images/sun-poster.jpg
+images/team/Swami_Vivekananda.jpg
+images/team/karandikar.jpg
+images/team/sir.jpg
+images/team/subhash.jpg
+images/team/thite.jpg
+images/vid/growth_vid.mp4
+images/why-sec-image/01.webp
+images/why-sec-image/02.webp
+images/why-sec-image/03.jpeg
+images/why-sec-image/04.jpeg
+images/why-sec-image/05.jpeg
+images/why-sec-image/06.jpeg
+images/x.webp

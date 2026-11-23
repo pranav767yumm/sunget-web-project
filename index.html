@@ -1,0 +1,853 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b6b49" />
+    <link rel="icon" href="images/logo.png" />
+    <link rel="canonical" href="https://www.sungetsolarinfra.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="SunGET Solar Infra" />
+    <meta property="og:title" content="SunGET Solar Infra | Powering a Smarter Future" />
+    <meta property="og:description" content="SunGET Solar Infra Pvt. Ltd. — solar rooftop, EPC, maintenance, energy audits and sustainable energy solutions in Pune." />
+    <meta property="og:url" content="https://www.sungetsolarinfra.com/" />
+    <meta property="og:image" content="https://www.sungetsolarinfra.com/images/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet" />
+    <meta
+      name="description"
+      content="SunGET Solar Infra Pvt. Ltd. — solar rooftop, EPC, maintenance, energy audits and sustainable energy solutions in Pune."
+    />
+    <title>SunGET Solar Infra | Powering a Smarter Future</title>
+<link rel="stylesheet" href="style/sg-solar-today.css" />
+    <link rel="stylesheet" href="style/style.css" />
+    <link rel="stylesheet" href="style/popup.css" />
+    <link rel="stylesheet" href="style/sg-design.css" />
+
+    <!-- Structured data for search engines -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "SunGET Solar Infra Pvt. Ltd.",
+      "url": "https://www.sungetsolarinfra.com/",
+      "logo": "https://www.sungetsolarinfra.com/images/logo.png",
+      "telephone": "+91-9881855770",
+      "email": "sales@sungetsolarinfra.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Renuka Industries Estate, Opp. Abhiruchi Parisar, Narhe",
+        "addressLocality": "Pune",
+        "postalCode": "411041",
+        "addressRegion": "Maharashtra",
+        "addressCountry": "IN"
+      },
+      "sameAs": [
+        "https://www.facebook.com/sungetsolarinfra",
+        "https://www.instagram.com/sunget_solar_infra/",
+        "https://www.linkedin.com/company/sunget-solar-infra-private-limited",
+        "https://www.youtube.com/@sungetsolarinfrapvt.ltd.9794"
+      ]
+    }
+    </script>
+
+    <style>
+      /* Mascot beside the quote form: large desktop only */
+      .mascot--hero-form { display: none; }
+      @media (min-width: 1280px) {
+        .mascot--hero-form {
+          display: block;
+          --m-h: 300px;
+          left: calc(46% - 208px);
+          z-index: 3;
+        }
+      }
+
+      /* Mascot peeking in from the left screen edge (Why Choose Us) */
+      .mascot-peek {
+        --m-h: clamp(200px, 22vw, 320px);
+        position: absolute;
+        left: 0;
+        top: clamp(16px, 3vw, 40px);
+        height: var(--m-h);
+        width: auto;
+        z-index: 2;
+        pointer-events: none;
+        filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.45));
+        animation: peekIdle 6s ease-in-out 1.2s infinite;
+      }
+      @keyframes peekIdle {
+        0%, 72%, 100% { transform: translateX(0); }
+        82%           { transform: translateX(-14px); }
+        92%           { transform: translateX(0); }
+      }
+      @keyframes peekIn {
+        from { translate: -105% 0; }
+        to   { translate: 0 0; }
+      }
+      @supports (animation-timeline: view()) {
+        .mascot-peek {
+          animation: peekIn linear both, peekIdle 6s ease-in-out 1.2s infinite;
+          animation-timeline: view(), auto;
+          animation-range: entry 10% entry 60%, normal;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) { .mascot-peek { animation: none; } }
+      @media (max-width: 900px) { .mascot-peek { display: none; } }
+
+      /* CTA box with mascot: text and button stacked on the left, mascot on the right */
+      @media (min-width: 901px) {
+        .cta-box--mascot {
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: center;
+          gap: 22px;
+          padding-right: 380px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="nav" aria-label="Main">
+  <div class="container navin">
+    <a href="index.html" class="brand-link" aria-label="SunGET Solar Infra home">
+      <img class="normal_logo" src="images/logo.png" alt="SunGET Solar Infra Pvt. Ltd." />
+    </a>
+
+    <!-- Desktop Navigation Links -->
+    <div class="links">
+      <div class="dropdown">
+        <button type="button" class="dropdown-toggle" aria-haspopup="true">Solutions <span class="caret" aria-hidden="true"></span></button>
+        <div class="dropdown-menu">
+          <a href="pgs/solar-rooftop.html">Solar Rooftops</a>
+          <a href="pgs/solar-water-heater.html">Solar Water Heater</a>
+          <a href="pgs/heat-pump.html">Heat Pump</a>
+          <a href="pgs/solar-utility-products.html">Solar Utility Products</a>
+          <a href="pgs/solar-epc.html">Solar EPC</a>
+          <a href="pgs/o-and-m-repair.html">O&amp;M Repair</a>
+          <a href="pgs/energy-audit.html">Energy Audit</a>
+          <a href="pgs/esg.html">ESG Solutions</a>
+          <a href="pgs/csr-and-awareness.html">CSR and Awareness</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button type="button" class="dropdown-toggle" aria-haspopup="true">About <span class="caret" aria-hidden="true"></span></button>
+        <div class="dropdown-menu">
+          <a href="pgs/about_us.html">Our Team</a>
+          <a href="pgs/gallery.html">Project Gallery</a>
+          <a href="pgs/certifications.html">Certifications</a>
+          <a href="pgs/careers.html">Careers and Placement</a>
+        </div>
+      </div>
+
+      <a href="#process">Process</a>
+      <a href="#contact">Contact</a>
+      <a class="btn light open-calc-btn" href="#" role="button">Solar Calculator 🧮</a>
+    </div>
+
+    <!-- Hamburger Toggle Button -->
+    <button class="hamburger-btn" id="menuToggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="container mobile-menu-inner">
+      <div class="mobile-group">
+        <div class="mobile-group-head">
+          <a class="mobile-link">Solutions</a>
+          <button class="mobile-sub-toggle" type="button" aria-label="Show Solutions options" aria-expanded="false"></button>
+        </div>
+        <div class="mobile-sub">
+          <a href="pgs/solar-rooftop.html">Solar Rooftops</a>
+          <a href="pgs/solar-water-heater.html">Solar Water Heater</a>
+          <a href="pgs/heat-pump.html">Heat Pump</a>
+          <a href="pgs/solar-utility-products.html">Solar Utility Products</a>
+          <a href="pgs/solar-epc.html">Solar EPC</a>
+          <a href="pgs/o-and-m-repair.html">O&amp;M Repair</a>
+          <a href="pgs/energy-audit.html">Energy Audit</a>
+          <a href="pgs/esg.html">ESG Solutions</a>
+          <a href="pgs/csr-and-awareness.html">CSR and Awareness</a>
+        </div>
+      </div>
+
+      <div class="mobile-group">
+        <div class="mobile-group-head">
+          <a class="mobile-link" href="pgs/about_us.html">About</a>
+          <button class="mobile-sub-toggle" type="button" aria-label="Show About options" aria-expanded="false"></button>
+        </div>
+        <div class="mobile-sub">
+          <a href="pgs/about_us.html">Our Team</a>
+          <a href="pgs/gallery.html">Project Gallery</a>
+          <a href="pgs/certifications.html">Certifications</a>
+          <a href="pgs/careers.html">Careers and Placement</a>
+        </div>
+      </div>
+
+      <a class="mobile-link" href="#process">Process</a>
+      <a class="mobile-link" href="#contact">Contact</a>
+      <a class="btn light open-calc-btn" href="#" role="button">Solar Calculator 🧮</a>
+      <a class="btn full" href="#contact" id="mobileCta">Get a Quote</a>
+    </div>
+  </div>
+</nav>
+
+    <!-- =========================================
+       HERO SECTION
+       ========================================= -->
+    <header class="hero">
+      <div class="hero-slides" aria-hidden="true">
+        <div class="hero-slide active" style="background-image:url('images/hero/2.jpeg')"></div>
+        <div class="hero-slide" style="background-image:url('images/hero/1.jpeg')"></div>
+        <div class="hero-slide" style="background-image:url('images/hero/5.webp')"></div>
+        <div class="hero-slide" style="background-image:url('images/hero/4.jpeg')"></div>
+      </div>
+      <div class="hero-overlay"></div>
+      <img class="mascot mascot--hero-form" src="images/mascot-right.webp" alt="" loading="lazy" />
+
+      <div class="container">
+        <!-- LEFT SIDE -->
+        <div class="hero-content">
+          <h1>Strong Foundations <br />Clean Energy Sustainable Future</h1>
+          <p class="hero-sub">Save up to 90% on electricity bills with customised solar solutions.</p>
+
+          <div class="hero-badges">
+            <span class="hero-badge">⏳ 12+ Years of Experience</span>
+            <span class="hero-badge">🏠 800+ Homes Solarised</span>
+            <span class="hero-badge">⚡ 50MW+ Installation Experience</span>
+          </div>
+
+          <div class="google-rating">
+            Rated <span style="color: #fbbc05;" aria-hidden="true">★</span> 4.8 on Google | 25+ ratings
+          </div>
+
+          <!-- SLIDER CONTROLS -->
+          <div class="hero-controls">
+            <button type="button" class="hero-arrow" id="heroPrev" aria-label="Previous slide">&#10094;</button>
+            <div class="hero-dots" id="heroDots"></div>
+            <button type="button" class="hero-arrow" id="heroNext" aria-label="Next slide">&#10095;</button>
+          </div>
+
+          <!-- MOBILE ONLY: button that opens the form -->
+          <button type="button" class="btn hero-open-form" id="openHeroForm">Book a FREE Consultation</button>
+        </div>
+
+        <!-- MOBILE ONLY: dark backdrop behind the popup form -->
+        <div class="hero-form-backdrop" id="heroFormBackdrop"></div>
+
+        <!-- RIGHT SIDE: Form (inline on desktop, popup on mobile) -->
+        <div class="hero-form-card" id="heroFormCard" role="region" aria-labelledby="heroFormTitle">
+          <button type="button" class="hero-form-close" id="closeHeroForm" aria-label="Close form">&times;</button>
+          <h2 id="heroFormTitle">Book a FREE Solar Consultation</h2>
+          <p class="form-subtitle">And save up to ₹78,000 with subsidy</p>
+
+          <form class="form hero-form" id="heroLeadForm" novalidate>
+            <label class="sr-only" for="hfName">Full name</label>
+            <input id="hfName" name="name" required placeholder="Full Name" autocomplete="name" />
+
+            <label class="sr-only" for="hfPhone">WhatsApp number</label>
+            <input id="hfPhone" name="whatsapp" required type="tel" inputmode="numeric" maxlength="10" placeholder="WhatsApp Number (10 digits)" autocomplete="tel-national" />
+
+            <label class="sr-only" for="hfEmail">Email address</label>
+            <input id="hfEmail" name="email" required type="email" placeholder="Email ID" autocomplete="email" />
+
+            <div class="pin-row">
+              <label class="sr-only" for="hfPin">PIN code</label>
+              <input id="hfPin" name="pincode" required type="text" inputmode="numeric" maxlength="6" placeholder="PIN Code (6 digits)" autocomplete="postal-code" />
+              <button type="button" id="pinFetchBtn" class="pin-fetch" title="Use my current location" aria-label="Fill PIN code from my current location">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z" />
+                  <circle cx="12" cy="10" r="2.6" />
+                </svg>
+              </button>
+            </div>
+
+            <fieldset class="bill-options-wrapper" style="border:0;padding:0;margin:0;min-width:0;">
+              <legend class="field-label">Monthly Electricity Bill</legend>
+              <div class="bill-options">
+                <label class="bill-radio"><input type="radio" name="bill" value="less_1500" required /><span>Less than ₹1500</span></label>
+                <label class="bill-radio"><input type="radio" name="bill" value="1500_2500" /><span>₹1500 - ₹2500</span></label>
+                <label class="bill-radio"><input type="radio" name="bill" value="2500_4000" /><span>₹2500 - ₹4000</span></label>
+                <label class="bill-radio"><input type="radio" name="bill" value="4000_8000" /><span>₹4000 - ₹8000</span></label>
+                <label class="bill-radio"><input type="radio" name="bill" value="more_8000" /><span>More than ₹8000</span></label>
+              </div>
+            </fieldset>
+
+            <div class="terms-check">
+              <input type="checkbox" id="termsAgree" name="terms_agree" required />
+              <label for="termsAgree">I agree that SunGET Solar Infra may contact me about this enquiry, and I accept the
+                <a href="pgs/privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>.
+              </label>
+            </div>
+
+            <p class="hero-form-msg" id="heroFormMsg" role="status" aria-live="polite"></p>
+
+            <button class="btn full form-cta" type="submit">Book a FREE Consultation</button>
+          </form>
+        </div>
+      </div>
+    </header>
+
+    <!-- =========================================
+       SOLUTIONS SECTION
+       ========================================= -->
+    <section id="solutions">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow"><i class="dot"></i> Engineering Excellence</span>
+          <h2>360° solar solutions for all</h2>
+          <p>
+            From rooftop power plants to long-term operations and maintenance, SunGET delivers end-to-end solar infrastructure for businesses across Maharashtra.
+          </p>
+        </div>
+
+        <div class="cards">
+          <!-- 1. Solar Rooftop Systems -->
+          <article class="sol-card">
+            <div class="sol-card-media">
+              <img src="images/sec/1.jpg" alt="Rooftop solar panels on a building" class="sol-img" loading="lazy" />
+              <span class="sol-tag">Popular</span>
+            </div>
+            <div class="sol-card-body">
+              <div class="sol-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z" /><path d="M2 17l10 5 10-5" /><path d="M2 12l10 5 10-5" /></svg>
+              </div>
+              <h3>Solar Rooftop Systems</h3>
+              <p class="sol-desc">Custom grid-tied and hybrid solar installations that cut electricity bills by up to 90% for homes, commercial buildings, and factories.</p>
+              <a href="pgs/solar-rooftop.html" class="sol-link">Explore Systems &rarr;</a>
+            </div>
+          </article>
+
+          <!-- 2. Solar Water Heating -->
+          <article class="sol-card">
+            <div class="sol-card-media">
+              <img src="images/sec/2.jpg" alt="Solar water heating system" class="sol-img" loading="lazy" />
+            </div>
+            <div class="sol-card-body">
+              <div class="sol-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z" /></svg>
+              </div>
+              <h3>Solar Water Heating</h3>
+              <p class="sol-desc">Cut your fuel and electricity costs with solar hot water systems sized for continuous, high-volume demand. Available with ETC and FPC collectors.</p>
+              <a href="pgs/solar-water-heater.html" class="sol-link">Explore Thermal &rarr;</a>
+            </div>
+          </article>
+
+          <!-- 3. Heat Pump Systems -->
+          <article class="sol-card">
+            <div class="sol-card-media">
+              <img src="images/sec/3.webp" alt="Air-to-water heat pump unit" class="sol-img" loading="lazy" />
+            </div>
+            <div class="sol-card-body">
+              <div class="sol-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" /></svg>
+              </div>
+              <h3>Heat Pump Solutions</h3>
+              <p class="sol-desc">Air-to-water heat pumps that deliver hot water using up to 70% less energy than conventional electric heating.</p>
+              <a href="pgs/heat-pump.html" class="sol-link">Explore Heat Pumps &rarr;</a>
+            </div>
+          </article>
+
+          <!-- 4. Solar Utility Products (card hidden by the owner; page is still linked from the menu)
+          <article class="sol-card">
+            <div class="sol-card-media">
+              <img src="images/sec/4.webp" alt="Solar Utility Products" class="sol-img" loading="lazy">
+            </div>
+            <div class="sol-card-body">
+              <h3>Solar Utility Products</h3>
+              <p class="sol-desc">Heavy-duty solar street lights, agricultural solar pumping infrastructure, and standalone micro-grid solutions built for outdoor reliability.</p>
+              <a href="pgs/solar-utility-products.html" class="sol-link">Explore Utilities &rarr;</a>
+            </div>
+          </article>
+          -->
+
+          <!-- 5. Solar EPC Services -->
+          <article class="sol-card">
+            <div class="sol-card-media">
+              <img src="images/sec/5.webp" alt="Turnkey solar EPC project" class="sol-img" loading="lazy" />
+            </div>
+            <div class="sol-card-body">
+              <div class="sol-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" /></svg>
+              </div>
+              <h3>Solar EPC</h3>
+              <p class="sol-desc">We handle the entire journey—from custom engineering and quality procurement to final grid connection and net-metering approvals.</p>
+              <a href="pgs/solar-epc.html" class="sol-link">Explore EPC Process &rarr;</a>
+            </div>
+          </article>
+
+          <!-- 6. O&M -->
+          <article class="sol-card">
+            <div class="sol-card-media">
+              <img src="images/sec/6.jpg" alt="Solar panel maintenance work" class="sol-img" loading="lazy" />
+            </div>
+            <div class="sol-card-body">
+              <div class="sol-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" /></svg>
+              </div>
+              <h3>O&amp;M Repair</h3>
+              <p class="sol-desc">Turnkey maintenance, preventive health checks, string testing, and thermal imaging to keep your plant operating at peak efficiency.</p>
+              <a href="pgs/o-and-m-repair.html" class="sol-link">Explore Maintenance &rarr;</a>
+            </div>
+          </article>
+
+          <!-- 7. Energy Audits -->
+          <article class="sol-card">
+            <div class="sol-card-media">
+              <img src="images/sec/7.png" alt="Energy audit and analytics" class="sol-img" loading="lazy" />
+            </div>
+            <div class="sol-card-body">
+              <div class="sol-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10" /><line x1="12" y1="20" x2="12" y2="4" /><line x1="6" y1="20" x2="6" y2="14" /></svg>
+              </div>
+              <h3>Energy Audit &amp; Analytics</h3>
+              <p class="sol-desc">Precise power quality assessments and load audits to eliminate losses, optimise electricity tariffs, and accurately size your solar system.</p>
+              <a href="pgs/energy-audit.html" class="sol-link">Explore Audits &rarr;</a>
+            </div>
+          </article>
+
+          <!-- 8. ESG -->
+          <article class="sol-card">
+            <div class="sol-card-media">
+              <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&amp;fit=crop&amp;w=600&amp;q=75" alt="Power lines and renewable energy at sunset" class="sol-img" loading="lazy" />
+            </div>
+            <div class="sol-card-body">
+              <div class="sol-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" /><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" /></svg>
+              </div>
+              <h3>ESG &amp; Sustainability</h3>
+              <p class="sol-desc">Net-zero roadmap execution, carbon footprint reduction, and clean energy compliance designed to meet corporate ESG targets and green mandates.</p>
+              <a href="pgs/esg.html" class="sol-link">Explore ESG Solutions &rarr;</a>
+            </div>
+          </article>
+
+          <!-- 9. CSR -->
+          <article class="sol-card">
+            <div class="sol-card-media">
+              <img src="images/sec/8.jpg" alt="Community clean energy programme" class="sol-img" loading="lazy" />
+            </div>
+            <div class="sol-card-body">
+              <div class="sol-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z" /></svg>
+              </div>
+              <h3>CSR and Awareness</h3>
+              <p class="sol-desc">Empowering communities through corporate CSR partnerships, rural solar electrification, and educational environmental programmes.</p>
+              <a href="pgs/csr-and-awareness.html" class="sol-link">Explore CSR Initiatives &rarr;</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================
+       WHY CHOOSE US SECTION
+       ========================================= -->
+    <section class="why-choose" id="about">
+      <div class="why-choose-overlay"></div>
+      <img class="mascot-peek" src="images/mascot-peek.webp" alt="" loading="lazy" />
+      <div class="container relative-container">
+        <div class="section-head why-head">
+          <span class="eyebrow why-eyebrow"><i class="dot why-dot"></i> The SunGET Advantage</span>
+          <h2>Why Choose SunGET Solar Infra?</h2>
+          <p>Turnkey solar solutions engineered with precision, transparent execution, and end-to-end regulatory support.</p>
+        </div>
+
+        <div class="why-grid">
+          <div class="why-card">
+            <div class="why-card-bg" style="background-image: url(images/why-sec-image/01.webp)"></div>
+            <div class="why-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+            </div>
+            <h3>Tier-1 Quality &amp; Warranty</h3>
+            <p>High-efficiency solar components with full warranty &amp; guarantee coverage, engineered for 25+ years of dependable performance.</p>
+          </div>
+
+          <div class="why-card">
+            <div class="why-card-bg" style="background-image: url(images/why-sec-image/02.webp)"></div>
+            <div class="why-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3" /><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z" /></svg>
+            </div>
+            <h3>Precision Load Sizing</h3>
+            <p>Meticulous solar system recommendations backed by exact electricity load assessments and accurate consumption analysis.</p>
+          </div>
+
+          <div class="why-card">
+            <div class="why-card-bg" style="background-image: url(images/why-sec-image/03.jpeg)"></div>
+            <div class="why-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12M6 8h12M6 13h3.5c4.5 0 4.5-5 4.5-5M6 13l6 8" /></svg>
+            </div>
+            <h3>Transparent ROI &amp; Pricing</h3>
+            <p>Maximised long-term energy savings with zero hidden charges, strict ethical standards, and clear payback metrics.</p>
+          </div>
+
+          <div class="why-card">
+            <div class="why-card-bg" style="background-image: url(images/why-sec-image/04.jpeg)"></div>
+            <div class="why-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" /></svg>
+            </div>
+            <h3>Hassle-free Process</h3>
+            <p>Full utility liaisoning: hassle-free approvals, load demand enhancement, name changes, and support until your solar electricity bill is regularised.</p>
+          </div>
+
+          <div class="why-card">
+            <div class="why-card-bg" style="background-image: url(images/why-sec-image/05.jpeg)"></div>
+            <div class="why-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 019.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z" /></svg>
+            </div>
+            <h3>2-Year Free Maintenance</h3>
+            <p>Dedicated post-installation care with quarterly plant health check-ups for 2 full years to ensure peak generation.</p>
+          </div>
+
+          <div class="why-card">
+            <div class="why-card-bg" style="background-image: url(images/why-sec-image/06.jpeg)"></div>
+            <div class="why-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15.05 5A5 5 0 0119 8.95M15.05 1A9 9 0 0123 8.94m-1 7.98v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" /></svg>
+            </div>
+            <h3>Single-Roof Execution</h3>
+            <p>All services under one roof—from engineering design, procurement, and liaisoning to financing, insurance, and maintenance.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================
+       PROJECT PROCESS SECTION
+       ========================================= -->
+    <section id="process">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow"><i class="dot"></i> Simple process</span>
+          <h2>From first conversation to clean power.</h2>
+        </div>
+
+        <div class="process">
+          <div class="step step-bg" style="--bg-url: url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&amp;fit=crop&amp;w=600&amp;q=75')">
+            <div class="step-overlay"></div>
+            <div class="step-content">
+              <div class="num">01</div>
+              <h3>Consult</h3>
+              <p>We understand your electricity use and needs, goals and budget.</p>
+            </div>
+          </div>
+
+          <div class="step step-bg" style="--bg-url: url('https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&amp;fit=crop&amp;w=600&amp;q=75')">
+            <div class="step-overlay"></div>
+            <div class="step-content">
+              <div class="num">02</div>
+              <h3>Survey</h3>
+              <p>We assess the site, roof, load and solar potential.</p>
+            </div>
+          </div>
+
+          <div class="step step-bg" style="--bg-url: url('https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&amp;fit=crop&amp;w=600&amp;q=80')">
+            <div class="step-overlay"></div>
+            <div class="step-content">
+              <div class="num">03</div>
+              <h3>Design</h3>
+              <p>We create the right system according to your need.</p>
+            </div>
+          </div>
+
+          <div class="step step-bg" style="--bg-url: url('https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&amp;fit=crop&amp;w=600&amp;q=80')">
+            <div class="step-overlay"></div>
+            <div class="step-content">
+              <div class="num">04</div>
+              <h3>Install</h3>
+              <p>We execute installation, testing and commissioning.</p>
+            </div>
+          </div>
+
+          <div class="step step-bg" style="--bg-url: url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&amp;fit=crop&amp;w=600&amp;q=80')">
+            <div class="step-overlay"></div>
+            <div class="step-content">
+              <div class="num">05</div>
+              <h3>Support</h3>
+              <p>We keep the system healthy with ongoing service.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================
+       CALCULATOR CTA BANNER
+       ========================================= -->
+    <section class="cta">
+      <div class="container">
+        <div class="cta-box cta-box--mascot mascot-host">
+          <div>
+            <span class="eyebrow" style="color: var(--lime)">Instant Savings Estimator</span>
+            <h2>Calculate Your Solar Savings in 30 Seconds!</h2>
+            <p>
+              Curious about how much you can save on your electricity bill? <br />Use our instant calculator to estimate your system size, project cost, and annual savings.
+            </p>
+          </div>
+
+          <a class="btn open-calc-btn" href="#" role="button">Calculate Savings Now 🧮</a>
+
+          <img class="mascot mascot--right mascot--hide-mobile" style="--m-h: 350px" src="images/mascot.webp" alt="" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================
+       TRUSTED CLIENTS & PARTNERS LOGO TICKER
+       ========================================= -->
+    <section class="client-partners-section" aria-labelledby="clientsTitle">
+      <div class="container">
+        <div class="partners-head">
+          <span class="eyebrow"><i class="dot"></i> Trusted Partners</span>
+          <h2 id="clientsTitle">Powering Leading Housing Societies &amp; Enterprises</h2>
+        </div>
+      </div>
+
+      <div class="logo-ticker">
+        <div class="logo-track">
+          <div class="logo-slide"><img src="images/clients/client(1).png" alt="Client partner 1" loading="lazy" /></div>
+          <div class="logo-slide"><img src="images/clients/client(2).jpeg" alt="Client partner 2" loading="lazy" /></div>
+          <div class="logo-slide"><img src="images/clients/client(3).jpeg" alt="Client partner 3" loading="lazy" /></div>
+          <div class="logo-slide"><img src="images/clients/client(4).jpeg" alt="Client partner 4" loading="lazy" /></div>
+          <div class="logo-slide"><img src="images/clients/client(5).jpeg" alt="Client partner 5" loading="lazy" /></div>
+          <div class="logo-slide"><img src="images/clients/client(6).jpeg" alt="Client partner 6" loading="lazy" /></div>
+          <div class="logo-slide"><img src="images/clients/client(7).jpeg" alt="Client partner 7" loading="lazy" /></div>
+          <div class="logo-slide"><img src="images/clients/client(8).jpeg" alt="Client partner 8" loading="lazy" /></div>
+
+          <!-- Duplicated set for a seamless infinite loop -->
+          <div class="logo-slide" aria-hidden="true"><img src="images/clients/client(1).png" alt="" loading="lazy" /></div>
+          <div class="logo-slide" aria-hidden="true"><img src="images/clients/client(2).jpeg" alt="" loading="lazy" /></div>
+          <div class="logo-slide" aria-hidden="true"><img src="images/clients/client(3).jpeg" alt="" loading="lazy" /></div>
+          <div class="logo-slide" aria-hidden="true"><img src="images/clients/client(4).jpeg" alt="" loading="lazy" /></div>
+          <div class="logo-slide" aria-hidden="true"><img src="images/clients/client(5).jpeg" alt="" loading="lazy" /></div>
+          <div class="logo-slide" aria-hidden="true"><img src="images/clients/client(6).jpeg" alt="" loading="lazy" /></div>
+          <div class="logo-slide" aria-hidden="true"><img src="images/clients/client(7).jpeg" alt="" loading="lazy" /></div>
+          <div class="logo-slide" aria-hidden="true"><img src="images/clients/client(8).jpeg" alt="" loading="lazy" /></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================
+       BRAND PARTNERS TICKER (LEFT TO RIGHT)
+       ========================================= -->
+    <section class="brand-partners-section" aria-labelledby="brandsTitle">
+      <div class="container">
+        <div class="partners-head">
+          <span class="eyebrow"><i class="dot"></i> Premium Components</span>
+          <h2 id="brandsTitle">Tier-1 Brands &amp; Technology We Deploy</h2>
+        </div>
+      </div>
+
+      <div class="brand-ticker">
+        <div class="brand-track">
+          <div class="brand-slide"><img src="images/brands/img1.png" alt="Brand partner 1" loading="lazy" /></div>
+          <div class="brand-slide"><img src="images/brands/img2.png" alt="Brand partner 2" loading="lazy" /></div>
+          <div class="brand-slide"><img src="images/brands/img3.png" alt="Brand partner 3" loading="lazy" /></div>
+          <div class="brand-slide"><img src="images/brands/img4.png" alt="Brand partner 4" loading="lazy" /></div>
+          <div class="brand-slide"><img src="images/brands/img5.png" alt="Brand partner 5" loading="lazy" /></div>
+          <div class="brand-slide"><img src="images/brands/img6.png" alt="Brand partner 6" loading="lazy" /></div>
+
+          <!-- Duplicated set for a seamless infinite loop -->
+          <div class="brand-slide" aria-hidden="true"><img src="images/brands/img1.png" alt="" loading="lazy" /></div>
+          <div class="brand-slide" aria-hidden="true"><img src="images/brands/img2.png" alt="" loading="lazy" /></div>
+          <div class="brand-slide" aria-hidden="true"><img src="images/brands/img3.png" alt="" loading="lazy" /></div>
+          <div class="brand-slide" aria-hidden="true"><img src="images/brands/img4.png" alt="" loading="lazy" /></div>
+          <div class="brand-slide" aria-hidden="true"><img src="images/brands/img5.png" alt="" loading="lazy" /></div>
+          <div class="brand-slide" aria-hidden="true"><img src="images/brands/img6.png" alt="" loading="lazy" /></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================
+       CONTACT & LOCATION HUB
+       ========================================= -->
+    <section class="contact-hub-section" id="contact">
+      <div class="container">
+        <div class="contact-hub-head">
+          <span class="contact-hub-eyebrow"><i class="dot" style="background: var(--green);"></i> Direct Connect</span>
+          <h2>Get In Touch With Our Solar Engineers</h2>
+          <p>Have quick questions about site feasibility, system maintenance, or government subsidies? Connect with our team directly or visit our office.</p>
+        </div>
+
+        <div class="contact-hub-action-grid">
+          <!-- Call -->
+          <a href="tel:+919881855770" class="contact-hub-card contact-hub-card--call">
+            <div class="contact-hub-icon call-bg" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+            </div>
+            <div class="contact-hub-info">
+              <small>Call Us Directly</small>
+              <b>+91 98818 55770</b>
+              <span>Mon – Sat: 9:30 AM to 7:00 PM</span>
+            </div>
+            <span class="contact-hub-link">Tap to Call &rarr;</span>
+          </a>
+
+          <!-- WhatsApp -->
+          <a href="https://wa.me/919881855770?text=Hi%20SunGET%20Solar%2C%20I%20have%20an%20enquiry%20regarding%20solar%20installation." target="_blank" rel="noopener noreferrer" class="contact-hub-card contact-hub-card--wa">
+            <div class="contact-hub-icon wa-bg" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" /></svg>
+            </div>
+            <div class="contact-hub-info">
+              <small>Instant WhatsApp</small>
+              <b>+91 98818 55770</b>
+              <span>Quick response for site photos &amp; bills</span>
+            </div>
+            <span class="contact-hub-link">Chat on WhatsApp &rarr;</span>
+          </a>
+
+          <!-- Email -->
+          <a href="mailto:sales@sungetsolarinfra.com?subject=Enquiry%20for%20Solar%20Installation%20-%20SunGET%20Solar&amp;body=Hi%20SunGET%20Solar%20Team%2C%0A%0AI%20would%20like%20to%20enquire%20about%20a%20solar%20installation%20for%20my%20property.%0A%0AMy%20contact%20details%3A%0AName%3A%20%0APhone%3A%20%0ALocation%2FCity%3A%20%0A%0AThank%20you!" class="contact-hub-card contact-hub-card--email">
+            <div class="contact-hub-icon email-bg" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg>
+            </div>
+            <div class="contact-hub-info">
+              <small>Send Email</small>
+              <b>sales@sungetsolarinfra.com</b>
+              <span>For tenders, detailed RFQs &amp; proposals</span>
+            </div>
+            <span class="contact-hub-link">Send Email &rarr;</span>
+          </a>
+        </div>
+
+        <!-- Office location -->
+        <div class="contact-hub-office-wrapper" id="map">
+          <div class="contact-hub-office-card">
+            <div class="contact-hub-office-header">
+              <span class="contact-hub-badge">Main Operational Office &amp; Works</span>
+              <h3>SunGET Solar Infra — Narhe, Pune</h3>
+              <p>Renuka Industries Estate, Near Darshana Properties, Opp. Abhiruchi Parisar, Narhe, Pune - 411041</p>
+            </div>
+            <div class="contact-hub-map-frame">
+              <iframe
+                title="Map showing the SunGET Solar Infra office in Narhe, Pune"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3784.82348572138!2d73.8248123!3d18.4463428!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2956ba471a2d3%3A0x9b51feeaf35ccaea!2sSunGET%20Solar%20Infra%20Private%20Limited!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                width="100%"
+                height="380"
+                allowfullscreen
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="sg-footer">
+      <div class="container">
+        <div class="sg-grid">
+          <div class="sg-brand">
+            <p>
+              SunGET Solar Infra Pvt. Ltd. is a premier Pune-based solar energy company providing consultancy, EPC and audit services with excellence and a proven track record. Our mission is to create awareness, educate and contribute towards India's Net Zero 2070 goal.
+            </p>
+            <div class="sg-badges" aria-label="Certifications">
+              <span class="sg-badge sg-badge--iso">
+                <img src="images/FOOTER%20(1).jpeg" alt="ISO certification logo" loading="lazy" />
+              </span>
+              <span class="sg-badge sg-badge--government">
+                <img src="images/FOOTER%20(2).jpeg" alt="Government approval logo" loading="lazy" />
+              </span>
+            </div>
+            <div class="sg-follow">
+              <span class="sg-follow-label">Follow Us</span>
+              <div class="sg-social">
+                <a href="https://www.facebook.com/sungetsolarinfra" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 8.5V6.8c0-.8.2-1.3 1.4-1.3H17V2.2C16.7 2.15 15.8 2 14.7 2 12.3 2 10.7 3.4 10.7 6.1v2.4H8v3.6h2.7V22H14v-9.9h2.7l.4-3.6H14z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/sunget_solar_infra/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/company/sunget-solar-infra-private-limited" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="2.5" y="9" width="4" height="12"/><circle cx="4.5" cy="4.8" r="2.2"/><path d="M10 9h3.8v1.7c.6-1.1 1.9-2 3.7-2 3.4 0 4.5 2.1 4.5 5.2V21h-4v-6c0-1.5-.4-2.6-1.9-2.6S14 13.5 14 15v6h-4z"/></svg>
+                </a>
+                <a href="https://www.youtube.com/@sungetsolarinfrapvt.ltd.9794" target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2C2 8.8 2 12 2 12s0 3.2.4 4.8a2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8C22 15.2 22 12 22 12s0-3.2-.4-4.8zM10 15V9l5.2 3z"/></svg>
+                </a>
+                <a href="https://wa.me/919881855770" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" title="WhatsApp">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.5-1.2A9 9 0 1 0 12 3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 8.5c.2 2.8 3 5.8 6.2 6.5l1.3-1.5-2.2-1.1-.9.8c-.9-.4-1.9-1.4-2.3-2.3l.8-.9-1.1-2.2z" fill="currentColor"/></svg>
+                </a>
+                <!-- X (Twitter): add your profile URL (e.g. https://x.com/yourhandle) and uncomment.
+                <a href="https://x.com/YOUR_HANDLE" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" title="X (Twitter)">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h4.5L20 20h-4.5z"/><path d="M4 20l6.8-7.6M20 4l-6.8 7.6" stroke-linecap="round"/></svg>
+                </a> -->
+              </div>
+            </div>
+          </div>
+
+          <nav class="sg-col" aria-label="Quick links">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="#solutions">Solar Solutions</a></li>
+              <li><a href="#about">Why Choose Us</a></li>
+              <li><a href="#process">How It Works</a></li>
+              <li><a class="open-calc-btn" href="#" role="button">Solar Calculator 🧮</a></li>
+              <li><a href="#contact">Get a Quote</a></li>
+            </ul>
+          </nav>
+
+          <nav class="sg-col" aria-label="Company and legal">
+            <h4>Company &amp; Legal</h4>
+            <ul>
+              <li><a href="pgs/about_us.html">About SunGET</a></li>
+              <li><a href="pgs/careers.html">Careers</a></li>
+              <li><a href="pgs/certifications.html">Certifications</a></li>
+              <li><a href="pgs/privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="#contact">Contact Support</a></li>
+            </ul>
+          </nav>
+
+          <div class="sg-col sg-contact">
+            <h4>Get in Touch</h4>
+            <div class="sg-contact-card">
+              <div class="sg-contact-item">
+                <span class="sg-ico" aria-hidden="true">📍</span>
+                <div>
+                  <strong>Office</strong>
+                  <a href="https://maps.app.goo.gl/QCPUaeTf7yaCP7Gq7" target="_blank" rel="noopener noreferrer">Renuka Industries Estate, Opp. Abhiruchi Parisar, Narhe, Pune - 411041</a>
+                </div>
+              </div>
+              <div class="sg-contact-item">
+                <span class="sg-ico" aria-hidden="true">🏢</span>
+                <div>
+                  <strong>Registered</strong>
+                  <span>Keshavsut Rd, Sadashiv Peth, Pune - 411030</span>
+                </div>
+              </div>
+              <div class="sg-contact-item">
+                <span class="sg-ico" aria-hidden="true">📞</span>
+                <div><a href="tel:+919881855770">(+91) 98818 55770</a></div>
+              </div>
+              <div class="sg-contact-item">
+                <span class="sg-ico" aria-hidden="true">✉️</span>
+                <div><a href="mailto:sales@sungetsolarinfra.com">sales@sungetsolarinfra.com</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sg-bottom">
+          <span>© 2026 SunGET Solar Infra Pvt. Ltd. All rights reserved.</span>
+          <div class="sg-bottom-links">
+            <a href="pgs/privacy-policy.html">Privacy Policy</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite">Thanks! Your enquiry has been received.</div>
+
+    <script src="src/sg-config.js"></script>
+    <script src="src/script.js"></script>
+    <script src="src/hero-form.js"></script>
+    <script src="src/popup.js"></script>
+    <script src="src/sg-content.js"></script>
+    <script src="src/social-icons.js"></script>
+    <script src="src/sg-ui.js" defer></script>
+    
+  </body>
+</html>
